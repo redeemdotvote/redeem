@@ -83,16 +83,19 @@ GET /api/v1/intents/:itemId/receipts    signed receipts for one proxy item
 
 ## Deploying to Vercel
 
-`packages/web` deploys as a static Vite site plus one Vercel function (`api/index.ts`) that serves
-the whole Hono app. `packages/web/vercel.json` rewrites `/api/*` to that function and everything
-else to `index.html`. Project settings: root directory `packages/web`, "include source files outside
-the root directory" on (the Vite config reads `__ports.cjs` from the repo root), install
-`cd ../.. && bun install`, build `bun x vite build`, output `dist`.
+`packages/web` deploys through the Build Output API: `scripts/vercel-build.ts` runs the Vite
+build, bundles `src/vercel-entry.ts` (the whole Hono app behind a Node request handler) into one
+function with Bun, and writes the routes: `/api/*` to the function, static files, then
+`index.html` for every app route. Project settings: root directory `packages/web`, "include
+source files outside the root directory" on (the Vite config reads `__ports.cjs` from the repo
+root), install `cd ../.. && bun install`, build `bun scripts/vercel-build.ts`, no framework preset.
+Smoke-test the bundle locally with `bun scripts/vercel-serve.ts` after a build.
 
 Environment variables: `RPC_URL`, `VITE_WALLETCONNECT_PROJECT_ID`, and `DATABASE_URL` +
-`DATABASE_AUTH_TOKEN` pointing at a Turso database. Functions have no persistent disk, so a
-`file:` URL does not work there; `:memory:` boots but forgets every intent on each cold start
-and is only for smoke tests.
+`DATABASE_AUTH_TOKEN` pointing at a Turso database (`libsql://...`). The function is bundled
+with the libsql web client, so only remote `libsql:`/`https:` URLs work there; `file:` and
+`:memory:` are for local runs under Bun. Schema DDL and the ballot seed run once per database
+(markers in `indexer_cursors`), so cold starts cost one read.
 
 ## Positioning
 
