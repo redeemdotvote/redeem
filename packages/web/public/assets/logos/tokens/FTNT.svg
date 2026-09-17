@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <rect x="189.1" y="133.95" width="50.9" height="32.56" fill="#da291c"/>
+  <rect x="124.66" y="180.27" width="50.68" height="32.56" fill="#da291c"/>
+  <path d="M240,114.46c0-15.13-12.15-27.29-27.29-27.29h-23.39v32.56h50.68v-5.27h0Z" fill="#da291c"/>
+  <rect x="124.66" y="87.17" width="50.68" height="32.56" fill="#da291c"/>
+  <rect x="60" y="133.95" width="50.68" height="32.56" fill="#da291c"/>
+  <path d="M189.1,212.83h23.39c15.13,0,27.29-12.15,27.29-27.29v-5.27h-50.68s0,32.56,0,32.56Z" fill="#da291c"/>
+  <path d="M60,185.54c0,15.13,12.15,27.29,27.29,27.29h23.39v-32.56h-50.68v5.27Z" fill="#da291c"/>
+  <path d="M60,114.46v5.27h50.68v-32.56h-23.39c-15.13,0-27.29,12.15-27.29,27.29Z" fill="#da291c"/>
+</svg>

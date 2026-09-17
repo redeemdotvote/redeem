@@ -1,0 +1,135 @@
+import { Link } from "wouter";
+import { AssetLogo } from "../components/brand";
+import { Page, PageHead } from "../components/layout";
+import { IntentLabel } from "../components/status";
+import { Button, Def, Eyebrow, Mark, Skeleton, Spinner } from "../components/ui";
+import { ChainLine, PostRef } from "../components/robinhood-chain";
+import { dateTime, relative, shares, shortHash } from "../lib/format";
+import { useAttest, useAttestations, usePendingAttestation } from "../queries/intents";
+import { useCorporateActions } from "../queries/portfolio";
+import { useHomeStats } from "../queries/stats";
+
+const SOURCES = [
+  ["Token registry", "api.robinhood.com/rhj/assets, joined with SEC EDGAR company data and the Chainlink feed directory for Robinhood Chain."],
+  ["Proxy items", "Each issuer's DEF 14A on SEC EDGAR, extracted into items with the board recommendation and the vote required. Every item links to its filing."],
+  ["Balances and multipliers", "Token contracts on Robinhood Chain via Multicall3, server side, cross-checked against balanceOfUI() and totalSupplyUI()."],
+  ["Prices", "Chainlink AggregatorV3 feeds deployed on Robinhood Chain (35 tokens). Tokens without a feed show no price; weight never depends on price."],
+];
+
+export default function TransparencyPage() {
+  const attestations = useAttestations();
+  const pending = usePendingAttestation();
+  const attest = useAttest();
+  const stats = useHomeStats();
+  const actions = useCorporateActions();
+  return (
+    <Page>
+      <PageHead eyebrow="Transparency" title={<>What the record is <span className="italic">built from.</span></>} body={<span className="flex flex-col gap-3"><span>Sources, method, infrastructure status and every attested tally so far.</span><ChainLine caption="Read from" /><PostRef /></span>} />
+      <div className="grid gap-x-16 gap-y-12 border-t border-line-2 pt-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+        <div className="space-y-12">
+          <section>
+            <div className="flex items-end justify-between">
+              <Eyebrow>Attestations</Eyebrow>
+              <IntentLabel />
+            </div>
+            {attestations.isLoading ? (
+              <Skeleton className="mt-4 h-24" />
+            ) : (attestations.data?.length ?? 0) === 0 ? (
+              <p className="mt-3 text-[14px] text-grey-green">Nothing has closed with intent yet. The first attestation posts when an open item with recorded intent reaches its cutoff.</p>
+            ) : (
+              <ol className="mt-3 border-t border-line-2">
+                {attestations.data!.map((row) => (
+                  <li key={row.id}>
+                    <Link to={`/intents/${row.ballotItemId}`} className="flex items-center justify-between gap-4 border-b border-line py-3.5 text-[13.5px] hover:bg-mint/60">
+                      <span className="flex min-w-0 items-center gap-3">
+                        <AssetLogo symbol={row.symbol} logo={row.logo} size="sm" />
+                        <span className="min-w-0">
+                          <span className="block truncate text-ink">
+                            {row.symbol} · {row.index} · {row.title}
+                          </span>
+                          <span className="font-mono block text-[11.5px] text-grey-green">
+                            {shortHash(row.merkleRoot)} · {row.leafCount} receipts · {shares(row.tally.totalWeightFloat)} sh-eq
+                          </span>
+                        </span>
+                      </span>
+                      <span className="shrink-0 text-[12px] text-grey-green">{relative(row.createdAt)}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            )}
+            {(pending.data?.items.length ?? 0) > 0 ? (
+              <div className="mt-6">
+                <Eyebrow>Closed, awaiting attestation</Eyebrow>
+                <ul className="mt-2 border-t border-line-2">
+                  {pending.data!.items.map((item) => (
+                    <li key={item.id} className="flex items-center justify-between gap-4 border-b border-line py-3 text-[13.5px]">
+                      <span>
+                        {item.symbol} · {item.index} · {item.title}
+                      </span>
+                      <Button size="sm" variant="outline" disabled={attest.isPending} onClick={() => attest.mutate({ itemId: item.id })}>
+                        {attest.isPending ? <Spinner className="size-3" /> : null} Attest
+                      </Button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </section>
+          <section>
+            <Eyebrow>Method</Eyebrow>
+            <dl className="mt-3">
+              <Def term="Weight">share-eq = balanceOf × uiMultiplier ÷ 1e18 at the signing block; re-read at cutoff; the smaller counts.</Def>
+              <Def term="Receipt">EIP-712 payload and signature stored verbatim; canonical JSON of id, item, wallet, choice, weights, block, signature.</Def>
+              <Def term="Tree">keccak256 leaves in signing order, sorted-pair hashing, odd leaf paired with itself.</Def>
+              <Def term="Channel">Roots published here and in the API. On-chain attestation is planned and will be labelled when live.</Def>
+            </dl>
+          </section>
+        </div>
+        <div className="space-y-12">
+          <section>
+            <Eyebrow>Sources</Eyebrow>
+            <dl className="mt-3">
+              {SOURCES.map(([name, detail]) => (
+                <div key={name} className="border-b border-line py-3.5">
+                  <dt className="text-[14.5px] font-medium text-ink">{name}</dt>
+                  <dd className="mt-1 text-[13px] leading-relaxed text-ink-2">{detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+          <section>
+            <div className="flex items-center justify-between">
+              <Eyebrow>Infrastructure</Eyebrow>
+              {actions.data?.degraded ? <Mark tone="warn">Indexer behind</Mark> : <Mark tone="live">Live</Mark>}
+            </div>
+            <dl className="mt-3">
+              <Def term="Chain head" mono>
+                {stats.data?.blockNumber ?? "—"}
+              </Def>
+              <Def term="Chain time" mono>
+                {stats.data?.blockTimestamp ? dateTime(stats.data.blockTimestamp) : "—"}
+              </Def>
+              <Def term="Corporate actions mirrored" mono>
+                {actions.data?.actions.length ?? "—"}
+              </Def>
+              {(actions.data?.indexer ?? []).map((cursor) => (
+                <Def key={cursor.key} term={cursor.key.replace(/_/g, " ")}>
+                  <span className="text-[12.5px]">
+                    {cursor.status} · block {cursor.lastBlock}
+                  </span>
+                </Def>
+              ))}
+              <Def term="Intents recorded" mono>
+                {stats.data?.intents ?? "—"}
+              </Def>
+              <Def term="Redemption requests" mono>
+                {stats.data?.requests ?? "—"}
+              </Def>
+            </dl>
+          </section>
+        </div>
+      </div>
+    </Page>
+  );
+}

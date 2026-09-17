@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-electron
+.env
+data/*.db*
+.DS_Store
+*.tsbuildinfo
+packages/web/scripts/.ingest/

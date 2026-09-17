@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="linear-gradient" x1="79.8" y1="189.02" x2="79.8" y2="113.19" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#73b1ce"/>
+      <stop offset="1" stop-color="#96c76a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="126.6" y1="189.02" x2="126.6" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="173.4" y1="189.02" x2="173.4" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="220.2" y1="189.02" x2="220.2" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="150.04" y1="189.02" x2="150.04" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-6" x1="173.55" y1="189.02" x2="173.55" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-7" x1="126.48" y1="189.02" x2="126.48" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-8" x1="196.99" y1="189.02" x2="196.99" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-9" x1="149.92" y1="189.02" x2="149.92" y2="113.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-10" x1="103.23" y1="189.02" x2="103.23" y2="113.19" xlink:href="#linear-gradient"/>
+  </defs>
+  <polygon points="60 188.98 79.8 172.33 99.6 188.98 60 188.98" fill="url(#linear-gradient)"/>
+  <polygon points="106.8 188.98 126.6 172.33 146.4 188.98 106.8 188.98" fill="url(#linear-gradient-2)"/>
+  <polygon points="153.59 188.98 173.4 172.33 193.2 188.98 153.59 188.98" fill="url(#linear-gradient-3)"/>
+  <polygon points="200.4 188.98 220.2 172.33 240 188.98 200.4 188.98" fill="url(#linear-gradient-4)"/>
+  <path d="M159.83,118.42c2.03,2.87,4.75,8.07,4.75,10.85,0,9.08-6.63,14.67-14.72,14.67s-14.36-5.58-14.36-14.67c0-2.88,2.86-8.7,5.33-11.88,2.87-3.71,5.35-6.37,9.02-6.37,3.88,0,7.01,3.21,9.97,7.4Z" fill="url(#linear-gradient-5)"/>
+  <path d="M173.42,133c2.78,0,8.46,5.13,10.59,7.79,1.46,1.82,6.57,7.97,6.57,9.74,0,5.77-11.36,15.26-17.16,15.26s-16.91-9.49-16.91-15.26c0-1.83,5.55-8.69,7.34-10.71,2.06-2.35,6.92-6.81,9.56-6.81h0Z" fill="url(#linear-gradient-6)"/>
+  <path d="M126.35,133c2.78,0,8.46,5.13,10.6,7.79,1.46,1.82,6.56,7.97,6.56,9.74,0,5.77-11.36,15.26-17.16,15.26s-16.91-9.49-16.91-15.26c0-1.83,5.56-8.69,7.34-10.71,2.06-2.35,6.92-6.81,9.56-6.81h0Z" fill="url(#linear-gradient-7)"/>
+  <path d="M196.92,153.92c1.39,0,9.38,6.73,10.44,7.97.73.85,8.05,7.71,8.05,8.53,0,2.7-15.58,15.45-18.48,15.45s-18.36-12.75-18.36-15.45c0-.85,8.05-8.49,8.94-9.43,1.03-1.1,8.09-7.08,9.41-7.08h0Z" fill="url(#linear-gradient-8)"/>
+  <path d="M149.85,153.92c1.39,0,9.38,6.73,10.45,7.97.73.85,8.03,7.71,8.03,8.54,0,2.7-15.58,15.45-18.48,15.45s-18.35-12.75-18.35-15.45c0-.85,8.05-8.49,8.94-9.43,1.04-1.11,8.1-7.08,9.41-7.08Z" fill="url(#linear-gradient-9)"/>
+  <path d="M103.16,153.92c1.39,0,9.38,6.73,10.45,7.97.73.85,8.03,7.71,8.03,8.54,0,2.7-15.58,15.45-18.48,15.45s-18.35-12.75-18.35-15.45c0-.85,8.05-8.49,8.94-9.43,1.04-1.11,8.11-7.08,9.41-7.08Z" fill="url(#linear-gradient-10)"/>
+</svg>
