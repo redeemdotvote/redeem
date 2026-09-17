@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, Check, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, ExternalLink, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "wouter";
 import { cn } from "@/lib/utils";
@@ -108,8 +108,19 @@ export default function IntentPage() {
             <div className="text-[11.5px] text-grey-green">{dateTimeUtc(event.closesAt)}</div>
           </div>
           <div className="col-span-2">
-            <div className="eyebrow">Share-eq signalled</div>
+            <div className="eyebrow">Share-eq recorded</div>
             <div className="font-mono mt-1 text-[34px] leading-none text-ink sm:text-[44px]">{shares(tally.totalWeightFloat)}</div>
+            {data.circulatingShareEq ? (
+              <div className="mt-3 lg:ml-auto lg:max-w-[360px]">
+                <div className="h-[6px] w-full overflow-hidden rounded-full bg-line">
+                  <div className="h-full rounded-full bg-emerald transition-[width] duration-700" style={{ width: `${Math.min(100, (tally.totalWeightFloat / data.circulatingShareEq) * 100)}%` }} />
+                </div>
+                <div className="font-mono mt-1.5 flex justify-between text-[11.5px] text-grey-green">
+                  <span>{((tally.totalWeightFloat / data.circulatingShareEq) * 100).toFixed(2)}% of circulating</span>
+                  <span>{shares(data.circulatingShareEq)} circulating share-eq</span>
+                </div>
+              </div>
+            ) : null}
             <div className="mt-2">
               <IntentLabel />
             </div>
@@ -178,15 +189,36 @@ export default function IntentPage() {
             ) : null}
           </section>
 
-          <section>
-            <Eyebrow>How this item is recorded</Eyebrow>
-            <dl className="mt-3 max-w-[680px]">
+          <section className={cn("rounded-[16px] border p-6", data.attestation ? "border-emerald/40 bg-emerald/5" : "border-line bg-cream")}>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <Eyebrow>Attestation</Eyebrow>
+                {data.attestation ? <Mark tone="live">Attested</Mark> : active ? <Mark tone="warn">Posts at cutoff</Mark> : <Mark tone="muted">{attest.isPending ? "Computing" : "No intent recorded"}</Mark>}
+              </div>
+              <span className="font-mono text-[12px] text-grey-green">{data.receipts.length} {data.receipts.length === 1 ? "receipt" : "receipts"}</span>
+            </div>
+            <div className="font-mono mt-4 text-[15px] leading-snug break-all text-ink sm:text-[17px]">{data.attestation ? data.attestation.merkleRoot : "0x" + "·".repeat(64)}</div>
+            <p className="mt-2 text-[12.5px] leading-relaxed text-grey-green">
+              {data.attestation
+                ? `Merkle root over ${data.attestation.leafCount} receipts, in order, with the weight counted at cutoff. Every receipt carries its proof; anyone can recompute the root from the export without asking Redeem.`
+                : active
+                  ? "At the cutoff every active receipt is re-weighed against the chain and hashed into one root. Until then the tally below is live and unattested."
+                  : "Nothing to attest: no wallet recorded an intent on this item before the cutoff."}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <Button asChild size="sm" variant={data.attestation ? "emerald" : "outline"}>
+                <a href={`/api/v1/intents/${item.id}/receipts`} target="_blank" rel="noreferrer">
+                  <Download className="size-3.5" /> Download receipts
+                </a>
+              </Button>
+              <Button asChild size="sm" variant="ghost">
+                <Link to="/how-it-works#faq">How to verify</Link>
+              </Button>
+              <span className="ml-auto text-[11.5px] text-grey-green">{data.attestation?.txHash ? `Onchain · ${shortHash(data.attestation.txHash)}` : "Published here · onchain attestation contract planned"}</span>
+            </div>
+            <dl className="mt-5 max-w-[680px] border-t border-line pt-2">
               <Def term="Execution">No shareholder vote is executed. Voting rights for token holders are on the issuer's roadmap.</Def>
               <Def term="Weight">Share-equivalent read from Robinhood Chain when signed, pinned to that block. Re-read at cutoff; the smaller counts.</Def>
-              <Def term="Tally fingerprint">
-                {data.attestation ? <span className="font-mono text-[12px] break-all">{data.attestation.merkleRoot}</span> : active ? "Posts at cutoff" : attest.isPending ? "Computing" : "No intent recorded"}
-              </Def>
-              <Def term="Channel">{data.attestation?.txHash ? shortHash(data.attestation.txHash) : "Published here · on-chain attestation planned"}</Def>
             </dl>
           </section>
         </div>
@@ -231,18 +263,29 @@ export default function IntentPage() {
 
             {active ? (
               <div className="mt-6">
-                <div className="grid grid-cols-2 gap-2">
+                <div className={cn("grid gap-2", item.choices.length > 4 ? "grid-cols-2" : "grid-cols-2")}>
                   {item.choices.map((option) => {
                     const selected = choice === option.value;
+                    const tone = option.tone === "for" ? "emerald" : option.tone === "against" ? "rust" : "ink";
                     return (
                       <button
                         key={option.value}
                         type="button"
                         onClick={() => setChoice(option.value)}
-                        className={cn("flex h-12 items-center justify-between rounded-[10px] border px-3.5 text-left transition-colors", selected ? "border-ink bg-ink text-paper" : "border-line-2 text-ink hover:border-ink")}
+                        title={option.help}
+                        className={cn(
+                          "flex min-h-[64px] flex-col items-start justify-center rounded-[12px] border px-4 py-3 text-left transition-[background-color,border-color,color,transform] active:scale-[0.99]",
+                          selected
+                            ? tone === "emerald"
+                              ? "border-emerald bg-emerald text-paper"
+                              : tone === "rust"
+                                ? "border-rust bg-rust text-paper"
+                                : "border-ink bg-ink text-paper"
+                            : "border-line-2 bg-cream text-ink hover:border-ink",
+                        )}
                       >
-                        <span className="text-[12px] font-medium tracking-[0.12em] uppercase">{option.label}</span>
-                        <span className={cn("size-[6px]", selected ? "bg-paper" : option.tone === "for" ? "bg-emerald" : option.tone === "against" ? "bg-rust" : "bg-grey-green/50")} />
+                        <span className="font-serif text-[22px] leading-none">{option.label}</span>
+                        <span className={cn("mt-1.5 text-[11px] tracking-[0.1em] uppercase", selected ? "text-paper/80" : "text-grey-green")}>{option.tone === "for" ? "counts toward" : option.tone === "against" ? "counts against" : option.value === "delegate" ? "name an address" : "present, no preference"}</span>
                       </button>
                     );
                   })}

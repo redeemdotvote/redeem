@@ -17,6 +17,8 @@ import RedeemPage from "./pages/redeem";
 import StatementPage from "./pages/statement";
 import StatusPage from "./pages/status";
 import LeaderboardPage from "./pages/leaderboard";
+import DeskPage from "./pages/desk";
+import EmbedPage from "./pages/embed";
 import TransparencyPage from "./pages/transparency";
 import { AgentFeedback } from "@runablehq/website-runtime";
 
@@ -54,6 +56,7 @@ function Routes() {
           <Route path="/transparency" component={TransparencyPage} />
           <Route path="/status" component={StatusPage} />
           <Route path="/leaderboard" component={LeaderboardPage} />
+          <Route path="/desk/:symbol" component={DeskPage} />
           <Route component={NotFound} />
         </Switch>
       </motion.div>
@@ -62,6 +65,17 @@ function Routes() {
 }
 
 export default function App() {
+  const [location] = useLocation();
+  // Embeds render bare: no header, footer, guide or notice, so they sit cleanly in an iframe.
+  if (location.startsWith("/embed/")) {
+    return (
+      <Provider>
+        <Switch location={location}>
+          <Route path="/embed/:symbol" component={EmbedPage} />
+        </Switch>
+      </Provider>
+    );
+  }
   return (
     <Provider>
       <Layout>

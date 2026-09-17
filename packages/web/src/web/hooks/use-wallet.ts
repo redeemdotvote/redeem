@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { useAccount, useChainId, useConnect, useDisconnect, useSwitchChain } from "wagmi";
 import { CHAIN_ID } from "../lib/chain";
 import { openWalletModal, walletConnectEnabled } from "../lib/wallet";
+import { requestNotice } from "../lib/notice";
 
 /**
  * One hook for the whole wallet story: connect through the AppKit modal when a Reown project id
@@ -21,6 +22,8 @@ export function useWallet() {
   const connect = useCallback(async () => {
     setError(null);
     try {
+      // Three lines, once, before any wallet modal: intent, not a vote; a record, not a settlement; signatures only.
+      if (!(await requestNotice())) return;
       if (walletConnectEnabled) {
         await openWalletModal();
         return;

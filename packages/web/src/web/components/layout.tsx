@@ -10,6 +10,7 @@ import { CommandPalette, SearchTrigger, useCommandPalette } from "./search";
 import { ThemeToggle } from "./theme-toggle";
 import { ChainLogo, PostRef } from "./robinhood-chain";
 import { Guide, startGuide } from "./guide";
+import { ConnectNotice } from "./connect-notice";
 import { captureReferral } from "../lib/referral";
 import { PHOTO_LIST } from "./photo";
 
@@ -103,6 +104,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       <Footer />
       <Guide />
+      <ConnectNotice />
     </div>
   );
 }

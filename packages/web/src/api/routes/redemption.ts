@@ -39,13 +39,15 @@ export const redemption = {
 
   /** Queue depth per ticker, and the wallet's own requests when given. */
   status: base.input(z.object({ wallet: addressSchema.optional(), symbol: z.string().optional() })).handler(async ({ input }) => {
-    const rows = await db.select().from(schema.redemptionRequests).orderBy(asc(schema.redemptionRequests.createdAt));
+    const [rows, market] = await Promise.all([db.select().from(schema.redemptionRequests).orderBy(asc(schema.redemptionRequests.createdAt)), getMarket().catch(() => null)]);
+    const circulatingOf = (symbol: string) => market?.value.assets.find((entry) => entry.symbol === symbol)?.totalSupplyUIFloat ?? null;
     const waiting = rows.filter((row) => row.status === "waiting");
-    const bySymbol = new Map<string, { requests: number; requested: bigint }>();
+    const bySymbol = new Map<string, { requests: number; requested: bigint; wallets: Set<string> }>();
     for (const row of waiting) {
-      const entry = bySymbol.get(row.symbol) ?? { requests: 0, requested: 0n };
+      const entry = bySymbol.get(row.symbol) ?? { requests: 0, requested: 0n, wallets: new Set<string>() };
       entry.requests += 1;
       entry.requested += BigInt(row.requestedShareEquivalent);
+      entry.wallets.add(row.wallet);
       bySymbol.set(row.symbol, entry);
     }
     const wallet = input.wallet?.toLowerCase();
@@ -56,9 +58,15 @@ export const redemption = {
       totalRequested: f18(waiting.reduce((sum, row) => sum + BigInt(row.requestedShareEquivalent), 0n)),
       wallets: new Set(waiting.map((row) => row.wallet)).size,
       queues: [...bySymbol.entries()]
-        .map(([symbol, entry]) => ({ symbol, requests: entry.requests, requested: f18(entry.requested), logo: findToken(symbol)?.logo ?? null, name: findToken(symbol)?.name ?? symbol }))
+        .map(([symbol, entry]) => ({ symbol, requests: entry.requests, requested: f18(entry.requested), wallets: entry.wallets.size, circulating: circulatingOf(symbol), logo: findToken(symbol)?.logo ?? null, name: findToken(symbol)?.name ?? symbol }))
         .sort((a, b) => b.requested - a.requested),
-      selected: input.symbol ? (bySymbol.get(input.symbol.toUpperCase()) ? { symbol: input.symbol.toUpperCase(), requests: bySymbol.get(input.symbol.toUpperCase())!.requests, requested: f18(bySymbol.get(input.symbol.toUpperCase())!.requested) } : { symbol: input.symbol.toUpperCase(), requests: 0, requested: 0 }) : null,
+      selected: input.symbol
+        ? (() => {
+            const symbol = input.symbol.toUpperCase();
+            const entry = bySymbol.get(symbol);
+            return { symbol, requests: entry?.requests ?? 0, requested: entry ? f18(entry.requested) : 0, wallets: entry?.wallets.size ?? 0, circulating: circulatingOf(symbol) };
+          })()
+        : null,
       mine: mine.map((row) => ({
         id: row.id,
         symbol: row.symbol,

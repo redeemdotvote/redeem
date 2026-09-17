@@ -33,6 +33,9 @@ export default function IntentsPage() {
 
   const items = useIntentItems({ status, symbol: symbol || undefined, q: q || undefined, page, wallet: wallet.address });
   const data = items.data;
+  // Nothing open? Show the last filings for the same filter as a preview, so the list is never blank.
+  const empty = !items.isLoading && (data?.items.length ?? 0) === 0;
+  const preview = useIntentItems({ status: "closed", symbol: symbol || undefined, q: q || undefined, page: 1, pageSize: 6 });
   const tickers = (book.data?.rows ?? []).filter((row) => row.openEvents > 0 || row.closedEvents > 0);
 
   return (
@@ -121,8 +124,54 @@ export default function IntentsPage() {
               <Skeleton key={index} className="h-20" />
             ))}
           </div>
-        ) : (data?.items.length ?? 0) === 0 ? (
-          <div className="border-t border-line-2 py-16 text-center text-[14px] text-grey-green">No items match.</div>
+        ) : empty ? (
+          <div className="border-t border-line-2 py-10">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-3">
+                  <Eyebrow>Preview</Eyebrow>
+                  <Mark tone="warn">Signing opens when the next filing is live</Mark>
+                </div>
+                <h2 className="font-serif mt-2 text-[26px] text-ink">{status === "active" ? `Nothing open${symbol ? ` for ${symbol}` : ""} right now.` : "No items match."}</h2>
+                <p className="mt-1 max-w-[62ch] text-[14px] text-grey-green">
+                  {symbol
+                    ? `The next DEF 14A ${symbol} files lands here within a day of EDGAR, with every item extracted and open for intent until the cutoff. Below: the last items on file.`
+                    : "Items appear within a day of each proxy statement reaching EDGAR. Below: the most recent items on file, closed, for the shape of what is coming."}
+                </p>
+              </div>
+              <Link to={symbol ? `/record/${symbol}` : "/record"} className="text-[13.5px] font-medium text-emerald hover:underline">
+                {symbol ? `Open the ${symbol} record` : "Open the Record Book"}
+              </Link>
+            </div>
+            {preview.isLoading ? (
+              <Skeleton className="mt-6 h-40" />
+            ) : (preview.data?.items.length ?? 0) === 0 ? (
+              <p className="mt-6 text-[13.5px] text-grey-green">No filings on record{symbol ? ` for ${symbol}` : ""} yet.</p>
+            ) : (
+              <ol className="mt-6 border-t border-line-2 opacity-80">
+                {preview.data!.items.map((item) => (
+                  <li key={item.id}>
+                    <Link to={`/intents/${item.id}`} className="grid gap-3 border-b border-line py-4 transition-colors hover:bg-mint/60 lg:grid-cols-[minmax(0,1fr)_260px_180px] lg:items-center lg:gap-6">
+                      <div className="flex min-w-0 items-start gap-3">
+                        <AssetLogo symbol={item.symbol} logo={item.logo} size="sm" className="mt-0.5" />
+                        <div className="min-w-0">
+                          <div className="truncate text-[15px] text-ink">
+                            <span className="font-mono mr-2 text-[12px] text-grey-green">{item.index}</span>
+                            {item.title}
+                          </div>
+                          <div className="mt-1 text-[12px] text-grey-green">
+                            {item.symbol} · meeting {isoDate(item.ballot.meetingDate)} · closed {isoDate(new Date(item.ballot.closesAt * 1000).toISOString())}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="font-mono text-[12.5px] text-grey-green">{shares(item.tally.totalWeightFloat)} sh-eq recorded</span>
+                      <span className="text-right text-[12px] text-grey-green">Closed · preview</span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
         ) : (
           <ol className="border-t border-line-2 lg:border-t-0">
             {data!.items.map((item) => {

@@ -8,6 +8,7 @@ import { MultiplierPlates } from "../components/multiplier-plates";
 import { ShareEqCalculator } from "../components/calc";
 import { Page } from "../components/layout";
 import { startGuide } from "../components/guide";
+import { DeskRow, SecurityDesk } from "../components/desk";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { SecurityRow } from "../components/ledger";
 import { Num } from "../components/number";
@@ -20,7 +21,7 @@ import { Button, Display, Eyebrow, Input, Mark, Select, Skeleton } from "../comp
 import { useWallet } from "../hooks/use-wallet";
 import { ageLabel, multiplier, shares, shortDate, usd, wad } from "../lib/format";
 import { useCorporateActions } from "../queries/portfolio";
-import { useRecord, useRecordBook } from "../queries/record";
+import { useRecordBook } from "../queries/record";
 import { useHomeStats } from "../queries/stats";
 
 const SEQUENCE = [
@@ -171,103 +172,16 @@ function Hero() {
 
 /* ---------------------------------------------------------------- the desk */
 
-/**
- * The AMC file. The token holders who want a say are concentrated in one name, so that name gets
- * a desk on the front page: what the token carries, what holders have said they would want, and
- * how deep the queue is. Nothing here is a vote; the record page says so on every tally.
- */
 function Desk() {
-  const amc = useRecord("AMC");
-  const d = amc.data;
-  const open = d?.events.find((event) => event.status === "active") ?? d?.events[0] ?? null;
-  const items = (open?.items ?? []).slice(0, 4);
   return (
-    <section className="env-mint py-14 lg:py-16">
-      <Page>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16">
-          <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <Eyebrow>The AMC file</Eyebrow>
-              {open?.status === "active" ? <Mark tone="live">Open for intent</Mark> : null}
-            </div>
-            <Display size="md" className="mt-3">
-              What token holders said <span className="italic">they would want.</span>
-            </Display>
-            <p className="mt-5 max-w-[46ch] text-[15.5px] leading-relaxed text-ink-2">
-              AMC shareholders vote. AMC Stock Token holders do not, yet. This desk keeps the two side by side: the proxy items shareholders will vote on, the intent token holders have signed, and the readiness queue for the day the rights arrive.
-            </p>
-            <dl className="mt-8 grid grid-cols-3 gap-x-6">
-              <div>
-                <dd className="font-mono text-[22px] text-ink">{d ? shares(d.supply.uiFloat) : <Skeleton className="h-6 w-16" />}</dd>
-                <dt className="eyebrow mt-1.5">Share-eq recorded</dt>
-              </div>
-              <div>
-                <dd className="font-mono text-[22px] text-ink">{d ? shares(d.activity.intentShareEq) : <Skeleton className="h-6 w-16" />}</dd>
-                <dt className="eyebrow mt-1.5">Share-eq of intent</dt>
-              </div>
-              <div>
-                <dd className="font-mono text-[22px] text-ink">{d ? d.activity.requests : <Skeleton className="h-6 w-16" />}</dd>
-                <dt className="eyebrow mt-1.5">Queue requests</dt>
-              </div>
-            </dl>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button asChild>
-                <Link to="/record/AMC">Open the AMC desk</Link>
-              </Button>
-              <Link to="/intents?symbol=AMC&status=active" className="inline-flex items-center gap-1 text-[14px] font-medium text-emerald hover:underline">
-                Record intent <ArrowUpRight className="size-4" />
-              </Link>
-            </div>
-          </div>
-          <div>
-            <div className="flex items-end justify-between gap-4 border-b border-line-2 pb-3">
-              <div>
-                <div className="eyebrow">{open ? `${open.meetingType} · meeting ${shortDate(Date.parse(open.meetingDate) / 1000)}` : "Proxy items"}</div>
-                <div className="mt-1 text-[13px] text-grey-green">Shareholders vote these. Token holders record intent on them here.</div>
-              </div>
-              <Mark tone="muted">Intent · not a shareholder vote</Mark>
-            </div>
-            {!d ? (
-              <Skeleton className="mt-4 h-40" />
-            ) : items.length === 0 ? (
-              <p className="mt-4 text-[14px] text-grey-green">No proxy items on file for AMC yet. The next DEF 14A lands here when it is filed.</p>
-            ) : (
-              <ol>
-                {items.map((item) => (
-                  <li key={item.id}>
-                    <Link to={`/intents/${item.id}`} className="grid gap-2 border-b border-line py-4 transition-colors hover:bg-cream sm:grid-cols-[minmax(0,1fr)_150px] sm:items-center">
-                      <span className="flex min-w-0 items-start gap-3">
-                        <span className="font-mono mt-0.5 w-6 shrink-0 text-[12px] text-grey-green">{item.index}</span>
-                        <span className="min-w-0">
-                          <span className="block truncate text-[14.5px] text-ink">{item.title}</span>
-                          <span className="mt-0.5 block text-[12px] text-grey-green">Board: {item.boardRecommendation}</span>
-                        </span>
-                      </span>
-                      <span className="font-mono text-[12.5px] text-ink sm:text-right">
-                        {item.intents} {item.intents === 1 ? "intent" : "intents"} · {shares(item.intentShareEq)} sh-eq
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            )}
-            {open ? (
-              <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[12.5px] text-grey-green">
-                <span>
-                  {open.items.length} items · closes {shortDate(open.closesAt)} ·{" "}
-                  <a href={open.docUrl} target="_blank" rel="noreferrer" className="text-emerald hover:underline">
-                    DEF 14A on EDGAR
-                  </a>
-                </span>
-                <Link to="/leaderboard" className="hover:text-ink">
-                  Record holders →
-                </Link>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </Page>
-    </section>
+    <>
+      <section className="env-mint py-14 lg:py-16">
+        <Page>
+          <SecurityDesk symbol="AMC" compact />
+        </Page>
+      </section>
+      <DeskRow />
+    </>
   );
 }
 

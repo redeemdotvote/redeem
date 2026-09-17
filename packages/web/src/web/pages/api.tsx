@@ -9,7 +9,7 @@ const ENDPOINTS = [
     path: "/api/v1/positions/:wallet",
     title: "Position endpoint",
     body: "Every Stock Token a wallet holds: raw balanceOf, uiMultiplier, share-equivalent, the contract's own balanceOfUI() and whether the two agree, plus the Chainlink value where a feed exists.",
-    example: `curl -s https://redeem.example/api/v1/positions/0x8366a39cc670b4001a1121b8f6a443a643e40951`,
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/positions/0x8366a39cc670b4001a1121b8f6a443a643e40951`,
     response: `{
   "chainId": 4663,
   "block": "64986784",
@@ -34,7 +34,7 @@ const ENDPOINTS = [
     path: "/api/v1/record/:symbol",
     title: "Record endpoint",
     body: "One security record: official contract, ISIN, price feed, current and pending multiplier, effectiveAt, raw and share-equivalent supply, and every corporate action on file.",
-    example: `curl -s https://redeem.example/api/v1/record/NVDA`,
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/record/NVDA`,
     response: `{
   "symbol": "NVDA",
   "issuer": "Robinhood Assets (Jersey) Limited",
@@ -51,7 +51,7 @@ const ENDPOINTS = [
     path: "/api/v1/record/:symbol/multipliers",
     title: "Multiplier history",
     body: "The UIMultiplierUpdated ledger for one token — previous ratio, new ratio, effective timestamp, block and transaction — mirrored from chain so it survives a rate-limited RPC.",
-    example: `curl -s https://redeem.example/api/v1/record/HPE/multipliers`,
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/record/HPE/multipliers`,
     response: `{ "symbol": "HPE", "events": [ { "oldMultiplier": "1000000000000000000", "newMultiplier": "1001716957939304938", "changeBps": 17.16, "effectiveAt": 1789604133 } ] }`,
   },
   {
@@ -59,15 +59,43 @@ const ENDPOINTS = [
     path: "/api/v1/intents/:itemId/receipts",
     title: "Intent export",
     body: "Every active receipt for one proxy item: wallet, choice, delegate, share-equivalent, block, signature and the EIP-712 payload — enough to recompute the tally and the Merkle root without asking Redeem.",
-    example: `curl -s https://redeem.example/api/v1/intents/AMC-2026-09-24-1/receipts`,
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/intents/AMC-2026-09-24-1/receipts`,
     response: `{ "itemId": "AMC-2026-09-24-1", "note": "Intent, not a shareholder vote.", "receipts": [ … ] }`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/feed",
+    title: "Change feed",
+    body: "A JSON Feed of what changed: every UIMultiplierUpdated mirrored from chain and every proxy statement extracted from EDGAR, newest first. Poll it from a bot, a webhook relay or a feed reader. `since` (unix seconds) returns only newer entries; `type=actions` or `type=items` narrows it.",
+    example: `curl -s "https://redeem-desktop.vercel.app/api/v1/feed?type=actions&since=1789000000"`,
+    response: `{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Redeem · Stock Token record feed",
+  "items": [
+    {
+      "id": "action:0x…:12",
+      "title": "HPE multiplier +0.172%",
+      "date_published": "2026-09-16T12:15:33.000Z",
+      "tags": ["corporate-action", "HPE"],
+      "_redeem": { "type": "action", "symbol": "HPE", "oldMultiplier": "…", "newMultiplier": "…", "changeBps": 17.16, "txHash": "0x…" }
+    }
+  ]
+}`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/badge/:wallet",
+    title: "Badge",
+    body: "An SVG badge for a README, a profile or a bio page: wallet number, tickers on file, XP and the Season, drawn from the record on every request. Add `?theme=dark` for dark backgrounds. Public data only.",
+    example: `<img src="https://redeem-desktop.vercel.app/api/v1/badge/0x8366a39cc670b4001a1121b8f6a443a643e40951" alt="Redeem record" />`,
+    response: `<svg width="420" height="96" …>  Wallet #12 · 3 tickers on file · 175 XP · Season 0  </svg>`,
   },
   {
     method: "GET",
     path: "/api/v1/record",
     title: "Security master",
     body: "The whole allowlist with live multipliers and supply — the same read the Record Book is built on.",
-    example: `curl -s https://redeem.example/api/v1/record`,
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/record`,
     response: `{ "chainId": 4663, "block": "…", "tokens": [ … 194 entries … ] }`,
   },
 ];
@@ -146,7 +174,7 @@ export default function ApiPage() {
               <ChainLine caption="Every read is from" dark />
             </div>
             <div className="font-mono mt-6 rounded-[12px] border border-[#24332b] bg-[#0f1713] px-4 py-3 text-[13px] text-[#cfe0d5]">
-              curl -s {origin || "https://redeem.example"}/api/v1/record/NVDA
+              curl -s {origin || "https://redeem-desktop.vercel.app"}/api/v1/record/NVDA
             </div>
           </div>
           <LiveResponse />
@@ -169,6 +197,21 @@ export default function ApiPage() {
               <li>
                 <a href="#future" className="text-grey-green hover:text-ink">
                   Roadmap
+                </a>
+              </li>
+              <li>
+                <a href="#tracker" className="text-grey-green hover:text-ink">
+                  Tracker one-pager
+                </a>
+              </li>
+              <li>
+                <a href="#embed" className="text-grey-green hover:text-ink">
+                  Embed &amp; badge
+                </a>
+              </li>
+              <li>
+                <a href="#bounties" className="text-grey-green hover:text-ink">
+                  Bounties
                 </a>
               </li>
             </ul>
@@ -213,6 +256,75 @@ export default function ApiPage() {
                 ))}
               </dl>
             </section>
+            <section id="tracker" className="scroll-mt-24 border-t border-line-2 py-12">
+              <Eyebrow>One-pager</Eyebrow>
+              <Display size="sm" className="mt-3">
+                Add Stock Token share-equivalents to your portfolio tracker.
+              </Display>
+              <p className="mt-3 max-w-[60ch] text-[14.5px] leading-relaxed text-ink-2">Three calls, no key. Show tokens as share-equivalents, value them with the Chainlink feed, and mark the position verified when the contract agrees.</p>
+              <ol className="mt-6 grid gap-6 lg:grid-cols-3">
+                {[
+                  ["1 · Positions", "One call per wallet returns every held token with rawBalance, uiMultiplier, shareEquivalent and verified.", `${origin}/api/v1/positions/{wallet}`],
+                  ["2 · Prices", "Each position carries priceUsd and valueUsd where a Chainlink feed exists; feeds are already multiplier-aware, so never multiply again.", `valueUsd = rawBalance × priceUsd / 1e18`],
+                  ["3 · Changes", "Poll the feed with since= to pick up multiplier updates (splits, dividends) and new proxy items; refresh positions when a held symbol appears.", `${origin}/api/v1/feed?type=actions&since={lastSeen}`],
+                ].map(([title, body, code]) => (
+                  <li key={title} className="border-t border-line pt-4">
+                    <div className="text-[15px] font-medium text-ink">{title}</div>
+                    <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-2">{body}</p>
+                    <pre className="font-mono mt-3 overflow-x-auto rounded-[10px] bg-charcoal px-3 py-2 text-[12px] text-[#cfe0d5]">{code}</pre>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-5 text-[12.5px] text-grey-green">Label the unit "share-eq" and keep the token count for reconciliation. Cache reads for 30 seconds; the public RPC behind them is rate limited and Redeem already batches it.</p>
+            </section>
+
+            <section id="embed" className="scroll-mt-24 border-t border-line-2 py-12">
+              <Eyebrow>Embed</Eyebrow>
+              <Display size="sm" className="mt-3">
+                A live card for any security, in an iframe.
+              </Display>
+              <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+                <div>
+                  <p className="max-w-[56ch] text-[14.5px] leading-relaxed text-ink-2">Share-equivalents recorded, multiplier, value, intent and queue depth for one ticker, refreshed on load, with the intent line printed on the card. Works in Notion, Substack, docs sites and anywhere else an iframe does.</p>
+                  <pre className="font-mono mt-4 overflow-x-auto rounded-[12px] bg-charcoal px-4 py-3 text-[12.5px] leading-relaxed text-[#cfe0d5]">{`<iframe src="${origin}/embed/NVDA" width="340" height="230" style="border:0" loading="lazy" title="NVDA on Redeem"></iframe>`}</pre>
+                  <pre className="font-mono mt-3 overflow-x-auto rounded-[12px] bg-charcoal px-4 py-3 text-[12.5px] leading-relaxed text-[#cfe0d5]">{`![Redeem record](${origin}/api/v1/badge/0xYOURWALLET)`}</pre>
+                </div>
+                <iframe src="/embed/NVDA" width="340" height="230" style={{ border: 0 }} loading="lazy" title="NVDA on Redeem" className="rounded-[12px] border border-line" />
+              </div>
+            </section>
+
+            <section id="bounties" className="scroll-mt-24 border-t border-line-2 py-12">
+              <Eyebrow>Open bounties</Eyebrow>
+              <Display size="sm" className="mt-3">
+                Adapters the record needs next.
+              </Display>
+              <p className="mt-3 max-w-[60ch] text-[14.5px] leading-relaxed text-ink-2">Each one resolves share-equivalents that sit somewhere other than a wallet back to the holder they belong to. Open a pull request against the repository with the adapter and a test against a live position; terms are posted per item.</p>
+              <ol className="mt-6 border-t border-line-2">
+                {[
+                  ["Vault adapters", "Read a vault's share of each Stock Token and attribute it pro rata to vault-share holders. Interface: (vault, block) → [{ wallet, symbol, shareEquivalent }].", "open"],
+                  ["Lending collateral", "Attribute Stock Tokens posted as collateral on Robinhood Chain lending markets to the depositor, net of liquidations.", "open"],
+                  ["LP positions", "Resolve pool positions holding Stock Tokens to their liquidity providers by share of the pool.", "open"],
+                  ["Nested positions", "Vault-in-vault and wrapped positions, resolved recursively with a cycle guard.", "open"],
+                  ["Archive reads", "Balance at a past block from any archive source for Robinhood Chain, so weight can be read at the record date rather than at signing.", "open"],
+                  ["Attestation contract", "A minimal registry storing each item's Merkle root, cutoff block and receipt count, with a verifier anyone can call.", "scoped"],
+                ].map(([title, body, state]) => (
+                  <li key={title} className="grid gap-2 border-b border-line py-4 sm:grid-cols-[200px_minmax(0,1fr)_90px] sm:items-start sm:gap-6">
+                    <span className="text-[15px] font-medium text-ink">{title}</span>
+                    <span className="text-[13.5px] leading-relaxed text-ink-2">{body}</span>
+                    <span className="sm:text-right">
+                      <Mark tone={state === "open" ? "live" : "warn"}>{state}</Mark>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-4 text-[12.5px] text-grey-green">
+                Repository:{" "}
+                <a href="https://github.com/redeemdotvote/redeem" target="_blank" rel="noreferrer" className="text-emerald hover:underline">
+                  github.com/redeemdotvote/redeem
+                </a>
+              </p>
+            </section>
+
             <section className="border-t border-line-2 py-12">
               <Display size="sm">Accounting, exactly as the record does it.</Display>
               <pre className="font-mono mt-5 max-w-[640px] overflow-x-auto rounded-[12px] border border-line bg-cream px-4 py-3 text-[12.5px] leading-relaxed text-ink-2">{`shareEquivalent = rawBalance × uiMultiplier ÷ 1e18

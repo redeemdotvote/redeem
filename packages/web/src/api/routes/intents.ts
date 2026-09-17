@@ -289,6 +289,10 @@ export const intents = {
     const rows = await activeInstructions([item.id]);
     const [attestation] = await db.select().from(schema.attestations).where(eq(schema.attestations.ballotItemId, item.id)).limit(1);
     const tally = attestation ? (JSON.parse(attestation.tally) as Tally) : tallyFor(item, rows);
+    // Circulating share-equivalents for the quorum-style bar: recorded intent against the token's whole supply.
+    const circulatingShareEq = await getMarket()
+      .then((market) => market.value.assets.find((entry) => entry.symbol === item.symbol)?.totalSupplyUIFloat ?? null)
+      .catch(() => null);
 
     let yours: InstructionRow | null = null;
     let power: null | {
@@ -325,6 +329,7 @@ export const intents = {
         : null,
       siblings: siblings.map((sibling) => ({ id: sibling.id, index: sibling.index, title: sibling.title })),
       tally,
+      circulatingShareEq,
       attestation: attestation ? publicAttestation(attestation) : null,
       receipts: rows.slice(0, 50).map((row) => ({
         id: row.id,

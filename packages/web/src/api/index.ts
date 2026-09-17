@@ -4,6 +4,10 @@ import { seedBallots } from "./ballots/seed";
 import { getCorporateActions } from "./chain/events";
 import { getBalances, getMarket, shareEquivalentWad } from "./chain/market";
 import { findToken, TOKENS } from "./chain/tokens";
+import { loadRecordIndex, SEASON } from "./lib/records";
+import { loadReferrals } from "./lib/referrals";
+import { computeXp } from "./lib/xp";
+import { loadCorporateActions } from "./routes/portfolio";
 import { ensureSchema, db } from "./database";
 import * as schema from "./database/schema";
 import { intents } from "./routes/intents";
@@ -149,6 +153,89 @@ inner.get("/api/v1/intents/:itemId/receipts", async (c) => {
       signature: row.signature,
       typedData: JSON.parse(row.typedData),
     })),
+  });
+});
+
+/**
+ * A badge for bios and READMEs: wallet number, XP, tickers on file, Season. SVG, so it needs no
+ * image runtime and renders anywhere an <img> does. Public data only; the address is the only input.
+ */
+const esc = (value: string) => value.replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch] ?? ch);
+inner.get("/api/v1/badge/:wallet", async (c) => {
+  const raw = c.req.param("wallet").replace(/\.svg$/i, "");
+  if (!isAddress(raw)) return json({ error: "invalid_address" }, 400);
+  const wallet = raw.toLowerCase();
+  const dark = c.req.query("theme") === "dark";
+  const [index, referrals] = await Promise.all([loadRecordIndex(), loadReferrals()]);
+  const mine = index.wallets.get(wallet) ?? null;
+  const xp = computeXp(index, referrals, wallet).total;
+  const paper = dark ? "#0d1210" : "#f4f4ee";
+  const ink = dark ? "#e9ede7" : "#131614";
+  const grey = dark ? "#9aa79e" : "#55645b";
+  const line = dark ? "#2c3a31" : "#cfd6cf";
+  const emerald = dark ? "#5fbd8f" : "#1c6b4a";
+  const short = `${wallet.slice(0, 6)}…${wallet.slice(-4)}`;
+  const headline = mine ? `Wallet #${mine.number}` : "Not recorded yet";
+  const sub = mine ? `${mine.symbols.size} ${mine.symbols.size === 1 ? "ticker" : "tickers"} on file · ${xp} XP · ${SEASON.label}` : "Sign one intent to enter the file";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="96" viewBox="0 0 420 96" role="img" aria-label="Redeem record badge for ${esc(short)}">
+  <rect x="0.5" y="0.5" width="419" height="95" rx="12" fill="${paper}" stroke="${line}"/>
+  <text x="20" y="34" font-family="Georgia, 'Iowan Old Style', serif" font-size="22" fill="${ink}">Redeem</text>
+  <text x="104" y="33" font-family="Helvetica, Arial, sans-serif" font-size="10" letter-spacing="1.4" fill="${grey}">RECORD OF SHARE-EQUIVALENTS</text>
+  <text x="20" y="64" font-family="Menlo, 'IBM Plex Mono', monospace" font-size="20" fill="${mine ? ink : grey}">${esc(headline)}</text>
+  <text x="20" y="82" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="${grey}">${esc(sub)}</text>
+  <text x="400" y="64" text-anchor="end" font-family="Menlo, 'IBM Plex Mono', monospace" font-size="12" fill="${ink}">${esc(short)}</text>
+  <text x="400" y="82" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="9" letter-spacing="1.2" fill="${emerald}">INTENT · NOT A VOTE</text>
+</svg>`;
+  return new Response(svg, { headers: { "content-type": "image/svg+xml; charset=utf-8", "cache-control": "public, max-age=300" } });
+});
+
+/**
+ * A JSON Feed (https://jsonfeed.org/version/1.1) of what changed: multiplier updates as they are
+ * mirrored from chain and proxy items as they are extracted from EDGAR. Poll it, pipe it into a
+ * bot, a webhook relay or a reader. `since` (unix seconds) and `type` (actions | items) narrow it.
+ */
+inner.get("/api/v1/feed", async (c) => {
+  const since = Number(c.req.query("since") ?? 0) || 0;
+  const type = c.req.query("type");
+  const origin = new URL(c.req.url).origin;
+  const [history, ballots] = await Promise.all([
+    type === "items" ? Promise.resolve({ actions: [] as Awaited<ReturnType<typeof loadCorporateActions>>["actions"], stale: false }) : loadCorporateActions().catch(() => ({ actions: [], stale: true })),
+    type === "actions" ? Promise.resolve([]) : db.select().from(schema.ballots),
+  ]);
+  const items: Array<{ id: string; url: string; title: string; content_text: string; date_published: string; tags: string[]; _redeem: Record<string, unknown> }> = [];
+  for (const action of history.actions) {
+    if (action.effectiveAt < since) continue;
+    const bps = action.changeBps;
+    items.push({
+      id: `action:${action.txHash}:${action.logIndex}`,
+      url: `${origin}/record/${action.symbol}`,
+      title: `${action.symbol} multiplier ${bps >= 0 ? "+" : ""}${(bps / 100).toFixed(3)}%`,
+      content_text: `UIMultiplierUpdated on ${action.symbol}: ${action.oldMultiplier} → ${action.newMultiplier}, effective ${new Date(action.effectiveAt * 1000).toISOString()}.`,
+      date_published: new Date(action.effectiveAt * 1000).toISOString(),
+      tags: ["corporate-action", action.symbol],
+      _redeem: { type: "action", symbol: action.symbol, oldMultiplier: action.oldMultiplier, newMultiplier: action.newMultiplier, changeBps: bps, effectiveAt: action.effectiveAt, txHash: action.txHash, block: action.blockNumber },
+    });
+  }
+  for (const ballot of ballots) {
+    if (ballot.publishedAt < since) continue;
+    items.push({
+      id: `ballot:${ballot.id}`,
+      url: `${origin}/intents?symbol=${ballot.symbol}`,
+      title: `${ballot.symbol} · ${ballot.meetingType} meeting ${ballot.meetingDate} · proxy items on file`,
+      content_text: `${ballot.companyName} ${ballot.form} filed ${ballot.filedAt}. Intent cutoff ${new Date(ballot.closesAt * 1000).toISOString()}. Intent, not a shareholder vote.`,
+      date_published: new Date(ballot.publishedAt * 1000).toISOString(),
+      tags: ["proxy-items", ballot.symbol],
+      _redeem: { type: "ballot", symbol: ballot.symbol, ballotId: ballot.id, form: ballot.form, filedAt: ballot.filedAt, meetingDate: ballot.meetingDate, closesAt: ballot.closesAt, docUrl: ballot.docUrl },
+    });
+  }
+  items.sort((a, b) => (a.date_published < b.date_published ? 1 : -1));
+  return json({
+    version: "https://jsonfeed.org/version/1.1",
+    title: "Redeem · Stock Token record feed",
+    home_page_url: origin,
+    feed_url: `${origin}/api/v1/feed`,
+    description: "Multiplier updates mirrored from Robinhood Chain and proxy items extracted from EDGAR. Intent, not a shareholder vote.",
+    items: items.slice(0, 200),
   });
 });
 

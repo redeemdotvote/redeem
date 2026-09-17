@@ -60,18 +60,19 @@ export default function RedeemPage() {
           <div className="grid gap-8 py-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:py-20">
             <div className="rise">
               <div className="flex flex-wrap items-center gap-4">
-                <Eyebrow>Redemption readiness</Eyebrow>
-                <Mark tone="warn">Not currently live</Mark>
+                <Eyebrow>Pre-register redemption demand</Eyebrow>
+                <Mark tone="live">Pre-registration open</Mark>
+                <Mark tone="warn">Issuer window not open</Mark>
               </div>
               <Display as="h1" size="xl" className="mt-5">
-                In-kind readiness, <span className="italic">per security.</span>
+                When the issuer opens a window, <span className="italic">your pack is already signed.</span>
               </Display>
-              <div className="mt-6">
+              <p className="mt-6 max-w-[56ch] text-[16px] leading-relaxed text-ink-2">
+                Robinhood has said 1:1 redemption of Stock Tokens for shares is coming. Redeem takes the demand now: a signed, numbered request per ticker, weighted by what the wallet holds, with the eligibility acknowledgements a window will ask for. You are early to the real-share rail; the issuer alone decides when it opens and who is eligible.
+              </p>
+              <div className="mt-4">
                 <PostRef />
               </div>
-              <p className="mt-4 max-w-[56ch] text-[16px] leading-relaxed text-ink-2">
-                Robinhood has said 1:1 redemption of Stock Tokens for shares is on its roadmap. Redeem packages demand and eligibility acknowledgements now — a signed, numbered request per ticker, weighted by what the wallet holds — so the file is complete before any window opens. Nothing here promises settlement.
-              </p>
               <div className="mt-6">
                 <ChainLine caption="Queues per security on" />
               </div>
@@ -101,12 +102,12 @@ export default function RedeemPage() {
         <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-b border-line-2 py-5 sm:grid-cols-3 lg:grid-cols-6">
           {(
             [
-              ["Window status", "Not open", "warn"],
+              ["Issuer window", "Not open yet", "warn"],
               ["Ticker", symbol || "—", "ink"],
-              ["Queue depth", status.data?.selected ? `${shares(status.data.selected.requested)} sh-eq · ${status.data.selected.requests} req` : "—", "ink"],
-              ["Your request", mine ? `${shares(mine.requested)} sh-eq · #${mine.position}` : "None", "ink"],
+              ["In queue", status.data?.selected ? `${shares(status.data.selected.requested)} sh-eq · ${status.data.selected.wallets} wallets` : "—", "ink"],
+              ["Queue vs circulating", status.data?.selected?.circulating ? `${((status.data.selected.requested / status.data.selected.circulating) * 100).toFixed(2)}%` : "—", "ink"],
+              ["Your position", mine ? `#${mine.position} · ${shares(mine.requested)} sh-eq` : "Not in queue", mine ? "live" : "muted"],
               ["Ready pack", mine ? (mine.readiness === "pack_complete" ? "Complete" : "Incomplete") : readiness === "pack_complete" ? "Complete" : "Preparing", mine || readiness === "pack_complete" ? "live" : "muted"],
-              ["Terms hash", terms.data ? `${terms.data.termsHash.slice(0, 10)}…` : "—", "ink"],
             ] as Array<[string, string, string]>
           ).map(([label, value, tone]) => (
             <div key={label} className="min-w-0">
@@ -217,11 +218,12 @@ export default function RedeemPage() {
           <div className="space-y-12">
             <section>
               <Eyebrow>Ticker-specific queues</Eyebrow>
-              <h2 className="font-serif mt-2 text-[30px] text-ink">Demand on file</h2>
+              <h2 className="font-serif mt-2 text-[30px] text-ink">Demand on file, per ticker</h2>
+              <p className="mt-2 max-w-[56ch] text-[14px] text-ink-2">Share-equivalents pre-registered against the token's circulating supply. Each request is numbered in the order it arrived.</p>
               {status.isLoading ? (
                 <Skeleton className="mt-5 h-32" />
               ) : (status.data?.queues.length ?? 0) === 0 ? (
-                <p className="mt-4 text-[14px] text-grey-green">No requests yet. The first one opens a queue for its ticker.</p>
+                <p className="mt-4 text-[14px] text-grey-green">No requests yet. The first one opens a queue for its ticker and takes position #1.</p>
               ) : (
                 <ol className="mt-5 border-t border-line-2">
                   {status.data!.queues.map((queue) => {
@@ -239,10 +241,16 @@ export default function RedeemPage() {
                           <div className="mt-2 h-[3px] w-full bg-line">
                             <div className="h-full bg-emerald" style={{ width: `${(queue.requested / max) * 100}%` }} />
                           </div>
+                          <div className="font-mono mt-1.5 flex justify-between text-[11.5px] text-grey-green">
+                            <span>
+                              {queue.wallets} {queue.wallets === 1 ? "wallet" : "wallets"} · {queue.requests} {queue.requests === 1 ? "request" : "requests"}
+                            </span>
+                            <span>{queue.circulating ? `${((queue.requested / queue.circulating) * 100).toFixed(2)}% of ${shares(queue.circulating)} circulating` : "circulating not read"}</span>
+                          </div>
                         </div>
-                        <span className="font-mono text-[12px] text-grey-green">
-                          {queue.requests} req
-                        </span>
+                        <Link to={`/redeem?symbol=${queue.symbol}`} className="font-mono text-[12px] text-emerald hover:underline">
+                          join
+                        </Link>
                       </li>
                     );
                   })}
