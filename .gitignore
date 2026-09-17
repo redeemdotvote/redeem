@@ -6,3 +6,4 @@ data/*.db*
 .DS_Store
 *.tsbuildinfo
 packages/web/scripts/.ingest/
+.vercel
