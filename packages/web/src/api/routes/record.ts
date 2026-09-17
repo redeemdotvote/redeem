@@ -8,6 +8,7 @@ import { getBalances, getMarket } from "../chain/market";
 import { findToken, SECTORS, TOKENS, votable } from "../chain/tokens";
 import { db } from "../database";
 import * as schema from "../database/schema";
+import { dbSafe } from "../lib/safe";
 import { addressSchema, ballotStatus, nowSeconds } from "../lib/shared";
 import { buildRow, loadCorporateActions } from "./portfolio";
 
@@ -76,13 +77,16 @@ export const record = {
    * share-equivalent, Chainlink valuation, intent and redemption activity, last corporate action.
    */
   book: base.input(z.object({ wallet: addressSchema.optional() }).optional()).handler(async ({ input }) => {
-    const [market, history, activity, events, balances] = await Promise.all([
+    const [market, history, activitySafe, eventsSafe, balances] = await Promise.all([
       getMarket(),
       loadCorporateActions(),
-      activityBySymbol(),
-      eventCounts(),
+      dbSafe("activity", new Map() as Awaited<ReturnType<typeof activityBySymbol>>, activityBySymbol),
+      dbSafe("events", new Map() as Awaited<ReturnType<typeof eventCounts>>, eventCounts),
       input?.wallet ? getBalances(input.wallet) : Promise.resolve(null),
     ]);
+    const activity = activitySafe.value;
+    const events = eventsSafe.value;
+    const dbDown = activitySafe.dbDown || eventsSafe.dbDown;
     const stateBySymbol = new Map(market.value.assets.map((asset) => [asset.symbol, asset]));
     const balanceBySymbol = new Map((balances?.value ?? []).map((entry) => [entry.symbol, entry.rawBalance]));
 
@@ -133,6 +137,8 @@ export const record = {
       blockTimestamp: market.value.blockTimestamp,
       dataAgeMs: market.ageMs,
       degraded: market.stale || history.stale,
+      /** True when the signed layer (intents, queues, events) could not be read; chain columns are still live. */
+      dbDown,
       sectors: SECTORS,
       rows,
       totals: {

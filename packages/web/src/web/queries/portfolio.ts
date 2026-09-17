@@ -12,3 +12,8 @@ export function useTransfers(wallet?: string, limit = 25) {
 export function useCorporateActions() {
   return useQuery(orpc.portfolio.corporateActions.queryOptions({ staleTime: 120_000 }));
 }
+
+/** The wallet's record numbers, queue positions and Season badge. */
+export function useWalletStatus(wallet?: string) {
+  return useQuery(orpc.portfolio.status.queryOptions({ input: { wallet: wallet ?? "" }, enabled: Boolean(wallet), staleTime: 15_000 }));
+}

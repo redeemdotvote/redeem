@@ -4,6 +4,10 @@ import { base } from "../__core/app";
 import { getCorporateActions, getIndexerStatus, getTransfers, type CorporateAction } from "../chain/events";
 import { getBalances, getMarket, shareEquivalentWad, type MarketState } from "../chain/market";
 import { addressSchema } from "../lib/shared";
+import { loadRecordIndex, SEASON } from "../lib/records";
+import { db } from "../database";
+import * as schema from "../database/schema";
+import { eq } from "drizzle-orm";
 
 export interface LedgerRow {
   symbol: string;
@@ -114,6 +118,44 @@ export const portfolio = {
       },
       dataAgeMs: Math.max(market.ageMs, balances.ageMs),
       degraded: market.stale || balances.stale || history.stale,
+    };
+  }),
+
+  /**
+   * The wallet's place in the file: its Redeem wallet number, and for every ticker it has signed
+   * for, the record number, the queue position and when it was first recorded. Derived from
+   * signing order on every call; nothing here is stored or spendable.
+   */
+  status: base.input(z.object({ wallet: addressSchema })).handler(async ({ input }) => {
+    const wallet = input.wallet.toLowerCase();
+    const [index, queue] = await Promise.all([
+      loadRecordIndex(),
+      db.select({ symbol: schema.redemptionRequests.symbol, position: schema.redemptionRequests.position, status: schema.redemptionRequests.status }).from(schema.redemptionRequests).where(eq(schema.redemptionRequests.wallet, wallet)),
+    ]);
+    const mine = index.wallets.get(wallet) ?? null;
+    const queueBySymbol = new Map(queue.map((row) => [row.symbol, row]));
+    const records = [...index.bySymbol.entries()]
+      .filter(([, holders]) => holders.has(wallet))
+      .map(([symbol, holders]) => {
+        const entry = holders.get(wallet)!;
+        const q = queueBySymbol.get(symbol);
+        return {
+          symbol,
+          recordNumber: entry.number,
+          holdersRecorded: holders.size,
+          firstRecordedAt: entry.at,
+          intents: index.events.filter((event) => event.wallet === wallet && event.symbol === symbol && event.kind === "intent").length,
+          queuePosition: q?.status === "waiting" ? q.position : null,
+        };
+      })
+      .sort((a, b) => a.firstRecordedAt - b.firstRecordedAt);
+    return {
+      wallet: input.wallet,
+      season: SEASON,
+      walletNumber: mine?.number ?? null,
+      firstRecordedAt: mine?.at ?? null,
+      walletsRecorded: index.wallets.size,
+      records,
     };
   }),
 

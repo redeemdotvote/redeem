@@ -20,7 +20,7 @@ import { Button, Display, Eyebrow, Input, Mark, Select, Skeleton } from "../comp
 import { useWallet } from "../hooks/use-wallet";
 import { ageLabel, multiplier, shares, shortDate, usd, wad } from "../lib/format";
 import { useCorporateActions } from "../queries/portfolio";
-import { useRecordBook } from "../queries/record";
+import { useRecord, useRecordBook } from "../queries/record";
 import { useHomeStats } from "../queries/stats";
 
 const SEQUENCE = [
@@ -76,9 +76,11 @@ function Hero() {
   const artY = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const strip: Array<[string, React.ReactNode]> = [
     ["Share-equivalents recorded", stats.data?.shareEquivalentRecorded ? <Num value={stats.data.shareEquivalentRecorded} format={shares} /> : null],
-    ["Official assets", stats.data ? String(stats.data.stocks) : null],
     ["Recorded value", stats.data?.supplyValueUsd ? <Num value={stats.data.supplyValueUsd} format={(v) => usd(v, { compact: true })} /> : null],
-    ["Corporate actions", book.data ? String(book.data.totals.actions) : null],
+    ["Official assets", stats.data ? String(stats.data.stocks) : null],
+    ["Wallets recorded", stats.data ? <Num value={stats.data.wallets} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
+    ["Intents signed", stats.data ? <Num value={stats.data.intents} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
+    ["Queue requests", stats.data ? <Num value={stats.data.requests} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
   ];
 
   return (
@@ -96,9 +98,10 @@ function Hero() {
               <br />
               leaves a <span className="text-emerald italic">record.</span>
             </Display>
-            <p className="rise-3 mt-7 max-w-[46ch] text-[17px] leading-relaxed text-ink-2 sm:text-[18px]">
-              A verifiable record of official Stock Token share-equivalents, holder intent and redemption demand — before shareholder rights come onchain.
+            <p className="rise-3 mt-7 max-w-[46ch] text-[17px] leading-relaxed text-ink sm:text-[19px]">
+              When Robinhood turns on votes and 1:1 share redemption, this is the file that already knows what you held and what you wanted.
             </p>
+            <p className="rise-3 mt-3 max-w-[46ch] text-[15px] leading-relaxed text-grey-green">Connect wallet. Sign intent. Join the redemption queue. No custody. No approval. No fake vote.</p>
             <div className="rise-4 mt-8 flex flex-wrap items-center gap-3">
               <Button asChild size="lg">
                 <Link to="/record">
@@ -153,14 +156,116 @@ function Hero() {
           </div>
         </div>
 
-        <dl className="rise-4 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line-2 py-6 lg:grid-cols-4">
+        <dl className="rise-4 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line-2 py-6 sm:grid-cols-3 lg:grid-cols-6">
           {strip.map(([label, value]) => (
             <div key={label} className="min-w-0">
-              <dd className="font-mono text-[30px] leading-none text-ink sm:text-[36px]">{value ?? <Skeleton className="h-8 w-24" />}</dd>
+              <dd className="font-mono text-[26px] leading-none text-ink sm:text-[30px]">{value ?? <Skeleton className="h-8 w-24" />}</dd>
               <dt className="eyebrow mt-2">{label}</dt>
             </div>
           ))}
         </dl>
+      </Page>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------- the desk */
+
+/**
+ * The AMC file. The token holders who want a say are concentrated in one name, so that name gets
+ * a desk on the front page: what the token carries, what holders have said they would want, and
+ * how deep the queue is. Nothing here is a vote; the record page says so on every tally.
+ */
+function Desk() {
+  const amc = useRecord("AMC");
+  const d = amc.data;
+  const open = d?.events.find((event) => event.status === "active") ?? d?.events[0] ?? null;
+  const items = (open?.items ?? []).slice(0, 4);
+  return (
+    <section className="env-mint py-14 lg:py-16">
+      <Page>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16">
+          <div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Eyebrow>The AMC file</Eyebrow>
+              {open?.status === "active" ? <Mark tone="live">Open for intent</Mark> : null}
+            </div>
+            <Display size="md" className="mt-3">
+              What token holders said <span className="italic">they would want.</span>
+            </Display>
+            <p className="mt-5 max-w-[46ch] text-[15.5px] leading-relaxed text-ink-2">
+              AMC shareholders vote. AMC Stock Token holders do not, yet. This desk keeps the two side by side: the proxy items shareholders will vote on, the intent token holders have signed, and the readiness queue for the day the rights arrive.
+            </p>
+            <dl className="mt-8 grid grid-cols-3 gap-x-6">
+              <div>
+                <dd className="font-mono text-[22px] text-ink">{d ? shares(d.supply.uiFloat) : <Skeleton className="h-6 w-16" />}</dd>
+                <dt className="eyebrow mt-1.5">Share-eq recorded</dt>
+              </div>
+              <div>
+                <dd className="font-mono text-[22px] text-ink">{d ? shares(d.activity.intentShareEq) : <Skeleton className="h-6 w-16" />}</dd>
+                <dt className="eyebrow mt-1.5">Share-eq of intent</dt>
+              </div>
+              <div>
+                <dd className="font-mono text-[22px] text-ink">{d ? d.activity.requests : <Skeleton className="h-6 w-16" />}</dd>
+                <dt className="eyebrow mt-1.5">Queue requests</dt>
+              </div>
+            </dl>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button asChild>
+                <Link to="/record/AMC">Open the AMC desk</Link>
+              </Button>
+              <Link to="/intents?symbol=AMC&status=active" className="inline-flex items-center gap-1 text-[14px] font-medium text-emerald hover:underline">
+                Record intent <ArrowUpRight className="size-4" />
+              </Link>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-end justify-between gap-4 border-b border-line-2 pb-3">
+              <div>
+                <div className="eyebrow">{open ? `${open.meetingType} · meeting ${shortDate(Date.parse(open.meetingDate) / 1000)}` : "Proxy items"}</div>
+                <div className="mt-1 text-[13px] text-grey-green">Shareholders vote these. Token holders record intent on them here.</div>
+              </div>
+              <Mark tone="muted">Intent · not a shareholder vote</Mark>
+            </div>
+            {!d ? (
+              <Skeleton className="mt-4 h-40" />
+            ) : items.length === 0 ? (
+              <p className="mt-4 text-[14px] text-grey-green">No proxy items on file for AMC yet. The next DEF 14A lands here when it is filed.</p>
+            ) : (
+              <ol>
+                {items.map((item) => (
+                  <li key={item.id}>
+                    <Link to={`/intents/${item.id}`} className="grid gap-2 border-b border-line py-4 transition-colors hover:bg-cream sm:grid-cols-[minmax(0,1fr)_150px] sm:items-center">
+                      <span className="flex min-w-0 items-start gap-3">
+                        <span className="font-mono mt-0.5 w-6 shrink-0 text-[12px] text-grey-green">{item.index}</span>
+                        <span className="min-w-0">
+                          <span className="block truncate text-[14.5px] text-ink">{item.title}</span>
+                          <span className="mt-0.5 block text-[12px] text-grey-green">Board: {item.boardRecommendation}</span>
+                        </span>
+                      </span>
+                      <span className="font-mono text-[12.5px] text-ink sm:text-right">
+                        {item.intents} {item.intents === 1 ? "intent" : "intents"} · {shares(item.intentShareEq)} sh-eq
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            )}
+            {open ? (
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[12.5px] text-grey-green">
+                <span>
+                  {open.items.length} items · closes {shortDate(open.closesAt)} ·{" "}
+                  <a href={open.docUrl} target="_blank" rel="noreferrer" className="text-emerald hover:underline">
+                    DEF 14A on EDGAR
+                  </a>
+                </span>
+                <Link to="/leaderboard" className="hover:text-ink">
+                  Record holders →
+                </Link>
+              </div>
+            ) : null}
+          </div>
+        </div>
       </Page>
     </section>
   );
@@ -582,6 +687,7 @@ export default function HomePage() {
       <Hero />
       <ThePost />
       <RecordBookPanel />
+      <Desk />
       <CorporateActions />
       <Calculation />
       <Sequence />

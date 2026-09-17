@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, AlertTriangle, FileCheck2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, AlertTriangle, FileCheck2, Share2 } from "lucide-react";
 import { Fragment, useMemo, useState } from "react";
 import { Link, useLocation, useSearch } from "wouter";
 import { isAddress } from "viem";
@@ -12,7 +12,8 @@ import { Button, Eyebrow, Mark, Note, Skeleton, Spinner } from "../components/ui
 import { useWallet } from "../hooks/use-wallet";
 import { ageLabel, dateTime, dateTimeUtc, isoDate, multiplier, pct, relative, shares, shortAddress, shortHash, usd, wad } from "../lib/format";
 import { useReceipts } from "../queries/intents";
-import { usePortfolio } from "../queries/portfolio";
+import { usePortfolio, useWalletStatus } from "../queries/portfolio";
+import { CertificateSheet, type CertificateData } from "../components/certificate";
 import { useRecordBook } from "../queries/record";
 import { useCreateStatement, useStatements } from "../queries/statements";
 import { ChainLine } from "../components/robinhood-chain";
@@ -33,12 +34,53 @@ export default function PortfolioPage() {
   const receipts = useReceipts(address);
   const statements = useStatements(address);
   const create = useCreateStatement();
+  const status = useWalletStatus(address);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [card, setCard] = useState<string | null>(null);
   const data = book.data;
   const held = data?.held ?? [];
   const recordBySymbol = new Map((record.data?.rows ?? []).map((row) => [row.symbol, row]));
   const openBySymbol = new Map((record.data?.rows ?? []).map((row) => [row.symbol, row.openEvents]));
   const mineBySymbol = new Map((receipts.data?.receipts ?? []).filter((r) => r.status === "active").map((r) => [r.symbol, r]));
+  const recordFor = (symbol: string) => status.data?.records.find((entry) => entry.symbol === symbol) ?? null;
+  const season = status.data?.season ?? { label: "Season 0", note: "Recorded before the first in-kind window" };
+  const cardData: CertificateData | null = (() => {
+    if (!card || !address || !data) return null;
+    const row = held.find((entry) => entry.symbol === card);
+    if (!row) return null;
+    const rec = recordFor(card);
+    return {
+      symbol: row.symbol,
+      name: row.name,
+      shareEquivalent: row.shareEquivalentFloat,
+      rawTokens: Number(wad(row.rawBalance, 8).replace(/,/g, "")),
+      multiplier: row.uiMultiplierFloat,
+      blockNumber: String(data.blockNumber),
+      wallet: address,
+      recordNumber: rec?.recordNumber ?? null,
+      holdersRecorded: rec?.holdersRecorded ?? null,
+      queuePosition: rec?.queuePosition ?? null,
+      season,
+      issuedAt: new Date(),
+      origin: window.location.origin,
+    };
+  })();
+  const actionsFor = (symbol: string) => (
+    <>
+      <Button asChild size="sm" variant="outline">
+        <Link to={`/record/${symbol}`}>Open record</Link>
+      </Button>
+      <Button asChild size="sm" variant={(openBySymbol.get(symbol) ?? 0) > 0 && !mineBySymbol.get(symbol) ? "emerald" : "outline"}>
+        <Link to={`/intents?symbol=${symbol}&status=active`}>{mineBySymbol.get(symbol) ? "Intent recorded" : (openBySymbol.get(symbol) ?? 0) > 0 ? "Record intent" : "No open items"}</Link>
+      </Button>
+      <Button asChild size="sm" variant={recordFor(symbol)?.queuePosition ? "outline" : "outline"}>
+        <Link to={`/redeem?symbol=${symbol}`}>{recordFor(symbol)?.queuePosition ? `Queue #${recordFor(symbol)!.queuePosition}` : "Join queue"}</Link>
+      </Button>
+      <Button size="sm" variant="ghost" onClick={(event) => { event.stopPropagation(); setCard(symbol); }}>
+        <Share2 className="size-3.5" /> Record card
+      </Button>
+    </>
+  );
 
   return (
     <Page>
@@ -186,13 +228,15 @@ export default function PortfolioPage() {
                             <div className="eyebrow">Pending multiplier</div>
                             <div className="font-mono mt-1.5 text-ink">{row.pendingMultiplierFloat ? `${multiplier(row.pendingMultiplierFloat, 6)}× at ${dateTimeUtc(row.effectiveAt)}` : "None"}</div>
                           </div>
-                          <div className="flex items-end gap-2 md:justify-end">
-                            <Button asChild size="sm" variant="outline">
-                              <Link to={`/record/${row.symbol}`}>Open record</Link>
-                            </Button>
-                            <Button asChild size="sm" variant="outline">
-                              <Link to={`/redeem?symbol=${row.symbol}`}>Readiness</Link>
-                            </Button>
+                          <div className="flex flex-wrap items-end gap-2 md:col-span-4 md:justify-end">
+                            {recordFor(row.symbol) ? (
+                              <span className="mr-auto self-center text-[12.5px] text-grey-green">
+                                Record #{recordFor(row.symbol)!.recordNumber} of {recordFor(row.symbol)!.holdersRecorded} to record {row.symbol} · {relative(recordFor(row.symbol)!.firstRecordedAt)}
+                              </span>
+                            ) : (
+                              <span className="mr-auto self-center text-[12.5px] text-grey-green">No signature for {row.symbol} yet. The next one takes record #{(recordBySymbol.get(row.symbol)?.intentWallets ?? 0) + 1}.</span>
+                            )}
+                            {actionsFor(row.symbol)}
                           </div>
                         </div>
                       </td>
@@ -205,7 +249,10 @@ export default function PortfolioPage() {
           </div>
           <div className="border-t border-line-2 md:hidden">
             {held.map((row) => (
-              <SecurityRow key={row.symbol} leading={<AssetLogo symbol={row.symbol} logo={row.logo} size="sm" />} title={row.symbol} subtitle={`${wad(row.rawBalance, 4)} raw × ${multiplier(row.uiMultiplierFloat, 4)}`} primary={`${shares(row.shareEquivalentFloat)} sh-eq`} secondary={row.priceUsd === null ? "no feed" : usd(row.valueUsd)} onClick={() => navigate(`/record/${row.symbol}`)} />
+              <div key={row.symbol} className="border-b border-line">
+                <SecurityRow leading={<AssetLogo symbol={row.symbol} logo={row.logo} size="sm" />} title={row.symbol} subtitle={`${wad(row.rawBalance, 4)} raw × ${multiplier(row.uiMultiplierFloat, 4)}`} primary={`${shares(row.shareEquivalentFloat)} sh-eq`} secondary={row.priceUsd === null ? "no feed" : usd(row.valueUsd)} onClick={() => navigate(`/record/${row.symbol}`)} />
+                <div className="no-scrollbar -mt-1 flex gap-2 overflow-x-auto pb-3">{actionsFor(row.symbol)}</div>
+              </div>
             ))}
           </div>
           <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-[12px] text-grey-green">
@@ -217,6 +264,51 @@ export default function PortfolioPage() {
           </div>
         </>
       )}
+
+      {address && data && held.length > 0 ? (
+        <section className="mt-12 grid gap-6 border-t border-line-2 pt-8 lg:grid-cols-[minmax(0,0.5fr)_minmax(0,0.5fr)] lg:gap-12">
+          <div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Eyebrow>Your place in the file</Eyebrow>
+              <Mark tone="emerald">{season.label}</Mark>
+            </div>
+            <h2 className="font-serif mt-2 text-[30px] leading-[1.05] text-ink">
+              {status.data?.walletNumber ? (
+                <>
+                  Wallet <span className="font-mono">#{status.data.walletNumber}</span> of {status.data.walletsRecorded} recorded.
+                </>
+              ) : (
+                <>Not recorded yet.</>
+              )}
+            </h2>
+            <p className="mt-3 max-w-[52ch] text-[14.5px] leading-relaxed text-ink-2">
+              {status.data?.walletNumber
+                ? `${season.note}. ${status.data.records.length} ${status.data.records.length === 1 ? "ticker" : "tickers"} on file, first signed ${relative(status.data.firstRecordedAt ?? 0)}. Numbers are positions in the file, not points or votes.`
+                : `One signature puts this wallet in the file as wallet #${(status.data?.walletsRecorded ?? 0) + 1}. ${season.note}. No custody, no approval, no gas.`}
+            </p>
+          </div>
+          <ol className="grid gap-3 sm:grid-cols-2">
+            {(
+              [
+                ["Connected", true, "Positions read from Robinhood Chain and checked against the contract."],
+                ["Record intent", (status.data?.records.some((entry) => entry.intents > 0) ?? false), "Sign what you would want on any open proxy item you hold."],
+                ["Join a queue", (status.data?.records.some((entry) => entry.queuePosition) ?? false), "Put a numbered readiness request on file for a ticker."],
+                ["Share the card", false, "Post the record card: ticker, share-eq, record number."],
+              ] as Array<[string, boolean, string]>
+            ).map(([label, done, body], index) => (
+              <li key={label} className="flex items-start gap-3 rounded-[12px] border border-line bg-cream px-4 py-3">
+                <span className={`font-mono mt-0.5 grid size-6 shrink-0 place-items-center rounded-full text-[11px] ${done ? "bg-emerald text-paper" : "border border-line-2 text-grey-green"}`}>{done ? "✓" : index + 1}</span>
+                <span>
+                  <span className="block text-[14px] font-medium text-ink">{label}</span>
+                  <span className="block text-[12.5px] text-grey-green">{body}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
+
+      {cardData ? <CertificateSheet data={cardData} onClose={() => setCard(null)} /> : null}
 
       {address ? (
         <div className="mt-20 grid gap-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">

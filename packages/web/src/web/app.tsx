@@ -15,6 +15,8 @@ import RecordBookPage from "./pages/record";
 import RecordDetailPage from "./pages/record-detail";
 import RedeemPage from "./pages/redeem";
 import StatementPage from "./pages/statement";
+import StatusPage from "./pages/status";
+import LeaderboardPage from "./pages/leaderboard";
 import TransparencyPage from "./pages/transparency";
 import { AgentFeedback } from "@runablehq/website-runtime";
 
@@ -50,6 +52,8 @@ function Routes() {
           <Route path="/developers" component={ApiPage} />
           <Route path="/how-it-works" component={HowItWorksPage} />
           <Route path="/transparency" component={TransparencyPage} />
+          <Route path="/status" component={StatusPage} />
+          <Route path="/leaderboard" component={LeaderboardPage} />
           <Route component={NotFound} />
         </Switch>
       </motion.div>

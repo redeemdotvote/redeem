@@ -62,10 +62,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <span data-guide="search" className="hidden xl:flex">
               <SearchTrigger onOpen={() => palette.setOpen(true)} className="w-[210px]" />
             </span>
-            <span className="hidden items-center gap-2.5 md:inline-flex" title="Robinhood Chain · connected">
-              <span className="size-[6px] rounded-full bg-emerald" />
-              <ChainLogo height={16} />
-            </span>
+            <LiveChain />
             <button type="button" onClick={startGuide} className="hidden size-8 place-items-center rounded-[8px] text-grey-green hover:text-ink lg:grid" aria-label="Walkthrough" title="Walkthrough">
               <CircleHelp className="size-4" />
             </button>
@@ -105,6 +102,32 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+type StatsQuery = ReturnType<typeof useHomeStats>;
+
+/** live: a fresh read; stale: the last good read is on screen while a refresh fails; reading: nothing yet. */
+function liveTone(stats: StatsQuery): "live" | "stale" | "reading" {
+  if (!stats.data?.blockNumber) return "reading";
+  if (stats.isError || stats.data.stale) return "stale";
+  return "live";
+}
+
+/** The network mark in the header: the logo plus a green "live · block N" once the chain has been read. */
+function LiveChain() {
+  const stats = useHomeStats();
+  const tone = liveTone(stats);
+  return (
+    <Link to="/status" className="hidden items-center gap-2.5 md:inline-flex" title={tone === "live" ? "Robinhood Chain · live" : tone === "stale" ? "Robinhood Chain · reconnecting, last read shown" : "Reading Robinhood Chain"}>
+      <span className={cn("size-[6px] rounded-full", tone === "live" ? "bg-emerald" : tone === "stale" ? "bg-amber" : "bg-grey-green/50")} />
+      <ChainLogo height={16} />
+      {stats.data?.blockNumber ? (
+        <span className={cn("font-mono hidden text-[11.5px] xl:inline", tone === "live" ? "text-emerald" : "text-amber")}>
+          {tone === "live" ? "live" : "reconnecting"} · {Number(stats.data.blockNumber).toLocaleString("en-US")}
+        </span>
+      ) : null}
+    </Link>
+  );
+}
+
 function Footer() {
   const stats = useHomeStats();
   return (
@@ -116,7 +139,7 @@ function Footer() {
             <p className="mt-3 max-w-[38ch] text-[14px] leading-relaxed text-ink-2">The record layer for Robinhood Stock Tokens: share-equivalents, holder intent, redemption readiness.</p>
           </div>
           <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-[14px]">
-            {[...NAV, { href: "/transparency", label: "Transparency" }].map((item) => (
+            {[...NAV, { href: "/leaderboard", label: "Record holders" }, { href: "/transparency", label: "Transparency" }, { href: "/status", label: "Status" }].map((item) => (
               <Link key={item.href} to={item.href} className="text-grey-green hover:text-ink">
                 {item.label}
               </Link>
@@ -128,13 +151,16 @@ function Footer() {
           <div className="text-[12.5px] text-grey-green">
             <div className="eyebrow mb-2">Network</div>
             <div className="flex items-center gap-2.5">
-              <span className="size-[6px] rounded-full bg-emerald" />
+              <span className={cn("size-[6px] rounded-full", liveTone(stats) === "live" ? "bg-emerald" : liveTone(stats) === "stale" ? "bg-amber" : "bg-grey-green/50")} />
               <ChainLogo height={18} />
-              <span className="text-[13px] text-grey-green">{stats.data?.blockNumber ? "connected" : ""}</span>
             </div>
-            <div className="font-mono mt-2 text-[12.5px]">
-              {stats.data?.blockNumber ? `Block ${Number(stats.data.blockNumber).toLocaleString("en-US")}` : stats.isError ? "RPC unreachable" : "Reading"} · updated {stats.dataUpdatedAt ? ageLabel(Date.now() - stats.dataUpdatedAt) : "—"}
+            <div className={cn("font-mono mt-2 text-[12.5px]", liveTone(stats) === "live" ? "text-emerald" : liveTone(stats) === "stale" ? "text-amber" : "text-grey-green")}>
+              {stats.data?.blockNumber ? `${liveTone(stats) === "live" ? "live" : "reconnecting"} · block ${Number(stats.data.blockNumber).toLocaleString("en-US")}` : stats.isError ? "reconnecting to Robinhood Chain" : "reading"}
+              {stats.dataUpdatedAt ? ` · ${ageLabel(Date.now() - stats.dataUpdatedAt)}` : ""}
             </div>
+            <Link to="/status" className="mt-2 inline-block text-[12.5px] text-grey-green hover:text-ink">
+              Status page
+            </Link>
           </div>
         </div>
         <div className="mt-8 border-t border-line pt-5">

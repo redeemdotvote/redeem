@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { orpc } from "../lib/api";
 
 /** Chain data comes from the API, never the browser: reads are batched and cached server side. */
@@ -8,6 +8,8 @@ export function useRecordBook(wallet?: string) {
       input: wallet ? { wallet } : {},
       staleTime: 45_000,
       refetchInterval: 90_000,
+      placeholderData: keepPreviousData,
+      retry: 3,
     }),
   );
 }

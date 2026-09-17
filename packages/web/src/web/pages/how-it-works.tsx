@@ -20,6 +20,7 @@ const NOT = [
   ["Not the issuer", "Stock Tokens are issued by Robinhood Assets (Jersey) Limited. Redeem is independent and not affiliated with Robinhood, Say or any issuer."],
   ["Not a redemption", "A queue request records demand and acknowledgements. Redemption availability, eligibility and settlement are the issuer's alone."],
   ["Not advice", "Nothing here is investment, legal or tax advice. The proxy statement is the authoritative description of every matter."],
+  ["Not points", "Record numbers, queue positions and the Season badge are positions in a file, derived from signing order. They are not points, not a vote and not a claim on the issuer."],
 ];
 
 const FAQ = [
@@ -34,6 +35,8 @@ const FAQ = [
   { q: "What does attestation prove?", a: "That the tally published at cutoff is the tally of exactly these receipts, in this order, with these weights, unchanged since. Each receipt carries its Merkle proof. Writing roots to a contract on Robinhood Chain is planned; today they are published here and in the API." },
   { q: "Does Robinhood endorse this?", a: "No. Redeem is independent infrastructure with no affiliation to Robinhood Markets, Inc., Robinhood Assets (Jersey) Limited, Say, or any issuer." },
   { q: "Is there a Redeem token?", a: "No. Weight is the share-equivalent a wallet holds. No token is involved and none is needed." },
+  { q: "What is a record number, and what is Season 0?", a: "The first signature a wallet makes for a ticker gives it that ticker's next record number; the first signature it makes at all gives it its Redeem wallet number. Season 0 is everything recorded before the issuer's first in-kind window. Both are derived from the receipts on every read, never stored, and carry no rights, points or value. They exist so a holder can prove when they recorded." },
+  { q: "Is the record card a certificate of ownership?", a: "No. It restates what the record page already shows for that wallet and ticker, with the intent-not-a-vote line printed on it. It is not a share certificate, not a claim on the issuer and not proof of anything the chain does not already show." },
 ];
 
 export default function HowItWorksPage() {

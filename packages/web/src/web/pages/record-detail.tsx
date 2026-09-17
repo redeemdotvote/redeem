@@ -4,6 +4,7 @@ import { Link, useParams } from "wouter";
 import { AssetLogo } from "../components/brand";
 import { MultiplierChart, OwnershipRule } from "../components/chart";
 import { Page } from "../components/layout";
+import { RightsTable } from "../components/rights";
 import { Num } from "../components/number";
 import { EventStatus, IntentLabel, Recommendation } from "../components/status";
 import { Button, Def, Display, Eyebrow, Mark, Note, Skeleton, Stat, Tag } from "../components/ui";
@@ -107,6 +108,13 @@ export default function RecordDetailPage() {
       <Page>
         <div className="grid gap-x-16 gap-y-14 pt-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <div className="space-y-14">
+            {/* Rights today */}
+            <section>
+              <Eyebrow>Rights today</Eyebrow>
+              <h2 className="font-serif mt-2 text-[30px] text-ink">A share, a token, and the gap between them.</h2>
+              <RightsTable symbol={token.symbol} className="mt-6" />
+            </section>
+
             {/* Ownership */}
             <section>
               <Eyebrow>Beneficial ownership</Eyebrow>
