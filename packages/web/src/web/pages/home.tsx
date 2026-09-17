@@ -7,6 +7,7 @@ import { ArchiveIllustration, ARCHIVE_FRONT_X, ARCHIVE_TABS } from "../component
 import { MultiplierPlates } from "../components/multiplier-plates";
 import { ShareEqCalculator } from "../components/calc";
 import { Page } from "../components/layout";
+import { startGuide } from "../components/guide";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { SecurityRow } from "../components/ledger";
 import { Num } from "../components/number";
@@ -107,6 +108,9 @@ function Hero() {
               <Button asChild size="lg" variant="outline">
                 <Link to="/portfolio">View my positions</Link>
               </Button>
+              <button type="button" onClick={startGuide} className="text-[14px] text-grey-green underline-offset-4 hover:text-ink hover:underline">
+                New here? Take the walkthrough
+              </button>
             </div>
           </div>
 
@@ -237,7 +241,7 @@ function RecordBookPanel() {
   return (
     <section className="py-14 lg:py-16">
       <Page>
-        <div className="flex flex-col justify-between gap-5 border-b border-line-2 pb-5 lg:flex-row lg:items-end">
+        <div data-guide="record-book" className="flex flex-col justify-between gap-5 border-b border-line-2 pb-5 lg:flex-row lg:items-end">
           <div>
             <Eyebrow>The Record Book</Eyebrow>
             <Display size="md" className="mt-2">

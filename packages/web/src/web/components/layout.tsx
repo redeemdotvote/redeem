@@ -1,4 +1,4 @@
-import { Menu, Search, X } from "lucide-react";
+import { CircleHelp, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
@@ -9,6 +9,7 @@ import { ConnectWallet } from "./connect-wallet";
 import { CommandPalette, SearchTrigger, useCommandPalette } from "./search";
 import { ThemeToggle } from "./theme-toggle";
 import { ChainLogo, PostRef } from "./robinhood-chain";
+import { Guide, startGuide } from "./guide";
 import { PHOTO_LIST } from "./photo";
 
 const NAV = [
@@ -51,23 +52,28 @@ export function Layout({ children }: { children: React.ReactNode }) {
             {NAV.map((item) => {
               const active = location === item.href || location.startsWith(`${item.href}/`);
               return (
-                <Link key={item.href} to={item.href} className={cn("rounded-[8px] px-2.5 py-1.5 text-[14px] transition-colors", active ? "text-ink" : "text-grey-green hover:text-ink")}>
+                <Link key={item.href} to={item.href} data-guide={item.href === "/intents" ? "nav-intents" : item.href === "/redeem" ? "nav-redeem" : undefined} className={cn("rounded-[8px] px-2.5 py-1.5 text-[14px] whitespace-nowrap transition-colors", active ? "text-ink" : "text-grey-green hover:text-ink")}>
                   {item.label}
                 </Link>
               );
             })}
           </nav>
           <div className="ml-auto flex items-center gap-2">
-            <SearchTrigger onOpen={() => palette.setOpen(true)} className="hidden w-[210px] xl:flex" />
+            <span data-guide="search" className="hidden xl:flex">
+              <SearchTrigger onOpen={() => palette.setOpen(true)} className="w-[210px]" />
+            </span>
             <span className="hidden items-center gap-2.5 md:inline-flex" title="Robinhood Chain · connected">
               <span className="size-[6px] rounded-full bg-emerald" />
               <ChainLogo height={16} />
             </span>
+            <button type="button" onClick={startGuide} className="hidden size-8 place-items-center rounded-[8px] text-grey-green hover:text-ink lg:grid" aria-label="Walkthrough" title="Walkthrough">
+              <CircleHelp className="size-4" />
+            </button>
             <ThemeToggle />
-            <div className="hidden sm:block">
+            <div data-guide="connect" className="hidden sm:block">
               <ConnectWallet />
             </div>
-            <button type="button" onClick={() => palette.setOpen(true)} className="grid size-8 place-items-center rounded-[8px] text-grey-green xl:hidden" aria-label="Search">
+            <button type="button" onClick={() => palette.setOpen(true)} data-guide="search" className="grid size-8 place-items-center rounded-[8px] text-grey-green xl:hidden" aria-label="Search">
               <Search className="size-4" />
             </button>
             <button type="button" onClick={() => setOpen((value) => !value)} className="grid size-8 place-items-center rounded-[8px] text-grey-green lg:hidden" aria-label="Menu">
@@ -94,6 +100,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-1">{children}</main>
 
       <Footer />
+      <Guide />
     </div>
   );
 }
@@ -114,6 +121,9 @@ function Footer() {
                 {item.label}
               </Link>
             ))}
+            <button type="button" onClick={startGuide} className="text-left text-grey-green hover:text-ink">
+              Walkthrough
+            </button>
           </nav>
           <div className="text-[12.5px] text-grey-green">
             <div className="eyebrow mb-2">Network</div>

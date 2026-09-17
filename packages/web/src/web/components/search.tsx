@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { cn } from "@/lib/utils";
+import { startGuide } from "./guide";
 import { dateTimeUtc, pct, shares, shortAddress } from "../lib/format";
 import { useCorporateActions } from "../queries/portfolio";
 import { useRecordBook } from "../queries/record";
@@ -11,6 +12,7 @@ import { AssetLogo } from "./brand";
 type Result = { key: string; group: "Securities" | "Wallets" | "Corporate actions" | "Pages"; title: string; sub?: string; trail?: string; logo?: string | null; symbol?: string; to: string };
 
 const PAGES: Array<[string, string, string]> = [
+  ["Walkthrough", "A two-minute guide to what Redeem is and does", "#walkthrough"],
   ["Record Book", "One ledger for every official Stock Token", "/record"],
   ["Markets", "Security master", "/markets"],
   ["Portfolio", "Your positions and signed record", "/portfolio"],
@@ -64,7 +66,8 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
 
   const go = (result: Result) => {
     onClose();
-    navigate(result.to);
+    if (result.to === "#walkthrough") startGuide();
+    else navigate(result.to);
   };
 
   useEffect(() => {
