@@ -63,6 +63,8 @@ await writeFile(
         { src: "^/redeem/(.*)$", headers: { "cache-control": "public, max-age=86400" }, continue: true },
         { src: "^/api(?:/.*)?$", dest: "/api" },
         { handle: "filesystem" },
+        // Missing hashed assets stay 404 rather than becoming an immutable-cached copy of the page.
+        { src: "^/assets/.*$", status: 404 },
         { src: "^/(.*)$", dest: "/index.html" },
       ],
     },

@@ -1,5 +1,6 @@
-import { sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { db } from "./__client";
+import { indexerCursors } from "./schema";
 
 /**
  * The schema is applied at boot with idempotent DDL, so a fresh SQLite file, a Turso database
@@ -62,11 +63,33 @@ const ADDED_COLUMNS: Array<[string, string, string]> = [
   ["instructions", "delegate", "TEXT NOT NULL DEFAULT '0x0000000000000000000000000000000000000000'"],
 ];
 
+/** Bump when DDL or ADDED_COLUMNS change; a database already at this version skips the DDL pass. */
+export const SCHEMA_VERSION = "2026-09-17.1";
+const SCHEMA_CURSOR = "schema:version";
+
+/** Reads a marker row from indexer_cursors; null when the row or the table is missing. */
+export async function readMarker(key: string): Promise<string | null> {
+  try {
+    const rows = await db.select({ detail: indexerCursors.detail }).from(indexerCursors).where(eq(indexerCursors.key, key)).limit(1);
+    return rows[0]?.detail ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function writeMarker(key: string, detail: string): Promise<void> {
+  const values = { key, lastBlock: 0, status: "applied", detail, updatedAt: new Date() };
+  await db.insert(indexerCursors).values(values).onConflictDoUpdate({ target: indexerCursors.key, set: { status: values.status, detail, updatedAt: values.updatedAt } });
+}
+
 let ready: Promise<void> | null = null;
 
 export function ensureSchema(): Promise<void> {
   if (!ready) {
     ready = (async () => {
+      // On a serverless host every cold start boots again and each statement is a network round
+      // trip, so a database already at the current version is left alone after one read.
+      if ((await readMarker(SCHEMA_CURSOR)) === SCHEMA_VERSION) return;
       for (const statement of DDL) await db.run(sql.raw(statement));
       // Columns added after a table first shipped. CREATE TABLE IF NOT EXISTS leaves an existing
       // table untouched, so each addition is checked against the live column list.
@@ -76,6 +99,7 @@ export function ensureSchema(): Promise<void> {
           await db.run(sql.raw(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`));
         }
       }
+      await writeMarker(SCHEMA_CURSOR, SCHEMA_VERSION);
     })();
   }
   return ready;

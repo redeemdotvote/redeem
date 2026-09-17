@@ -1,6 +1,8 @@
+import { createHash } from "node:crypto";
 import { eq } from "drizzle-orm";
 import seed from "../data/ballots.json";
 import { db } from "../database";
+import { readMarker, writeMarker } from "../database/migrate";
 import * as schema from "../database/schema";
 import { findToken } from "../chain/tokens";
 
@@ -91,8 +93,14 @@ export function seedBallots(): Promise<void> {
   return seeded;
 }
 
+const SEED_CURSOR = "seed:ballots";
+
 async function runSeed(): Promise<void> {
   const rows = seed as SeedBallot[];
+  // The mirror is a few hundred upserts; on a serverless host that is a few hundred round trips
+  // per cold start. A fingerprint of the extraction file says whether the database already has it.
+  const fingerprint = createHash("sha256").update(JSON.stringify(rows)).digest("hex").slice(0, 32);
+  if ((await readMarker(SEED_CURSOR)) === fingerprint) return;
   const existing = new Set((await db.select({ id: schema.ballots.id }).from(schema.ballots)).map((row) => row.id));
 
   for (const ballot of rows) {
@@ -147,4 +155,5 @@ async function runSeed(): Promise<void> {
         .onConflictDoUpdate({ target: schema.ballotItems.id, set: item });
     }
   }
+  await writeMarker(SEED_CURSOR, fingerprint);
 }
