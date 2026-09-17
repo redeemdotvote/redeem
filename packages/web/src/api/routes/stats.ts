@@ -8,6 +8,8 @@ import { db } from "../database";
 import { SCHEMA_VERSION, readMarker } from "../database/migrate";
 import * as schema from "../database/schema";
 import { loadRecordIndex, SEASON } from "../lib/records";
+import { loadReferrals } from "../lib/referrals";
+import { xpForAll } from "../lib/xp";
 import { dbSafe } from "../lib/safe";
 import { nowSeconds } from "../lib/shared";
 import { activityBySymbol } from "./record";
@@ -137,7 +139,8 @@ export const stats = {
 
   /** The public leaderboard: earliest signers, widest records, largest verified positions per ticker. */
   leaderboard: base.handler(async () => {
-    const index = await loadRecordIndex();
+    const [index, referrals] = await Promise.all([loadRecordIndex(), loadReferrals()]);
+    const xpBy = xpForAll(index, referrals);
     const weightBySymbolWallet = new Map<string, Map<string, bigint>>();
     for (const event of index.events) {
       if (event.kind !== "intent") continue;
@@ -155,7 +158,7 @@ export const stats = {
       for (const holders of weightBySymbolWallet.values()) sum += holders.get(wallet) ?? 0n;
       return f18(sum);
     };
-    const walletRows = [...index.wallets.entries()].map(([wallet, entry]) => ({ wallet, number: entry.number, at: entry.at, tickers: entry.symbols.size, shareEq: totalBy(wallet) }));
+    const walletRows = [...index.wallets.entries()].map(([wallet, entry]) => ({ wallet, number: entry.number, at: entry.at, tickers: entry.symbols.size, shareEq: totalBy(wallet), xp: xpBy.get(wallet) ?? 0 }));
     const largest = [...weightBySymbolWallet.entries()]
       .map(([symbol, holders]) => {
         const [wallet, weight] = [...holders.entries()].sort((a, b) => (b[1] > a[1] ? 1 : b[1] < a[1] ? -1 : 0))[0]!;
@@ -167,6 +170,8 @@ export const stats = {
       season: SEASON,
       wallets: index.wallets.size,
       events: index.events.length,
+      referrals: referrals.length,
+      xp: [...walletRows].sort((a, b) => b.xp - a.xp || a.number - b.number).slice(0, 25),
       earliest: walletRows.sort((a, b) => a.number - b.number).slice(0, 25),
       widest: [...walletRows].sort((a, b) => b.tickers - a.tickers || a.number - b.number).slice(0, 25),
       largest,

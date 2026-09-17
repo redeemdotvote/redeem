@@ -20,7 +20,7 @@ const NOT = [
   ["Not the issuer", "Stock Tokens are issued by Robinhood Assets (Jersey) Limited. Redeem is independent and not affiliated with Robinhood, Say or any issuer."],
   ["Not a redemption", "A queue request records demand and acknowledgements. Redemption availability, eligibility and settlement are the issuer's alone."],
   ["Not advice", "Nothing here is investment, legal or tax advice. The proxy statement is the authoritative description of every matter."],
-  ["Not points", "Record numbers, queue positions and the Season badge are positions in a file, derived from signing order. They are not points, not a vote and not a claim on the issuer."],
+  ["Not a token", "XP, record numbers, queue positions and the Season badge are derived from signed records on every read. They are not a token, not spendable, not a vote and not a claim on the issuer."],
 ];
 
 const FAQ = [
@@ -36,6 +36,8 @@ const FAQ = [
   { q: "Does Robinhood endorse this?", a: "No. Redeem is independent infrastructure with no affiliation to Robinhood Markets, Inc., Robinhood Assets (Jersey) Limited, Say, or any issuer." },
   { q: "Is there a Redeem token?", a: "No. Weight is the share-equivalent a wallet holds. No token is involved and none is needed." },
   { q: "What is a record number, and what is Season 0?", a: "The first signature a wallet makes for a ticker gives it that ticker's next record number; the first signature it makes at all gives it its Redeem wallet number. Season 0 is everything recorded before the issuer's first in-kind window. Both are derived from the receipts on every read, never stored, and carry no rights, points or value. They exist so a holder can prove when they recorded." },
+  { q: "What is XP, and can it be farmed?", a: "XP is a number derived from signed records: 25 for a wallet's first signature, 50 for the first intent on each ticker, 10 for each further intent, 40 for joining a ticker's redemption queue, 100 when a wallet you referred records with at least 1 share-equivalent, and 25 for arriving by referral. It is recomputed on every read, never stored, never spendable, and never enters a tally or a queue position. Every rule needs a signature, and every signature needs a real position read from Robinhood Chain, so an empty wallet earns nothing. Referral credit needs the referred wallet's first record to carry at least 1 share-equivalent, so splitting dust across wallets is not worth the effort." },
+  { q: "How do referrals work?", a: "Your referral link carries a short code. A wallet that arrives through it and then makes its first signature is bound to you at that moment, once, and only if it has no record yet and is not you. There is no cookie sync and nothing is sent on arrival; the code travels with the signature. A binding never changes and carries no rights." },
   { q: "Is the record card a certificate of ownership?", a: "No. It restates what the record page already shows for that wallet and ticker, with the intent-not-a-vote line printed on it. It is not a share certificate, not a claim on the issuer and not proof of anything the chain does not already show." },
 ];
 

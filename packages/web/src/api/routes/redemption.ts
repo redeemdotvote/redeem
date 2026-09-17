@@ -4,6 +4,7 @@ import { and, asc, eq, sql } from "drizzle-orm";
 import { formatUnits, parseUnits } from "viem";
 import { z } from "zod";
 import { base } from "../__core/app";
+import { bindReferral } from "../lib/referrals";
 import { ACKNOWLEDGEMENT_KEYS, buildRedemptionMessage, REDEMPTION_TERMS } from "../ballots/typed-data";
 import { ChallengeError, consumeChallenge, issueChallenge } from "../challenges";
 import { getBalances, getMarket, shareEquivalentWad } from "../chain/market";
@@ -142,7 +143,7 @@ export const redemption = {
     }),
 
   /** Step two: verify and take a numbered place in the ticker's queue. */
-  commit: base.input(z.object({ challengeId: z.string(), signature: z.string() })).handler(async ({ input }) => {
+  commit: base.input(z.object({ challengeId: z.string(), signature: z.string(), ref: z.string().max(16).optional() })).handler(async ({ input }) => {
     let challenge;
     try {
       challenge = await consumeChallenge<RequestPayload>(input.challengeId, input.signature);
@@ -175,6 +176,7 @@ export const redemption = {
           signature: input.signature,
         })
         .returning();
+      await bindReferral(wallet, input.ref).catch(() => false);
       return { id: row?.id ?? "", position: row?.position ?? Number(count) + 1, symbol: payload.symbol };
     } catch {
       const [existing] = await db

@@ -17,3 +17,8 @@ export function useCorporateActions() {
 export function useWalletStatus(wallet?: string) {
   return useQuery(orpc.portfolio.status.queryOptions({ input: { wallet: wallet ?? "" }, enabled: Boolean(wallet), staleTime: 15_000 }));
 }
+
+/** XP breakdown, rank and referral link. `withCode` only for the connected wallet, so viewing someone else's address never mints a code for them. */
+export function useWalletXp(wallet?: string, withCode = false) {
+  return useQuery(orpc.portfolio.xp.queryOptions({ input: { wallet: wallet ?? "", withCode }, enabled: Boolean(wallet), staleTime: 15_000 }));
+}

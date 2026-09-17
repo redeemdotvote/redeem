@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, AlertTriangle, FileCheck2, Share2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, AlertTriangle, Copy, FileCheck2, Share2 } from "lucide-react";
 import { Fragment, useMemo, useState } from "react";
 import { Link, useLocation, useSearch } from "wouter";
 import { isAddress } from "viem";
@@ -12,7 +12,7 @@ import { Button, Eyebrow, Mark, Note, Skeleton, Spinner } from "../components/ui
 import { useWallet } from "../hooks/use-wallet";
 import { ageLabel, dateTime, dateTimeUtc, isoDate, multiplier, pct, relative, shares, shortAddress, shortHash, usd, wad } from "../lib/format";
 import { useReceipts } from "../queries/intents";
-import { usePortfolio, useWalletStatus } from "../queries/portfolio";
+import { usePortfolio, useWalletStatus, useWalletXp } from "../queries/portfolio";
 import { CertificateSheet, type CertificateData } from "../components/certificate";
 import { useRecordBook } from "../queries/record";
 import { useCreateStatement, useStatements } from "../queries/statements";
@@ -35,6 +35,9 @@ export default function PortfolioPage() {
   const statements = useStatements(address);
   const create = useCreateStatement();
   const status = useWalletStatus(address);
+  const xp = useWalletXp(address, Boolean(address) && !readOnly);
+  const [copied, setCopied] = useState(false);
+  const referralLink = xp.data?.referral.code ? `${window.location.origin}/?ref=${xp.data.referral.code}` : null;
   const [expanded, setExpanded] = useState<string | null>(null);
   const [card, setCard] = useState<string | null>(null);
   const data = book.data;
@@ -266,7 +269,7 @@ export default function PortfolioPage() {
       )}
 
       {address && data && held.length > 0 ? (
-        <section className="mt-12 grid gap-6 border-t border-line-2 pt-8 lg:grid-cols-[minmax(0,0.5fr)_minmax(0,0.5fr)] lg:gap-12">
+        <section className="mt-12 grid gap-8 border-t border-line-2 pt-8 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.34fr)_minmax(0,0.28fr)] lg:gap-10">
           <div>
             <div className="flex flex-wrap items-center gap-3">
               <Eyebrow>Your place in the file</Eyebrow>
@@ -281,9 +284,16 @@ export default function PortfolioPage() {
                 <>Not recorded yet.</>
               )}
             </h2>
+            {xp.data ? (
+              <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="font-mono text-[34px] leading-none text-ink">{xp.data.xp.total.toLocaleString("en-US")}</span>
+                <span className="eyebrow">XP</span>
+                {xp.data.xp.total > 0 ? <span className="text-[12.5px] text-grey-green">· rank #{xp.data.rank} of {xp.data.walletsRecorded}</span> : null}
+              </div>
+            ) : null}
             <p className="mt-3 max-w-[52ch] text-[14.5px] leading-relaxed text-ink-2">
               {status.data?.walletNumber
-                ? `${season.note}. ${status.data.records.length} ${status.data.records.length === 1 ? "ticker" : "tickers"} on file, first signed ${relative(status.data.firstRecordedAt ?? 0)}. Numbers are positions in the file, not points or votes.`
+                ? `${season.note}. ${status.data.records.length} ${status.data.records.length === 1 ? "ticker" : "tickers"} on file, first signed ${relative(status.data.firstRecordedAt ?? 0)}. Record numbers are positions in the file and XP is derived from them; neither is a vote, a claim or a token.`
                 : `One signature puts this wallet in the file as wallet #${(status.data?.walletsRecorded ?? 0) + 1}. ${season.note}. No custody, no approval, no gas.`}
             </p>
           </div>
@@ -293,7 +303,7 @@ export default function PortfolioPage() {
                 ["Connected", true, "Positions read from Robinhood Chain and checked against the contract."],
                 ["Record intent", (status.data?.records.some((entry) => entry.intents > 0) ?? false), "Sign what you would want on any open proxy item you hold."],
                 ["Join a queue", (status.data?.records.some((entry) => entry.queuePosition) ?? false), "Put a numbered readiness request on file for a ticker."],
-                ["Share the card", false, "Post the record card: ticker, share-eq, record number."],
+                ["Share it", (xp.data?.referral.referred ?? 0) > 0, "Post the record card or your referral link. +100 XP per wallet that records."],
               ] as Array<[string, boolean, string]>
             ).map(([label, done, body], index) => (
               <li key={label} className="flex items-start gap-3 rounded-[12px] border border-line bg-cream px-4 py-3">
@@ -305,6 +315,57 @@ export default function PortfolioPage() {
               </li>
             ))}
           </ol>
+          <div>
+            <div className="eyebrow">How XP is earned</div>
+            <ul className="mt-2 border-t border-line-2 text-[12.5px]">
+              {(xp.data?.rules ?? []).map((rule) => {
+                const line = xp.data?.xp.lines.find((entry) => entry.key === rule.key);
+                return (
+                  <li key={rule.key} className="flex items-center justify-between gap-3 border-b border-line py-1.5" title={rule.note}>
+                    <span className={line && line.count > 0 ? "text-ink" : "text-grey-green"}>
+                      {rule.label}
+                      {line && line.count > 1 ? <span className="font-mono ml-1.5 text-[11px] text-grey-green">×{line.count}</span> : null}
+                    </span>
+                    <span className={`font-mono ${line && line.count > 0 ? "text-emerald" : "text-grey-green"}`}>{line && line.count > 0 ? `+${line.points}` : `+${rule.points}`}</span>
+                  </li>
+                );
+              })}
+            </ul>
+            {!readOnly ? (
+              <div className="mt-4 rounded-[12px] border border-line bg-cream p-3.5">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="eyebrow">Your referral link</div>
+                  {xp.data ? (
+                    <span className="text-[11.5px] text-grey-green">
+                      {xp.data.referral.referred} referred · {xp.data.referral.credited} credited
+                    </span>
+                  ) : null}
+                </div>
+                <div className="font-mono mt-2 truncate text-[12.5px] text-ink">{referralLink ?? "…"}</div>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    disabled={!referralLink}
+                    onClick={() => {
+                      if (!referralLink) return;
+                      void navigator.clipboard?.writeText(referralLink);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 1600);
+                    }}
+                  >
+                    <Copy className="size-3.5" /> {copied ? "Copied" : "Copy link"}
+                  </Button>
+                  <Button asChild size="sm" variant="ghost" disabled={!referralLink}>
+                    <a href={referralLink ? `https://x.com/intent/post?text=${encodeURIComponent("Record what you hold and what you would want, before Robinhood turns on votes and 1:1 redemption for Stock Tokens. Intent, not a vote.")}&url=${encodeURIComponent(referralLink)}` : "#"} target="_blank" rel="noreferrer">
+                      <Share2 className="size-3.5" /> Post on X
+                    </a>
+                  </Button>
+                </div>
+                <p className="mt-2 text-[11.5px] leading-relaxed text-grey-green">+100 XP when a referred wallet records with at least {xp.data?.referral.minShareEq ?? 1} share-eq; they get +25. Bound at their first signature, once.</p>
+              </div>
+            ) : null}
+          </div>
         </section>
       ) : null}
 

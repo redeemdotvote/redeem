@@ -217,3 +217,26 @@ export const indexerCursors = sqliteTable("indexer_cursors", {
     .notNull()
     .default(sql`(unixepoch())`),
 });
+
+/** A wallet's referral code; created the first time the wallet asks for its link. */
+export const referralCodes = sqliteTable("referral_codes", {
+  code: text("code").primaryKey(),
+  wallet: text("wallet").notNull().unique(),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});
+
+/** Bound once, at the referee's first signature, and never changed. */
+export const referrals = sqliteTable(
+  "referrals",
+  {
+    referee: text("referee").primaryKey(),
+    referrer: text("referrer").notNull(),
+    code: text("code").notNull(),
+    createdAt: integer("created_at", { mode: "timestamp" })
+      .notNull()
+      .$defaultFn(() => new Date()),
+  },
+  (t) => [index("referrals_referrer_idx").on(t.referrer)],
+);

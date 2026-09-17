@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSignMessage } from "wagmi";
 import { client, orpc } from "../lib/api";
+import { getReferral } from "../lib/referral";
 
 export function useRedemptionTerms() {
   return useQuery(orpc.redemption.terms.queryOptions({ staleTime: Infinity }));
@@ -19,7 +20,7 @@ export function useRequestRedemption() {
     mutationFn: async (input: { wallet: string; symbol: string; requestedShareEquivalent: string; jurisdiction: string; acknowledgements: Array<"not_live" | "eligibility_by_issuer" | "restrictions" | "no_guarantee"> }) => {
       const prepared = await client.redemption.prepare(input);
       const signature = await signMessageAsync({ message: prepared.message });
-      return client.redemption.commit({ challengeId: prepared.challengeId, signature });
+      return client.redemption.commit({ challengeId: prepared.challengeId, signature, ref: getReferral() });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: orpc.redemption.key() });

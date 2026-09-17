@@ -26,7 +26,7 @@ export default function LeaderboardPage() {
         body="Every signature is numbered by the order it arrived. Wallet numbers, record numbers per ticker and the largest verified positions are derived from the receipts on every read, never stored, and carry no rights."
         aside={
           d ? (
-            <div className="grid grid-cols-2 gap-x-10">
+            <div className="grid grid-cols-3 gap-x-10">
               <div>
                 <div className="eyebrow">Wallets recorded</div>
                 <div className="font-mono mt-1 text-[26px] text-ink">{d.wallets}</div>
@@ -34,6 +34,10 @@ export default function LeaderboardPage() {
               <div>
                 <div className="eyebrow">Signatures</div>
                 <div className="font-mono mt-1 text-[26px] text-ink">{d.events}</div>
+              </div>
+              <div>
+                <div className="eyebrow">Referrals</div>
+                <div className="font-mono mt-1 text-[26px] text-ink">{d.referrals}</div>
               </div>
             </div>
           ) : null
@@ -53,7 +57,20 @@ export default function LeaderboardPage() {
           </p>
         </div>
       ) : (
-        <div className="grid gap-x-12 gap-y-12 border-t border-line-2 pt-10 lg:grid-cols-3">
+        <div className="grid gap-x-12 gap-y-12 border-t border-line-2 pt-10 md:grid-cols-2 xl:grid-cols-4">
+          <Table title="Most XP" sub="Derived from signed records and credited referrals. Not a token.">
+            {d.xp.map((row, index) => (
+              <li key={row.wallet} className="flex items-center justify-between gap-3 border-b border-line py-3">
+                <span className="flex items-center gap-3">
+                  <span className="font-mono w-10 text-[13px] text-grey-green">{index + 1}</span>
+                  <Link to={`/portfolio?address=${row.wallet}`} className="font-mono text-[13.5px] text-ink hover:underline">
+                    {shortAddress(row.wallet, 5)}
+                  </Link>
+                </span>
+                <span className="font-mono text-[13px] text-emerald">{row.xp.toLocaleString("en-US")} XP</span>
+              </li>
+            ))}
+          </Table>
           <Table title="Earliest signers" sub="Wallet number is the order of a wallet's first signature.">
             {d.earliest.map((row) => (
               <li key={row.wallet} className="flex items-center justify-between gap-3 border-b border-line py-3">
@@ -103,8 +120,8 @@ export default function LeaderboardPage() {
         </div>
       )}
       <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-grey-green">
-        <Mark tone="muted">Not points · not a vote · not a claim on the issuer</Mark>
-        <span>Record numbers exist so a holder can prove when they recorded. There is no Redeem token.</span>
+        <Mark tone="muted">Not a token · not a vote · not a claim on the issuer</Mark>
+        <span>XP and record numbers exist so being early and thorough in the file is visible. Nothing here is spendable, and there is no Redeem token.</span>
       </div>
     </Page>
   );

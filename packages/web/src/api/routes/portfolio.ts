@@ -5,6 +5,8 @@ import { getCorporateActions, getIndexerStatus, getTransfers, type CorporateActi
 import { getBalances, getMarket, shareEquivalentWad, type MarketState } from "../chain/market";
 import { addressSchema } from "../lib/shared";
 import { loadRecordIndex, SEASON } from "../lib/records";
+import { codeFor, loadReferrals, referralSummary } from "../lib/referrals";
+import { computeXp, REFERRAL_MIN_SHARE_EQ, XP_RULES } from "../lib/xp";
 import { db } from "../database";
 import * as schema from "../database/schema";
 import { eq } from "drizzle-orm";
@@ -156,6 +158,24 @@ export const portfolio = {
       firstRecordedAt: mine?.at ?? null,
       walletsRecorded: index.wallets.size,
       records,
+    };
+  }),
+
+  /** XP and referral standing for a wallet, derived from its signed records. `withCode` creates the wallet's referral link if it has none. */
+  xp: base.input(z.object({ wallet: addressSchema, withCode: z.boolean().optional() })).handler(async ({ input }) => {
+    const wallet = input.wallet.toLowerCase();
+    const [index, referrals] = await Promise.all([loadRecordIndex(), loadReferrals()]);
+    const xp = computeXp(index, referrals, wallet);
+    const summary = referralSummary(referrals, index, wallet);
+    const code = input.withCode ? await codeFor(wallet) : null;
+    return {
+      wallet: input.wallet,
+      season: SEASON,
+      xp,
+      rules: XP_RULES,
+      referral: { code, ...summary, minShareEq: Number(REFERRAL_MIN_SHARE_EQ / 10n ** 18n) },
+      rank: [...index.wallets.keys()].map((w) => computeXp(index, referrals, w).total).filter((total) => total > xp.total).length + 1,
+      walletsRecorded: index.wallets.size,
     };
   }),
 

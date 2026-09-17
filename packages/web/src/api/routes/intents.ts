@@ -4,6 +4,7 @@ import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { formatUnits, getAddress, isAddress, verifyTypedData, type Address, type Hex, type TypedDataDefinition } from "viem";
 import { z } from "zod";
 import { base } from "../__core/app";
+import { bindReferral } from "../lib/referrals";
 import { leafHash, merkleProof, merkleRoot, verifyProof } from "../ballots/merkle";
 import { type Choice } from "../ballots/seed";
 import { canonicalReceipt, computeTally, type Tally } from "../ballots/tally";
@@ -425,7 +426,7 @@ export const intents = {
     }),
 
   /** Step two: verify the signature against the issued payload and record the instruction. */
-  commit: base.input(z.object({ challengeId: z.string(), signature: z.string() })).handler(async ({ input }) => {
+  commit: base.input(z.object({ challengeId: z.string(), signature: z.string(), ref: z.string().max(16).optional() })).handler(async ({ input }) => {
     let challenge;
     try {
       challenge = await consumeChallenge<InstructionPayload>(input.challengeId, input.signature);
@@ -470,6 +471,7 @@ export const intents = {
         supersedesId: previous?.id ?? null,
       })
       .returning();
+    await bindReferral(wallet, input.ref).catch(() => false);
     if (previous) {
       await db.update(schema.instructions).set({ status: "superseded" }).where(eq(schema.instructions.id, previous.id));
     }

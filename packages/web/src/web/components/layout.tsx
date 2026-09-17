@@ -10,6 +10,7 @@ import { CommandPalette, SearchTrigger, useCommandPalette } from "./search";
 import { ThemeToggle } from "./theme-toggle";
 import { ChainLogo, PostRef } from "./robinhood-chain";
 import { Guide, startGuide } from "./guide";
+import { captureReferral } from "../lib/referral";
 import { PHOTO_LIST } from "./photo";
 
 const NAV = [
@@ -32,6 +33,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
     setOpen(false);
     if (!location.includes("#")) window.scrollTo({ top: 0 });
   }, [location]);
+
+  useEffect(() => {
+    captureReferral();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);

@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSignTypedData } from "wagmi";
 import { client, orpc } from "../lib/api";
+import { getReferral } from "../lib/referral";
 
 export interface IntentFilters {
   status: "active" | "closed" | "all";
@@ -71,7 +72,7 @@ export function useSignIntent() {
       const message = Object.fromEntries(Object.entries(typed.message).map(([key, value]) => [key, UINT_FIELDS.has(key) ? BigInt(value as string) : value]));
       const args = { domain: typed.domain, types: typed.types, primaryType: typed.primaryType, message } as unknown as Parameters<typeof signTypedDataAsync>[0];
       const signature = await signTypedDataAsync(args);
-      return client.intents.commit({ challengeId: prepared.challengeId, signature });
+      return client.intents.commit({ challengeId: prepared.challengeId, signature, ref: getReferral() });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: orpc.intents.key() });
