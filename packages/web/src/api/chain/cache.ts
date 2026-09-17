@@ -50,6 +50,14 @@ export async function cached<T>(key: string, ttlMs: number, load: () => Promise<
     if (hit) {
       return { value: hit.value, ageMs: Date.now() - hit.storedAt, stale: true };
     }
+    // A cold instance has nothing stale to serve. A rate limit is the one refusal worth one more
+    // try after a short pause; anything else fails fast so the caller can decide.
+    if (isRateLimited(error)) {
+      await new Promise((resolve) => setTimeout(resolve, 900));
+      const value = await load();
+      entries.set(key, { value, storedAt: Date.now() });
+      return { value, ageMs: 0, stale: false };
+    }
     throw error;
   }
 }
