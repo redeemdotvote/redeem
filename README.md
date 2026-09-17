@@ -81,6 +81,19 @@ GET /api/v1/intents/:itemId/receipts    signed receipts for one proxy item
 - Illustrations (archive, multiplier plates, record cards, ownership diagram) are vector components
   under `src/web/components/`; `public/redeem/art/og.jpg` is the social image.
 
+## Deploying to Vercel
+
+`packages/web` deploys as a static Vite site plus one Vercel function (`api/index.ts`) that serves
+the whole Hono app. `packages/web/vercel.json` rewrites `/api/*` to that function and everything
+else to `index.html`. Project settings: root directory `packages/web`, "include source files outside
+the root directory" on (the Vite config reads `__ports.cjs` from the repo root), install
+`cd ../.. && bun install`, build `bun x vite build`, output `dist`.
+
+Environment variables: `RPC_URL`, `VITE_WALLETCONNECT_PROJECT_ID`, and `DATABASE_URL` +
+`DATABASE_AUTH_TOKEN` pointing at a Turso database. Functions have no persistent disk, so a
+`file:` URL does not work there; `:memory:` boots but forgets every intent on each cold start
+and is only for smoke tests.
+
 ## Positioning
 
 Redeem is independent infrastructure. It is not affiliated with Robinhood Markets, Inc., Robinhood
