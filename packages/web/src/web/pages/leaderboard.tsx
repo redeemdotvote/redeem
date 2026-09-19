@@ -58,7 +58,7 @@ export default function LeaderboardPage() {
         </div>
       ) : (
         <div className="grid gap-x-12 gap-y-12 border-t border-line-2 pt-10 md:grid-cols-2 xl:grid-cols-4">
-          <Table title="Most XP" sub="Derived from signed records and credited referrals. Not a token.">
+          <Table title="Most XP" sub="Derived from signed records and credited referrals. Not the REDEEM token.">
             {d.xp.map((row, index) => (
               <li key={row.wallet} className="flex items-center justify-between gap-3 border-b border-line py-3">
                 <span className="flex items-center gap-3">
@@ -120,8 +120,8 @@ export default function LeaderboardPage() {
         </div>
       )}
       <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-grey-green">
-        <Mark tone="muted">Not a token · not a vote · not a claim on the issuer</Mark>
-        <span>XP and record numbers exist so being early and thorough in the file is visible. Nothing here is spendable, and there is no Redeem token.</span>
+        <Mark tone="muted">Not the token · not a vote · not a claim on the issuer</Mark>
+        <span>XP and record numbers exist so being early and thorough in the file is visible. Nothing here is spendable, and none of it is the REDEEM token or affected by holding it.</span>
       </div>
     </Page>
   );

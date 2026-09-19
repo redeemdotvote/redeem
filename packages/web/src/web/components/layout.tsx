@@ -11,6 +11,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { ChainLogo, PostRef } from "./robinhood-chain";
 import { Guide, startGuide } from "./guide";
 import { ConnectNotice } from "./connect-notice";
+import { TokenCA } from "./token-ca";
 import { captureReferral } from "../lib/referral";
 import { PHOTO_LIST } from "./photo";
 
@@ -146,7 +147,7 @@ function Footer() {
             <p className="mt-3 max-w-[38ch] text-[14px] leading-relaxed text-ink-2">The record layer for Robinhood Stock Tokens: share-equivalents, holder intent, redemption readiness.</p>
           </div>
           <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-[14px]">
-            {[...NAV, { href: "/leaderboard", label: "Record holders" }, { href: "/transparency", label: "Transparency" }, { href: "/status", label: "Status" }].map((item) => (
+            {[...NAV, { href: "/leaderboard", label: "Record holders" }, { href: "/token", label: "$REDEEM token" }, { href: "/transparency", label: "Transparency" }, { href: "/status", label: "Status" }].map((item) => (
               <Link key={item.href} to={item.href} className="text-grey-green hover:text-ink">
                 {item.label}
               </Link>
@@ -170,8 +171,9 @@ function Footer() {
             </Link>
           </div>
         </div>
-        <div className="mt-8 border-t border-line pt-5">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5">
           <PostRef />
+          <TokenCA full />
         </div>
         <p className="mt-4 max-w-[90ch] text-[12.5px] leading-relaxed text-grey-green">
           Redeem is independent and is not affiliated with or endorsed by Robinhood. Stock Tokens provide economic exposure and are not legal shares today;

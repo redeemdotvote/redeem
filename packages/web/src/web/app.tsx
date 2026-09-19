@@ -18,6 +18,7 @@ import StatementPage from "./pages/statement";
 import StatusPage from "./pages/status";
 import LeaderboardPage from "./pages/leaderboard";
 import DeskPage from "./pages/desk";
+import TokenPage from "./pages/token";
 import EmbedPage from "./pages/embed";
 import TransparencyPage from "./pages/transparency";
 import { AgentFeedback } from "@runablehq/website-runtime";
@@ -57,6 +58,7 @@ function Routes() {
           <Route path="/status" component={StatusPage} />
           <Route path="/leaderboard" component={LeaderboardPage} />
           <Route path="/desk/:symbol" component={DeskPage} />
+          <Route path="/token" component={TokenPage} />
           <Route component={NotFound} />
         </Switch>
       </motion.div>

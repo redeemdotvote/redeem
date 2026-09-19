@@ -15,6 +15,7 @@ const PAGES: Array<[string, string, string]> = [
   ["Walkthrough", "A two-minute guide to what Redeem is and does", "#walkthrough"],
   ["NVDA desk", "The name people reach for first, on the record", "/desk/NVDA"],
   ["Record holders", "Earliest signers, XP, largest verified positions", "/leaderboard"],
+  ["$REDEEM token", "Official contract address on Robinhood Chain", "/token"],
   ["Record Book", "One ledger for every official Stock Token", "/record"],
   ["Markets", "Security master", "/markets"],
   ["Portfolio", "Your positions and signed record", "/portfolio"],

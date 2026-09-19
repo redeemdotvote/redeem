@@ -92,6 +92,22 @@ const ENDPOINTS = [
   },
   {
     method: "GET",
+    path: "/api/v1/token",
+    title: "REDEEM token",
+    body: "The official REDEEM token on Robinhood Chain, read from its contract: address, name, symbol, decimals, total supply and the block it was read at. Use it to verify the address programmatically.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/token`,
+    response: `{
+  "address": "0x3473cCcfD7c186aae98CbebBf8388251237D3896",
+  "chainId": 4663,
+  "name": "Redeem Inc",
+  "symbol": "REDEEM",
+  "decimals": 18,
+  "totalSupply": "1000000000000000000000000000",
+  "verified": true
+}`,
+  },
+  {
+    method: "GET",
     path: "/api/v1/record",
     title: "Security master",
     body: "The whole allowlist with live multipliers and supply — the same read the Record Book is built on.",

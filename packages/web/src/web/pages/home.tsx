@@ -9,6 +9,7 @@ import { ShareEqCalculator } from "../components/calc";
 import { Page } from "../components/layout";
 import { startGuide } from "../components/guide";
 import { DeskRow, SecurityDesk } from "../components/desk";
+import { TokenCA } from "../components/token-ca";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { SecurityRow } from "../components/ledger";
 import { Num } from "../components/number";
@@ -115,6 +116,9 @@ function Hero() {
               <button type="button" onClick={startGuide} className="text-[14px] text-grey-green underline-offset-4 hover:text-ink hover:underline">
                 New here? Take the walkthrough
               </button>
+            </div>
+            <div className="rise-4 mt-5">
+              <TokenCA />
             </div>
           </div>
 
@@ -579,6 +583,12 @@ function Closing() {
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
               <ChainLine caption="Built on" />
               <PostRef />
+            </div>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <TokenCA full />
+              <Link to="/token" className="text-[13px] text-grey-green hover:text-ink">
+                About the token
+              </Link>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">

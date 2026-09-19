@@ -293,7 +293,7 @@ export default function PortfolioPage() {
             ) : null}
             <p className="mt-3 max-w-[52ch] text-[14.5px] leading-relaxed text-ink-2">
               {status.data?.walletNumber
-                ? `${season.note}. ${status.data.records.length} ${status.data.records.length === 1 ? "ticker" : "tickers"} on file, first signed ${relative(status.data.firstRecordedAt ?? 0)}. Record numbers are positions in the file and XP is derived from them; neither is a vote, a claim or a token.`
+                ? `${season.note}. ${status.data.records.length} ${status.data.records.length === 1 ? "ticker" : "tickers"} on file, first signed ${relative(status.data.firstRecordedAt ?? 0)}. Record numbers are positions in the file and XP is derived from them; neither is a vote, a claim or the REDEEM token.`
                 : `One signature puts this wallet in the file as wallet #${(status.data?.walletsRecorded ?? 0) + 1}. ${season.note}. No custody, no approval, no gas.`}
             </p>
           </div>

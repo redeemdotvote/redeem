@@ -18,7 +18,9 @@ import { redemption } from "./routes/redemption";
 import { statements } from "./routes/statements";
 import { stats } from "./routes/stats";
 import { and, eq } from "drizzle-orm";
-import { formatUnits, isAddress } from "viem";
+import { erc20Abi, formatUnits, isAddress } from "viem";
+import { publicClient } from "./chain/chain";
+import { cached } from "./chain/cache";
 
 // Every chain read lives behind these procedures on purpose: the Robinhood Chain public RPC is
 // rate limited, so the browser never touches it for data — only for signing.
@@ -154,6 +156,27 @@ inner.get("/api/v1/intents/:itemId/receipts", async (c) => {
       typedData: JSON.parse(row.typedData),
     })),
   });
+});
+
+/** The official REDEEM token, read from its contract. Falls back to the last verified values if the RPC refuses. */
+const REDEEM_TOKEN_ADDRESS = "0x3473cCcfD7c186aae98CbebBf8388251237D3896" as const;
+inner.get("/api/v1/token", async () => {
+  const known = { address: REDEEM_TOKEN_ADDRESS, chainId: 4663, name: "Redeem Inc", symbol: "REDEEM", decimals: 18, totalSupply: "1000000000000000000000000000" };
+  try {
+    const read = await cached("redeem-token", 300_000, async () => {
+      const [name, symbol, decimals, totalSupply, block] = await Promise.all([
+        publicClient.readContract({ address: REDEEM_TOKEN_ADDRESS, abi: erc20Abi, functionName: "name" }),
+        publicClient.readContract({ address: REDEEM_TOKEN_ADDRESS, abi: erc20Abi, functionName: "symbol" }),
+        publicClient.readContract({ address: REDEEM_TOKEN_ADDRESS, abi: erc20Abi, functionName: "decimals" }),
+        publicClient.readContract({ address: REDEEM_TOKEN_ADDRESS, abi: erc20Abi, functionName: "totalSupply" }),
+        publicClient.getBlockNumber(),
+      ]);
+      return { name, symbol, decimals, totalSupply: totalSupply.toString(), block: block.toString() };
+    });
+    return json({ ...known, ...read.value, verified: true, explorer: `https://robinhoodchain.blockscout.com/token/${REDEEM_TOKEN_ADDRESS}`, note: "The only official REDEEM address. It has no role in intent weight, queues or XP." });
+  } catch {
+    return json({ ...known, block: null, verified: false, explorer: `https://robinhoodchain.blockscout.com/token/${REDEEM_TOKEN_ADDRESS}`, note: "The only official REDEEM address. It has no role in intent weight, queues or XP." });
+  }
 });
 
 /**

@@ -81,6 +81,17 @@ GET /api/v1/intents/:itemId/receipts    signed receipts for one proxy item
 - Illustrations (archive, multiplier plates, record cards, ownership diagram) are vector components
   under `src/web/components/`; `public/redeem/art/og.jpg` is the social image.
 
+## The REDEEM token
+
+The project's official token on Robinhood Chain (chain id 4663):
+
+`0x3473cCcfD7c186aae98CbebBf8388251237D3896`
+
+ERC-20, name "Redeem Inc", symbol `REDEEM`, 18 decimals, fixed supply 1,000,000,000. This is the
+only official address. The token has no role in the record: intent weight is the Stock Token's
+share-equivalent, and REDEEM does not change tallies, queue positions, record numbers or XP.
+`/token` and `GET /api/v1/token` show the same facts, read live from the contract.
+
 ## Deploying to Vercel
 
 `packages/web` deploys through the Build Output API: `scripts/vercel-build.ts` runs the Vite
