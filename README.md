@@ -91,7 +91,7 @@ source files outside the root directory" on (the Vite config reads `__ports.cjs`
 root), install `cd ../.. && bun install`, build `bun scripts/vercel-build.ts`, no framework preset.
 Smoke-test the bundle locally with `bun scripts/vercel-serve.ts` after a build.
 
-Environment variables: `RPC_URL`, `VITE_WALLETCONNECT_PROJECT_ID`, and `DATABASE_URL` +
+Environment variables: `RPC_URL`, `VITE_REOWN_PROJECT_ID` (the Reown / WalletConnect project id; `VITE_WALLETCONNECT_PROJECT_ID` is still read as a fallback; add every domain the site runs on to the project's allowlist in the Reown dashboard), and `DATABASE_URL` +
 `DATABASE_AUTH_TOKEN` pointing at a Turso database (`libsql://...`). The function is bundled
 with the libsql web client, so only remote `libsql:`/`https:` URLs work there; `file:` and
 `:memory:` are for local runs under Bun. Schema DDL and the ballot seed run once per database

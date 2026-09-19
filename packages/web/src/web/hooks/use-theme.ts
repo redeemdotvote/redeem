@@ -20,7 +20,7 @@ function apply(theme: Theme) {
   // The wallet modal renders outside our stylesheet, so it has to be told separately.
   try {
     appKit?.setThemeMode?.(theme);
-    appKit?.setThemeVariables?.({ "--w3m-accent": theme === "dark" ? "#4ade9b" : "#157a4f" });
+    appKit?.setThemeVariables?.({ "--w3m-accent": theme === "dark" ? "#5fbd8f" : "#1c6b4a" });
   } catch {}
 }
 
