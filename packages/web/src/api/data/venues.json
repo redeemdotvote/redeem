@@ -1,0 +1,399 @@
+{
+  "generatedAt": "2026-09-20T21:04:27.472Z",
+  "block": "68245184",
+  "scannedTokens": [
+    "SPY",
+    "NVDA",
+    "SPCX",
+    "META",
+    "GOOGL",
+    "AAPL",
+    "QQQ",
+    "TSLA",
+    "MU",
+    "CRCL",
+    "SGOV",
+    "AMZN",
+    "MSTR",
+    "MSFT"
+  ],
+  "venues": [
+    {
+      "address": "0xc61284332117c3fb23a2a56cceffd07f7af60029",
+      "kind": "v3_pool",
+      "token0": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "token1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "symbols": [
+        "SPCX",
+        null
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 927
+    },
+    {
+      "address": "0xfab520051f96f4d2a32c22b6a3dd7fffdf231bfe",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0x92FD66527192E3e61d4DDd13322Aa222DE86F9B5",
+      "symbols": [
+        null,
+        "SGOV"
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 801
+    },
+    {
+      "address": "0x8bb3514e2204e1cdf3ac149efee7ff04d91b719f",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "symbols": [
+        null,
+        "AAPL"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 726
+    },
+    {
+      "address": "0x654e4143e82a5824445ade0824351c2a9acd95a8",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xdF0992E440dD0be65BD8439b609d6D4366bf1CB5",
+      "symbols": [
+        null,
+        "CRCL"
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 713
+    },
+    {
+      "address": "0xd60a5d14db690b7afad71f76b108071d7175597d",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "symbols": [
+        null,
+        "QQQ"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 591
+    },
+    {
+      "address": "0xeb60bcd1d920ad6e102690ccfc6fb488899e1510",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+      "symbols": [
+        null,
+        "MSFT"
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 580
+    },
+    {
+      "address": "0x34d0dc122cf9a8eb296fc5e0d3a233625d7d19b7",
+      "kind": "v3_pool",
+      "token0": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "token1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "symbols": [
+        "GOOGL",
+        null
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 499
+    },
+    {
+      "address": "0xd4eb21209c4d6093f80b5b84f5c45cc093ea14a3",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "symbols": [
+        null,
+        "NVDA"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 447
+    },
+    {
+      "address": "0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "symbols": [
+        null,
+        "AAPL"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 436
+    },
+    {
+      "address": "0x983fd86a92e206112a1e6937d39f7b44a141c1d4",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+      "symbols": [
+        null,
+        "MSTR"
+      ],
+      "fee": 500,
+      "factory": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+      "transfers": 407
+    },
+    {
+      "address": "0x8ac92da74ab5f3b1d024dc1943ad7e15dc4179ef",
+      "kind": "v3_pool",
+      "token0": "0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+      "token1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "symbols": [
+        "AMZN",
+        null
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 372
+    },
+    {
+      "address": "0xa953ca88ff430e9487c60ca34d757414f4efda07",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "symbols": [
+        null,
+        "TSLA"
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 355
+    },
+    {
+      "address": "0x62ab521f71431f78ac374cdbadc6cda3c8916b6c",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "symbols": [
+        null,
+        "NVDA"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 352
+    },
+    {
+      "address": "0xa40d00a55d43ba2d188039dcf88bd68f4f133e78",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "symbols": [
+        null,
+        "QQQ"
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 343
+    },
+    {
+      "address": "0x70504a6fafdbfb75fe971faa4dd716e79ac5624c",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+      "symbols": [
+        null,
+        "MSTR"
+      ],
+      "fee": 10000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 342
+    },
+    {
+      "address": "0xc3c9f0171490ef0f4536fe493f3b0ebb5ee0cb5e",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "symbols": [
+        null,
+        "SPCX"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 327
+    },
+    {
+      "address": "0x18a5af4e442f8be68968cc1f00d537f8af2d12cd",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "symbols": [
+        null,
+        "NVDA"
+      ],
+      "fee": 110,
+      "factory": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+      "transfers": 306
+    },
+    {
+      "address": "0x77bf6d7d6f18c2c0ca0673f95af96a8812a3cb86",
+      "kind": "v3_pool",
+      "token0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "token1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "symbols": [
+        "TSLA",
+        null
+      ],
+      "fee": 500,
+      "factory": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+      "transfers": 296
+    },
+    {
+      "address": "0x8695820e01903c83ccfc27a0933c9fd69f13cac1",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0x92FD66527192E3e61d4DDd13322Aa222DE86F9B5",
+      "symbols": [
+        null,
+        "SGOV"
+      ],
+      "fee": 150,
+      "factory": "0xE0c4ceb92d08CA985bB70fe0a22fEb121A9854A8",
+      "transfers": 291
+    },
+    {
+      "address": "0x7f310e3d05e575bd449e4484ef5da15863ea43b1",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0x92FD66527192E3e61d4DDd13322Aa222DE86F9B5",
+      "symbols": [
+        null,
+        "SGOV"
+      ],
+      "fee": 10000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 290
+    },
+    {
+      "address": "0xddcbba3666f578e3f09516f21ff85bfee859ab5e",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "symbols": [
+        null,
+        "SPY"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 262
+    },
+    {
+      "address": "0xc4f0172d6ac8dd294dd1137d047d5e1893760236",
+      "kind": "v3_pool",
+      "token0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "token1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "symbols": [
+        "TSLA",
+        null
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 240
+    },
+    {
+      "address": "0x4230750b3c69ae6054a3f778d75adc2e9a27d70f",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+      "symbols": [
+        null,
+        "MSFT"
+      ],
+      "fee": 500,
+      "factory": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+      "transfers": 226
+    },
+    {
+      "address": "0xf4acdaeeb7022862a763c9b1b885e11191c889e3",
+      "kind": "v3_pool",
+      "token0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "token1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "symbols": [
+        "TSLA",
+        null
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 225
+    },
+    {
+      "address": "0x6ba50150b17ffd0972915aaf04ffd5e8f4fa49b4",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0x92FD66527192E3e61d4DDd13322Aa222DE86F9B5",
+      "symbols": [
+        null,
+        "SGOV"
+      ],
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 217
+    },
+    {
+      "address": "0x3e1afde90341f843c941ff4077d915bde3008c7e",
+      "kind": "v3_pool",
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "symbols": [
+        null,
+        "SPY"
+      ],
+      "fee": 100,
+      "factory": "0xE0c4ceb92d08CA985bB70fe0a22fEb121A9854A8",
+      "transfers": 194
+    },
+    {
+      "address": "0x5c0eaa89799f7b76606f4ff66c92a2654d178927",
+      "kind": "v3_pool",
+      "token0": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "token1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "symbols": [
+        "GOOGL",
+        null
+      ],
+      "fee": 250,
+      "factory": "0xE0c4ceb92d08CA985bB70fe0a22fEb121A9854A8",
+      "transfers": 175
+    },
+    {
+      "address": "0xf9bb10a8277b44d30d5a4338a73e1c30d8e659d5",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "symbols": [
+        null,
+        "AAPL"
+      ],
+      "fee": 250,
+      "factory": "0x16494A80E08Bcb9285D87b67149d7b01774D82F8",
+      "transfers": 144
+    },
+    {
+      "address": "0xd057b1bc54917855bbee58ead58647f47cab35e5",
+      "kind": "v3_pool",
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xfF080c8ce2E5feadaCa0Da81314Ae59D232d4afD",
+      "symbols": [
+        null,
+        "MU"
+      ],
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "transfers": 138
+    }
+  ]
+}

@@ -427,11 +427,18 @@ export default function PortfolioPage() {
           <section>
             <Eyebrow>Certified statements</Eyebrow>
             <h2 className="font-serif mt-2 text-[30px] text-ink">Freeze the record</h2>
-            <p className="mt-2 max-w-[52ch] text-[14px] text-ink-2">A statement serialises this wallet's positions at the current block to canonical JSON and hashes it with SHA-256. Print it, download it, re-hash it without trusting Redeem.</p>
+            <p className="mt-2 max-w-[52ch] text-[14px] text-ink-2">A statement serialises this wallet's positions at the current block to canonical JSON and hashes it with SHA-256. Print it, download it, re-hash it without trusting Redeem. The signed bundle holds every intent and queue request this wallet has signed, with signatures and Merkle proofs; <Link to="/verify" className="text-emerald hover:underline">verify it in your browser</Link>.</p>
             <div className="mt-5 flex items-center gap-3">
               <Button variant="emerald" disabled={create.isPending || held.length === 0 || readOnly} onClick={() => address && create.mutate({ wallet: address })}>
                 {create.isPending ? <Spinner className="size-3.5" /> : <FileCheck2 className="size-4" />} Certify statement
               </Button>
+              {address ? (
+                <Button asChild variant="outline">
+                  <a href={`/api/v1/wallets/${address}/bundle`} download>
+                    Signed bundle (.json)
+                  </a>
+                </Button>
+              ) : null}
               {create.data ? (
                 <Link to={`/statements/${create.data.id}`} className="inline-flex items-center gap-1 text-[13.5px] font-medium text-emerald hover:underline">
                   Open certificate <ArrowUpRight className="size-3.5" />

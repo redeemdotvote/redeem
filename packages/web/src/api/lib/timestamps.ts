@@ -18,15 +18,7 @@ const OTS_HEADER = Buffer.concat([Buffer.from("004f70656e54696d657374616d7073000
 const OP_SHA256 = 0x08;
 const FORK = 0xff;
 
-/** Stable JSON: keys sorted at every level, no whitespace, so the same facts always hash the same. */
-export function canonicalJson(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
-  if (value && typeof value === "object") {
-    const entries = Object.entries(value as Record<string, unknown>).filter(([, v]) => v !== undefined);
-    return `{${entries.sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)).map(([k, v]) => `${JSON.stringify(k)}:${canonicalJson(v)}`).join(",")}}`;
-  }
-  return JSON.stringify(value);
-}
+export { canonicalJson } from "./canonical";
 
 async function submit(calendar: string, digest: Buffer): Promise<Buffer | null> {
   try {

@@ -26,6 +26,12 @@ const HISTORICAL_ANCHOR = { block: 36_345_344, timestamp: 1_786_719_786 };
 const SECONDS_PER_BLOCK =
   (ANCHOR.timestamp - HISTORICAL_ANCHOR.timestamp) / (ANCHOR.block - HISTORICAL_ANCHOR.block);
 
+/** The inverse of estimateBlockTimestamp: roughly which block was the head at `timestamp`. */
+export function estimateBlockAt(timestamp: number, head?: { block: number; timestamp: number }): number {
+  const anchor = head ?? ANCHOR;
+  return Math.max(0, Math.round(anchor.block - (anchor.timestamp - timestamp) / SECONDS_PER_BLOCK));
+}
+
 export function estimateBlockTimestamp(blockNumber: number, head?: { block: number; timestamp: number }): number {
   const anchor = head ?? ANCHOR;
   return Math.round(anchor.timestamp - (anchor.block - blockNumber) * SECONDS_PER_BLOCK);

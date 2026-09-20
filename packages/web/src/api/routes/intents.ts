@@ -6,6 +6,7 @@ import { z } from "zod";
 import { base } from "../__core/app";
 import { bindReferral } from "../lib/referrals";
 import { attestationDocument } from "../lib/documents";
+import { recordDatePosition } from "../lib/record-date";
 import { ensureTimestamp, getTimestamp, publicTimestamp } from "../lib/timestamps";
 import { leafHash, merkleProof, merkleRoot, verifyProof } from "../ballots/merkle";
 import { type Choice } from "../ballots/seed";
@@ -380,6 +381,15 @@ export const intents = {
         : null,
       power,
     };
+  }),
+
+  /** What the wallet held on the issuer's record date, rebuilt from Transfer logs. Informational; never changes counted weight. */
+  recordDate: base.input(z.object({ itemId: z.string(), wallet: addressSchema })).handler(async ({ input }) => {
+    const { ballot } = await loadItem(input.itemId);
+    if (!ballot.recordDate) return { available: false as const, reason: "The proxy statement does not state a record date." };
+    const position = await recordDatePosition(input.wallet as Address, ballot.symbol, ballot.recordDate).catch(() => null);
+    if (!position) return { available: false as const, reason: "The record-date position could not be read right now." };
+    return { available: true as const, ...position };
   }),
 
   /** Step one: the server reads the wallet's position and issues the exact EIP-712 payload to sign. */

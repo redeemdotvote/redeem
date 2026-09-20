@@ -258,3 +258,22 @@ export const timestamps = sqliteTable("timestamps", {
     .notNull()
     .$defaultFn(() => new Date()),
 });
+
+/** Holder webhooks. `secret` signs each delivery; ten consecutive failures switch a hook off. */
+export const webhooks = sqliteTable(
+  "webhooks",
+  {
+    id: text("id").primaryKey(),
+    wallet: text("wallet").notNull(),
+    url: text("url").notNull(),
+    secret: text("secret").notNull(),
+    active: integer("active", { mode: "boolean" }).notNull().default(true),
+    failures: integer("failures").notNull().default(0),
+    lastStatus: text("last_status"),
+    lastDeliveredAt: integer("last_delivered_at", { mode: "timestamp" }),
+    createdAt: integer("created_at", { mode: "timestamp" })
+      .notNull()
+      .$defaultFn(() => new Date()),
+  },
+  (t) => [index("webhooks_wallet_idx").on(t.wallet)],
+);

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { RecordCards } from "../components/record-cards";
 import { ChainLine, PostRef } from "../components/robinhood-chain";
 import { FoundingLine } from "../components/founding";
+import { COUNTER_THRESHOLD } from "../components/latest-records";
 import { AssetLogo } from "../components/brand";
 import { Page } from "../components/layout";
 import { Num } from "../components/number";
@@ -78,20 +79,34 @@ export default function RedeemPage() {
                 <FoundingLine />
                 <ChainLine caption="Queues per security on" />
               </div>
-              <dl className="mt-8 grid max-w-[560px] grid-cols-3 gap-x-8">
-                <div>
-                  <dt className="eyebrow">Requests</dt>
-                  <dd className="font-mono mt-1.5 text-[24px] text-ink">{status.data ? status.data.total : <Skeleton className="h-7 w-10" />}</dd>
+              {status.data && status.data.wallets >= COUNTER_THRESHOLD ? (
+                <dl className="mt-8 grid max-w-[560px] grid-cols-3 gap-x-8">
+                  <div>
+                    <dt className="eyebrow">Requests</dt>
+                    <dd className="font-mono mt-1.5 text-[24px] text-ink">{status.data.total}</dd>
+                  </div>
+                  <div>
+                    <dt className="eyebrow">Share-eq requested</dt>
+                    <dd className="font-mono mt-1.5 text-[24px] text-ink">
+                      <Num value={status.data.totalRequested} format={shares} />
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="eyebrow">Wallets</dt>
+                    <dd className="font-mono mt-1.5 text-[24px] text-ink">{status.data.wallets}</dd>
+                  </div>
+                </dl>
+              ) : status.data ? (
+                <div className="mt-8 max-w-[560px] border-t border-line-2 pt-4">
+                  <div className="eyebrow">Your place, if you pre-register now</div>
+                  <div className="font-mono mt-1.5 text-[24px] text-ink">
+                    #{(status.data.selected?.requests ?? 0) + 1} <span className="text-[14px] text-grey-green">in the {symbol || "ticker"} queue</span>
+                  </div>
+                  <p className="mt-1 text-[12.5px] text-grey-green">Queue positions are assigned in signing order, per ticker, and never move.</p>
                 </div>
-                <div>
-                  <dt className="eyebrow">Share-eq requested</dt>
-                  <dd className="font-mono mt-1.5 text-[24px] text-ink">{status.data ? <Num value={status.data.totalRequested} format={shares} /> : <Skeleton className="h-7 w-16" />}</dd>
-                </div>
-                <div>
-                  <dt className="eyebrow">Wallets</dt>
-                  <dd className="font-mono mt-1.5 text-[24px] text-ink">{status.data ? status.data.wallets : <Skeleton className="h-7 w-10" />}</dd>
-                </div>
-              </dl>
+              ) : (
+                <Skeleton className="mt-8 h-16 max-w-[560px]" />
+              )}
             </div>
             <div className="relative hidden lg:block">
               <RecordCards front="queue" labels={["#1", "#2", "#3"]} className="ml-auto max-w-[520px]" />

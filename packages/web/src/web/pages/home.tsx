@@ -11,6 +11,7 @@ import { startGuide } from "../components/guide";
 import { DeskRow, SecurityDesk } from "../components/desk";
 import { TokenCA } from "../components/token-ca";
 import { FoundingLine } from "../components/founding";
+import { COUNTER_THRESHOLD, LatestRecords } from "../components/latest-records";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { SecurityRow } from "../components/ledger";
 import { Num } from "../components/number";
@@ -84,8 +85,10 @@ function Hero() {
     stats.data && stats.data.founding.remaining > 0
       ? ["Founding numbers left", <Num key="f" value={stats.data.founding.remaining} format={(v) => `${Math.round(v)} / ${stats.data!.founding.limit}`} />]
       : ["Wallets recorded", stats.data ? <Num value={stats.data.recordedWallets} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
-    ["Intents signed", stats.data ? <Num value={stats.data.intents} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
-    ["Queue requests", stats.data ? <Num value={stats.data.requests} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
+    // Activity counters appear once there is enough activity for them to mean something; until then
+    // the strip shows what is open to be signed, which is just as real.
+    stats.data && stats.data.intents >= COUNTER_THRESHOLD ? ["Intents signed", <Num key="i" value={stats.data.intents} format={(v) => Math.round(v).toLocaleString("en-US")} />] : ["Proxy items open", stats.data ? String(stats.data.openBallotItems) : null],
+    stats.data && stats.data.requests >= COUNTER_THRESHOLD ? ["Queue requests", <Num key="q" value={stats.data.requests} format={(v) => Math.round(v).toLocaleString("en-US")} />] : ["Meetings open", stats.data ? String(stats.data.openCompanies) : null],
   ];
 
   return (
@@ -520,8 +523,12 @@ function Chamber() {
                 <dt className="mt-1 text-[12.5px] text-[#8fb3a0]">Direct wallets · indexed</dt>
               </div>
               <div>
+                <dd className="font-mono text-[20px] text-[#e9ede7]">{stats.data?.pooled ? `${shares(stats.data.pooled.shareEq)} sh-eq` : "reading"}</dd>
+                <dt className="mt-1 text-[12.5px] text-[#8fb3a0]">{stats.data?.pooled ? `In ${stats.data.pooled.venues} liquidity pools · looked through` : "Liquidity pools"}</dt>
+              </div>
+              <div>
                 <dd className="font-mono text-[20px] text-[#7f998c]">Not indexed yet</dd>
-                <dt className="mt-1 text-[12.5px] text-[#8fb3a0]">Vaults · lending · LP</dt>
+                <dt className="mt-1 text-[12.5px] text-[#8fb3a0]">Vaults · lending · nested</dt>
               </div>
             </dl>
             <div className="mt-8">
@@ -613,6 +620,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <LatestRecords />
       <ThePost />
       <RecordBookPanel />
       <Desk />

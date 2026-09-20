@@ -92,6 +92,46 @@ const ENDPOINTS = [
   },
   {
     method: "GET",
+    path: "/api/v1/venues",
+    title: "Look-through venues",
+    body: "The liquidity pools and vaults that hold Stock Tokens, with each one's holding as share-equivalents, read by view call. `?symbol=NVDA` narrows it. `/api/v1/resolve/:contract?wallet=` probes any contract (V2 pair, V3 pool, ERC-4626 vault) and returns a wallet's pro rata share where the venue type allows it.",
+    example: `curl -s "https://redeem-desktop.vercel.app/api/v1/venues?symbol=TSLA"`,
+    response: `{ "venues": [ { "venue": "0x…", "kind": "v3_pool", "symbol": "TSLA", "pairedWith": "USDC", "fee": 500, "shareEquivalent": 412.08 } ] }`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/positions/:wallet/at/:date/:symbol",
+    title: "Record-date position",
+    body: "What a wallet held on a past date, without an archive node: the current balance minus net transfers since, rebuilt from Transfer logs, with the multiplier in force that day. `coverage` is `complete` only when the scan reached the date; otherwise the figure should not be relied on.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/positions/0x8366a39cc670b4001a1121b8f6a443a643e40951/at/2026-07-31/AMC`,
+    response: `{ "symbol": "AMC", "recordDate": "2026-07-31", "block": 58112044, "coverage": "complete", "shareEquivalent": "12500000000000000000" }`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/wallets/:wallet/bundle",
+    title: "Signed wallet bundle",
+    body: "Everything a wallet has signed in one self-verifying file: EIP-712 intents with signatures, queue requests with signatures, Merkle proofs for attested receipts, record numbers, and a SHA-256 digest. The /verify page checks it in the browser.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/wallets/0x8366a39cc670b4001a1121b8f6a443a643e40951/bundle`,
+    response: `{ "bundleDigest": "9f2c…", "contents": { "type": "redeem.wallet-bundle", "intents": [ … ], "redemptionRequests": [ … ] } }`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/reports/:ballotId",
+    title: "Holder Intent Report",
+    body: "One meeting's report as JSON. After the cutoff, `/document` returns the frozen canonical JSON and `/proof.ots` its OpenTimestamps proof; the same pair exists per item under `/api/v1/attestations/:itemId/`.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/reports/AMC-2026-09-24`,
+    response: `{ "state": "final", "summary": { "wallets": 12, "shareEq": 8421.5, "againstBoard": 1 }, "timestamp": { "digest": "42c5…", "status": "stamped" } }`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/alerts/preview",
+    title: "Alerts and webhooks",
+    body: "What the alert channels post: multiplier changes, new proxy items, final reports and a daily line. Holders of REDEEM can register signed webhooks for the same events on the token page; each delivery carries `x-redeem-signature: sha256=HMAC(secret, body)`.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/alerts/preview`,
+    response: `{ "channels": { "telegram": false, "x": false }, "events": [ { "type": "multiplier", "symbol": "CRM", "text": "CRM multiplier +0.115% …" } ] }`,
+  },
+  {
+    method: "GET",
     path: "/api/v1/token",
     title: "REDEEM token",
     body: "The official REDEEM token on Robinhood Chain, read from its contract: address, name, symbol, decimals, total supply and the block it was read at. Use it to verify the address programmatically.",
@@ -243,7 +283,7 @@ export default function ApiPage() {
                     </div>
                     <h2 className="font-serif mt-4 text-[30px] text-ink">{endpoint.title}</h2>
                     <p className="mt-3 max-w-[52ch] text-[14.5px] leading-relaxed text-ink-2">{endpoint.body}</p>
-                    <a href={`${origin}${endpoint.path.replace(":wallet", "0x8366a39cc670b4001a1121b8f6a443a643e40951").replace(":symbol", "NVDA").replace(":itemId", "AMC-2026-09-24-1")}`} target="_blank" rel="noreferrer" className="mt-4 inline-block text-[13px] font-medium text-emerald hover:underline">
+                    <a href={`${origin}${endpoint.path.replace(":wallet", "0x8366a39cc670b4001a1121b8f6a443a643e40951").replace(":symbol", "NVDA").replace(":itemId", "AMC-2026-09-24-1").replace(":ballotId", "AMC-2026-09-24").replace(":date", "2026-07-31").replace(":contract", "0x8bb3514e2204e1cdf3ac149efee7ff04d91b719f")}`} target="_blank" rel="noreferrer" className="mt-4 inline-block text-[13px] font-medium text-emerald hover:underline">
                       Try it live
                     </a>
                   </div>
@@ -319,7 +359,7 @@ export default function ApiPage() {
                 {[
                   ["Vault adapters", "Read a vault's share of each Stock Token and attribute it pro rata to vault-share holders. Interface: (vault, block) → [{ wallet, symbol, shareEquivalent }].", "open"],
                   ["Lending collateral", "Attribute Stock Tokens posted as collateral on Robinhood Chain lending markets to the depositor, net of liquidations.", "open"],
-                  ["LP positions", "Resolve pool positions holding Stock Tokens to their liquidity providers by share of the pool.", "open"],
+                  ["V3 position resolution", "Pool-level look-through is live for 29 pools. Next: resolve each pool's holding to its providers through the position manager, tick range by tick range.", "open"],
                   ["Nested positions", "Vault-in-vault and wrapped positions, resolved recursively with a cycle guard.", "open"],
                   ["Archive reads", "Balance at a past block from any archive source for Robinhood Chain, so weight can be read at the record date rather than at signing.", "open"],
                   ["Attestation contract", "A minimal registry storing each item's Merkle root, cutoff block and receipt count, with a verifier anyone can call.", "scoped"],

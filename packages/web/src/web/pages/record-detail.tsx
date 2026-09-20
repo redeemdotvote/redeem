@@ -34,7 +34,7 @@ export default function RecordDetailPage() {
     );
   }
 
-  const { token, asset, row, actions, events, activity, supply, ownership } = data;
+  const { token, asset, row, actions, events, activity, supply, ownership, venues } = data;
   const edgar = token.cik ? `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${token.cik}&type=DEF+14A&dateb=&owner=include&count=40` : null;
 
   return (
@@ -119,8 +119,28 @@ export default function RecordDetailPage() {
             <section>
               <Eyebrow>Beneficial ownership</Eyebrow>
               <h2 className="font-serif mt-2 text-[30px] text-ink">Where the share-equivalents sit</h2>
-              <p className="mt-2 max-w-[60ch] text-[14.5px] text-ink-2">Every path resolves, pro rata, back to a holder. Direct wallets are indexed today; adapters for vaults, lending, liquidity and nested positions are named so the seam is visible, not hidden.</p>
+              <p className="mt-2 max-w-[60ch] text-[14.5px] text-ink-2">Every path resolves, pro rata, back to a holder. Wallets and liquidity pools are read today; vault, lending and nested adapters are named so the seam is visible, not hidden.</p>
               <OwnershipRule segments={ownership} className="mt-8" />
+              {venues.length > 0 ? (
+                <div className="mt-6">
+                  <div className="eyebrow">Liquidity pools holding {token.symbol}</div>
+                  <ol className="mt-2 border-t border-line-2">
+                    {venues.slice(0, 6).map((venue) => (
+                      <li key={venue.venue} className="flex items-center justify-between gap-4 border-b border-line py-2.5 text-[13px]">
+                        <a href={explorerAddress(venue.venue)} target="_blank" rel="noreferrer" className="font-mono text-ink hover:text-emerald">
+                          {shortAddress(venue.venue, 5)}
+                        </a>
+                        <span className="text-grey-green">
+                          {token.symbol} / {venue.pairedWith ?? "?"}
+                          {venue.fee ? ` · ${(venue.fee / 10_000).toFixed(2)}%` : ""}
+                        </span>
+                        <span className="font-mono text-ink">{shares(venue.shareEquivalent)} sh-eq</span>
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="mt-2 text-[12px] text-grey-green">Read from each pool with a view call. Concentrated-liquidity positions are resolved to the pool, not yet to each provider.</p>
+                </div>
+              ) : null}
             </section>
 
             {/* Multiplier */}

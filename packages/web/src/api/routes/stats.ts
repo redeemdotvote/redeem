@@ -14,6 +14,7 @@ import { dbSafe } from "../lib/safe";
 import { nowSeconds } from "../lib/shared";
 import { activityBySymbol } from "./record";
 import { getTimestamp, publicTimestamp } from "../lib/timestamps";
+import { getVenueHoldings, VENUES } from "../lib/venues";
 import { asc } from "drizzle-orm";
 
 const count = (rows: Array<{ count: number }>) => Number(rows[0]?.count ?? 0);
@@ -96,6 +97,9 @@ export const stats = {
       priced: market ? market.value.assets.filter((asset) => asset.priceUsd !== null).length : 0,
       season: SEASON,
       recordedWallets: recorded,
+      pooled: await getVenueHoldings()
+        .then((holdings) => ({ venues: VENUES.length, shareEq: holdings.value.reduce((sum, holding) => sum + holding.shareEquivalent, 0), symbols: new Set(holdings.value.map((holding) => holding.symbol)).size }))
+        .catch(() => null),
       founding: { limit: FOUNDING_LIMIT, remaining: Math.max(0, FOUNDING_LIMIT - recorded) },
     };
   }),
@@ -175,6 +179,26 @@ export const stats = {
         attestation: firstAttestation ? { itemId: firstAttestation.ballotItemId, ballotId: firstAttestation.ballotId, symbol: firstAttestation.symbol, merkleRoot: firstAttestation.merkleRoot, leafCount: firstAttestation.leafCount, blockNumber: firstAttestation.blockNumber, at: Math.floor(firstAttestation.createdAt.getTime() / 1000), timestamp: stamp } : null,
         referral: firstReferral ? { referrer: firstReferral.referrer, at: Math.floor(firstReferral.createdAt.getTime() / 1000) } : null,
       },
+    };
+  }),
+
+  /** The latest signatures, newest first, for the live ticker. Wallets are shortened; everything else is already public. */
+  recent: base.handler(async () => {
+    const index = await loadRecordIndex();
+    const latest = index.events.slice(-14).reverse();
+    return {
+      total: index.events.length,
+      wallets: index.wallets.size,
+      nextWalletNumber: index.wallets.size + 1,
+      events: latest.map((event) => ({
+        wallet: `${event.wallet.slice(0, 6)}…${event.wallet.slice(-4)}`,
+        walletNumber: index.wallets.get(event.wallet)?.number ?? null,
+        symbol: event.symbol,
+        logo: findToken(event.symbol)?.logo ?? null,
+        kind: event.kind,
+        shareEq: f18(event.weight),
+        at: event.at,
+      })),
     };
   }),
 

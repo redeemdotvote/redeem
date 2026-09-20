@@ -19,6 +19,12 @@ import { statements } from "./routes/statements";
 import { stats } from "./routes/stats";
 import { buildReport, reports } from "./routes/reports";
 import { getTimestamp } from "./lib/timestamps";
+import { buildBundle } from "./lib/bundle";
+import { channels, collectEvents, dailyDigest, runAlerts } from "./lib/alerts";
+import { tierFor } from "./lib/tier";
+import { recordDatePosition } from "./lib/record-date";
+import { hooks } from "./routes/hooks";
+import { getVenueHoldings, resolveHolder, VENUES_GENERATED_AT } from "./lib/venues";
 import { and, eq } from "drizzle-orm";
 import { erc20Abi, formatUnits, isAddress } from "viem";
 import { publicClient } from "./chain/chain";
@@ -35,6 +41,7 @@ export const router = {
   statements,
   redemption,
   reports,
+  hooks,
 };
 
 export type AppRouter = typeof router;
@@ -189,6 +196,57 @@ inner.get("/api/v1/attestations", async () => {
     out.push({ itemId: row.ballotItemId, ballotId: row.ballotId, symbol: row.symbol, merkleRoot: row.merkleRoot, leafCount: row.leafCount, blockNumber: row.blockNumber, attestedAt: Math.floor(row.createdAt.getTime() / 1000), digest: stamp?.digest ?? null, stamped: stamp?.status === "stamped" });
   }
   return json({ note: "Intent, not a shareholder vote.", attestations: out });
+});
+
+/** A wallet's holding on a past date (YYYY-MM-DD), rebuilt from Transfer logs; `coverage` says whether the scan reached that far. */
+inner.get("/api/v1/positions/:wallet/at/:date/:symbol", async (c) => {
+  const wallet = c.req.param("wallet");
+  const date = c.req.param("date");
+  if (!isAddress(wallet) || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return json({ error: "invalid_request" }, 400);
+  const position = await recordDatePosition(wallet, c.req.param("symbol"), date).catch(() => null);
+  return position ? json({ chainId: 4663, wallet, ...position }) : json({ error: "unknown_token" }, 404);
+});
+
+/** Look-through: which pools and vaults hold Stock Tokens, and one wallet's pro rata share of any contract. */
+inner.get("/api/v1/venues", async (c) => {
+  const symbol = c.req.query("symbol")?.toUpperCase();
+  const holdings = await getVenueHoldings();
+  const rows = symbol ? holdings.value.filter((holding) => holding.symbol === symbol) : holdings.value;
+  return json({ chainId: 4663, registryGeneratedAt: VENUES_GENERATED_AT, ageMs: holdings.ageMs, note: "V3 positions are resolved to the pool, not yet to each provider.", venues: rows });
+});
+inner.get("/api/v1/resolve/:contract", async (c) => {
+  const contract = c.req.param("contract");
+  const wallet = c.req.query("wallet") ?? null;
+  if (!isAddress(contract) || (wallet && !isAddress(wallet))) return json({ error: "invalid_address" }, 400);
+  return json(await resolveHolder(contract, wallet as `0x${string}` | null));
+});
+
+/** What the alert channels would post for the last week, and which channels are configured. Sends nothing. */
+inner.get("/api/v1/alerts/preview", async () => {
+  const since = Math.floor(Date.now() / 1000) - 7 * 86_400;
+  const [events, digest] = await Promise.all([collectEvents(since), dailyDigest().catch(() => null)]);
+  return json({ channels: channels(), since, digest, events: events.slice(-25).reverse() });
+});
+
+/** The scheduled run. Requires CRON_SECRET as a bearer token (Vercel Cron sends it); `?digest=1` adds the daily line. */
+inner.get("/api/cron/alerts", async (c) => {
+  const secret = process.env.CRON_SECRET;
+  if (!secret || c.req.header("authorization") !== `Bearer ${secret}`) return json({ error: "unauthorized" }, 401);
+  return json(await runAlerts({ digest: c.req.query("digest") === "1" }));
+});
+
+inner.get("/api/v1/token/tier/:wallet", async (c) => {
+  const wallet = c.req.param("wallet");
+  if (!isAddress(wallet)) return json({ error: "invalid_address" }, 400);
+  return json(await tierFor(wallet));
+});
+
+/** Everything one wallet has signed, as a single self-verifying file. */
+inner.get("/api/v1/wallets/:wallet/bundle", async (c) => {
+  const wallet = c.req.param("wallet");
+  if (!isAddress(wallet)) return json({ error: "invalid_address" }, 400);
+  const bundle = await buildBundle(wallet);
+  return new Response(JSON.stringify(bundle, null, 2), { headers: { "content-type": "application/json; charset=utf-8", "content-disposition": `inline; filename="redeem-bundle-${wallet.toLowerCase()}.json"`, "cache-control": "no-store" } });
 });
 
 /** The official REDEEM token, read from its contract. Falls back to the last verified values if the RPC refuses. */

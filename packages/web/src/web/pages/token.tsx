@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Page, PageHead } from "../components/layout";
 import { ChainLine } from "../components/robinhood-chain";
 import { TokenCA } from "../components/token-ca";
+import { HolderTools } from "../components/holder-tools";
 import { Def, Eyebrow, Mark } from "../components/ui";
 import { REDEEM_TOKEN, tokenExplorerUrl } from "../lib/token";
 
@@ -45,7 +46,13 @@ export default function TokenPage() {
       <section className="mt-14 grid gap-10 border-t border-line-2 pt-10 md:grid-cols-2">
         <div>
           <Eyebrow>What it is</Eyebrow>
-          <p className="mt-3 text-[15.5px] leading-relaxed text-ink-2">REDEEM is the token of the Redeem project, a standard ERC-20 on Robinhood Chain with a fixed supply. Anything it is used for on this platform will be announced on this page first.</p>
+          <p className="mt-3 text-[15.5px] leading-relaxed text-ink-2">REDEEM is the token of the Redeem project, a standard ERC-20 on Robinhood Chain with a fixed supply. Anything it is used for on this platform is announced on this page first.</p>
+          <div className="mt-6">
+            <Eyebrow>What it unlocks</Eyebrow>
+            <p className="mt-3 text-[15.5px] leading-relaxed text-ink-2">
+              Delivery, and only delivery. A wallet holding REDEEM can register webhooks that receive every record event as it happens: multiplier changes, new proxy items, final Holder Intent Reports, each signed with a per-hook secret. The balance is read from the chain; nothing is staked, locked or spent. The record itself stays free and keyless for everyone.
+            </p>
+          </div>
         </div>
         <div>
           <Eyebrow>What it is not</Eyebrow>
@@ -64,6 +71,9 @@ export default function TokenPage() {
             ))}
           </ul>
         </div>
+      </section>
+      <section className="mt-12">
+        <HolderTools />
       </section>
       <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
         <Mark tone="warn">Verify the address before every transaction</Mark>

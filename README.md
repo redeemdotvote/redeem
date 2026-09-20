@@ -81,6 +81,19 @@ GET /api/v1/intents/:itemId/receipts    signed receipts for one proxy item
 - Illustrations (archive, multiplier plates, record cards, ownership diagram) are vector components
   under `src/web/components/`; `public/redeem/art/og.jpg` is the social image.
 
+## Alerts, webhooks and scheduled runs
+
+`GET /api/cron/alerts?digest=1` runs once a day from Vercel Cron (the schedule is written into the
+Build Output config by `scripts/vercel-build.ts`) and needs `CRON_SECRET`, which Vercel sends as a
+bearer token. Any external scheduler can call it more often with the same header. Channels switch on
+when their variables exist: `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`; `X_API_KEY`, `X_API_SECRET`,
+`X_ACCESS_TOKEN`, `X_ACCESS_SECRET`. Holder webhooks need nothing. `GET /api/v1/alerts/preview`
+shows what would be posted without sending it. `REDEEM_TIERS="holder:100000,steward:1000000"`
+overrides the webhook thresholds; `PUBLIC_SITE_URL` sets the links in alert text.
+
+Look-through venues live in `src/api/data/venues.json`; refresh them with
+`bun scripts/discover-venues.ts` from `packages/web` and commit the result.
+
 ## The REDEEM token
 
 The project's official token on Robinhood Chain (chain id 4663):

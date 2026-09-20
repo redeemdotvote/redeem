@@ -58,6 +58,9 @@ await writeFile(
   JSON.stringify(
     {
       version: 3,
+      // One scheduled run a day: what changed on the record, plus the daily line. Vercel sends
+      // CRON_SECRET as a bearer token. Hobby plans allow daily schedules only.
+      crons: [{ path: "/api/cron/alerts?digest=1", schedule: "0 14 * * *" }],
       routes: [
         { src: "^/assets/(.*)$", headers: { "cache-control": "public, max-age=31536000, immutable" }, continue: true },
         { src: "^/redeem/(.*)$", headers: { "cache-control": "public, max-age=86400" }, continue: true },

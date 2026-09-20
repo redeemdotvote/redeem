@@ -9,6 +9,7 @@ import { findToken, SECTORS, TOKENS, votable } from "../chain/tokens";
 import { db } from "../database";
 import * as schema from "../database/schema";
 import { dbSafe } from "../lib/safe";
+import { getVenueHoldings } from "../lib/venues";
 import { addressSchema, ballotStatus, nowSeconds } from "../lib/shared";
 import { buildRow, loadCorporateActions } from "./portfolio";
 
@@ -225,6 +226,10 @@ export const record = {
 
     const act = activity.get(token.symbol);
     const totalSupply = BigInt(asset.totalSupply);
+    const venues = await getVenueHoldings()
+      .then((holdings) => holdings.value.filter((holding) => holding.symbol === token.symbol))
+      .catch(() => []);
+    const pooled = venues.reduce((sum, venue) => sum + venue.shareEquivalent, 0);
     return {
       token: {
         symbol: token.symbol,
@@ -264,12 +269,14 @@ export const record = {
       },
       /** Where the share-equivalents sit. Only direct wallets are indexed today; the rest is named so the seam is visible. */
       ownership: [
-        { key: "direct", label: "Direct wallets", shareEquivalent: asset.totalSupplyUIFloat, indexed: true },
+        { key: "direct", label: "Wallets · other", shareEquivalent: Math.max(0, asset.totalSupplyUIFloat - pooled), indexed: true },
+        { key: "lp", label: `Liquidity pools · ${venues.length}`, shareEquivalent: pooled, indexed: true },
         { key: "vault", label: "Vaults", shareEquivalent: null, indexed: false },
         { key: "lending", label: "Lending collateral", shareEquivalent: null, indexed: false },
-        { key: "lp", label: "Liquidity positions", shareEquivalent: null, indexed: false },
         { key: "nested", label: "Nested positions", shareEquivalent: null, indexed: false },
       ],
+      /** The venues holding this token that the record can look through, largest first. */
+      venues,
       blockNumber: market.value.blockNumber,
       blockTimestamp: market.value.blockTimestamp,
       dataAgeMs: market.ageMs,

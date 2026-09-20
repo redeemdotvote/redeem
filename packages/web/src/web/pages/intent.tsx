@@ -9,7 +9,7 @@ import { Countdown, EventStatus, IntentLabel, ITEM_TYPE_LABEL, Recommendation } 
 import { Button, Def, Display, Eyebrow, Input, Mark, Note, Skeleton, Spinner, Tag } from "../components/ui";
 import { useWallet } from "../hooks/use-wallet";
 import { dateTime, dateTimeUtc, isoDate, relative, shares, shortHash } from "../lib/format";
-import { useAttest, useIntentItem, useSignIntent } from "../queries/intents";
+import { useAttest, useIntentItem, useRecordDate, useSignIntent } from "../queries/intents";
 
 const EFFECT: Record<string, string> = { against: "same effect as a vote against", no_effect: "no effect on the outcome", not_applicable: "does not apply" };
 
@@ -24,6 +24,7 @@ export default function IntentPage() {
   const [delegate, setDelegate] = useState("");
 
   const data = query.data;
+  const recordDate = useRecordDate(id, wallet.address, Boolean(query.data?.power?.holds));
   const item = data?.item;
   const event = data?.ballot;
   const active = event?.status === "active";
@@ -263,6 +264,21 @@ export default function IntentPage() {
                       </Link>
                     </span>
                   </Note>
+                ) : null}
+                {recordDate.data?.available ? (
+                  <div className="mt-4 border-t border-line pt-3 text-[12.5px] text-grey-green">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <span>Held on the record date · {isoDate(recordDate.data.recordDate)}</span>
+                      <span className="font-mono text-[13px] text-ink">{recordDate.data.coverage === "complete" ? `${shares(recordDate.data.shareEquivalentFloat)} sh-eq` : "not readable that far back"}</span>
+                    </div>
+                    <p className="mt-1 leading-relaxed">
+                      {recordDate.data.coverage === "complete"
+                        ? `Rebuilt from Transfer logs at about block ${recordDate.data.block.toLocaleString("en-US")}. Shown for information: counted weight is what you hold at signing and at cutoff.`
+                        : "The transfer scan did not reach the record date, so the figure is withheld rather than guessed."}
+                    </p>
+                  </div>
+                ) : recordDate.isLoading && data.power.holds ? (
+                  <div className="mt-4 border-t border-line pt-3 text-[12.5px] text-grey-green">Reading the record-date position from Transfer logs…</div>
                 ) : null}
                 {!data.power.holds ? <Note tone="warn" className="mt-4">This wallet holds no {item.symbol} on Robinhood Chain, so there is no share-equivalent to record.</Note> : null}
               </>

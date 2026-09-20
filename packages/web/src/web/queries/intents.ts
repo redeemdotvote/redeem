@@ -86,3 +86,8 @@ export function useAttest() {
   const queryClient = useQueryClient();
   return useMutation(orpc.intents.attest.mutationOptions({ onSuccess: () => queryClient.invalidateQueries({ queryKey: orpc.intents.key() }) }));
 }
+
+/** What the wallet held on the issuer's record date, rebuilt from Transfer logs. Loaded lazily; it costs a log scan. */
+export function useRecordDate(itemId: string, wallet?: string, enabled = true) {
+  return useQuery(orpc.intents.recordDate.queryOptions({ input: { itemId, wallet: wallet ?? "" }, enabled: Boolean(itemId && wallet) && enabled, staleTime: 5 * 60_000, retry: 0 }));
+}

@@ -18,6 +18,7 @@ const PAGES: Array<[string, string, string]> = [
   ["$REDEEM token", "Official contract address on Robinhood Chain", "/token"],
   ["Holder Intent Reports", "What token holders would have wanted, per meeting", "/reports"],
   ["Genesis", "The founding hundred and the first of everything", "/genesis"],
+  ["Verify a record", "Check a wallet bundle in your browser", "/verify"],
   ["Record Book", "One ledger for every official Stock Token", "/record"],
   ["Markets", "Security master", "/markets"],
   ["Portfolio", "Your positions and signed record", "/portfolio"],
