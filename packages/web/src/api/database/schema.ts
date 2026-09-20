@@ -240,3 +240,21 @@ export const referrals = sqliteTable(
   },
   (t) => [index("referrals_referrer_idx").on(t.referrer)],
 );
+
+/**
+ * Frozen documents and their OpenTimestamps proofs. `document` is the exact canonical JSON that
+ * was hashed; `ots` is the proof file, base64. Keys: `attestation:<itemId>` and `report:<ballotId>`.
+ */
+export const timestamps = sqliteTable("timestamps", {
+  key: text("key").primaryKey(),
+  kind: text("kind").notNull(),
+  document: text("document").notNull(),
+  digest: text("digest").notNull(),
+  ots: text("ots"),
+  calendars: text("calendars").notNull().default("[]"),
+  status: text("status").notNull().default("failed"),
+  stampedAt: integer("stamped_at", { mode: "timestamp" }),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});

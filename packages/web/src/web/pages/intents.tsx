@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useSearch } from "wouter";
 import { RecordCards } from "../components/record-cards";
 import { ChainLine, PostRef } from "../components/robinhood-chain";
+import { FoundingLine } from "../components/founding";
 import { SplitBar } from "../components/bars";
 import { AssetLogo } from "../components/brand";
 import { Page } from "../components/layout";
@@ -55,8 +56,12 @@ export default function IntentsPage() {
                 <IntentLabel />
                 <ChainLine caption="Weighted by holdings on" />
               </div>
-              <div className="mt-4">
+              <div className="mt-4 flex flex-col items-start gap-3">
                 <PostRef />
+                <FoundingLine />
+                <Link to="/reports" className="text-[13.5px] font-medium text-emerald hover:underline">
+                  Holder Intent Reports, per meeting →
+                </Link>
               </div>
             </div>
             <div className="relative hidden lg:block">

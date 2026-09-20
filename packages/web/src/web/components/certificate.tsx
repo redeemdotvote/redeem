@@ -18,6 +18,8 @@ export interface CertificateData {
   blockNumber: string;
   wallet: string;
   recordNumber: number | null;
+  /** The wallet's Redeem wallet number; 1 to 100 are the founding hundred. */
+  walletNumber?: number | null;
   holdersRecorded: number | null;
   queuePosition: number | null;
   season: { label: string; note: string };
@@ -159,7 +161,7 @@ export function drawCertificate(canvas: HTMLCanvasElement, d: CertificateData, d
   eyebrow("Season", sx, 444);
   ctx.fillStyle = emerald;
   ctx.font = `400 30px ${serif}`;
-  ctx.fillText(d.season.label, sx, 478);
+  ctx.fillText(d.walletNumber && d.walletNumber <= 100 ? `${d.season.label} · Founding 100` : d.season.label, sx, 478);
   ctx.fillStyle = grey;
   ctx.font = `400 13px ${sans}`;
   wrap(ctx, d.season.note, sx, 504, 240, 18);

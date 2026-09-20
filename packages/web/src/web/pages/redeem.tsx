@@ -3,6 +3,7 @@ import { Link, useSearch } from "wouter";
 import { cn } from "@/lib/utils";
 import { RecordCards } from "../components/record-cards";
 import { ChainLine, PostRef } from "../components/robinhood-chain";
+import { FoundingLine } from "../components/founding";
 import { AssetLogo } from "../components/brand";
 import { Page } from "../components/layout";
 import { Num } from "../components/number";
@@ -73,7 +74,8 @@ export default function RedeemPage() {
               <div className="mt-4">
                 <PostRef />
               </div>
-              <div className="mt-6">
+              <div className="mt-6 flex flex-col items-start gap-3">
+                <FoundingLine />
                 <ChainLine caption="Queues per security on" />
               </div>
               <dl className="mt-8 grid max-w-[560px] grid-cols-3 gap-x-8">

@@ -5,6 +5,8 @@ import { formatUnits, getAddress, isAddress, verifyTypedData, type Address, type
 import { z } from "zod";
 import { base } from "../__core/app";
 import { bindReferral } from "../lib/referrals";
+import { attestationDocument } from "../lib/documents";
+import { ensureTimestamp, getTimestamp, publicTimestamp } from "../lib/timestamps";
 import { leafHash, merkleProof, merkleRoot, verifyProof } from "../ballots/merkle";
 import { type Choice } from "../ballots/seed";
 import { canonicalReceipt, computeTally, type Tally } from "../ballots/tally";
@@ -19,7 +21,7 @@ import { addressSchema, ballotStatus, nowSeconds } from "../lib/shared";
 type BallotRow = typeof schema.ballots.$inferSelect;
 type ItemRow = typeof schema.ballotItems.$inferSelect;
 type InstructionRow = typeof schema.instructions.$inferSelect;
-type AttestationRow = typeof schema.attestations.$inferSelect;
+export type AttestationRow = typeof schema.attestations.$inferSelect;
 
 function parseChoices(item: ItemRow): Choice[] {
   return JSON.parse(item.choices) as Choice[];
@@ -29,7 +31,7 @@ function shortWallet(wallet: string) {
   return `${wallet.slice(0, 6)}…${wallet.slice(-4)}`;
 }
 
-function publicBallot(ballot: BallotRow) {
+export function publicBallot(ballot: BallotRow) {
   return {
     id: ballot.id,
     symbol: ballot.symbol,
@@ -51,7 +53,7 @@ function publicBallot(ballot: BallotRow) {
   };
 }
 
-function publicItem(item: ItemRow) {
+export function publicItem(item: ItemRow) {
   return {
     id: item.id,
     ballotId: item.ballotId,
@@ -72,11 +74,11 @@ function publicItem(item: ItemRow) {
 }
 
 /** Weight that counts: the closed weight once a close re-check ran, otherwise the signed weight. */
-function countedWeight(row: InstructionRow): bigint {
+export function countedWeight(row: InstructionRow): bigint {
   return BigInt(row.closeWeight ?? row.shareEquivalent);
 }
 
-async function activeInstructions(itemIds: string[]): Promise<InstructionRow[]> {
+export async function activeInstructions(itemIds: string[]): Promise<InstructionRow[]> {
   if (itemIds.length === 0) return [];
   return db
     .select()
@@ -85,7 +87,7 @@ async function activeInstructions(itemIds: string[]): Promise<InstructionRow[]> 
     .orderBy(desc(schema.instructions.createdAt));
 }
 
-function tallyFor(item: ItemRow, rows: InstructionRow[]): Tally {
+export function tallyFor(item: ItemRow, rows: InstructionRow[]): Tally {
   return computeTally(
     parseChoices(item),
     rows.map((row) => ({ choice: row.choice, weight: countedWeight(row) })),
@@ -120,7 +122,25 @@ interface InstructionPayload {
  * rule is deliberately one-directional — weight can fall at close, never rise — so moving tokens
  * between wallets after signing cannot count the same shares twice.
  */
-async function attestItem(item: ItemRow, ballot: BallotRow): Promise<AttestationRow> {
+/** Freezes an attestation as a canonical document and stamps it with OpenTimestamps. Best effort; never blocks the attestation. */
+export async function stampAttestation(item: ItemRow, row: AttestationRow) {
+  const tally = JSON.parse(row.tally) as Tally;
+  const document = attestationDocument({
+    itemId: item.id,
+    ballotId: row.ballotId,
+    symbol: row.symbol,
+    index: item.index,
+    title: item.title,
+    merkleRoot: row.merkleRoot,
+    leafCount: row.leafCount,
+    tally,
+    blockNumber: row.blockNumber,
+    attestedAt: Math.floor(row.createdAt.getTime() / 1000),
+  });
+  return ensureTimestamp(`attestation:${item.id}`, "attestation", document);
+}
+
+export async function attestItem(item: ItemRow, ballot: BallotRow): Promise<AttestationRow> {
   const [existing] = await db.select().from(schema.attestations).where(eq(schema.attestations.ballotItemId, item.id)).limit(1);
   if (existing) return existing;
   if (ballotStatus(ballot.closesAt) !== "closed") {
@@ -177,12 +197,15 @@ async function attestItem(item: ItemRow, ballot: BallotRow): Promise<Attestation
     })
     .onConflictDoNothing()
     .returning();
-  if (inserted) return inserted;
+  if (inserted) {
+    if (leaves.length > 0) await stampAttestation(item, inserted).catch(() => null);
+    return inserted;
+  }
   const [raced] = await db.select().from(schema.attestations).where(eq(schema.attestations.ballotItemId, item.id)).limit(1);
   return raced!;
 }
 
-function publicAttestation(row: AttestationRow) {
+export function publicAttestation(row: AttestationRow) {
   return {
     id: row.id,
     ballotItemId: row.ballotItemId,
@@ -331,6 +354,7 @@ export const intents = {
       tally,
       circulatingShareEq,
       attestation: attestation ? publicAttestation(attestation) : null,
+      timestamp: attestation ? publicTimestamp(await getTimestamp(`attestation:${item.id}`)) : null,
       receipts: rows.slice(0, 50).map((row) => ({
         id: row.id,
         wallet: shortWallet(row.wallet),

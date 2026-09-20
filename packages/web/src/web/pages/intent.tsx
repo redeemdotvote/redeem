@@ -211,10 +211,17 @@ export default function IntentPage() {
                   <Download className="size-3.5" /> Download receipts
                 </a>
               </Button>
+              {data.timestamp?.status === "stamped" ? (
+                <Button asChild size="sm" variant="outline">
+                  <a href={`/api/v1/attestations/${item.id}/proof.ots`}>
+                    <Download className="size-3.5" /> Bitcoin timestamp (.ots)
+                  </a>
+                </Button>
+              ) : null}
               <Button asChild size="sm" variant="ghost">
-                <Link to="/how-it-works#faq">How to verify</Link>
+                <Link to={`/reports/${event.id}`}>Meeting report</Link>
               </Button>
-              <span className="ml-auto text-[11.5px] text-grey-green">{data.attestation?.txHash ? `Onchain · ${shortHash(data.attestation.txHash)}` : "Published here · onchain attestation contract planned"}</span>
+              <span className="ml-auto text-[11.5px] text-grey-green">{data.attestation?.txHash ? `Onchain · ${shortHash(data.attestation.txHash)}` : data.timestamp?.status === "stamped" ? `Timestamped via OpenTimestamps · sha256 ${data.timestamp.digest.slice(0, 12)}…` : "Frozen and timestamped into Bitcoin at cutoff"}</span>
             </div>
             <dl className="mt-5 max-w-[680px] border-t border-line pt-2">
               <Def term="Execution">No shareholder vote is executed. Voting rights for token holders are on the issuer's roadmap.</Def>

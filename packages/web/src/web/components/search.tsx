@@ -16,6 +16,8 @@ const PAGES: Array<[string, string, string]> = [
   ["NVDA desk", "The name people reach for first, on the record", "/desk/NVDA"],
   ["Record holders", "Earliest signers, XP, largest verified positions", "/leaderboard"],
   ["$REDEEM token", "Official contract address on Robinhood Chain", "/token"],
+  ["Holder Intent Reports", "What token holders would have wanted, per meeting", "/reports"],
+  ["Genesis", "The founding hundred and the first of everything", "/genesis"],
   ["Record Book", "One ledger for every official Stock Token", "/record"],
   ["Markets", "Security master", "/markets"],
   ["Portfolio", "Your positions and signed record", "/portfolio"],

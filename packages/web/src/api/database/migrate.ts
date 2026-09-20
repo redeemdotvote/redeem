@@ -57,6 +57,7 @@ const DDL = [
   `CREATE TABLE IF NOT EXISTS referral_codes (code TEXT PRIMARY KEY, wallet TEXT NOT NULL UNIQUE, created_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS referrals (referee TEXT PRIMARY KEY, referrer TEXT NOT NULL, code TEXT NOT NULL, created_at INTEGER NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS referrals_referrer_idx ON referrals(referrer)`,
+  `CREATE TABLE IF NOT EXISTS timestamps (key TEXT PRIMARY KEY, kind TEXT NOT NULL, document TEXT NOT NULL, digest TEXT NOT NULL, ots TEXT, calendars TEXT NOT NULL DEFAULT '[]', status TEXT NOT NULL DEFAULT 'failed', stamped_at INTEGER, created_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS indexer_cursors (
     key TEXT PRIMARY KEY, last_block INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'idle', detail TEXT,
     updated_at INTEGER NOT NULL DEFAULT (unixepoch()))`,
@@ -67,7 +68,7 @@ const ADDED_COLUMNS: Array<[string, string, string]> = [
 ];
 
 /** Bump when DDL or ADDED_COLUMNS change; a database already at this version skips the DDL pass. */
-export const SCHEMA_VERSION = "2026-09-18.1";
+export const SCHEMA_VERSION = "2026-09-21.1";
 const SCHEMA_CURSOR = "schema:version";
 
 /** Reads a marker row from indexer_cursors; null when the row or the table is missing. */

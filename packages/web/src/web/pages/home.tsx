@@ -10,6 +10,7 @@ import { Page } from "../components/layout";
 import { startGuide } from "../components/guide";
 import { DeskRow, SecurityDesk } from "../components/desk";
 import { TokenCA } from "../components/token-ca";
+import { FoundingLine } from "../components/founding";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { SecurityRow } from "../components/ledger";
 import { Num } from "../components/number";
@@ -80,7 +81,9 @@ function Hero() {
     ["Share-equivalents recorded", stats.data?.shareEquivalentRecorded ? <Num value={stats.data.shareEquivalentRecorded} format={shares} /> : null],
     ["Recorded value", stats.data?.supplyValueUsd ? <Num value={stats.data.supplyValueUsd} format={(v) => usd(v, { compact: true })} /> : null],
     ["Official assets", stats.data ? String(stats.data.stocks) : null],
-    ["Wallets recorded", stats.data ? <Num value={stats.data.wallets} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
+    stats.data && stats.data.founding.remaining > 0
+      ? ["Founding numbers left", <Num key="f" value={stats.data.founding.remaining} format={(v) => `${Math.round(v)} / ${stats.data!.founding.limit}`} />]
+      : ["Wallets recorded", stats.data ? <Num value={stats.data.recordedWallets} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
     ["Intents signed", stats.data ? <Num value={stats.data.intents} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
     ["Queue requests", stats.data ? <Num value={stats.data.requests} format={(v) => Math.round(v).toLocaleString("en-US")} /> : null],
   ];
@@ -117,7 +120,8 @@ function Hero() {
                 New here? Take the walkthrough
               </button>
             </div>
-            <div className="rise-4 mt-5">
+            <div className="rise-4 mt-5 flex flex-col items-start gap-3">
+              <FoundingLine />
               <TokenCA />
             </div>
           </div>

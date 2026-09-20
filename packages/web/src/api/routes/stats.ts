@@ -13,9 +13,13 @@ import { xpForAll } from "../lib/xp";
 import { dbSafe } from "../lib/safe";
 import { nowSeconds } from "../lib/shared";
 import { activityBySymbol } from "./record";
+import { getTimestamp, publicTimestamp } from "../lib/timestamps";
+import { asc } from "drizzle-orm";
 
 const count = (rows: Array<{ count: number }>) => Number(rows[0]?.count ?? 0);
 const f18 = (value: string | bigint) => Number(formatUnits(BigInt(value), 18));
+/** The first hundred wallets to record are the founding hundred. */
+export const FOUNDING_LIMIT = 100;
 
 export const stats = {
   /**
@@ -65,6 +69,9 @@ export const stats = {
       getMarket().catch(() => null),
     ]);
     const s = signed.value;
+    const recorded = await loadRecordIndex()
+      .then((index) => index.wallets.size)
+      .catch(() => 0);
     return {
       stocks: TOKENS.length,
       votable: TOKENS.filter(votable).length,
@@ -88,6 +95,8 @@ export const stats = {
       supplyValueUsd: market ? market.value.assets.reduce((sum, asset) => sum + (asset.marketValueUsd ?? 0), 0) : null,
       priced: market ? market.value.assets.filter((asset) => asset.priceUsd !== null).length : 0,
       season: SEASON,
+      recordedWallets: recorded,
+      founding: { limit: FOUNDING_LIMIT, remaining: Math.max(0, FOUNDING_LIMIT - recorded) },
     };
   }),
 
@@ -134,6 +143,38 @@ export const stats = {
         : { ok: false as const, blockNumber: null, blockTimestamp: null, ageMs: null, stale: true, assets: 0, priced: 0 },
       database: database.dbDown || !database.value ? { ok: false as const } : { ok: true as const, ...database.value },
       tokens: TOKENS.length,
+    };
+  }),
+
+  /**
+   * Genesis: the first of everything, with its timestamp, and the founding hundred. Wallet numbers
+   * come from signing order, so the founding list can only grow by one, in order, and never changes.
+   */
+  genesis: base.handler(async () => {
+    const [index, [firstIntent], [firstRequest], [firstAttestation], [firstReferral]] = await Promise.all([
+      loadRecordIndex(),
+      db.select().from(schema.instructions).orderBy(asc(schema.instructions.createdAt)).limit(1),
+      db.select().from(schema.redemptionRequests).orderBy(asc(schema.redemptionRequests.createdAt)).limit(1),
+      db.select().from(schema.attestations).where(sql`${schema.attestations.leafCount} > 0`).orderBy(asc(schema.attestations.createdAt)).limit(1),
+      db.select().from(schema.referrals).orderBy(asc(schema.referrals.createdAt)).limit(1),
+    ]);
+    const stamp = firstAttestation ? publicTimestamp(await getTimestamp(`attestation:${firstAttestation.ballotItemId}`)) : null;
+    const founders = [...index.wallets.entries()]
+      .sort((a, b) => a[1].number - b[1].number)
+      .slice(0, FOUNDING_LIMIT)
+      .map(([wallet, entry]) => ({ wallet, number: entry.number, at: entry.at, tickers: [...entry.symbols] }));
+    return {
+      season: SEASON,
+      limit: FOUNDING_LIMIT,
+      recorded: index.wallets.size,
+      remaining: Math.max(0, FOUNDING_LIMIT - index.wallets.size),
+      founders,
+      firsts: {
+        intent: firstIntent ? { id: firstIntent.id, wallet: firstIntent.wallet, symbol: firstIntent.symbol, itemId: firstIntent.ballotItemId, choiceLabel: firstIntent.choiceLabel, shareEq: f18(firstIntent.shareEquivalent), blockNumber: firstIntent.blockNumber, at: Math.floor(firstIntent.createdAt.getTime() / 1000) } : null,
+        request: firstRequest ? { id: firstRequest.id, wallet: firstRequest.wallet, symbol: firstRequest.symbol, position: firstRequest.position, shareEq: f18(firstRequest.requestedShareEquivalent), blockNumber: firstRequest.blockNumber, at: Math.floor(firstRequest.createdAt.getTime() / 1000) } : null,
+        attestation: firstAttestation ? { itemId: firstAttestation.ballotItemId, ballotId: firstAttestation.ballotId, symbol: firstAttestation.symbol, merkleRoot: firstAttestation.merkleRoot, leafCount: firstAttestation.leafCount, blockNumber: firstAttestation.blockNumber, at: Math.floor(firstAttestation.createdAt.getTime() / 1000), timestamp: stamp } : null,
+        referral: firstReferral ? { referrer: firstReferral.referrer, at: Math.floor(firstReferral.createdAt.getTime() / 1000) } : null,
+      },
     };
   }),
 

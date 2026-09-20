@@ -61,6 +61,7 @@ export default function PortfolioPage() {
       blockNumber: String(data.blockNumber),
       wallet: address,
       recordNumber: rec?.recordNumber ?? null,
+      walletNumber: status.data?.walletNumber ?? null,
       holdersRecorded: rec?.holdersRecorded ?? null,
       queuePosition: rec?.queuePosition ?? null,
       season,
@@ -274,6 +275,11 @@ export default function PortfolioPage() {
             <div className="flex flex-wrap items-center gap-3">
               <Eyebrow>Your place in the file</Eyebrow>
               <Mark tone="emerald">{season.label}</Mark>
+              {status.data?.walletNumber && status.data.walletNumber <= 100 ? (
+                <Link to="/genesis">
+                  <Mark tone="ink">Founding 100</Mark>
+                </Link>
+              ) : null}
             </div>
             <h2 className="font-serif mt-2 text-[30px] leading-[1.05] text-ink">
               {status.data?.walletNumber ? (

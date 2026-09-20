@@ -17,6 +17,8 @@ import { record } from "./routes/record";
 import { redemption } from "./routes/redemption";
 import { statements } from "./routes/statements";
 import { stats } from "./routes/stats";
+import { buildReport, reports } from "./routes/reports";
+import { getTimestamp } from "./lib/timestamps";
 import { and, eq } from "drizzle-orm";
 import { erc20Abi, formatUnits, isAddress } from "viem";
 import { publicClient } from "./chain/chain";
@@ -32,6 +34,7 @@ export const router = {
   portfolio,
   statements,
   redemption,
+  reports,
 };
 
 export type AppRouter = typeof router;
@@ -156,6 +159,36 @@ inner.get("/api/v1/intents/:itemId/receipts", async (c) => {
       typedData: JSON.parse(row.typedData),
     })),
   });
+});
+
+/** Holder Intent Reports and their timestamp proofs, as plain files anyone can fetch and verify. */
+const frozen = async (key: string, part: "document" | "ots", filename: string) => {
+  const row = await getTimestamp(key);
+  if (!row) return json({ error: "not_stamped", detail: "Nothing is frozen under this key yet. Documents are frozen after the cutoff, when at least one intent was recorded." }, 404);
+  if (part === "document") return new Response(row.document, { headers: { "content-type": "application/json; charset=utf-8", "content-disposition": `inline; filename="${filename}.json"`, "cache-control": "public, max-age=300" } });
+  if (!row.ots) return json({ error: "stamp_pending", detail: "The calendars could not be reached; the stamp is retried on the next read." }, 503);
+  return new Response(new Uint8Array(Buffer.from(row.ots, "base64")), { headers: { "content-type": "application/vnd.opentimestamps.v1", "content-disposition": `attachment; filename="${filename}.json.ots"`, "cache-control": "public, max-age=300" } });
+};
+inner.get("/api/v1/reports/:ballotId", async (c) => {
+  try {
+    return json(await buildReport(c.req.param("ballotId")));
+  } catch {
+    return json({ error: "unknown_meeting" }, 404);
+  }
+});
+inner.get("/api/v1/reports/:ballotId/document", (c) => frozen(`report:${c.req.param("ballotId")}`, "document", `redeem-report-${c.req.param("ballotId")}`));
+inner.get("/api/v1/reports/:ballotId/proof.ots", (c) => frozen(`report:${c.req.param("ballotId")}`, "ots", `redeem-report-${c.req.param("ballotId")}`));
+inner.get("/api/v1/attestations/:itemId/document", (c) => frozen(`attestation:${c.req.param("itemId")}`, "document", `redeem-attestation-${c.req.param("itemId")}`));
+inner.get("/api/v1/attestations/:itemId/proof.ots", (c) => frozen(`attestation:${c.req.param("itemId")}`, "ots", `redeem-attestation-${c.req.param("itemId")}`));
+inner.get("/api/v1/attestations", async () => {
+  const rows = await db.select().from(schema.attestations);
+  const out = [];
+  for (const row of rows) {
+    if (row.leafCount === 0) continue;
+    const stamp = await getTimestamp(`attestation:${row.ballotItemId}`);
+    out.push({ itemId: row.ballotItemId, ballotId: row.ballotId, symbol: row.symbol, merkleRoot: row.merkleRoot, leafCount: row.leafCount, blockNumber: row.blockNumber, attestedAt: Math.floor(row.createdAt.getTime() / 1000), digest: stamp?.digest ?? null, stamped: stamp?.status === "stamped" });
+  }
+  return json({ note: "Intent, not a shareholder vote.", attestations: out });
 });
 
 /** The official REDEEM token, read from its contract. Falls back to the last verified values if the RPC refuses. */

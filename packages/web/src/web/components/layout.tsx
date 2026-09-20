@@ -147,7 +147,7 @@ function Footer() {
             <p className="mt-3 max-w-[38ch] text-[14px] leading-relaxed text-ink-2">The record layer for Robinhood Stock Tokens: share-equivalents, holder intent, redemption readiness.</p>
           </div>
           <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-[14px]">
-            {[...NAV, { href: "/leaderboard", label: "Record holders" }, { href: "/token", label: "$REDEEM token" }, { href: "/transparency", label: "Transparency" }, { href: "/status", label: "Status" }].map((item) => (
+            {[...NAV, { href: "/reports", label: "Intent reports" }, { href: "/genesis", label: "Genesis · founding 100" }, { href: "/leaderboard", label: "Record holders" }, { href: "/token", label: "$REDEEM token" }, { href: "/transparency", label: "Transparency" }, { href: "/status", label: "Status" }].map((item) => (
               <Link key={item.href} to={item.href} className="text-grey-green hover:text-ink">
                 {item.label}
               </Link>
