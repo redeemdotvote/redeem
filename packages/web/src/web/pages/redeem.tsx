@@ -78,6 +78,9 @@ export default function RedeemPage() {
               <div className="mt-6 flex flex-col items-start gap-3">
                 <FoundingLine />
                 <ChainLine caption="Queues per security on" />
+                <Link to={symbol ? `/queue/${symbol}` : "/queue"} className="text-[13.5px] font-medium text-emerald hover:underline">
+                  See the public queue{symbol ? ` for ${symbol}` : ""} →
+                </Link>
               </div>
               {status.data && status.data.wallets >= COUNTER_THRESHOLD ? (
                 <dl className="mt-8 grid max-w-[560px] grid-cols-3 gap-x-8">

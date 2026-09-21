@@ -240,6 +240,10 @@ inner.get("/api/v1/weights/:itemId/:wallet", async (c) => {
   });
 });
 
+/** The public redemption queue, in total or for one ticker (with every position and its signature). */
+inner.get("/api/v1/queue", async () => json(await redemption.board.callable({ context: { headers: new Headers() } })({})));
+inner.get("/api/v1/queue/:symbol", async (c) => json(await redemption.board.callable({ context: { headers: new Headers() } })({ symbol: c.req.param("symbol") })));
+
 /** Look-through: which pools and vaults hold Stock Tokens, and one wallet's pro rata share of any contract. */
 inner.get("/api/v1/venues", async (c) => {
   const symbol = c.req.query("symbol")?.toUpperCase();

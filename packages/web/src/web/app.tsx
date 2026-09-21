@@ -24,6 +24,7 @@ import ReportPage from "./pages/report";
 import GenesisPage from "./pages/genesis";
 import VerifyPage from "./pages/verify";
 import CalendarPage from "./pages/calendar";
+import QueuePage from "./pages/queue";
 import EmbedPage from "./pages/embed";
 import TransparencyPage from "./pages/transparency";
 import { AgentFeedback } from "@runablehq/website-runtime";
@@ -69,6 +70,8 @@ function Routes() {
           <Route path="/genesis" component={GenesisPage} />
           <Route path="/verify" component={VerifyPage} />
           <Route path="/calendar" component={CalendarPage} />
+          <Route path="/queue" component={QueuePage} />
+          <Route path="/queue/:symbol" component={QueuePage} />
           <Route component={NotFound} />
         </Switch>
       </motion.div>

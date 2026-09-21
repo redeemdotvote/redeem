@@ -92,6 +92,14 @@ const ENDPOINTS = [
   },
   {
     method: "GET",
+    path: "/api/v1/queue",
+    title: "Redemption queue",
+    body: "The public queue: dollar value at the live Chainlink price, per ticker and in total, the cumulative curve by signing time, and the next intent deadline. `/api/v1/queue/:symbol` adds every position in order with its wallet, size, block and signature.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/queue/NVDA`,
+    response: `{ "totalValueUsd": 164422.5, "tickers": [ { "symbol": "NVDA", "shareEq": 500, "valueUsd": 113565, "nextPosition": 3 } ], "positions": [ { "position": 1, "wallet": "0x…", "shareEq": 420, "signature": "0x…" } ] }`,
+  },
+  {
+    method: "GET",
     path: "/api/v1/venues",
     title: "Look-through venues",
     body: "The liquidity pools and vaults that hold Stock Tokens, with each one's holding as share-equivalents, read by view call. `?symbol=NVDA` narrows it. `/api/v1/resolve/:contract?wallet=` probes any contract (V2 pair, V3 pool, ERC-4626 vault) and returns a wallet's pro rata share where the venue type allows it.",

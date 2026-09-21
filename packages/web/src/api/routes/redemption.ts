@@ -88,6 +88,66 @@ export const redemption = {
     };
   }),
 
+  /**
+   * The public queue board: every pre-registration, valued at the live Chainlink price, per
+   * ticker and in total, with the cumulative curve by signing time and each ticker's positions in
+   * order. Every figure is a signed request on file; nothing is projected.
+   */
+  board: base.input(z.object({ symbol: z.string().optional() }).optional()).handler(async ({ input }) => {
+    const [rows, market, ballots] = await Promise.all([
+      db.select().from(schema.redemptionRequests).orderBy(asc(schema.redemptionRequests.createdAt)),
+      getMarket().catch(() => null),
+      db.select({ id: schema.ballots.id, symbol: schema.ballots.symbol, closesAt: schema.ballots.closesAt, meetingDate: schema.ballots.meetingDate, companyName: schema.ballots.companyName }).from(schema.ballots),
+    ]);
+    const assetOf = (symbol: string) => market?.value.assets.find((entry) => entry.symbol === symbol) ?? null;
+    const waiting = rows.filter((row) => row.status === "waiting");
+    const usdOf = (symbol: string, shareEq: number) => {
+      const asset = assetOf(symbol);
+      // The Chainlink answer is per token after the multiplier, so share-equivalents are converted back to tokens first.
+      return asset?.priceUsd ? (shareEq / (asset.uiMultiplierFloat || 1)) * asset.priceUsd : null;
+    };
+    const bySymbol = new Map<string, { shareEq: number; wallets: Set<string>; requests: number }>();
+    let cumulative = 0;
+    const curve: Array<{ at: number; valueUsd: number; requests: number }> = [];
+    waiting.forEach((row, index) => {
+      const shareEq = f18(BigInt(row.requestedShareEquivalent));
+      const entry = bySymbol.get(row.symbol) ?? { shareEq: 0, wallets: new Set<string>(), requests: 0 };
+      entry.shareEq += shareEq;
+      entry.wallets.add(row.wallet);
+      entry.requests += 1;
+      bySymbol.set(row.symbol, entry);
+      cumulative += usdOf(row.symbol, shareEq) ?? 0;
+      curve.push({ at: Math.floor(row.createdAt.getTime() / 1000), valueUsd: cumulative, requests: index + 1 });
+    });
+    const tickers = [...bySymbol.entries()]
+      .map(([symbol, entry]) => {
+        const asset = assetOf(symbol);
+        return { symbol, name: findToken(symbol)?.name ?? symbol, logo: findToken(symbol)?.logo ?? null, shareEq: entry.shareEq, valueUsd: usdOf(symbol, entry.shareEq), wallets: entry.wallets.size, requests: entry.requests, circulating: asset?.totalSupplyUIFloat ?? null, nextPosition: entry.requests + 1 };
+      })
+      .sort((a, b) => (b.valueUsd ?? 0) - (a.valueUsd ?? 0) || b.shareEq - a.shareEq);
+    const now = Math.floor(Date.now() / 1000);
+    const next = ballots.filter((ballot) => ballot.closesAt > now).sort((a, b) => a.closesAt - b.closesAt)[0] ?? null;
+    const selected = input?.symbol?.toUpperCase();
+    return {
+      block: market?.value.blockNumber ?? null,
+      totalValueUsd: tickers.reduce((sum, ticker) => sum + (ticker.valueUsd ?? 0), 0),
+      totalShareEq: tickers.reduce((sum, ticker) => sum + ticker.shareEq, 0),
+      wallets: new Set(waiting.map((row) => row.wallet)).size,
+      requests: waiting.length,
+      onChainValueUsd: market ? market.value.assets.reduce((sum, asset) => sum + (asset.marketValueUsd ?? 0), 0) : null,
+      tickers,
+      curve,
+      /** The next real date on the record: the soonest intent cutoff. */
+      nextDeadline: next ? { ballotId: next.id, symbol: next.symbol, companyName: next.companyName, closesAt: next.closesAt, meetingDate: next.meetingDate } : null,
+      positions: selected
+        ? waiting
+            .filter((row) => row.symbol === selected)
+            .map((row) => ({ position: row.position, wallet: row.wallet, shareEq: f18(BigInt(row.requestedShareEquivalent)), valueUsd: usdOf(row.symbol, f18(BigInt(row.requestedShareEquivalent))), blockNumber: row.blockNumber, signedAt: Math.floor(row.createdAt.getTime() / 1000), signature: row.signature }))
+        : [],
+      selected: selected ?? null,
+    };
+  }),
+
   /** Step one: the server reads the position and issues the exact request text to sign. */
   prepare: base
     .input(

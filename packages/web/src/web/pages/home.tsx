@@ -12,6 +12,7 @@ import { DeskRow, SecurityDesk } from "../components/desk";
 import { TokenCA } from "../components/token-ca";
 import { FoundingLine } from "../components/founding";
 import { COUNTER_THRESHOLD, LatestRecords } from "../components/latest-records";
+import { QueuePanel } from "../components/queue-board";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { SecurityRow } from "../components/ledger";
 import { Num } from "../components/number";
@@ -621,6 +622,7 @@ export default function HomePage() {
     <>
       <Hero />
       <LatestRecords />
+      <QueuePanel />
       <ThePost />
       <RecordBookPanel />
       <Desk />
