@@ -4,7 +4,7 @@ import { client, orpc } from "../lib/api";
 import { getReferral } from "../lib/referral";
 
 export interface IntentFilters {
-  status: "active" | "closed" | "recorded" | "empty" | "reported" | "all";
+  status: "active" | "closed" | "historical" | "recorded" | "empty" | "reported" | "all";
   symbol?: string;
   q?: string;
   page: number;

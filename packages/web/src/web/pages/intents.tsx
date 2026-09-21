@@ -14,7 +14,7 @@ import { dateTimeUtc, isoDate, shares } from "../lib/format";
 import { useIntentItems } from "../queries/intents";
 import { useRecordBook } from "../queries/record";
 
-type Status = "all" | "active" | "closed" | "recorded" | "reported";
+type Status = "all" | "active" | "closed" | "historical" | "recorded" | "reported";
 
 export default function IntentsPage() {
   const wallet = useWallet();
@@ -87,6 +87,7 @@ export default function IntentsPage() {
             options={[
               { value: "active", label: "Open", count: data?.counts.active },
               { value: "closed", label: "Closed", count: data?.counts.closed },
+              { value: "historical", label: "Historical", count: data?.counts.historical },
               { value: "recorded", label: "With intent" },
               { value: "reported", label: "Result reported" },
               { value: "all", label: "All" },
@@ -200,7 +201,7 @@ export default function IntentsPage() {
                             {item.ballot.meetingType === "special" ? "Special" : "Annual"} meeting · {isoDate(item.ballot.meetingDate)} · record date {item.ballot.recordDate ? isoDate(item.ballot.recordDate) : "n/s"}
                           </span>
                           <span className="font-mono text-[11.5px] text-grey-green">{item.ballot.id}</span>
-                          <EventStatus status={item.ballot.status} />
+                          <EventStatus status={item.ballot.status} historical={item.ballot.historical} />
                           {item.instructed ? <Mark tone="emerald">You signed</Mark> : null}
                           {item.reported ? <Mark tone="ink">Result reported</Mark> : null}
                         </div>

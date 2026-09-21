@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { eq } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import seed from "../data/ballots.json";
 import { db } from "../database";
 import { readMarker, writeMarker } from "../database/migrate";
@@ -101,11 +101,11 @@ async function runSeed(): Promise<void> {
   // per cold start. A fingerprint of the extraction file says whether the database already has it.
   const fingerprint = createHash("sha256").update(JSON.stringify(rows)).digest("hex").slice(0, 32);
   if ((await readMarker(SEED_CURSOR)) === fingerprint) return;
-  const existing = new Set((await db.select({ id: schema.ballots.id }).from(schema.ballots)).map((row) => row.id));
-
-  for (const ballot of rows) {
-    if (!findToken(ballot.symbol)) continue;
-    const values = {
+  // Multi-row upserts in chunks: a few dozen statements instead of one round trip per row, which
+  // matters when the database is remote and the first boot runs inside a function's time limit.
+  const ballotValues = rows
+    .filter((ballot) => findToken(ballot.symbol))
+    .map((ballot) => ({
       id: ballot.id,
       symbol: ballot.symbol,
       cik: ballot.cik,
@@ -122,38 +122,41 @@ async function runSeed(): Promise<void> {
       recordDate: ballot.recordDate,
       closesAt: ballot.closesAt,
       publishedAt: ballot.publishedAt,
-    };
-    if (existing.has(ballot.id)) {
-      await db.update(schema.ballots).set(values).where(eq(schema.ballots.id, ballot.id));
-    } else {
-      await db.insert(schema.ballots).values(values).onConflictDoNothing();
-    }
-
-    const items = ballot.items.map((item, ordinal) => ({
-      id: itemId(ballot.id, item.index),
-      ballotId: ballot.id,
-      symbol: ballot.symbol,
-      ordinal,
-      index: item.index,
-      title: item.title,
-      summary: item.summary,
-      itemType: item.type,
-      proponent: item.proponent,
-      boardRecommendation: item.boardRecommendation,
-      approvalStandard: item.approvalStandard,
-      abstainEffect: item.abstainEffect,
-      brokerNonVoteEffect: item.brokerNonVoteEffect,
-      routine: item.routine,
-      choices: JSON.stringify(choicesFor(item)),
-      nominees: JSON.stringify(item.nominees),
     }));
-    // Items are re-upserted so a corrected extraction lands without touching signed instructions.
-    for (const item of items) {
-      await db
-        .insert(schema.ballotItems)
-        .values(item)
-        .onConflictDoUpdate({ target: schema.ballotItems.id, set: item });
-    }
+  // Two filings can share an accession only by mistake; keep the first so the unique index holds.
+  const seenAccession = new Set<string>();
+  const uniqueBallots = ballotValues.filter((ballot) => (seenAccession.has(ballot.accession) ? false : (seenAccession.add(ballot.accession), true)));
+  const kept = new Set(uniqueBallots.map((ballot) => ballot.id));
+  const excluded = (column: string) => sql.raw(`excluded."${column}"`);
+  for (let i = 0; i < uniqueBallots.length; i += 40) {
+    await db
+      .insert(schema.ballots)
+      .values(uniqueBallots.slice(i, i + 40))
+      .onConflictDoUpdate({
+        target: schema.ballots.id,
+        set: { docUrl: excluded("doc_url"), companyName: excluded("company_name"), meetingType: excluded("meeting_type"), meetingDate: excluded("meeting_date"), meetingTime: excluded("meeting_time"), meetingFormat: excluded("meeting_format"), meetingUrl: excluded("meeting_url"), recordDate: excluded("record_date"), closesAt: excluded("closes_at"), publishedAt: excluded("published_at") },
+      });
+  }
+  const itemValues = rows
+    .filter((ballot) => kept.has(ballot.id))
+    .flatMap((ballot) => {
+      const seenIds = new Set<string>();
+      return ballot.items.flatMap((item, ordinal) => {
+        const id = itemId(ballot.id, item.index);
+        if (seenIds.has(id)) return [];
+        seenIds.add(id);
+        return [{ id, ballotId: ballot.id, symbol: ballot.symbol, ordinal, index: item.index, title: item.title, summary: item.summary, itemType: item.type, proponent: item.proponent, boardRecommendation: item.boardRecommendation, approvalStandard: item.approvalStandard, abstainEffect: item.abstainEffect, brokerNonVoteEffect: item.brokerNonVoteEffect, routine: item.routine, choices: JSON.stringify(choicesFor(item)), nominees: JSON.stringify(item.nominees) }];
+      });
+    });
+  // Items are re-upserted so a corrected extraction lands without touching signed instructions.
+  for (let i = 0; i < itemValues.length; i += 40) {
+    await db
+      .insert(schema.ballotItems)
+      .values(itemValues.slice(i, i + 40))
+      .onConflictDoUpdate({
+        target: schema.ballotItems.id,
+        set: { ordinal: excluded("ordinal"), index: excluded("index"), title: excluded("title"), summary: excluded("summary"), itemType: excluded("item_type"), proponent: excluded("proponent"), boardRecommendation: excluded("board_recommendation"), approvalStandard: excluded("approval_standard"), abstainEffect: excluded("abstain_effect"), brokerNonVoteEffect: excluded("broker_non_vote_effect"), routine: excluded("routine"), choices: excluded("choices"), nominees: excluded("nominees") },
+      });
   }
   await writeMarker(SEED_CURSOR, fingerprint);
 }

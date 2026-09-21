@@ -87,7 +87,7 @@ export default function IntentPage() {
             <span className="eyebrow">
               {event.meetingType === "special" ? "Special" : "Annual"} meeting · {isoDate(event.meetingDate)}
             </span>
-            <EventStatus status={event.status} attested={Boolean(data.attestation)} />
+            <EventStatus status={event.status} attested={Boolean(data.attestation)} historical={event.historical} />
           </div>
           <Display as="h1" size="md" className="mt-5 max-w-[26ch]">
             <span className="font-mono mr-3 text-[16px] text-grey-green align-middle">{item.index}</span>
@@ -332,7 +332,7 @@ export default function IntentPage() {
                 <p className="mt-3 text-[11.5px] leading-relaxed text-grey-green">A typed signature, not a transaction. No deposit, no gas, no approval. Signing again before the cutoff supersedes the earlier intent; both stay in your record.</p>
               </div>
             ) : (
-              <Note className="mt-5">Intent closed {dateTimeUtc(event.closesAt)}.</Note>
+              <Note className="mt-5">{event.historical ? `This meeting's cutoff (${dateTimeUtc(event.closesAt)}) fell before Redeem opened on Sep 14, 2026, so no intent could be recorded. It is kept for the record, with the shareholder result where the issuer reported one.` : `Intent closed ${dateTimeUtc(event.closesAt)}.`}</Note>
             )}
           </section>
 

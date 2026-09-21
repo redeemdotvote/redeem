@@ -18,7 +18,7 @@ import { currentBlock, getBalances, getMarket, loadBalancesForWallets, shareEqui
 import { findToken } from "../chain/tokens";
 import { db } from "../database";
 import * as schema from "../database/schema";
-import { addressSchema, ballotStatus, nowSeconds } from "../lib/shared";
+import { addressSchema, ballotStatus, isHistorical, nowSeconds } from "../lib/shared";
 
 type BallotRow = typeof schema.ballots.$inferSelect;
 type ItemRow = typeof schema.ballotItems.$inferSelect;
@@ -52,6 +52,8 @@ export function publicBallot(ballot: BallotRow) {
     closesAt: ballot.closesAt,
     publishedAt: ballot.publishedAt,
     status: ballotStatus(ballot.closesAt),
+    /** Closed before Redeem opened, so no intent could ever have been recorded on it. */
+    historical: isHistorical(ballot.closesAt),
   };
 }
 
@@ -228,7 +230,7 @@ export const intents = {
     .input(
       z.object({
         /** recorded = closed with at least one intent; empty = closed with none; reported = the issuer has filed the result. */
-        status: z.enum(["active", "closed", "recorded", "empty", "reported", "all"]).default("all"),
+        status: z.enum(["active", "closed", "historical", "recorded", "empty", "reported", "all"]).default("all"),
         symbol: z.string().optional(),
         q: z.string().max(80).optional(),
         page: z.number().int().min(1).default(1),
@@ -255,6 +257,9 @@ export const intents = {
         if (!ballot) return false;
         if (input.status === "active" && ballot.closesAt <= now) return false;
         if (input.status !== "active" && input.status !== "all" && ballot.closesAt > now) return false;
+        // "Closed" means closed since Redeem opened; older meetings are their own tab.
+        if (input.status === "closed" && isHistorical(ballot.closesAt)) return false;
+        if (input.status === "historical" && !isHistorical(ballot.closesAt)) return false;
         if (input.status === "recorded" && !withIntent!.has(item.id)) return false;
         if (input.status === "empty" && withIntent!.has(item.id)) return false;
         if (input.status === "reported" && !outcomeForItem(ballot.id, item.index)) return false;
@@ -292,7 +297,8 @@ export const intents = {
         pages: Math.max(1, Math.ceil(total / input.pageSize)),
         counts: {
           active: itemRows.filter((item) => (ballotById.get(item.ballotId)?.closesAt ?? 0) > now).length,
-          closed: itemRows.filter((item) => (ballotById.get(item.ballotId)?.closesAt ?? 0) <= now).length,
+          closed: itemRows.filter((item) => { const at = ballotById.get(item.ballotId)?.closesAt ?? 0; return at <= now && !isHistorical(at); }).length,
+          historical: itemRows.filter((item) => isHistorical(ballotById.get(item.ballotId)?.closesAt ?? now)).length,
         },
         items: page.map((item) => {
           const ballot = ballotById.get(item.ballotId)!;

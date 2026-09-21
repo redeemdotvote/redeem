@@ -19,6 +19,10 @@ export const nowSeconds = () => Math.floor(Date.now() / 1000);
 
 export type BallotStatus = "active" | "closed";
 
+/** Redeem opened for signatures on 2026-09-14. A meeting whose cutoff fell before that could never have been signed. */
+export const RECORD_OPENED_AT = Math.floor(Date.UTC(2026, 8, 14) / 1000);
+export const isHistorical = (closesAt: number) => closesAt < RECORD_OPENED_AT;
+
 export function ballotStatus(closesAt: number): BallotStatus {
   return closesAt > nowSeconds() ? "active" : "closed";
 }

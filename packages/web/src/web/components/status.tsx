@@ -23,8 +23,9 @@ export function Recommendation({ value }: { value: string }) {
   return <Tag>{RECOMMENDATION[value] ?? RECOMMENDATION.none}</Tag>;
 }
 
-export function EventStatus({ status, attested }: { status: "active" | "closed"; attested?: boolean }) {
+export function EventStatus({ status, attested, historical }: { status: "active" | "closed"; attested?: boolean; historical?: boolean }) {
   if (status === "active") return <Mark tone="live">Open for intent</Mark>;
+  if (historical) return <Mark tone="muted">Historical</Mark>;
   if (attested) return <Mark tone="emerald">Attested</Mark>;
   return <Mark tone="muted">Closed</Mark>;
 }
