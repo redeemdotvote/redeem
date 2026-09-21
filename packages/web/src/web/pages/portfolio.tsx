@@ -269,6 +269,35 @@ export default function PortfolioPage() {
         </>
       )}
 
+      {address && held.some((row) => (openBySymbol.get(row.symbol) ?? 0) > 0) ? (
+        <section className="mt-10 rounded-[16px] border border-emerald/40 bg-emerald/5 p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Eyebrow>Open for {readOnly ? "this wallet" : "you"}</Eyebrow>
+            <IntentLabel />
+          </div>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {held
+              .filter((row) => (openBySymbol.get(row.symbol) ?? 0) > 0)
+              .map((row) => (
+                <li key={row.symbol}>
+                  <Link to={`/intents?symbol=${row.symbol}&status=active`} className="flex items-center justify-between gap-3 rounded-[10px] border border-line bg-cream px-3.5 py-2.5 hover:border-ink">
+                    <span className="flex items-center gap-2.5">
+                      <AssetLogo symbol={row.symbol} logo={row.logo} size="sm" />
+                      <span>
+                        <span className="block text-[14px] font-medium text-ink">{row.symbol}</span>
+                        <span className="block text-[12px] text-grey-green">{shares(row.shareEquivalentFloat)} sh-eq of weight</span>
+                      </span>
+                    </span>
+                    <span className="text-[12.5px] text-emerald">
+                      {openBySymbol.get(row.symbol)} {mineBySymbol.get(row.symbol) ? "open · signed" : "open"} →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ) : null}
+
       {address && data && held.length > 0 ? (
         <section className="mt-12 grid gap-8 border-t border-line-2 pt-8 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.34fr)_minmax(0,0.28fr)] lg:gap-10">
           <div>

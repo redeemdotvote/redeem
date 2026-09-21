@@ -1,0 +1,6956 @@
+{
+ "COST-2026-01-15": {
+  "form": "8-K",
+  "filedAt": "2026-01-21",
+  "accession": "0000909832-26-000016",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000016/cost-20260115.htm",
+  "symbol": "COST",
+  "ballotId": "COST-2026-01-15",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Susan L. Decker",
+      "votesFor": 271388023,
+      "votesAgainst": 15209023,
+      "votesWithheld": null,
+      "votesAbstain": 394831,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Kenneth D. Denman",
+      "votesFor": 284834609,
+      "votesAgainst": 1548385,
+      "votesWithheld": null,
+      "votesAbstain": 608883,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Helena B. Foulkes",
+      "votesFor": 282748943,
+      "votesAgainst": 3468233,
+      "votesWithheld": null,
+      "votesAbstain": 774701,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Hamilton E. James",
+      "votesFor": 272025889,
+      "votesAgainst": 14520910,
+      "votesWithheld": null,
+      "votesAbstain": 445078,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Sally Jewell",
+      "votesFor": 282618424,
+      "votesAgainst": 3964410,
+      "votesWithheld": null,
+      "votesAbstain": 409043,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Jeffrey S. Raikes",
+      "votesFor": 273652014,
+      "votesAgainst": 12901665,
+      "votesWithheld": null,
+      "votesAbstain": 438198,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Gina M. Raimondo",
+      "votesFor": 285239485,
+      "votesAgainst": 1198976,
+      "votesWithheld": null,
+      "votesAbstain": 553416,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "John W. Stanton",
+      "votesFor": 277740958,
+      "votesAgainst": 8807979,
+      "votesWithheld": null,
+      "votesAbstain": 442940,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Ron M. Vachris",
+      "votesFor": 284866409,
+      "votesAgainst": 1694961,
+      "votesWithheld": null,
+      "votesAbstain": 430507,
+      "brokerNonVotes": 65311704
+     },
+     {
+      "name": "Maggie Wilderotter",
+      "votesFor": 276414143,
+      "votesAgainst": 9947380,
+      "votesWithheld": null,
+      "votesAbstain": 630354,
+      "brokerNonVotes": 65311704
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of the Selection of Auditors",
+    "votesFor": 335155664,
+    "votesAgainst": 16539396,
+    "votesAbstain": 608521,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory Vote on Executive Compensation",
+    "votesFor": 251441227,
+    "votesAgainst": 34380984,
+    "votesAbstain": 1169666,
+    "votesWithheld": null,
+    "brokerNonVotes": 65311704,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Shareholder Proposal Regarding Greenwashing Risk Audit",
+    "votesFor": 4058782,
+    "votesAgainst": 279690631,
+    "votesAbstain": 3242464,
+    "votesWithheld": null,
+    "brokerNonVotes": 65311704,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "JBL-2026-01-22": {
+  "form": "8-K",
+  "filedAt": "2026-01-27",
+  "accession": "0001193125-26-024377",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/898293/000119312526024377/d54848d8k.htm",
+  "symbol": "JBL",
+  "ballotId": "JBL-2026-01-22",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Anousheh Ansari",
+      "votesFor": 85421545,
+      "votesAgainst": 1723670,
+      "votesWithheld": 163459,
+      "votesAbstain": null,
+      "brokerNonVotes": 9067264
+     },
+     {
+      "name": "Sujatha Chandrasekaran",
+      "votesFor": 86667805,
+      "votesAgainst": 597090,
+      "votesWithheld": 43779,
+      "votesAbstain": null,
+      "brokerNonVotes": 9067264
+     },
+     {
+      "name": "Michael Dastoor",
+      "votesFor": 86491719,
+      "votesAgainst": 778185,
+      "votesWithheld": 38770,
+      "votesAbstain": null,
+      "brokerNonVotes": 9067264
+     },
+     {
+      "name": "Christopher S. Holland",
+      "votesFor": 78592407,
+      "votesAgainst": 8679911,
+      "votesWithheld": 36356,
+      "votesAbstain": null,
+      "brokerNonVotes": 9067264
+     },
+     {
+      "name": "John C. Plant",
+      "votesFor": 13973878,
+      "votesAgainst": 73295834,
+      "votesWithheld": 38962,
+      "votesAbstain": null,
+      "brokerNonVotes": 9067264
+     },
+     {
+      "name": "Steven A. Raymund",
+      "votesFor": 77111812,
+      "votesAgainst": 10159306,
+      "votesWithheld": 37556,
+      "votesAbstain": null,
+      "brokerNonVotes": 9067264
+     },
+     {
+      "name": "N. V. \u201cTiger\u201d Tyagarajan",
+      "votesFor": 26443916,
+      "votesAgainst": 60800219,
+      "votesWithheld": 64539,
+      "votesAbstain": null,
+      "brokerNonVotes": 9067264
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "Ratification of Ernst & Young LLP as independent registered public accounting firm",
+    "votesFor": 95104341,
+    "votesAgainst": 1226018,
+    "votesAbstain": 45579,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory vote to approve executive compensation",
+    "votesFor": 84693456,
+    "votesAgainst": 2457288,
+    "votesAbstain": 157930,
+    "votesWithheld": null,
+    "brokerNonVotes": 9067264,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Stockholder proposal entitled \u201cShareholder Right to Act by Written Consent\u201d",
+    "votesFor": 33551092,
+    "votesAgainst": 53567757,
+    "votesAbstain": 189825,
+    "votesWithheld": null,
+    "brokerNonVotes": 9067264,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "PENG-2026-02-06": {
+  "form": "8-K",
+  "filedAt": "2026-02-11",
+  "accession": "0001616533-26-000013",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1616533/000161653326000013/peng-20260206.htm",
+  "symbol": "PENG",
+  "ballotId": "PENG-2026-02-06",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Mark Papermaster",
+      "votesFor": 42973370,
+      "votesAgainst": null,
+      "votesWithheld": 2056797,
+      "votesAbstain": null,
+      "brokerNonVotes": 5593242
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of the Appointment of the Company\u2019s Independent Registered Public Accounting Firm",
+    "votesFor": 50105790,
+    "votesAgainst": 472396,
+    "votesAbstain": 45223,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approval, on a Non-Binding Advisory Basis, of the Compensation of the Company\u2019s Named Executive Officers",
+    "votesFor": 43633758,
+    "votesAgainst": 1312811,
+    "votesAbstain": 83598,
+    "votesWithheld": null,
+    "brokerNonVotes": 5593242,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "POWL-2026-02-18": {
+  "form": "8-K",
+  "filedAt": "2026-02-18",
+  "accession": "0000080420-26-000028",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000028/powl-20260218.htm",
+  "symbol": "POWL",
+  "ballotId": "POWL-2026-02-18",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Alaina K. Brooks",
+      "votesFor": 8671860,
+      "votesAgainst": null,
+      "votesWithheld": 527367,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Katheryn B. Curtis",
+      "votesFor": 8529636,
+      "votesAgainst": null,
+      "votesWithheld": 669591,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "\u201cSay-on-Pay\u201d advisory vote",
+    "votesFor": 9051989,
+    "votesAgainst": 121383,
+    "votesAbstain": 25855,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   }
+  ]
+ },
+ "AAPL-2026-02-24": {
+  "form": "8-K",
+  "filedAt": "2026-02-24",
+  "accession": "0001140361-26-006577",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/320193/000114036126006577/ef20060722_8k.htm",
+  "symbol": "AAPL",
+  "ballotId": "AAPL-2026-02-24",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Wanda Austin",
+      "votesFor": 9077916399,
+      "votesAgainst": 40654561,
+      "votesWithheld": null,
+      "votesAbstain": 17836844,
+      "brokerNonVotes": 2889260668
+     },
+     {
+      "name": "Tim Cook",
+      "votesFor": 9022191821,
+      "votesAgainst": 101386531,
+      "votesWithheld": null,
+      "votesAbstain": 12829452,
+      "brokerNonVotes": 2889260668
+     },
+     {
+      "name": "Alex Gorsky",
+      "votesFor": 9001470972,
+      "votesAgainst": 117520533,
+      "votesWithheld": null,
+      "votesAbstain": 17416299,
+      "brokerNonVotes": 2889260668
+     },
+     {
+      "name": "Andrea Jung",
+      "votesFor": 8607730931,
+      "votesAgainst": 512347459,
+      "votesWithheld": null,
+      "votesAbstain": 16329414,
+      "brokerNonVotes": 2889260668
+     },
+     {
+      "name": "Art Levinson",
+      "votesFor": 8297337255,
+      "votesAgainst": 822322806,
+      "votesWithheld": null,
+      "votesAbstain": 16747743,
+      "brokerNonVotes": 2889260668
+     },
+     {
+      "name": "Monica Lozano",
+      "votesFor": 9077081775,
+      "votesAgainst": 41951291,
+      "votesWithheld": null,
+      "votesAbstain": 17374738,
+      "brokerNonVotes": 2889260668
+     },
+     {
+      "name": "Ron Sugar",
+      "votesFor": 8717147160,
+      "votesAgainst": 401351569,
+      "votesWithheld": null,
+      "votesAbstain": 17909075,
+      "brokerNonVotes": 2889260668
+     },
+     {
+      "name": "Sue Wagner",
+      "votesFor": 8596360759,
+      "votesAgainst": 522576019,
+      "votesWithheld": null,
+      "votesAbstain": 17471026,
+      "brokerNonVotes": 2889260668
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratify appointment of Ernst & Young LLP as independent registered public accounting firm for fiscal year 2026",
+    "votesFor": 11794611709,
+    "votesAgainst": 202435745,
+    "votesAbstain": 28621018,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory resolution to approve executive compensation",
+    "votesFor": 8304055118,
+    "votesAgainst": 781645634,
+    "votesAbstain": 50707052,
+    "votesWithheld": null,
+    "brokerNonVotes": 2889260668,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approve the Apple Inc. Non-Employee Director Stock Plan, as Amended and Restated",
+    "votesFor": 8927137986,
+    "votesAgainst": 178910631,
+    "votesAbstain": 30359187,
+    "votesWithheld": null,
+    "brokerNonVotes": 2889260668,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Shareholder proposal entitled \u201cChina Entanglement Audit\u201d",
+    "votesFor": 129158181,
+    "votesAgainst": 8939194258,
+    "votesAbstain": 68055365,
+    "votesWithheld": null,
+    "brokerNonVotes": 2889260668,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "CLSK-2026-03-03": {
+  "form": "8-K",
+  "filedAt": "2026-03-05",
+  "accession": "0001193125-26-093986",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/827876/000119312526093986/clsk-20260303.htm",
+  "symbol": "CLSK",
+  "ballotId": "CLSK-2026-03-03",
+  "items": [
+   {
+    "index": "1",
+    "title": "To elect five directors to hold office until the next annual meeting of stockholders of the Company or until their successors are duly elected and qualified, subject to prior death, resignation, or removal.",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "S. Matthew Schultz",
+      "votesFor": 159730951,
+      "votesAgainst": null,
+      "votesWithheld": 3744323,
+      "votesAbstain": null,
+      "brokerNonVotes": 64605933
+     },
+     {
+      "name": "Larry McNeill",
+      "votesFor": 131828748,
+      "votesAgainst": null,
+      "votesWithheld": 31646526,
+      "votesAbstain": null,
+      "brokerNonVotes": 64605933
+     },
+     {
+      "name": "Dr. Thomas L. Wood",
+      "votesFor": 131310377,
+      "votesAgainst": null,
+      "votesWithheld": 32164897,
+      "votesAbstain": null,
+      "brokerNonVotes": 64605933
+     },
+     {
+      "name": "Roger P. Beynon",
+      "votesFor": 152603445,
+      "votesAgainst": null,
+      "votesWithheld": 10871829,
+      "votesAbstain": null,
+      "brokerNonVotes": 64605933
+     },
+     {
+      "name": "Amanda Cavaleri",
+      "votesFor": 135870967,
+      "votesAgainst": null,
+      "votesWithheld": 27604307,
+      "votesAbstain": null,
+      "brokerNonVotes": 64605933
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "To ratify the appointment of BDO USA, P.C. as the Company\u2019s independent registered public accounting firm for the fiscal year ending September 30, 2026.",
+    "votesFor": 225962314,
+    "votesAgainst": 1008127,
+    "votesAbstain": 1110767,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "FICO-2026-03-04": {
+  "form": "8-K",
+  "filedAt": "2026-03-05",
+  "accession": "0001193125-26-093964",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/814547/000119312526093964/d106510d8k.htm",
+  "symbol": "FICO",
+  "ballotId": "FICO-2026-03-04",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Braden R. Kelly",
+      "votesFor": 17016244,
+      "votesAgainst": 2585771,
+      "votesWithheld": 8095,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     },
+     {
+      "name": "Fabiola R. Arredondo",
+      "votesFor": 18527534,
+      "votesAgainst": 1074487,
+      "votesWithheld": 8089,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     },
+     {
+      "name": "William J. Lansing",
+      "votesFor": 19488427,
+      "votesAgainst": 112176,
+      "votesWithheld": 9507,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     },
+     {
+      "name": "Eva Manolis",
+      "votesFor": 18514186,
+      "votesAgainst": 1087949,
+      "votesWithheld": 7975,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     },
+     {
+      "name": "Marc F. McMorris",
+      "votesFor": 19311240,
+      "votesAgainst": 290766,
+      "votesWithheld": 8104,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     },
+     {
+      "name": "Joanna Rees",
+      "votesFor": 17772913,
+      "votesAgainst": 1817918,
+      "votesWithheld": 19279,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     },
+     {
+      "name": "David A. Rey",
+      "votesFor": 18857328,
+      "votesAgainst": 745344,
+      "votesWithheld": 7438,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     },
+     {
+      "name": "H. Tayloe Stansbury",
+      "votesFor": 19399025,
+      "votesAgainst": 203023,
+      "votesWithheld": 8062,
+      "votesAbstain": null,
+      "brokerNonVotes": 1641167
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory Vote on Executive Compensation",
+    "votesFor": 16637219,
+    "votesAgainst": 2952607,
+    "votesAbstain": 20284,
+    "votesWithheld": null,
+    "brokerNonVotes": 1641167,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of Appointment of Deloitte & Touche LLP as Independent Registered Public Accounting Firm for Fiscal 2026",
+    "votesFor": 20391307,
+    "votesAgainst": 854214,
+    "votesAbstain": 5756,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Amendment to Restated Certificate of Incorporation to Allow for Exculpation of Officers as Permitted by Delaware Law",
+    "votesFor": 18448374,
+    "votesAgainst": 1146104,
+    "votesAbstain": 15632,
+    "votesWithheld": null,
+    "brokerNonVotes": 1641167,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Amendment to Restated Certificate of Incorporation to Eliminate Supermajority Voting Requirement to Amend or Repeal Article 6",
+    "votesFor": 19504439,
+    "votesAgainst": 98031,
+    "votesAbstain": 7640,
+    "votesWithheld": null,
+    "brokerNonVotes": 1641167,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "MTSI-2026-03-05": {
+  "form": "8-K",
+  "filedAt": "2026-03-09",
+  "accession": "0001493594-26-000021",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1493594/000149359426000021/mtsi-20260305.htm",
+  "symbol": "MTSI",
+  "ballotId": "MTSI-2026-03-05",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Charles Bland",
+      "votesFor": 68533588,
+      "votesAgainst": null,
+      "votesWithheld": 1386445,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     },
+     {
+      "name": "Stephen Daly",
+      "votesFor": 68021587,
+      "votesAgainst": null,
+      "votesWithheld": 1898446,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     },
+     {
+      "name": "Peter Chung",
+      "votesFor": 65875278,
+      "votesAgainst": null,
+      "votesWithheld": 4044755,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     },
+     {
+      "name": "Bryan Ingram",
+      "votesFor": 69304619,
+      "votesAgainst": null,
+      "votesWithheld": 615414,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     },
+     {
+      "name": "Geoffrey Ribar",
+      "votesFor": 68499669,
+      "votesAgainst": null,
+      "votesWithheld": 1420364,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     },
+     {
+      "name": "John Ritchie",
+      "votesFor": 66756121,
+      "votesAgainst": null,
+      "votesWithheld": 3163912,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     },
+     {
+      "name": "Jihye Whang Rosenband",
+      "votesFor": 63335903,
+      "votesAgainst": null,
+      "votesWithheld": 6584130,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     },
+     {
+      "name": "Murugesan \u201cRaj\u201d Shanmugaraj",
+      "votesFor": 67813138,
+      "votesAgainst": null,
+      "votesWithheld": 2106895,
+      "votesAbstain": null,
+      "brokerNonVotes": 1995122
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory vote to approve the compensation of the Company\u2019s named executive officers for fiscal year 2025",
+    "votesFor": 69293469,
+    "votesAgainst": 569953,
+    "votesAbstain": 56611,
+    "votesWithheld": null,
+    "brokerNonVotes": 1995122,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of the appointment of Deloitte & Touche LLP as the Company\u2019s independent registered public accounting firm for the fiscal year ending October 2, 2026",
+    "votesFor": 71708151,
+    "votesAgainst": 178297,
+    "votesAbstain": 28707,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "AMAT-2026-03-12": {
+  "form": "8-K",
+  "filedAt": "2026-03-13",
+  "accession": "0001193125-26-106339",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/6951/000119312526106339/d114932d8k.htm",
+  "symbol": "AMAT",
+  "ballotId": "AMAT-2026-03-12",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "James R. Anderson",
+      "votesFor": 590237707,
+      "votesAgainst": 8270214,
+      "votesWithheld": 666796,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Rani Borkar",
+      "votesFor": 597000433,
+      "votesAgainst": 1548038,
+      "votesWithheld": 626246,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Judy Bruner",
+      "votesFor": 577101984,
+      "votesAgainst": 21075154,
+      "votesWithheld": 997579,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Xun (Eric) Chen",
+      "votesFor": 587759521,
+      "votesAgainst": 10762472,
+      "votesWithheld": 652724,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Aart J. de Geus",
+      "votesFor": 585509555,
+      "votesAgainst": 13017519,
+      "votesWithheld": 647643,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Gary E. Dickerson",
+      "votesFor": 590090396,
+      "votesAgainst": 8433224,
+      "votesWithheld": 651097,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Thomas J. Iannotti",
+      "votesFor": 555369126,
+      "votesAgainst": 43168401,
+      "votesWithheld": 637190,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Alexander A. Karsner",
+      "votesFor": 561480958,
+      "votesAgainst": 37045818,
+      "votesWithheld": 647941,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Kevin P. March",
+      "votesFor": 536089076,
+      "votesAgainst": 62101403,
+      "votesWithheld": 984238,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     },
+     {
+      "name": "Scott A. McGregor",
+      "votesFor": 591622103,
+      "votesAgainst": 6902286,
+      "votesWithheld": 650328,
+      "votesAbstain": null,
+      "brokerNonVotes": 85096891
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Approval, on an Advisory Basis, of the Compensation of the Company\u2019s Named Executive Officers for Fiscal Year 2025",
+    "votesFor": 552486796,
+    "votesAgainst": 41457649,
+    "votesAbstain": 5230272,
+    "votesWithheld": null,
+    "brokerNonVotes": 85096891,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of the Appointment of KPMG LLP as the Company\u2019s Independent Registered Public Accounting Firm for Fiscal Year 2026",
+    "votesFor": 636399482,
+    "votesAgainst": 46823436,
+    "votesAbstain": 1048690,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "FLNC-2026-03-12": {
+  "form": "8-K",
+  "filedAt": "2026-03-16",
+  "accession": "0001868941-26-000008",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1868941/000186894126000008/flnc-20260312.htm",
+  "symbol": "FLNC",
+  "ballotId": "FLNC-2026-03-12",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Fahad Al-Darwish",
+      "votesFor": 325332774,
+      "votesAgainst": null,
+      "votesWithheld": 14327032,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Cynthia Arnold",
+      "votesFor": 333705264,
+      "votesAgainst": null,
+      "votesWithheld": 5954542,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Herman Bulls",
+      "votesFor": 322653336,
+      "votesAgainst": null,
+      "votesWithheld": 17006470,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Ricardo Fal\u00fa",
+      "votesFor": 313211889,
+      "votesAgainst": null,
+      "votesWithheld": 26447917,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Elizabeth Fessenden",
+      "votesFor": 339026549,
+      "votesAgainst": null,
+      "votesWithheld": 633257,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Ruth Gratzke",
+      "votesFor": 319496976,
+      "votesAgainst": null,
+      "votesWithheld": 20162830,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Harald von Heynitz",
+      "votesFor": 333038792,
+      "votesAgainst": null,
+      "votesWithheld": 6621014,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Peter Chi-Shun Luk",
+      "votesFor": 325276570,
+      "votesAgainst": null,
+      "votesWithheld": 14383236,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Axel Meier",
+      "votesFor": 319528507,
+      "votesAgainst": null,
+      "votesWithheld": 20131299,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Letitia (\"Tish\") Mendoza",
+      "votesFor": 319455346,
+      "votesAgainst": null,
+      "votesWithheld": 20204460,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "Julian Nebreda",
+      "votesFor": 328213945,
+      "votesAgainst": null,
+      "votesWithheld": 11445861,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     },
+     {
+      "name": "John Christopher (\"Chris\") Shelton",
+      "votesFor": 325250401,
+      "votesAgainst": null,
+      "votesWithheld": 14409405,
+      "votesAbstain": null,
+      "brokerNonVotes": 12338720
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of Auditors",
+    "votesFor": 351450470,
+    "votesAgainst": 501261,
+    "votesAbstain": 46795,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory Vote on the Compensation of Named Executive Officers",
+    "votesFor": 336697114,
+    "votesAgainst": 2871667,
+    "votesAbstain": 91025,
+    "votesWithheld": null,
+    "brokerNonVotes": 12338720,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approval of the Amendment and Restatement of the Company's 2021 Incentive Award Plan",
+    "votesFor": 337751354,
+    "votesAgainst": 1804045,
+    "votesAbstain": 104407,
+    "votesWithheld": null,
+    "brokerNonVotes": 12338720,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "QCOM-2026-03-17": {
+  "form": "8-K",
+  "filedAt": "2026-03-19",
+  "accession": "0000804328-26-000041",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000041/qcom-20260317.htm",
+  "symbol": "QCOM",
+  "ballotId": "QCOM-2026-03-17",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Sylvia Acevedo",
+      "votesFor": 738492509,
+      "votesAgainst": null,
+      "votesWithheld": 11635969,
+      "votesAbstain": 1506560,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Cristiano R. Amon",
+      "votesFor": 747404384,
+      "votesAgainst": null,
+      "votesWithheld": 3206235,
+      "votesAbstain": 1024419,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Mark Fields",
+      "votesFor": 747379779,
+      "votesAgainst": null,
+      "votesWithheld": 3221310,
+      "votesAbstain": 1033949,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Jeffrey W. Henderson",
+      "votesFor": 712655940,
+      "votesAgainst": null,
+      "votesWithheld": 37697952,
+      "votesAbstain": 1281146,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Jeremy (Zico) Kolter",
+      "votesFor": 744674154,
+      "votesAgainst": null,
+      "votesWithheld": 5914152,
+      "votesAbstain": 1046732,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Ann M. Livermore",
+      "votesFor": 696865197,
+      "votesAgainst": null,
+      "votesWithheld": 53209054,
+      "votesAbstain": 1560787,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Mark D. McLaughlin",
+      "votesFor": 741866543,
+      "votesAgainst": null,
+      "votesWithheld": 8684600,
+      "votesAbstain": 1083895,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Jamie S. Miller",
+      "votesFor": 747554663,
+      "votesAgainst": null,
+      "votesWithheld": 3043643,
+      "votesAbstain": 1036732,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Marie Myers",
+      "votesFor": 747495211,
+      "votesAgainst": null,
+      "votesWithheld": 3157807,
+      "votesAbstain": 982020,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Irene B. Rosenfeld",
+      "votesFor": 695921138,
+      "votesAgainst": null,
+      "votesWithheld": 54657195,
+      "votesAbstain": 1056705,
+      "brokerNonVotes": 159320818
+     },
+     {
+      "name": "Jean-Pascal Tricoire",
+      "votesFor": 745574514,
+      "votesAgainst": null,
+      "votesWithheld": 5068438,
+      "votesAbstain": 992086,
+      "brokerNonVotes": 159320818
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of the selection of PricewaterhouseCoopers LLP as our independent public accountants for our fiscal year ending September 27, 2026",
+    "votesFor": 837154935,
+    "votesAgainst": 71897607,
+    "votesAbstain": 1903314,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approval, on an advisory basis, of the compensation of our named executive officers",
+    "votesFor": 686367756,
+    "votesAgainst": 61683514,
+    "votesAbstain": 3583768,
+    "votesWithheld": null,
+    "brokerNonVotes": 159320818,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approval, on an advisory basis, of the frequency of future advisory votes on our executive compensation",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": 1644527,
+    "votesWithheld": null,
+    "brokerNonVotes": 159320818,
+    "oneYear": 737573095,
+    "twoYears": 1296776,
+    "threeYears": 11120640,
+    "nominees": [],
+    "result": "one_year"
+   },
+   {
+    "index": "5",
+    "title": "Approval of the Amended and Restated QUALCOMM Incorporated 2023 Long-Term Incentive Plan, including an increase in the share reserve by 24,000,000 shares",
+    "votesFor": 700086875,
+    "votesAgainst": 48265613,
+    "votesAbstain": 3282550,
+    "votesWithheld": null,
+    "brokerNonVotes": 159320818,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "6",
+    "title": "Stockholder proposal entitled \u201cShareholder Ability to Call for a Special Shareholder Meeting.\u201d",
+    "votesFor": 316222168,
+    "votesAgainst": 432666683,
+    "votesAbstain": 2746187,
+    "votesWithheld": null,
+    "brokerNonVotes": 159320818,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "7",
+    "title": "Stockholder proposal entitled \u201cReport on Risk of China Exposure.\u201d",
+    "votesFor": 22142415,
+    "votesAgainst": 722023888,
+    "votesAbstain": 7468735,
+    "votesWithheld": null,
+    "brokerNonVotes": 159320818,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "CIEN-2026-03-26": {
+  "form": "8-K",
+  "filedAt": "2026-03-31",
+  "accession": "0001628280-26-022342",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/936395/000162828026022342/cien-20260326.htm",
+  "symbol": "CIEN",
+  "ballotId": "CIEN-2026-03-26",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": 3,
+    "nominees": [
+     {
+      "name": "Joanne B. Olsen",
+      "votesFor": 104605000,
+      "votesAgainst": 15351009,
+      "votesWithheld": null,
+      "votesAbstain": 94896,
+      "brokerNonVotes": 8494321
+     },
+     {
+      "name": "Mary G. Puma",
+      "votesFor": 114242082,
+      "votesAgainst": 5745697,
+      "votesWithheld": null,
+      "votesAbstain": 63126,
+      "brokerNonVotes": 8494321
+     },
+     {
+      "name": "Gary B. Smith",
+      "votesFor": 118653413,
+      "votesAgainst": 1345108,
+      "votesWithheld": null,
+      "votesAbstain": 52384,
+      "brokerNonVotes": 8494321
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of Independent Auditors",
+    "votesFor": 123082607,
+    "votesAgainst": 5389750,
+    "votesAbstain": 72869,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Stockholder Advisory Vote",
+    "votesFor": 114515974,
+    "votesAgainst": 5360579,
+    "votesAbstain": 174352,
+    "votesWithheld": null,
+    "brokerNonVotes": 8494321,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "HPE-2026-04-01": {
+  "form": "8-K",
+  "filedAt": "2026-04-03",
+  "accession": "0001645590-26-000036",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1645590/000164559026000036/hpe-20260401.htm",
+  "symbol": "HPE",
+  "ballotId": "HPE-2026-04-01",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Robert M. Calderoni",
+      "votesFor": 998182165,
+      "votesAgainst": 7039522,
+      "votesWithheld": 1490273,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Pamela L. Carter",
+      "votesFor": 967224802,
+      "votesAgainst": 37838198,
+      "votesWithheld": 1648960,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Frank A. D'Amelio",
+      "votesFor": 987048199,
+      "votesAgainst": 17942660,
+      "votesWithheld": 1721101,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Regina E. Dugan",
+      "votesFor": 999466908,
+      "votesAgainst": 5648304,
+      "votesWithheld": 1596748,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Jean M. Hobby",
+      "votesFor": 999175720,
+      "votesAgainst": 5951492,
+      "votesWithheld": 1584748,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Raymond J. Lane",
+      "votesFor": 998218216,
+      "votesAgainst": 6768744,
+      "votesWithheld": 1725000,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Ann M. Livermore",
+      "votesFor": 987828053,
+      "votesAgainst": 17236695,
+      "votesWithheld": 1647212,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Bethany J. Mayer",
+      "votesFor": 975162133,
+      "votesAgainst": 29822058,
+      "votesWithheld": 1727769,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Antonio F. Neri",
+      "votesFor": 999472441,
+      "votesAgainst": 6088334,
+      "votesWithheld": 1151185,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Charles H. Noski",
+      "votesFor": 991483292,
+      "votesAgainst": 13412898,
+      "votesWithheld": 1815770,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Gary M. Reiner",
+      "votesFor": 984484240,
+      "votesAgainst": 20398877,
+      "votesWithheld": 1828843,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     },
+     {
+      "name": "Patricia F. Russo",
+      "votesFor": 957364935,
+      "votesAgainst": 47841595,
+      "votesWithheld": 1505430,
+      "votesAbstain": null,
+      "brokerNonVotes": 157291562
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "Ratification of Ernst & Young LLP as Independent Registered Public Accounting Firm",
+    "votesFor": 1143409866,
+    "votesAgainst": 18711455,
+    "votesAbstain": 1882201,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "3",
+    "title": "Approval of Amendment No. 5 to the Hewlett Packard Enterprise Company 2021 Stock Incentive Plan",
+    "votesFor": 757960873,
+    "votesAgainst": 247372667,
+    "votesAbstain": 1378420,
+    "votesWithheld": null,
+    "brokerNonVotes": 157291562,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "4",
+    "title": "Advisory Vote to Approve Executive Compensation",
+    "votesFor": 740427894,
+    "votesAgainst": 264120706,
+    "votesAbstain": 2163360,
+    "votesWithheld": null,
+    "brokerNonVotes": 157291562,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "5",
+    "title": "Stockholder Proposal: Report on Discrimination in Charitable Support",
+    "votesFor": 8378781,
+    "votesAgainst": 990064677,
+    "votesAbstain": 8268502,
+    "votesWithheld": null,
+    "brokerNonVotes": 157291562,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   }
+  ]
+ },
+ "ADBE-2026-04-15": {
+  "form": "8-K",
+  "filedAt": "2026-04-21",
+  "accession": "0000796343-26-000101",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000101/adbe-20260415.htm",
+  "symbol": "ADBE",
+  "ballotId": "ADBE-2026-04-15",
+  "items": [
+   {
+    "index": "1",
+    "title": "Elect eleven members of the Board, each to serve for a one-year term",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Cristiano Amon",
+      "votesFor": 282005411,
+      "votesAgainst": 12079030,
+      "votesWithheld": null,
+      "votesAbstain": 434301,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Amy Banse",
+      "votesFor": 251492697,
+      "votesAgainst": 42599149,
+      "votesWithheld": null,
+      "votesAbstain": 426896,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Melanie Boulden",
+      "votesFor": 282311182,
+      "votesAgainst": 11809775,
+      "votesWithheld": null,
+      "votesAbstain": 397785,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Frank Calderoni",
+      "votesFor": 260547648,
+      "votesAgainst": 33532812,
+      "votesWithheld": null,
+      "votesAbstain": 438282,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Laura Desmond",
+      "votesFor": 284342411,
+      "votesAgainst": 9748316,
+      "votesWithheld": null,
+      "votesAbstain": 428015,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Shantanu Narayen",
+      "votesFor": 269218851,
+      "votesAgainst": 24752304,
+      "votesWithheld": null,
+      "votesAbstain": 547587,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Spencer Neumann",
+      "votesFor": 291249899,
+      "votesAgainst": 2830574,
+      "votesWithheld": null,
+      "votesAbstain": 438269,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Kathleen Oberg",
+      "votesFor": 288120843,
+      "votesAgainst": 5970573,
+      "votesWithheld": null,
+      "votesAbstain": 427326,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Dheeraj Pandey",
+      "votesFor": 291705655,
+      "votesAgainst": 2379367,
+      "votesWithheld": null,
+      "votesAbstain": 433720,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "David Ricks",
+      "votesFor": 280254563,
+      "votesAgainst": 13829972,
+      "votesWithheld": null,
+      "votesAbstain": 434207,
+      "brokerNonVotes": 41927404
+     },
+     {
+      "name": "Daniel Rosensweig",
+      "votesFor": 203314252,
+      "votesAgainst": 90650276,
+      "votesWithheld": null,
+      "votesAbstain": 554214,
+      "brokerNonVotes": 41927404
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Approve the 2019 Plan to increase the available share reserve by 12 million shares",
+    "votesFor": 269926547,
+    "votesAgainst": 23610400,
+    "votesAbstain": 981795,
+    "votesWithheld": null,
+    "brokerNonVotes": 41927404,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratify the appointment of KPMG LLP as our independent registered public accounting firm for our fiscal year ending on November 27, 2026",
+    "votesFor": 304073299,
+    "votesAgainst": 31540619,
+    "votesAbstain": 832228,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approve, on an advisory basis, the compensation of our named executive officers",
+    "votesFor": 148837167,
+    "votesAgainst": 144993886,
+    "votesAbstain": 687689,
+    "votesWithheld": null,
+    "brokerNonVotes": 41927404,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Vote upon a stockholder proposal regarding a vote on golden parachutes",
+    "votesFor": 23956990,
+    "votesAgainst": 269589945,
+    "votesAbstain": 971807,
+    "votesWithheld": null,
+    "brokerNonVotes": 41927404,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "6",
+    "title": "Vote upon a stockholder proposal regarding board matrix",
+    "votesFor": 38813057,
+    "votesAgainst": 253504241,
+    "votesAbstain": 2201444,
+    "votesWithheld": null,
+    "brokerNonVotes": 41927404,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "7",
+    "title": "Vote upon a stockholder proposal regarding report on civil liberties in digital services",
+    "votesFor": 1501051,
+    "votesAgainst": 290666105,
+    "votesAbstain": 2351586,
+    "votesWithheld": null,
+    "brokerNonVotes": 41927404,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "8",
+    "title": "Vote upon a stockholder proposal regarding retirement plan climate risk",
+    "votesFor": 26993426,
+    "votesAgainst": 249732648,
+    "votesAbstain": 17792668,
+    "votesWithheld": null,
+    "brokerNonVotes": 41927404,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "SMCI-2026-04-15": {
+  "form": "8-K",
+  "filedAt": "2026-04-20",
+  "accession": "0001375365-26-000012",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000012/smci-20260415.htm",
+  "symbol": "SMCI",
+  "ballotId": "SMCI-2026-04-15",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of three Class I Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Charles Liang",
+      "votesFor": 234602819,
+      "votesAgainst": null,
+      "votesWithheld": 45698736,
+      "votesAbstain": null,
+      "brokerNonVotes": 151333203
+     },
+     {
+      "name": "Tally Liu",
+      "votesFor": 198617591,
+      "votesAgainst": null,
+      "votesWithheld": 81683964,
+      "votesAbstain": null,
+      "brokerNonVotes": 151333203
+     },
+     {
+      "name": "Sherman Tuan",
+      "votesFor": 172256798,
+      "votesAgainst": null,
+      "votesWithheld": 108044757,
+      "votesAbstain": null,
+      "brokerNonVotes": 151333203
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "A proposal to approve a non-binding advisory resolution on compensation of the Company\u2019s named executive officers as disclosed in the proxy statement",
+    "votesFor": 259720162,
+    "votesAgainst": 19769911,
+    "votesAbstain": 811482,
+    "votesWithheld": null,
+    "brokerNonVotes": 151333203,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "A proposal to ratify the appointment of BDO USA, P.C. to serve as the Company\u2019s independent registered public accounting firm for the Company\u2019s fiscal year ending June 30, 2026",
+    "votesFor": 426001144,
+    "votesAgainst": 4552685,
+    "votesAbstain": 1080929,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "A proposal to approve the further amendment and restatement of the Super Micro Computer, Inc. 2020 Equity and Incentive Compensation Plan",
+    "votesFor": 227820618,
+    "votesAgainst": 51703394,
+    "votesAbstain": 777543,
+    "votesWithheld": null,
+    "brokerNonVotes": 151333203,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "BA-2026-04-17": {
+  "form": "8-K",
+  "filedAt": "2026-04-17",
+  "accession": "0001628280-26-025684",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/12927/000162828026025684/ba-20260417.htm",
+  "symbol": "BA",
+  "ballotId": "BA-2026-04-17",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Robert A. Bradway",
+      "votesFor": 490089100,
+      "votesAgainst": 51733670,
+      "votesWithheld": null,
+      "votesAbstain": 3851304,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Mortimer \"Tim\" J. Buckley",
+      "votesFor": 519761056,
+      "votesAgainst": 22168481,
+      "votesWithheld": null,
+      "votesAbstain": 3744537,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Lynne M. Doughtie",
+      "votesFor": 523801130,
+      "votesAgainst": 18032168,
+      "votesWithheld": null,
+      "votesAbstain": 3840776,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "David L. Gitlin",
+      "votesFor": 528541833,
+      "votesAgainst": 13255870,
+      "votesWithheld": null,
+      "votesAbstain": 3876371,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Lynn J. Good",
+      "votesFor": 517522472,
+      "votesAgainst": 24418900,
+      "votesWithheld": null,
+      "votesAbstain": 3732702,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Stayce D. Harris",
+      "votesFor": 524427789,
+      "votesAgainst": 17028796,
+      "votesWithheld": null,
+      "votesAbstain": 4217489,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Akhil Johri",
+      "votesFor": 527103114,
+      "votesAgainst": 14482150,
+      "votesWithheld": null,
+      "votesAbstain": 4088810,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "David L. Joyce",
+      "votesFor": 517649065,
+      "votesAgainst": 24227151,
+      "votesWithheld": null,
+      "votesAbstain": 3797858,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Steven M. Mollenkopf",
+      "votesFor": 507991541,
+      "votesAgainst": 33942567,
+      "votesWithheld": null,
+      "votesAbstain": 3739966,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Robert Kelly Ortberg",
+      "votesFor": 532227508,
+      "votesAgainst": 10371269,
+      "votesWithheld": null,
+      "votesAbstain": 3075297,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "John M. Richardson",
+      "votesFor": 526550186,
+      "votesAgainst": 15315003,
+      "votesWithheld": null,
+      "votesAbstain": 3808885,
+      "brokerNonVotes": 113043796
+     },
+     {
+      "name": "Bradley D. Tilden",
+      "votesFor": 530948794,
+      "votesAgainst": 10957353,
+      "votesWithheld": null,
+      "votesAbstain": 3767927,
+      "brokerNonVotes": 113043796
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "Approve, on an Advisory Basis, Named Executive Officer Compensation",
+    "votesFor": 484097165,
+    "votesAgainst": 55595642,
+    "votesAbstain": 5981267,
+    "votesWithheld": null,
+    "brokerNonVotes": 113043796,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "3",
+    "title": "Ratify the Appointment of Deloitte & Touche LLP as Independent Auditor for 2026",
+    "votesFor": 633969482,
+    "votesAgainst": 21574114,
+    "votesAbstain": 3174274,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "4",
+    "title": "Shareholder Proposal \u2013 Board Committee on Disability Access",
+    "votesFor": 13933081,
+    "votesAgainst": 521642088,
+    "votesAbstain": 10098905,
+    "votesWithheld": null,
+    "brokerNonVotes": 113043796,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "5",
+    "title": "Shareholder Proposal \u2013 Action by Written Consent",
+    "votesFor": 214181855,
+    "votesAgainst": 325275102,
+    "votesAbstain": 6217117,
+    "votesWithheld": null,
+    "brokerNonVotes": 113043796,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   }
+  ]
+ },
+ "CCL-2026-04-17": {
+  "form": "8-K",
+  "filedAt": "2026-04-20",
+  "accession": "0000815097-26-000043",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/815097/000081509726000043/ccl-20260417.htm",
+  "symbol": "CCL",
+  "ballotId": "CCL-2026-04-17",
+  "items": [
+   {
+    "index": "1",
+    "title": "To re-elect Micky Arison as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Micky Arison",
+      "votesFor": 885002049,
+      "votesAgainst": 31232814,
+      "votesWithheld": null,
+      "votesAbstain": 682207,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "To re-elect Sir Jonathon Band as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Sir Jonathon Band",
+      "votesFor": 875364523,
+      "votesAgainst": 40769204,
+      "votesWithheld": null,
+      "votesAbstain": 783343,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "3",
+    "title": "To re-elect Jason Glen Cahilly as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Jason Glen Cahilly",
+      "votesFor": 906334457,
+      "votesAgainst": 9786767,
+      "votesWithheld": null,
+      "votesAbstain": 795846,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "4",
+    "title": "To re-elect Nelda J. Connors as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Nelda J. Connors",
+      "votesFor": 905722778,
+      "votesAgainst": 10402443,
+      "votesWithheld": null,
+      "votesAbstain": 791849,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "5",
+    "title": "To re-elect Helen Deeble as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Helen Deeble",
+      "votesFor": 907516980,
+      "votesAgainst": 8613066,
+      "votesWithheld": null,
+      "votesAbstain": 787024,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "6",
+    "title": "To re-elect Jeffrey J. Gearhart as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Jeffrey J. Gearhart",
+      "votesFor": 911045968,
+      "votesAgainst": 5066698,
+      "votesWithheld": null,
+      "votesAbstain": 804404,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "7",
+    "title": "To re-elect Katie Lahey as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Katie Lahey",
+      "votesFor": 898488541,
+      "votesAgainst": 17635989,
+      "votesWithheld": null,
+      "votesAbstain": 792540,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "8",
+    "title": "To re-elect Stuart Subotnick as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Stuart Subotnick",
+      "votesFor": 815433057,
+      "votesAgainst": 100638837,
+      "votesWithheld": null,
+      "votesAbstain": 845176,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "9",
+    "title": "To re-elect Laura Weil as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Laura Weil",
+      "votesFor": 835320505,
+      "votesAgainst": 80762636,
+      "votesWithheld": null,
+      "votesAbstain": 833929,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "10",
+    "title": "To re-elect Josh Weinstein as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Josh Weinstein",
+      "votesFor": 900871675,
+      "votesAgainst": 15262559,
+      "votesWithheld": null,
+      "votesAbstain": 782836,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "11",
+    "title": "To re-elect Randy Weisenburger as a director of Carnival Corporation and Carnival plc",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Randy Weisenburger",
+      "votesFor": 829916228,
+      "votesAgainst": 86159361,
+      "votesWithheld": null,
+      "votesAbstain": 841481,
+      "brokerNonVotes": 144365254
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "12",
+    "title": "To hold a (non-binding) advisory vote to approve executive compensation",
+    "votesFor": 879051088,
+    "votesAgainst": 29497346,
+    "votesAbstain": 8368636,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "13",
+    "title": "To hold a (non-binding) advisory vote to approve the Carnival plc Directors\u2019 Remuneration Report",
+    "votesFor": 883294017,
+    "votesAgainst": 25278501,
+    "votesAbstain": 8344552,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "14",
+    "title": "To appoint Deloitte LLP as independent auditor of Carnival plc and to ratify the selection of Deloitte & Touche LLP as the independent registered public accounting firm of Carnival Corporation",
+    "votesFor": 1057700041,
+    "votesAgainst": 2000000,
+    "votesAbstain": 1582283,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "15",
+    "title": "To authorize the Audit Committee of Carnival plc to determine the remuneration of the independent auditor of Carnival plc",
+    "votesFor": 1057519943,
+    "votesAgainst": 2285498,
+    "votesAbstain": 1476883,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "16",
+    "title": "To receive the accounts and reports of the Directors and auditor of Carnival plc for the year ended November 30, 2025",
+    "votesFor": 1052393969,
+    "votesAgainst": 1587384,
+    "votesAbstain": 7300971,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "17",
+    "title": "To approve the giving of authority for the allotment of new shares by Carnival plc",
+    "votesFor": 1034070171,
+    "votesAgainst": 25658516,
+    "votesAbstain": 1553637,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "18",
+    "title": "To approve, subject to Proposal 17 passing, the disapplication of pre-emption rights in relation to the allotment of new shares and sale of treasury shares by Carnival plc",
+    "votesFor": 1049666989,
+    "votesAgainst": 9658081,
+    "votesAbstain": 1957255,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "19",
+    "title": "To approve a general authority for Carnival plc to buy back Carnival plc ordinary shares in the open market",
+    "votesFor": 1053498983,
+    "votesAgainst": 2151546,
+    "votesAbstain": 5631795,
+    "votesWithheld": null,
+    "brokerNonVotes": 144365254,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Court Meeting",
+    "title": "To approve the Scheme at the Court Meeting",
+    "votesFor": 67041711,
+    "votesAgainst": 3547156,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 1",
+    "title": "To approve the DLC Unification and Redomiciliation Transactions including, with effect from the Scheme of Arrangement becoming effective, the termination of the Equalization Agreement (Carnival plc General Meeting)",
+    "votesFor": 66565512,
+    "votesAgainst": 3521673,
+    "votesAbstain": 67076,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 2",
+    "title": "To authorize the Boards of Directors of Carnival Corporation and Carnival plc to take all action necessary and appropriate for implementing the Scheme of Arrangement and the DLC Unification and Redomiciliation Transactions (Carnival plc General Meeting)",
+    "votesFor": 66563262,
+    "votesAgainst": 3516007,
+    "votesAbstain": 73994,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 3",
+    "title": "To adopt the new articles of association of Carnival plc with effect from the passing of the resolution (Carnival plc General Meeting)",
+    "votesFor": 67030797,
+    "votesAgainst": 3043260,
+    "votesAbstain": 79205,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 4",
+    "title": "To adopt the new articles of association of Carnival plc with effect from the Scheme of Arrangement becoming effective (Carnival plc General Meeting)",
+    "votesFor": 67029551,
+    "votesAgainst": 3042890,
+    "votesAbstain": 80821,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 5",
+    "title": "To adopt the Memorandum of Continuance that will take effect upon the redomiciliation of Carnival Corporation from Panama to Bermuda (Carnival plc General Meeting)",
+    "votesFor": 66945596,
+    "votesAgainst": 3127705,
+    "votesAbstain": 79961,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 6",
+    "title": "To adopt the Carnival Corporation Ltd. Bye-Laws that will take effect upon the redomiciliation of Carnival Corporation from Panama to Bermuda (Carnival plc General Meeting)",
+    "votesFor": 67034634,
+    "votesAgainst": 3038064,
+    "votesAbstain": 80565,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 1",
+    "title": "To approve the DLC Unification and Redomiciliation Transactions including, with effect from the Scheme of Arrangement becoming effective, the termination of the Equalization Agreement (Corporation Extraordinary General Meeting)",
+    "votesFor": 835160437,
+    "votesAgainst": 9912466,
+    "votesAbstain": 832029,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 2",
+    "title": "To authorize the Boards of Directors of Carnival Corporation and Carnival plc to take all action necessary and appropriate for implementing the Scheme of Arrangement and the DLC Unification and Redomiciliation Transactions (Corporation Extraordinary General Meeting)",
+    "votesFor": 835200441,
+    "votesAgainst": 9926661,
+    "votesAbstain": 777830,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 3",
+    "title": "To adopt the new articles of association of Carnival plc with effect from the passing of this resolution (Corporation Extraordinary General Meeting)",
+    "votesFor": 840469601,
+    "votesAgainst": 4650756,
+    "votesAbstain": 784575,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 4",
+    "title": "To adopt the new articles of association of Carnival plc with effect from the Scheme of Arrangement becoming effective (Corporation Extraordinary General Meeting)",
+    "votesFor": 840439003,
+    "votesAgainst": 4670284,
+    "votesAbstain": 795645,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 5",
+    "title": "To adopt the Memorandum of Continuance that will take effect upon the redomiciliation of Carnival Corporation from Panama to Bermuda (Corporation Extraordinary General Meeting)",
+    "votesFor": 840526859,
+    "votesAgainst": 4618753,
+    "votesAbstain": 759320,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "Special Meeting 6",
+    "title": "To adopt the Carnival Corporation Ltd. Bye-Laws that will take effect upon the redomiciliation of Carnival Corporation from Panama to Bermuda (Corporation Extraordinary General Meeting)",
+    "votesFor": 840570711,
+    "votesAgainst": 4598130,
+    "votesAbstain": 736091,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "AVGO-2026-04-20": {
+  "form": "8-K",
+  "filedAt": "2026-04-21",
+  "accession": "0001730168-26-000039",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000039/avgo-20260420.htm",
+  "symbol": "AVGO",
+  "ballotId": "AVGO-2026-04-20",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Diane M. Bryant",
+      "votesFor": 3434586458,
+      "votesAgainst": 233205703,
+      "votesWithheld": null,
+      "votesAbstain": 16108424,
+      "brokerNonVotes": 420714385
+     },
+     {
+      "name": "Gayla J. Delly",
+      "votesFor": 3600076857,
+      "votesAgainst": 67261984,
+      "votesWithheld": null,
+      "votesAbstain": 16561744,
+      "brokerNonVotes": 420714385
+     },
+     {
+      "name": "Kenneth Y. Hao",
+      "votesFor": 3657934976,
+      "votesAgainst": 9766638,
+      "votesWithheld": null,
+      "votesAbstain": 16198971,
+      "brokerNonVotes": 420714385
+     },
+     {
+      "name": "Check Kian Low",
+      "votesFor": 3379309285,
+      "votesAgainst": 288009840,
+      "votesWithheld": null,
+      "votesAbstain": 16581460,
+      "brokerNonVotes": 420714385
+     },
+     {
+      "name": "Justine F. Page",
+      "votesFor": 3657141292,
+      "votesAgainst": 10629413,
+      "votesWithheld": null,
+      "votesAbstain": 16129880,
+      "brokerNonVotes": 420714385
+     },
+     {
+      "name": "Henry Samueli, Ph.D.",
+      "votesFor": 3595771140,
+      "votesAgainst": 69801029,
+      "votesWithheld": null,
+      "votesAbstain": 18328416,
+      "brokerNonVotes": 420714385
+     },
+     {
+      "name": "Hock E. Tan",
+      "votesFor": 3657283597,
+      "votesAgainst": 10963355,
+      "votesWithheld": null,
+      "votesAbstain": 15653633,
+      "brokerNonVotes": 420714385
+     },
+     {
+      "name": "Harry L. You",
+      "votesFor": 2713064484,
+      "votesAgainst": 954686330,
+      "votesWithheld": null,
+      "votesAbstain": 16149771,
+      "brokerNonVotes": 420714385
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratify appointment of PricewaterhouseCoopers LLP as independent registered public accounting firm",
+    "votesFor": 4007802173,
+    "votesAgainst": 81424831,
+    "votesAbstain": 15387966,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory vote to approve named executive officer compensation",
+    "votesFor": 2433503375,
+    "votesAgainst": 1232879962,
+    "votesAbstain": 17517248,
+    "votesWithheld": null,
+    "brokerNonVotes": 420714385,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "DDOG-2026-04-21": {
+  "form": "8-K",
+  "filedAt": "2026-04-22",
+  "accession": "0001193125-26-168261",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1561550/000119312526168261/d81305d8k.htm",
+  "symbol": "DDOG",
+  "ballotId": "DDOG-2026-04-21",
+  "items": [
+   {
+    "index": "1",
+    "title": "Proposal to redomicile the Company from the State of Delaware to the State of Nevada by conversion",
+    "votesFor": 332195858,
+    "votesAgainst": 199605477,
+    "votesAbstain": 351779,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "JNJ-2026-04-23": {
+  "form": "8-K",
+  "filedAt": "2026-04-28",
+  "accession": "0000200406-26-000089",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000089/jnj-20260423.htm",
+  "symbol": "JNJ",
+  "ballotId": "JNJ-2026-04-23",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "M. C. Beckerle",
+      "votesFor": 1717960024,
+      "votesAgainst": 21523602,
+      "votesWithheld": null,
+      "votesAbstain": 3071503,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "J. A. Doudna",
+      "votesFor": 1722365064,
+      "votesAgainst": 17232471,
+      "votesWithheld": null,
+      "votesAbstain": 2957594,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "J. Duato",
+      "votesFor": 1654870358,
+      "votesAgainst": 84725734,
+      "votesWithheld": null,
+      "votesAbstain": 2959037,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "M. A. Hewson",
+      "votesFor": 1694721822,
+      "votesAgainst": 43362781,
+      "votesWithheld": null,
+      "votesAbstain": 4470526,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "P. A. Johnson",
+      "votesFor": 1724394799,
+      "votesAgainst": 15093883,
+      "votesWithheld": null,
+      "votesAbstain": 3066447,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "H. Joly",
+      "votesFor": 1664230485,
+      "votesAgainst": 75001172,
+      "votesWithheld": null,
+      "votesAbstain": 3323472,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "M. B. McClellan",
+      "votesFor": 1716126914,
+      "votesAgainst": 23153464,
+      "votesWithheld": null,
+      "votesAbstain": 3274751,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "J. G. Morikis",
+      "votesFor": 1722975295,
+      "votesAgainst": 16204254,
+      "votesWithheld": null,
+      "votesAbstain": 3375580,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "D. E. Pinto",
+      "votesFor": 1729298557,
+      "votesAgainst": 10014607,
+      "votesWithheld": null,
+      "votesAbstain": 3241965,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "M. A. Weinberger",
+      "votesFor": 1676844107,
+      "votesAgainst": 61834491,
+      "votesWithheld": null,
+      "votesAbstain": 3876531,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "N. Y. West",
+      "votesFor": 1716608777,
+      "votesAgainst": 22801606,
+      "votesWithheld": null,
+      "votesAbstain": 3144746,
+      "brokerNonVotes": 314406723
+     },
+     {
+      "name": "E. A. Woods",
+      "votesFor": 1682880891,
+      "votesAgainst": 56411905,
+      "votesWithheld": null,
+      "votesAbstain": 3262333,
+      "brokerNonVotes": 314406723
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory vote to approve named executive officer compensation (Say on Pay)",
+    "votesFor": 1641173032,
+    "votesAgainst": 91774923,
+    "votesAbstain": 9607174,
+    "votesWithheld": null,
+    "brokerNonVotes": 314406723,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of appointment of PricewaterhouseCoopers LLP as the Company\u2019s independent registered public accounting firm for 2026",
+    "votesFor": 1914846474,
+    "votesAgainst": 138633899,
+    "votesAbstain": 3481479,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Shareholder Proposal - independent board chair",
+    "votesFor": 406353048,
+    "votesAgainst": 1326857173,
+    "votesAbstain": 9344908,
+    "votesWithheld": null,
+    "brokerNonVotes": 314406723,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "PFE-2026-04-23": {
+  "form": "8-K",
+  "filedAt": "2026-04-27",
+  "accession": "0000078003-26-000044",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000044/pfe-20260423.htm",
+  "symbol": "PFE",
+  "ballotId": "PFE-2026-04-23",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Ronald E. Blaylock",
+      "votesFor": 3442653662,
+      "votesAgainst": 102600748,
+      "votesWithheld": null,
+      "votesAbstain": 11374500,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Albert Bourla",
+      "votesFor": 3261211737,
+      "votesAgainst": 272132573,
+      "votesWithheld": null,
+      "votesAbstain": 23284563,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Mortimer J. Buckley",
+      "votesFor": 3403974675,
+      "votesAgainst": 141036932,
+      "votesWithheld": null,
+      "votesAbstain": 11617303,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Susan Desmond-Hellmann",
+      "votesFor": 3401932807,
+      "votesAgainst": 141056147,
+      "votesWithheld": null,
+      "votesAbstain": 13639956,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Joseph J. Echevarria",
+      "votesFor": 2929511380,
+      "votesAgainst": 612413502,
+      "votesWithheld": null,
+      "votesAbstain": 14702274,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Scott Gottlieb",
+      "votesFor": 3415886776,
+      "votesAgainst": 130394185,
+      "votesWithheld": null,
+      "votesAbstain": 10343738,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Dan R. Littman",
+      "votesFor": 3383769589,
+      "votesAgainst": 161740872,
+      "votesWithheld": null,
+      "votesAbstain": 11118449,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Shantanu Narayen",
+      "votesFor": 3313318763,
+      "votesAgainst": 231613932,
+      "votesWithheld": null,
+      "votesAbstain": 11695915,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Suzanne Nora Johnson",
+      "votesFor": 3272936863,
+      "votesAgainst": 273506151,
+      "votesWithheld": null,
+      "votesAbstain": 10185896,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "James Quincey",
+      "votesFor": 3453778741,
+      "votesAgainst": 91549236,
+      "votesWithheld": null,
+      "votesAbstain": 11300933,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "James C. Smith",
+      "votesFor": 3284035682,
+      "votesAgainst": 261217699,
+      "votesWithheld": null,
+      "votesAbstain": 11375529,
+      "brokerNonVotes": 941392137
+     },
+     {
+      "name": "Cyrus Taraporevala",
+      "votesFor": 3468177423,
+      "votesAgainst": 76665721,
+      "votesWithheld": null,
+      "votesAbstain": 11785766,
+      "brokerNonVotes": 941392137
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratify selection of KPMG LLP as independent registered public accounting firm for 2026 fiscal year",
+    "votesFor": 4160827231,
+    "votesAgainst": 321979096,
+    "votesAbstain": 15214720,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approve Pfizer Inc. 2019 Stock Plan, as amended April 2026",
+    "votesFor": 3227692578,
+    "votesAgainst": 305428376,
+    "votesAbstain": 23507956,
+    "votesWithheld": null,
+    "brokerNonVotes": 941392137,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approve, on an advisory basis, the 2026 compensation of the Company's Named Executive Officers",
+    "votesFor": 3099249442,
+    "votesAgainst": 423935881,
+    "votesAbstain": 33443287,
+    "votesWithheld": null,
+    "brokerNonVotes": 941392137,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Shareholder proposal to Adopt An Independent Chair Policy",
+    "votesFor": 1015206372,
+    "votesAgainst": 2509042021,
+    "votesAbstain": 32354566,
+    "votesWithheld": null,
+    "brokerNonVotes": 941392137,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "CEG-2026-04-28": {
+  "form": "8-K",
+  "filedAt": "2026-05-01",
+  "accession": "0001868275-26-000050",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000050/ceg-20260428.htm",
+  "symbol": "CEG",
+  "ballotId": "CEG-2026-04-28",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Yves de Balmann",
+      "votesFor": 246517608,
+      "votesAgainst": null,
+      "votesWithheld": 9913410,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Joseph Dominguez",
+      "votesFor": 253511419,
+      "votesAgainst": null,
+      "votesWithheld": 2919599,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Bradley Halverson",
+      "votesFor": 251225685,
+      "votesAgainst": null,
+      "votesWithheld": 5205333,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Charles Harrington",
+      "votesFor": 230157238,
+      "votesAgainst": null,
+      "votesWithheld": 26273780,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Julie Holzrichter",
+      "votesFor": 253061906,
+      "votesAgainst": null,
+      "votesWithheld": 3369112,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Dhiaa Jamil",
+      "votesFor": 252409287,
+      "votesAgainst": null,
+      "votesWithheld": 4021731,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Ashish Khandpur",
+      "votesFor": 250422292,
+      "votesAgainst": null,
+      "votesWithheld": 6008726,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Robert Lawless",
+      "votesFor": 248790034,
+      "votesAgainst": null,
+      "votesWithheld": 7640984,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Eileen Paterson",
+      "votesFor": 251503170,
+      "votesAgainst": null,
+      "votesWithheld": 4927848,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "John Richardson",
+      "votesFor": 251133875,
+      "votesAgainst": null,
+      "votesWithheld": 5297143,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     },
+     {
+      "name": "Nneka Rimmer",
+      "votesFor": 253982520,
+      "votesAgainst": null,
+      "votesWithheld": 2448498,
+      "votesAbstain": null,
+      "brokerNonVotes": 30638987
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory Vote to Approve Compensation of our Named Executive Officers (Say-on-Pay)",
+    "votesFor": 241593166,
+    "votesAgainst": 13558055,
+    "votesAbstain": 1279797,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of Independent Registered Public Accounting Firm",
+    "votesFor": 285285740,
+    "votesAgainst": 1356702,
+    "votesAbstain": 427563,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Shareholder Proposal",
+    "votesFor": 2969194,
+    "votesAgainst": 251481422,
+    "votesAbstain": 1980402,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "IBM-2026-04-28": {
+  "form": "8-K",
+  "filedAt": "2026-05-01",
+  "accession": "0000051143-26-000043",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/51143/000005114326000043/ibm-20260428.htm",
+  "symbol": "IBM",
+  "ballotId": "IBM-2026-04-28",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors for a Term of One Year",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "M.C. Brown",
+      "votesFor": 566629438,
+      "votesAgainst": 20614934,
+      "votesWithheld": null,
+      "votesAbstain": 3301846,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "T. Buberl",
+      "votesFor": 571971421,
+      "votesAgainst": 15580499,
+      "votesWithheld": null,
+      "votesAbstain": 2994298,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "D.N. Farr",
+      "votesFor": 563836707,
+      "votesAgainst": 23572343,
+      "votesWithheld": null,
+      "votesAbstain": 3137168,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "A. Gorsky",
+      "votesFor": 576449340,
+      "votesAgainst": 11120322,
+      "votesWithheld": null,
+      "votesAbstain": 2976556,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "M.J. Howard",
+      "votesFor": 581408345,
+      "votesAgainst": 6354053,
+      "votesWithheld": null,
+      "votesAbstain": 2783820,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "A. Krishna",
+      "votesFor": 550735370,
+      "votesAgainst": 37035145,
+      "votesWithheld": null,
+      "votesAbstain": 2775703,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "R. Laguarta",
+      "votesFor": 576049534,
+      "votesAgainst": 11492843,
+      "votesWithheld": null,
+      "votesAbstain": 3003841,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "A.N. Liveris",
+      "votesFor": 509517363,
+      "votesAgainst": 77131225,
+      "votesWithheld": null,
+      "votesAbstain": 3897630,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "F.W. McNabb III",
+      "votesFor": 579894423,
+      "votesAgainst": 7619457,
+      "votesWithheld": null,
+      "votesAbstain": 3032338,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "M. Miebach",
+      "votesFor": 580393883,
+      "votesAgainst": 7148217,
+      "votesWithheld": null,
+      "votesAbstain": 3004118,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "M.E. Pollack",
+      "votesFor": 581101903,
+      "votesAgainst": 6775731,
+      "votesWithheld": null,
+      "votesAbstain": 2668584,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "P.R. Voser",
+      "votesFor": 567427048,
+      "votesAgainst": 20099791,
+      "votesWithheld": null,
+      "votesAbstain": 3019379,
+      "brokerNonVotes": 153795179
+     },
+     {
+      "name": "A.W. Zollar",
+      "votesFor": 565396048,
+      "votesAgainst": 21774303,
+      "votesWithheld": null,
+      "votesAbstain": 3375867,
+      "brokerNonVotes": 153795179
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "Ratification of Appointment of Independent Registered Public Accounting Firm",
+    "votesFor": 696575072,
+    "votesAgainst": 44126730,
+    "votesAbstain": 3639595,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Management Proposal on Advisory Vote on Executive Compensation (Say on Pay)",
+    "votesFor": 549921108,
+    "votesAgainst": 33951059,
+    "votesAbstain": 6674051,
+    "votesWithheld": null,
+    "brokerNonVotes": 153795179,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Management Proposal on 2026 Long-Term Performance Plan",
+    "votesFor": 443997153,
+    "votesAgainst": 141393340,
+    "votesAbstain": 5155725,
+    "votesWithheld": null,
+    "brokerNonVotes": 153795179,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Stockholder Proposal Requesting a Change to IBM\u2019s Outside Director Stock Ownership Guidelines",
+    "votesFor": 25236592,
+    "votesAgainst": 554331295,
+    "votesAbstain": 10978331,
+    "votesWithheld": null,
+    "brokerNonVotes": 153795179,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "6",
+    "title": "Stockholder Proposal Requesting a Right to Act by Written Consent",
+    "votesFor": 217600186,
+    "votesAgainst": 366073636,
+    "votesAbstain": 6872396,
+    "votesWithheld": null,
+    "brokerNonVotes": 153795179,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "7",
+    "title": "Stockholder Proposal Requesting a Report on AI Bias",
+    "votesFor": 14185799,
+    "votesAgainst": 565479507,
+    "votesAbstain": 10880912,
+    "votesWithheld": null,
+    "brokerNonVotes": 153795179,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "8",
+    "title": "Stockholder Proposal Requesting a Report on Discrimination in Charitable Support",
+    "votesFor": 12738223,
+    "votesAgainst": 567012840,
+    "votesAbstain": 10795155,
+    "votesWithheld": null,
+    "brokerNonVotes": 153795179,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "HII-2026-04-29": {
+  "form": "8-K",
+  "filedAt": "2026-05-01",
+  "accession": "0001501585-26-000022",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1501585/000150158526000022/hii-20260429.htm",
+  "symbol": "HII",
+  "ballotId": "HII-2026-04-29",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Augustus L. Collins",
+      "votesFor": 29402518,
+      "votesAgainst": 2210237,
+      "votesWithheld": null,
+      "votesAbstain": 37608,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Leo P. Denault",
+      "votesFor": 31423012,
+      "votesAgainst": 189520,
+      "votesWithheld": null,
+      "votesAbstain": 37831,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Kirkland H. Donald",
+      "votesFor": 31463591,
+      "votesAgainst": 150304,
+      "votesWithheld": null,
+      "votesAbstain": 36468,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Craig S. Faller",
+      "votesFor": 31407328,
+      "votesAgainst": 205102,
+      "votesWithheld": null,
+      "votesAbstain": 37933,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Victoria D. Harker",
+      "votesFor": 30570973,
+      "votesAgainst": 1039506,
+      "votesWithheld": null,
+      "votesAbstain": 39884,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Frank R. Jimenez",
+      "votesFor": 30376300,
+      "votesAgainst": 1211538,
+      "votesWithheld": null,
+      "votesAbstain": 62525,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Christopher D. Kastner",
+      "votesFor": 31529294,
+      "votesAgainst": 88773,
+      "votesWithheld": null,
+      "votesAbstain": 32296,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Tracy B. McKibben",
+      "votesFor": 27331436,
+      "votesAgainst": 4240845,
+      "votesWithheld": null,
+      "votesAbstain": 78082,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Stephanie L. O'Sullivan",
+      "votesFor": 31493059,
+      "votesAgainst": 119623,
+      "votesWithheld": null,
+      "votesAbstain": 37681,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Thomas C. Schievelbein",
+      "votesFor": 30547525,
+      "votesAgainst": 1065512,
+      "votesWithheld": null,
+      "votesAbstain": 37326,
+      "brokerNonVotes": 3836489
+     },
+     {
+      "name": "Nick L. Stanage",
+      "votesFor": 31169529,
+      "votesAgainst": 441108,
+      "votesWithheld": null,
+      "votesAbstain": 39726,
+      "brokerNonVotes": 3836489
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "Proposal to Approve the Company\u2019s Executive Compensation on an Advisory Basis",
+    "votesFor": 31129918,
+    "votesAgainst": 422646,
+    "votesAbstain": 97799,
+    "votesWithheld": null,
+    "brokerNonVotes": 3836489,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "3",
+    "title": "Proposal to Ratify the Appointment of the Company's Independent Auditor",
+    "votesFor": 34620782,
+    "votesAgainst": 793196,
+    "votesAbstain": 72874,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "4",
+    "title": "Stockholder Proposal Requesting an Annual Report on the Company's Political Spending",
+    "votesFor": 3556445,
+    "votesAgainst": 27876860,
+    "votesAbstain": 217058,
+    "votesWithheld": null,
+    "brokerNonVotes": 3836489,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   }
+  ]
+ },
+ "VST-2026-04-29": {
+  "form": "8-K",
+  "filedAt": "2026-05-04",
+  "accession": "0001140361-26-018872",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1692819/000114036126018872/ef20072328_8k.htm",
+  "symbol": "VST",
+  "ballotId": "VST-2026-04-29",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Scott B. Helm",
+      "votesFor": 268284135,
+      "votesAgainst": 1204910,
+      "votesWithheld": null,
+      "votesAbstain": 132206,
+      "brokerNonVotes": 26427264
+     },
+     {
+      "name": "Hilary E. Ackermann",
+      "votesFor": 264452593,
+      "votesAgainst": 5042235,
+      "votesWithheld": null,
+      "votesAbstain": 126423,
+      "brokerNonVotes": 26427264
+     },
+     {
+      "name": "Arcilia C. Acosta",
+      "votesFor": 267743088,
+      "votesAgainst": 1586807,
+      "votesWithheld": null,
+      "votesAbstain": 291356,
+      "brokerNonVotes": 26427264
+     },
+     {
+      "name": "Gavin R. Baiera",
+      "votesFor": 269205277,
+      "votesAgainst": 284077,
+      "votesWithheld": null,
+      "votesAbstain": 131897,
+      "brokerNonVotes": 26427264
+     },
+     {
+      "name": "Paul M. Barbas",
+      "votesFor": 267629809,
+      "votesAgainst": 1848590,
+      "votesWithheld": null,
+      "votesAbstain": 142852,
+      "brokerNonVotes": 26427264
+     },
+     {
+      "name": "James A. Burke",
+      "votesFor": 269285474,
+      "votesAgainst": 204155,
+      "votesWithheld": null,
+      "votesAbstain": 131622,
+      "brokerNonVotes": 26427264
+     },
+     {
+      "name": "Lisa Crutchfield",
+      "votesFor": 267713838,
+      "votesAgainst": 1776429,
+      "votesWithheld": null,
+      "votesAbstain": 130984,
+      "brokerNonVotes": 25793966
+     },
+     {
+      "name": "Julie A. Lagacy",
+      "votesFor": 266884346,
+      "votesAgainst": 2607494,
+      "votesWithheld": null,
+      "votesAbstain": 129411,
+      "brokerNonVotes": 25793966
+     },
+     {
+      "name": "John W. (Bill) Pitesa",
+      "votesFor": 269207881,
+      "votesAgainst": 279501,
+      "votesWithheld": null,
+      "votesAbstain": 133869,
+      "brokerNonVotes": 25793966
+     },
+     {
+      "name": "John R. (J. R.) Sult",
+      "votesFor": 268102003,
+      "votesAgainst": 1375877,
+      "votesWithheld": null,
+      "votesAbstain": 143371,
+      "brokerNonVotes": 26427264
+     },
+     {
+      "name": "Robert C. Walters",
+      "votesFor": 268483597,
+      "votesAgainst": 1002829,
+      "votesWithheld": null,
+      "votesAbstain": 134825,
+      "brokerNonVotes": 26427264
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Approval, on an Advisory Basis, of 2025 Named Executive Officer Compensation",
+    "votesFor": 261024789,
+    "votesAgainst": 8309496,
+    "votesAbstain": 286966,
+    "votesWithheld": null,
+    "brokerNonVotes": 26427264,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of the Appointment of Deloitte & Touche LLP as the Company\u2019s Independent Registered Public Accounting Firm for the Year Ending December 31, 2026",
+    "votesFor": 288487158,
+    "votesAgainst": 7437594,
+    "votesAbstain": 123763,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "GLW-2026-04-30": {
+  "form": "8-K",
+  "filedAt": "2026-05-04",
+  "accession": "0001206774-26-000265",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/24741/000120677426000265/glw4630381-8k.htm",
+  "symbol": "GLW",
+  "ballotId": "GLW-2026-04-30",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Ami Badani",
+      "votesFor": 648303262,
+      "votesAgainst": 1812118,
+      "votesWithheld": null,
+      "votesAbstain": 979380,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Leslie A. Brun",
+      "votesFor": 646325596,
+      "votesAgainst": 3904263,
+      "votesWithheld": null,
+      "votesAbstain": 864901,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Stephanie A. Burns",
+      "votesFor": 618835781,
+      "votesAgainst": 31430035,
+      "votesWithheld": null,
+      "votesAbstain": 828944,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Pamela J. Craig",
+      "votesFor": 643180027,
+      "votesAgainst": 6968595,
+      "votesWithheld": null,
+      "votesAbstain": 946138,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Robert F. Cummings, Jr.",
+      "votesFor": 626172716,
+      "votesAgainst": 24001312,
+      "votesWithheld": null,
+      "votesAbstain": 920732,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Roger W. Ferguson, Jr.",
+      "votesFor": 632412768,
+      "votesAgainst": 17441172,
+      "votesWithheld": null,
+      "votesAbstain": 1240820,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Thomas D. French",
+      "votesFor": 646839232,
+      "votesAgainst": 3352403,
+      "votesWithheld": null,
+      "votesAbstain": 903125,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Daniel P. Huttenlocher",
+      "votesFor": 643436920,
+      "votesAgainst": 6756069,
+      "votesWithheld": null,
+      "votesAbstain": 901771,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Kevin J. Martin",
+      "votesFor": 629310099,
+      "votesAgainst": 20885469,
+      "votesWithheld": null,
+      "votesAbstain": 899192,
+      "brokerNonVotes": 93867370
+     },
+     {
+      "name": "Wendell P. Weeks",
+      "votesFor": 622342463,
+      "votesAgainst": 25702099,
+      "votesWithheld": null,
+      "votesAbstain": 3050198,
+      "brokerNonVotes": 93867370
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory Vote to Approve the Compensation of our Named Executive Officers (Say on Pay)",
+    "votesFor": 610434132,
+    "votesAgainst": 38800367,
+    "votesAbstain": 1860261,
+    "votesWithheld": null,
+    "brokerNonVotes": 93867370,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of the Appointment Independent Registered Public Accounting Firm",
+    "votesFor": 713266444,
+    "votesAgainst": 30785993,
+    "votesAbstain": 909693,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Shareholder Proposal Requesting Adoption of An Independent Chair Policy",
+    "votesFor": 117552061,
+    "votesAgainst": 527957300,
+    "votesAbstain": 5585399,
+    "votesWithheld": null,
+    "brokerNonVotes": 93867370,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "LLY-2026-05-04": {
+  "form": "8-K",
+  "filedAt": "2026-05-07",
+  "accession": "0000059478-26-000048",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000048/lly-20260504.htm",
+  "symbol": "LLY",
+  "ballotId": "LLY-2026-05-04",
+  "items": [
+   {
+    "index": "1a",
+    "title": "Election of Directors to serve three-year terms ending in 2029",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": 3,
+    "nominees": [
+     {
+      "name": "Carolyn Bertozzi",
+      "votesFor": 761930361,
+      "votesAgainst": 1898735,
+      "votesWithheld": null,
+      "votesAbstain": 939585,
+      "brokerNonVotes": 82485329
+     },
+     {
+      "name": "William Kaelin, Jr.",
+      "votesFor": 726270361,
+      "votesAgainst": 37418960,
+      "votesWithheld": null,
+      "votesAbstain": 1079360,
+      "brokerNonVotes": 82485329
+     },
+     {
+      "name": "Jon Moeller",
+      "votesFor": 749926634,
+      "votesAgainst": 13860022,
+      "votesWithheld": null,
+      "votesAbstain": 982025,
+      "brokerNonVotes": 82485329
+     },
+     {
+      "name": "David Ricks",
+      "votesFor": 734760028,
+      "votesAgainst": 29119356,
+      "votesWithheld": null,
+      "votesAbstain": 889297,
+      "brokerNonVotes": 82485329
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "1b",
+    "title": "Advisory approval of compensation paid to named executive officers",
+    "votesFor": 731998717,
+    "votesAgainst": 30467278,
+    "votesAbstain": 2302686,
+    "votesWithheld": null,
+    "brokerNonVotes": 82485329,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "1c",
+    "title": "Ratification of appointment of Ernst & Young LLP as independent auditor for 2026",
+    "votesFor": 802721381,
+    "votesAgainst": 43473993,
+    "votesAbstain": 1058636,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "1d",
+    "title": "Proposal to amend Articles of Incorporation to eliminate classified board structure",
+    "votesFor": 665371049,
+    "votesAgainst": 97677173,
+    "votesAbstain": 1720459,
+    "votesWithheld": null,
+    "brokerNonVotes": 82485329,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "1e",
+    "title": "Proposal to amend Articles to eliminate supermajority voting provisions",
+    "votesFor": 664460262,
+    "votesAgainst": 98597088,
+    "votesAbstain": 1711331,
+    "votesWithheld": null,
+    "brokerNonVotes": 82485329,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "1f",
+    "title": "Shareholder proposal requesting adoption of policy and amendment to bylaws to require independent board chair",
+    "votesFor": 257292684,
+    "votesAgainst": 505068416,
+    "votesAbstain": 2407581,
+    "votesWithheld": null,
+    "brokerNonVotes": 82485329,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "1g",
+    "title": "Shareholder proposal to prepare an annual lobbying report",
+    "votesFor": 113417917,
+    "votesAgainst": 645415542,
+    "votesAbstain": 5935222,
+    "votesWithheld": null,
+    "brokerNonVotes": 82485329,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "TTD-2026-05-04": {
+  "form": "8-K",
+  "filedAt": "2026-05-08",
+  "accession": "0001671933-26-000055",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1671933/000167193326000055/ttd-20260504.htm",
+  "symbol": "TTD",
+  "ballotId": "TTD-2026-05-04",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Class I directors to hold office for a three-year term expiring at the 2029 annual meeting",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Andrea L. Cunningham (Class A Director)",
+      "votesFor": 82759848,
+      "votesAgainst": null,
+      "votesWithheld": null,
+      "votesAbstain": null,
+      "brokerNonVotes": 66028847
+     },
+     {
+      "name": "Jeff T. Green",
+      "votesFor": 631530355,
+      "votesAgainst": null,
+      "votesWithheld": null,
+      "votesAbstain": null,
+      "brokerNonVotes": 66028847
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "Approval, on a non-binding, advisory basis, of the compensation paid to the Company\u2019s named executive officers",
+    "votesFor": 509592084,
+    "votesAgainst": 172498666,
+    "votesAbstain": 732077,
+    "votesWithheld": null,
+    "brokerNonVotes": 66028847,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of the appointment of PricewaterhouseCoopers LLP as independent registered public accounting firm for fiscal year ending December 31, 2026",
+    "votesFor": 738886896,
+    "votesAgainst": 9360368,
+    "votesAbstain": 604410,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "CVNA-2026-05-05": {
+  "form": "8-K",
+  "filedAt": "2026-05-06",
+  "accession": "0001690820-26-000039",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1690820/000169082026000039/cvna-20260505.htm",
+  "symbol": "CVNA",
+  "ballotId": "CVNA-2026-05-05",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Michael Maroone",
+      "votesFor": 800290111,
+      "votesAgainst": null,
+      "votesWithheld": 20542337,
+      "votesAbstain": null,
+      "brokerNonVotes": 11676872
+     },
+     {
+      "name": "Neha Parikh",
+      "votesFor": 780134766,
+      "votesAgainst": null,
+      "votesWithheld": 40697682,
+      "votesAbstain": null,
+      "brokerNonVotes": 11676872
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Approval, by an advisory vote, of the compensation of the Company's named executive officers (i.e., \u201csay-on-pay\u201d)",
+    "votesFor": 803726520,
+    "votesAgainst": 17031209,
+    "votesAbstain": 74719,
+    "votesWithheld": null,
+    "brokerNonVotes": 11676872,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approval of the Carvana Co. 2026 Omnibus Incentive Plan",
+    "votesFor": 730926830,
+    "votesAgainst": 89832196,
+    "votesAbstain": 73422,
+    "votesWithheld": null,
+    "brokerNonVotes": 11676872,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approval of the Amendment to the Company's Amended and Restated Certificate of Incorporation to effect the Stock Split and the Authorized Share Increase",
+    "votesFor": 832294931,
+    "votesAgainst": 146812,
+    "votesAbstain": 67577,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Ratification of the appointment of Grant Thornton LLP as the Company's independent registered public accounting firm for the year ending December 31, 2026",
+    "votesFor": 820578537,
+    "votesAgainst": 11841555,
+    "votesAbstain": 89228,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "6",
+    "title": "Vote upon a stockholder proposal, as described in the definitive proxy statement on schedule 14A",
+    "votesFor": 32002459,
+    "votesAgainst": 788394436,
+    "votesAbstain": 435553,
+    "votesWithheld": null,
+    "brokerNonVotes": 11676872,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "GE-2026-05-05": {
+  "form": "8-K",
+  "filedAt": "2026-05-07",
+  "accession": "0000040545-26-000032",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/40545/000004054526000032/ge-20260505.htm",
+  "symbol": "GE",
+  "ballotId": "GE-2026-05-05",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "S\u00e9bastien Bazin",
+      "votesFor": 764954244,
+      "votesAgainst": 19029987,
+      "votesWithheld": null,
+      "votesAbstain": 1020512,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "Margaret Billson",
+      "votesFor": 771414168,
+      "votesAgainst": 11812237,
+      "votesWithheld": null,
+      "votesAbstain": 1778338,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "Wesley Bush",
+      "votesFor": 782039980,
+      "votesAgainst": 1994719,
+      "votesWithheld": null,
+      "votesAbstain": 970044,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "H. Lawrence Culp, Jr.",
+      "votesFor": 758310993,
+      "votesAgainst": 25814583,
+      "votesWithheld": null,
+      "votesAbstain": 879167,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "Thomas Enders",
+      "votesFor": 779458155,
+      "votesAgainst": 4548285,
+      "votesWithheld": null,
+      "votesAbstain": 998303,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "Isabella Goren",
+      "votesFor": 781480869,
+      "votesAgainst": 2593640,
+      "votesWithheld": null,
+      "votesAbstain": 930234,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "Thomas Horton",
+      "votesFor": 751346247,
+      "votesAgainst": 32645104,
+      "votesWithheld": null,
+      "votesAbstain": 1013392,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "Catherine Lesjak",
+      "votesFor": 778432780,
+      "votesAgainst": 5626182,
+      "votesWithheld": null,
+      "votesAbstain": 945781,
+      "brokerNonVotes": 107761682
+     },
+     {
+      "name": "Darren McDew",
+      "votesFor": 770667642,
+      "votesAgainst": 12484116,
+      "votesWithheld": null,
+      "votesAbstain": 1852985,
+      "brokerNonVotes": 107761682
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "1",
+    "title": "Say on Pay",
+    "votesFor": 753387208,
+    "votesAgainst": 27686972,
+    "votesAbstain": 3930563,
+    "votesWithheld": null,
+    "brokerNonVotes": 107761682,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "2",
+    "title": "Amended LTIP",
+    "votesFor": 769512170,
+    "votesAgainst": 12726666,
+    "votesAbstain": 2765907,
+    "votesWithheld": null,
+    "brokerNonVotes": 107761682,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "ESPP",
+    "votesFor": 781362261,
+    "votesAgainst": 2240137,
+    "votesAbstain": 1402345,
+    "votesWithheld": null,
+    "brokerNonVotes": 107761682,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Auditor Ratification",
+    "votesFor": 890062125,
+    "votesAgainst": 1546602,
+    "votesAbstain": 1157698,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "1",
+    "title": "Requesting Report on Defense-Related Products",
+    "votesFor": 64780529,
+    "votesAgainst": 712594807,
+    "votesAbstain": 7629407,
+    "votesWithheld": null,
+    "brokerNonVotes": 107761682,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "MRNA-2026-05-06": {
+  "form": "8-K",
+  "filedAt": "2026-05-11",
+  "accession": "0001682852-26-000101",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1682852/000168285226000101/mrna-20260506.htm",
+  "symbol": "MRNA",
+  "ballotId": "MRNA-2026-05-06",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Sandra Horning, M.D.",
+      "votesFor": 210914932,
+      "votesAgainst": 49357015,
+      "votesWithheld": 331868,
+      "votesAbstain": null,
+      "brokerNonVotes": 41911864
+     },
+     {
+      "name": "Abbas Hussain",
+      "votesFor": 256398374,
+      "votesAgainst": 4015044,
+      "votesWithheld": 190397,
+      "votesAbstain": null,
+      "brokerNonVotes": 41911864
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Approval, on a non-binding advisory basis, of the compensation of the Company\u2019s named executive officers",
+    "votesFor": 169401841,
+    "votesAgainst": 90761924,
+    "votesAbstain": 440050,
+    "votesWithheld": null,
+    "brokerNonVotes": 41911864,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approval, on a non-binding advisory basis, of the frequency of future non-binding advisory votes to approve the compensation of the Company\u2019s named executive officers",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": 281418,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": 259590666,
+    "twoYears": 113043,
+    "threeYears": 618688,
+    "nominees": [],
+    "result": "one_year"
+   },
+   {
+    "index": "4",
+    "title": "Ratification of appointment of independent registered public accounting firm",
+    "votesFor": 298823277,
+    "votesAgainst": 3406479,
+    "votesAbstain": 285923,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "AEIS-2026-05-07": {
+  "form": "8-K",
+  "filedAt": "2026-05-08",
+  "accession": "0001104659-26-057731",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/927003/000110465926057731/tm2612734d2_8k.htm",
+  "symbol": "AEIS",
+  "ballotId": "AEIS-2026-05-07",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of ten (10) directors.",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Grant H. Beard",
+      "votesFor": 33649952,
+      "votesAgainst": null,
+      "votesWithheld": 592933,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "Frederick A. Ball",
+      "votesFor": 33416883,
+      "votesAgainst": null,
+      "votesWithheld": 826002,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "Anne T. DelSanto",
+      "votesFor": 33730249,
+      "votesAgainst": null,
+      "votesWithheld": 512636,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "Tina M. Donikowski",
+      "votesFor": 33432235,
+      "votesAgainst": null,
+      "votesWithheld": 810650,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "Ronald C. Foster",
+      "votesFor": 33541578,
+      "votesAgainst": null,
+      "votesWithheld": 701307,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "Stephen D. Kelley",
+      "votesFor": 33760132,
+      "votesAgainst": null,
+      "votesWithheld": 482753,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "Lanesha T. Minnix",
+      "votesFor": 33676669,
+      "votesAgainst": null,
+      "votesWithheld": 566216,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "David W. Reed",
+      "votesFor": 34150102,
+      "votesAgainst": null,
+      "votesWithheld": 92783,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "John A. Roush",
+      "votesFor": 33037148,
+      "votesAgainst": null,
+      "votesWithheld": 1205737,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     },
+     {
+      "name": "Brian M. Shirley",
+      "votesFor": 34149184,
+      "votesAgainst": null,
+      "votesWithheld": 93701,
+      "votesAbstain": null,
+      "brokerNonVotes": 1427092
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of the appointment of Ernst & Young LLP as the Company\u2019s independent registered public accounting firm for 2026.",
+    "votesFor": 35633841,
+    "votesAgainst": 13136,
+    "votesAbstain": 23000,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory approval on the compensation of the Company\u2019s named executive officers.",
+    "votesFor": 33763740,
+    "votesAgainst": 447174,
+    "votesAbstain": 31971,
+    "votesWithheld": null,
+    "brokerNonVotes": 1427092,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approval of an amendment to the Amended and Restated Certificate of Incorporation to Increase the Number of Authorized Shares of Common Stock.",
+    "votesFor": 34826056,
+    "votesAgainst": 824826,
+    "votesAbstain": 19095,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Approval of an amendment and restatement of the Amended and Restated 2023 Omnibus Incentive Plan.",
+    "votesFor": 26784160,
+    "votesAgainst": 7379970,
+    "votesAbstain": 78755,
+    "votesWithheld": null,
+    "brokerNonVotes": 1427092,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "UPS-2026-05-07": {
+  "form": "8-K",
+  "filedAt": "2026-05-11",
+  "accession": "0001628280-26-033522",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026033522/ups-20260507.htm",
+  "symbol": "UPS",
+  "ballotId": "UPS-2026-05-07",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Rodney Adkins",
+      "votesFor": 913924557,
+      "votesAgainst": 101651795,
+      "votesWithheld": 25668079,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Eva Boratto",
+      "votesFor": 915470777,
+      "votesAgainst": 98612242,
+      "votesWithheld": 27161412,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Kevin Clark",
+      "votesFor": 920730875,
+      "votesAgainst": 90134699,
+      "votesWithheld": 30378857,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Wayne Hewett",
+      "votesFor": 921002012,
+      "votesAgainst": 93082797,
+      "votesWithheld": 27159622,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Angela Hwang",
+      "votesFor": 920299940,
+      "votesAgainst": 93864068,
+      "votesWithheld": 27080423,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "William Johnson",
+      "votesFor": 772320239,
+      "votesAgainst": 241975935,
+      "votesWithheld": 26948257,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Franck Moison",
+      "votesFor": 915447737,
+      "votesAgainst": 98185692,
+      "votesWithheld": 27611002,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "John Morikis",
+      "votesFor": 922893354,
+      "votesAgainst": 90611501,
+      "votesWithheld": 27739576,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Christiana Smith Shi",
+      "votesFor": 905468346,
+      "votesAgainst": 108005210,
+      "votesWithheld": 27770875,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Russell Stokes",
+      "votesFor": 920844432,
+      "votesAgainst": 92524993,
+      "votesWithheld": 27875006,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Carol B. Tom\u00e9",
+      "votesFor": 867039453,
+      "votesAgainst": 146069149,
+      "votesWithheld": 28135829,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     },
+     {
+      "name": "Kevin Warsh",
+      "votesFor": 907503783,
+      "votesAgainst": 107582964,
+      "votesWithheld": 26157684,
+      "votesAbstain": null,
+      "brokerNonVotes": 138298865
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Approval of Named Executive Officer Compensation",
+    "votesFor": 870170397,
+    "votesAgainst": 151229847,
+    "votesAbstain": 19844187,
+    "votesWithheld": null,
+    "brokerNonVotes": 138298865,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approval of the Company\u2019s 2026 Omnibus Incentive Compensation Plan",
+    "votesFor": 907050699,
+    "votesAgainst": 111886661,
+    "votesAbstain": 22307071,
+    "votesWithheld": null,
+    "brokerNonVotes": 138298865,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Ratification of Independent Registered Public Accounting Firm",
+    "votesFor": 1106770802,
+    "votesAgainst": 61974035,
+    "votesAbstain": 10798459,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Shareowner Proposal to take steps to reduce the voting power of UPS class A stock from 10 votes per share to one vote per share",
+    "votesFor": 418305353,
+    "votesAgainst": 614820130,
+    "votesAbstain": 8118948,
+    "votesWithheld": null,
+    "brokerNonVotes": 138298865,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "6",
+    "title": "Shareowner Proposal requesting the engagement of a third-party to audit and prepare an additional report on the impacts of UPS operations affecting black, indigenous and people of color and low-income communities",
+    "votesFor": 105294873,
+    "votesAgainst": 919377221,
+    "votesAbstain": 16572337,
+    "votesWithheld": null,
+    "brokerNonVotes": 138298865,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "7",
+    "title": "Shareowner Proposal requesting preparation of an additional report describing the alignment of UPS operations and investments with its carbon neutrality goals",
+    "votesFor": 126172442,
+    "votesAgainst": 899920207,
+    "votesAbstain": 15151782,
+    "votesWithheld": null,
+    "brokerNonVotes": 138298865,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "TER-2026-05-08": {
+  "form": "8-K",
+  "filedAt": "2026-05-11",
+  "accession": "0001193125-26-215848",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/97210/000119312526215848/ter-20260508.htm",
+  "symbol": "TER",
+  "ballotId": "TER-2026-05-08",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Drew Henry",
+      "votesFor": 119232119,
+      "votesAgainst": 234555,
+      "votesWithheld": null,
+      "votesAbstain": 28209,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Peter Herweck",
+      "votesFor": 114986254,
+      "votesAgainst": 4480445,
+      "votesWithheld": null,
+      "votesAbstain": 28184,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Mercedes Johnson",
+      "votesFor": 117049139,
+      "votesAgainst": 2416726,
+      "votesWithheld": null,
+      "votesAbstain": 29018,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Ernest E. Maddock",
+      "votesFor": 118093655,
+      "votesAgainst": 1373004,
+      "votesWithheld": null,
+      "votesAbstain": 28224,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Marilyn Matz",
+      "votesFor": 110894741,
+      "votesAgainst": 8572620,
+      "votesWithheld": null,
+      "votesAbstain": 27522,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Necip Sayiner",
+      "votesFor": 119071164,
+      "votesAgainst": 393862,
+      "votesWithheld": null,
+      "votesAbstain": 29857,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Gregory S. Smith",
+      "votesFor": 119413081,
+      "votesAgainst": 46320,
+      "votesWithheld": null,
+      "votesAbstain": 35482,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Paul J. Tufano",
+      "votesFor": 115693370,
+      "votesAgainst": 3772802,
+      "votesWithheld": null,
+      "votesAbstain": 28711,
+      "brokerNonVotes": 12498100
+     },
+     {
+      "name": "Bridget van Kralingen",
+      "votesFor": 116834549,
+      "votesAgainst": 2559183,
+      "votesWithheld": null,
+      "votesAbstain": 101151,
+      "brokerNonVotes": 12498100
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory non-binding resolution to approve the 2025 executive compensation",
+    "votesFor": 114418444,
+    "votesAgainst": 4732467,
+    "votesAbstain": 343972,
+    "votesWithheld": null,
+    "brokerNonVotes": 12498100,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of appointment of PricewaterhouseCoopers LLP as independent registered public accounting firm for fiscal year ending December 31, 2026",
+    "votesFor": 123853458,
+    "votesAgainst": 8094829,
+    "votesAbstain": 44696,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "LHX-2026-05-11": {
+  "form": "8-K",
+  "filedAt": "2026-05-12",
+  "accession": "0000202058-26-000037",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/202058/000020205826000037/hrs-20260511.htm",
+  "symbol": "LHX",
+  "ballotId": "LHX-2026-05-11",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": 1,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Sallie Bailey",
+      "votesFor": 154901105,
+      "votesAgainst": 1367084,
+      "votesWithheld": null,
+      "votesAbstain": 155192,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Thomas Dattilo",
+      "votesFor": 148257317,
+      "votesAgainst": 8001390,
+      "votesWithheld": null,
+      "votesAbstain": 164674,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Roger Fradin",
+      "votesFor": 153010171,
+      "votesAgainst": 3246242,
+      "votesWithheld": null,
+      "votesAbstain": 166968,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Joanna Geraghty",
+      "votesFor": 152897768,
+      "votesAgainst": 3369497,
+      "votesWithheld": null,
+      "votesAbstain": 156116,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Kirk Hachigian",
+      "votesFor": 155684823,
+      "votesAgainst": 571687,
+      "votesWithheld": null,
+      "votesAbstain": 166871,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Harry Harris, Jr.",
+      "votesFor": 154203428,
+      "votesAgainst": 1966497,
+      "votesWithheld": null,
+      "votesAbstain": 253456,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Lewis Hay III",
+      "votesFor": 149401261,
+      "votesAgainst": 6856515,
+      "votesWithheld": null,
+      "votesAbstain": 165605,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Christopher Kubasik",
+      "votesFor": 151899540,
+      "votesAgainst": 4356165,
+      "votesWithheld": null,
+      "votesAbstain": 167676,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "David Regnery",
+      "votesFor": 154559178,
+      "votesAgainst": 1697459,
+      "votesWithheld": null,
+      "votesAbstain": 166744,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Edward Rice, Jr.",
+      "votesFor": 155603626,
+      "votesAgainst": 656312,
+      "votesWithheld": null,
+      "votesAbstain": 163443,
+      "brokerNonVotes": 15848496
+     },
+     {
+      "name": "Christina Zamarro",
+      "votesFor": 155867673,
+      "votesAgainst": 397001,
+      "votesWithheld": null,
+      "votesAbstain": 158707,
+      "brokerNonVotes": 15848496
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory Vote to Approve Named Executive Officer Compensation",
+    "votesFor": 148177289,
+    "votesAgainst": 7936376,
+    "votesAbstain": 309716,
+    "votesWithheld": null,
+    "brokerNonVotes": 15848496,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of Appointment of Independent Registered Public Accounting Firm",
+    "votesFor": 164235648,
+    "votesAgainst": 7755930,
+    "votesAbstain": 280299,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Shareholder Proposal",
+    "votesFor": 51888937,
+    "votesAgainst": 104022702,
+    "votesAbstain": 511742,
+    "votesWithheld": null,
+    "brokerNonVotes": 15848496,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "KTOS-2026-05-12": {
+  "form": "8-K",
+  "filedAt": "2026-05-15",
+  "accession": "0001069258-26-000064",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1069258/000106925826000064/ktos-20260515.htm",
+  "symbol": "KTOS",
+  "ballotId": "KTOS-2026-05-12",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Scott Anderson",
+      "votesFor": 133987961,
+      "votesAgainst": null,
+      "votesWithheld": 9972861,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "Bradley Boyd",
+      "votesFor": 143476284,
+      "votesAgainst": null,
+      "votesWithheld": 484538,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "Eric DeMarco",
+      "votesFor": 142865781,
+      "votesAgainst": null,
+      "votesWithheld": 1095041,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "Bobbi Doorenbos",
+      "votesFor": 141611070,
+      "votesAgainst": null,
+      "votesWithheld": 2349752,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "William Hoglund",
+      "votesFor": 129413145,
+      "votesAgainst": null,
+      "votesWithheld": 14547677,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "Scot Jarvis",
+      "votesFor": 132134404,
+      "votesAgainst": null,
+      "votesWithheld": 11826418,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "David King",
+      "votesFor": 143485906,
+      "votesAgainst": null,
+      "votesWithheld": 474916,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "Deanna Lund",
+      "votesFor": 132986601,
+      "votesAgainst": null,
+      "votesWithheld": 10974221,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     },
+     {
+      "name": "Amy Zegart",
+      "votesFor": 130003985,
+      "votesAgainst": null,
+      "votesWithheld": 13956837,
+      "votesAbstain": null,
+      "brokerNonVotes": 19983799
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratify selection of Deloitte & Touche LLP as independent registered public accounting firm",
+    "votesFor": 162870324,
+    "votesAgainst": 852132,
+    "votesAbstain": 222165,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approve amendment to increase authorized shares of Common Stock from 195,000,000 to 245,000,000",
+    "votesFor": 161513573,
+    "votesAgainst": 2190431,
+    "votesAbstain": 240617,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approve amendment to provide for officer exculpation",
+    "votesFor": 127312589,
+    "votesAgainst": 16326148,
+    "votesAbstain": 322085,
+    "votesWithheld": null,
+    "brokerNonVotes": 19983799,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Approve amendment and restatement of the 2023 Equity Incentive Plan to increase shares issuable by 6,900,000",
+    "votesFor": 141381593,
+    "votesAgainst": 2279440,
+    "votesAbstain": 299789,
+    "votesWithheld": null,
+    "brokerNonVotes": 19983799,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "6",
+    "title": "Advisory vote to approve compensation of named executive officers",
+    "votesFor": 139479306,
+    "votesAgainst": 4089389,
+    "votesAbstain": 392127,
+    "votesWithheld": null,
+    "brokerNonVotes": 19983799,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "LMT-2026-05-12": {
+  "form": "8-K",
+  "filedAt": "2026-05-13",
+  "accession": "0000936468-26-000011",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/936468/000093646826000011/lmt-20260512.htm",
+  "symbol": "LMT",
+  "ballotId": "LMT-2026-05-12",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "John C. Aquilino",
+      "votesFor": 158633512,
+      "votesAgainst": 2768218,
+      "votesWithheld": null,
+      "votesAbstain": 3026600,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "David B. Burritt",
+      "votesFor": 155384755,
+      "votesAgainst": 5997750,
+      "votesWithheld": null,
+      "votesAbstain": 3045825,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "John M. Donovan",
+      "votesFor": 156636466,
+      "votesAgainst": 4686651,
+      "votesWithheld": null,
+      "votesAbstain": 3105194,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "Thomas J. Falk",
+      "votesFor": 143012071,
+      "votesAgainst": 18276054,
+      "votesWithheld": null,
+      "votesAbstain": 3140206,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "Vicki A. Hollub",
+      "votesFor": 156950329,
+      "votesAgainst": 4439479,
+      "votesWithheld": null,
+      "votesAbstain": 3038523,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "Debra L. Reed-Klages",
+      "votesFor": 155591810,
+      "votesAgainst": 5798855,
+      "votesWithheld": null,
+      "votesAbstain": 3037666,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "James D. Taiclet",
+      "votesFor": 153909672,
+      "votesAgainst": 8128238,
+      "votesWithheld": null,
+      "votesAbstain": 2390402,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "Heather A, Wilson",
+      "votesFor": 158393008,
+      "votesAgainst": 3083791,
+      "votesWithheld": null,
+      "votesAbstain": 2951532,
+      "brokerNonVotes": 34716076
+     },
+     {
+      "name": "Patricia E. Yarrington",
+      "votesFor": 157785232,
+      "votesAgainst": 3650499,
+      "votesWithheld": null,
+      "votesAbstain": 2992600,
+      "brokerNonVotes": 34716076
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory Vote to Approve the Compensation of our Named Executive Officers (Say-on-Pay)",
+    "votesFor": 148179585,
+    "votesAgainst": 13335167,
+    "votesAbstain": 2913579,
+    "votesWithheld": null,
+    "brokerNonVotes": 34716076,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of the Appointment of Ernst & Young LLP as our Independent Auditors for 2026",
+    "votesFor": 189689064,
+    "votesAgainst": 7551414,
+    "votesAbstain": 1903929,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Stockholder Proposal Requiring Independent Board Chairman",
+    "votesFor": 57816372,
+    "votesAgainst": 103555181,
+    "votesAbstain": 3056778,
+    "votesWithheld": null,
+    "brokerNonVotes": 34716076,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "AMD-2026-05-13": {
+  "form": "8-K",
+  "filedAt": "2026-05-15",
+  "accession": "0001193125-26-226746",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/2488/000119312526226746/d118163d8k.htm",
+  "symbol": "AMD",
+  "ballotId": "AMD-2026-05-13",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Nora M. Denzel",
+      "votesFor": 947789490,
+      "votesAgainst": 53782687,
+      "votesWithheld": 1723831,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     },
+     {
+      "name": "Michael P. Gregoire",
+      "votesFor": 981430100,
+      "votesAgainst": 19802675,
+      "votesWithheld": 2063233,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     },
+     {
+      "name": "Joseph A. Householder",
+      "votesFor": 980818411,
+      "votesAgainst": 20650951,
+      "votesWithheld": 1826646,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     },
+     {
+      "name": "John W. Marren",
+      "votesFor": 997404298,
+      "votesAgainst": 4082948,
+      "votesWithheld": 1808762,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     },
+     {
+      "name": "KC McClure",
+      "votesFor": 999283773,
+      "votesAgainst": 2283216,
+      "votesWithheld": 1729019,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     },
+     {
+      "name": "Lisa T. Su",
+      "votesFor": 930377752,
+      "votesAgainst": 66844325,
+      "votesWithheld": 6073931,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     },
+     {
+      "name": "Abhi Y. Talwalkar",
+      "votesFor": 918133754,
+      "votesAgainst": 83367669,
+      "votesWithheld": 1794585,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     },
+     {
+      "name": "Elizabeth W. Vanderslice",
+      "votesFor": 998000474,
+      "votesAgainst": 3591977,
+      "votesWithheld": 1703557,
+      "votesAbstain": null,
+      "brokerNonVotes": 266537638
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of the Appointment of the Independent Registered Public Accounting Firm",
+    "votesFor": 1182240325,
+    "votesAgainst": 85267454,
+    "votesAbstain": 2325867,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Approval on a Non-Binding, Advisory Basis of the Compensation of the Company\u2019s Named Executive Officers (\u201cSay-on-Pay\u201d)",
+    "votesFor": 924311642,
+    "votesAgainst": 73373753,
+    "votesAbstain": 5610613,
+    "votesWithheld": null,
+    "brokerNonVotes": 266537638,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approval of the Amendment and Restatement of the Advanced Micro Devices, Inc. 2023 Equity Incentive Plan to: (i) Increase the Number of Authorized Shares That Can be Issued by 65 Million Shares and (ii) Update the Plan for Certain Administrative Changes",
+    "votesFor": 971044532,
+    "votesAgainst": 28539051,
+    "votesAbstain": 3712425,
+    "votesWithheld": null,
+    "brokerNonVotes": 266537638,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Stockholder Proposal Requesting the Lowering of the Ownership Threshold and Removal of the Holding Requirement to Call a Special Meeting",
+    "votesFor": 375193701,
+    "votesAgainst": 624384602,
+    "votesAbstain": 3717705,
+    "votesWithheld": null,
+    "brokerNonVotes": 266537638,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "AMKR-2026-05-13": {
+  "form": "8-K",
+  "filedAt": "2026-05-19",
+  "accession": "0001047127-26-000033",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1047127/000104712726000033/amkr-20260513.htm",
+  "symbol": "AMKR",
+  "ballotId": "AMKR-2026-05-13",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Susan Y. Kim",
+      "votesFor": 213477502,
+      "votesAgainst": null,
+      "votesWithheld": 4014487,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Kevin K. Engel",
+      "votesFor": 214006901,
+      "votesAgainst": null,
+      "votesWithheld": 3485088,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Douglas A. Alexander",
+      "votesFor": 214938039,
+      "votesAgainst": null,
+      "votesWithheld": 2553950,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Roger A. Carolin",
+      "votesFor": 212833023,
+      "votesAgainst": null,
+      "votesWithheld": 4658966,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Winston J. Churchill",
+      "votesFor": 205900093,
+      "votesAgainst": null,
+      "votesWithheld": 11591896,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Daniel Liao",
+      "votesFor": 213934619,
+      "votesAgainst": null,
+      "votesWithheld": 3557370,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "MaryFrances McCourt",
+      "votesFor": 214134908,
+      "votesAgainst": null,
+      "votesWithheld": 3357081,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Robert R. Morse",
+      "votesFor": 212657399,
+      "votesAgainst": null,
+      "votesWithheld": 4834590,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Giel Rutten",
+      "votesFor": 213711466,
+      "votesAgainst": null,
+      "votesWithheld": 3780523,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "Gil C. Tily",
+      "votesFor": 213488812,
+      "votesAgainst": null,
+      "votesWithheld": 4003177,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     },
+     {
+      "name": "David N. Watson",
+      "votesFor": 212965731,
+      "votesAgainst": null,
+      "votesWithheld": 4526258,
+      "votesAbstain": null,
+      "brokerNonVotes": 12733658
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory vote to approve the compensation of the Company\u2019s named executive officers",
+    "votesFor": 212545742,
+    "votesAgainst": null,
+    "votesAbstain": 4838618,
+    "votesWithheld": null,
+    "brokerNonVotes": 12733658,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of the appointment of PricewaterhouseCoopers LLP as the Company\u2019s independent registered public accounting firm for the year ending December 31, 2026",
+    "votesFor": 227566541,
+    "votesAgainst": 2589888,
+    "votesAbstain": 69218,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "INTC-2026-05-13": {
+  "form": "8-K",
+  "filedAt": "2026-05-15",
+  "accession": "0000050863-26-000118",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000118/intc-20260513.htm",
+  "symbol": "INTC",
+  "ballotId": "INTC-2026-05-13",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of 11 Directors: All Directors Elected",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Craig H. Barratt",
+      "votesFor": 3174343815,
+      "votesAgainst": 47929020,
+      "votesWithheld": null,
+      "votesAbstain": 7879030,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "James J. Goetz",
+      "votesFor": 3099546795,
+      "votesAgainst": 125047793,
+      "votesWithheld": null,
+      "votesAbstain": 5557277,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Andrea J. Goldsmith",
+      "votesFor": 3155914739,
+      "votesAgainst": 66812474,
+      "votesWithheld": null,
+      "votesAbstain": 7424652,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Alyssa H. Henry",
+      "votesFor": 3151637180,
+      "votesAgainst": 70988407,
+      "votesWithheld": null,
+      "votesAbstain": 7526278,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Eric Meurice",
+      "votesFor": 3198026347,
+      "votesAgainst": 26566114,
+      "votesWithheld": null,
+      "votesAbstain": 5559404,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Barbara G. Novick",
+      "votesFor": 3029236683,
+      "votesAgainst": 181880710,
+      "votesWithheld": null,
+      "votesAbstain": 19034472,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Steve Sanghi",
+      "votesFor": 2942782855,
+      "votesAgainst": 281740022,
+      "votesWithheld": null,
+      "votesAbstain": 5628988,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Gregory D. Smith",
+      "votesFor": 3195784361,
+      "votesAgainst": 28679214,
+      "votesWithheld": null,
+      "votesAbstain": 5688290,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Stacy J. Smith",
+      "votesFor": 3025294778,
+      "votesAgainst": 199926538,
+      "votesWithheld": null,
+      "votesAbstain": 4930549,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Lip-Bu Tan",
+      "votesFor": 3202606177,
+      "votesAgainst": 22599038,
+      "votesWithheld": null,
+      "votesAbstain": 4946650,
+      "brokerNonVotes": 742040598
+     },
+     {
+      "name": "Dion J. Weisler",
+      "votesFor": 3069817284,
+      "votesAgainst": 154749954,
+      "votesWithheld": null,
+      "votesAbstain": 5584627,
+      "brokerNonVotes": 742040598
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of Selection of Independent Registered Public Accounting Firm",
+    "votesFor": 3722971442,
+    "votesAgainst": 238233670,
+    "votesAbstain": 10987351,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory Vote on Executive Compensation (Say-On-Pay)",
+    "votesFor": 2795303255,
+    "votesAgainst": 422008632,
+    "votesAbstain": 12839978,
+    "votesWithheld": null,
+    "brokerNonVotes": 742040598,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Approval of Amendment and Restatement of the 2006 Equity Incentive Plan",
+    "votesFor": 2714655443,
+    "votesAgainst": 506524939,
+    "votesAbstain": 8971483,
+    "votesWithheld": null,
+    "brokerNonVotes": 742040598,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "5",
+    "title": "Approval of Amendment and Restatement of the 2006 Employee Stock Purchase Plan (ESPP)",
+    "votesFor": 3207970018,
+    "votesAgainst": 15489418,
+    "votesAbstain": 6692429,
+    "votesWithheld": null,
+    "brokerNonVotes": 742040598,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "6",
+    "title": "Stockholder Proposal Requesting a Report on Risk of China Exposure",
+    "votesFor": 94365321,
+    "votesAgainst": 3106060118,
+    "votesAbstain": 29726426,
+    "votesWithheld": null,
+    "brokerNonVotes": 742040598,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "7",
+    "title": "Stockholder Proposal Requesting a Report on Intel's Human Rights Due Diligence Process",
+    "votesFor": 318934961,
+    "votesAgainst": 2883597209,
+    "votesAbstain": 27619695,
+    "votesWithheld": null,
+    "brokerNonVotes": 742040598,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "8",
+    "title": "Stockholder Proposal Requesting an Enduring Policy Separating the Chair and CEO Roles",
+    "votesFor": 379682774,
+    "votesAgainst": 2836389824,
+    "votesAbstain": 14079267,
+    "votesWithheld": null,
+    "brokerNonVotes": 742040598,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "CRCL-2026-05-14": {
+  "form": "8-K",
+  "filedAt": "2026-05-18",
+  "accession": "0001876042-26-000159",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000159/crcl-20260514.htm",
+  "symbol": "CRCL",
+  "ballotId": "CRCL-2026-05-14",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Class I Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Jeremy Allaire",
+      "votesFor": 141019305,
+      "votesAgainst": 4446746,
+      "votesWithheld": null,
+      "votesAbstain": 222871,
+      "brokerNonVotes": 56423001
+     },
+     {
+      "name": "Craig Broderick",
+      "votesFor": 141175675,
+      "votesAgainst": 4151492,
+      "votesWithheld": null,
+      "votesAbstain": 361755,
+      "brokerNonVotes": 56423001
+     },
+     {
+      "name": "P. Sean Neville",
+      "votesFor": 130218145,
+      "votesAgainst": 15089492,
+      "votesWithheld": null,
+      "votesAbstain": 381285,
+      "brokerNonVotes": 56423001
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory Vote to Approve Named Executive Officer Compensation",
+    "votesFor": 144019384,
+    "votesAgainst": 1267823,
+    "votesAbstain": 401715,
+    "votesWithheld": null,
+    "brokerNonVotes": 56423001,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory Vote to Approve the Frequency of Future Advisory Votes on Named Executive Officer Compensation",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": 289335,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": 144874849,
+    "twoYears": 100806,
+    "threeYears": 423932,
+    "nominees": [],
+    "result": "one_year"
+   },
+   {
+    "index": "4",
+    "title": "Ratification of the Appointment of Deloitte & Touche LLP as the Company's Independent Registered Public Accounting Firm",
+    "votesFor": 201551710,
+    "votesAgainst": 154559,
+    "votesAbstain": 405654,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "F-2026-05-14": {
+  "form": "8-K",
+  "filedAt": "2026-05-19",
+  "accession": "0000037996-26-000090",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/37996/000003799626000090/f-20260514.htm",
+  "symbol": "F",
+  "ballotId": "F-2026-05-14",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Kimberly A. Casiano",
+      "votesFor": 4846381967,
+      "votesAgainst": 173061151,
+      "votesWithheld": null,
+      "votesAbstain": 21245474,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "Adriana Cisneros",
+      "votesFor": 4929184961,
+      "votesAgainst": 87907114,
+      "votesWithheld": null,
+      "votesAbstain": 23596517,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "Alexandra Ford English",
+      "votesFor": 4906937968,
+      "votesAgainst": 113708509,
+      "votesWithheld": null,
+      "votesAbstain": 20042115,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "James D. Farley, Jr.",
+      "votesFor": 4905094511,
+      "votesAgainst": 118356258,
+      "votesWithheld": null,
+      "votesAbstain": 17237823,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "Henry Ford III",
+      "votesFor": 4906566466,
+      "votesAgainst": 114762049,
+      "votesWithheld": null,
+      "votesAbstain": 19360077,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "William Clay Ford, Jr.",
+      "votesFor": 4575609361,
+      "votesAgainst": 449073184,
+      "votesWithheld": null,
+      "votesAbstain": 16006047,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "William W. Helman IV",
+      "votesFor": 4867292082,
+      "votesAgainst": 150643039,
+      "votesWithheld": null,
+      "votesAbstain": 22753471,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "Jon M. Huntsman, Jr.",
+      "votesFor": 4636904139,
+      "votesAgainst": 381294671,
+      "votesWithheld": null,
+      "votesAbstain": 22489782,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "William E. Kennard",
+      "votesFor": 4106188982,
+      "votesAgainst": 911533499,
+      "votesWithheld": null,
+      "votesAbstain": 22966111,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "John C. May",
+      "votesFor": 4926208461,
+      "votesAgainst": 92263035,
+      "votesWithheld": null,
+      "votesAbstain": 22217096,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "Beth E. Mooney",
+      "votesFor": 4928347255,
+      "votesAgainst": 88429037,
+      "votesWithheld": null,
+      "votesAbstain": 23912300,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "Lynn Radakovich",
+      "votesFor": 4889987520,
+      "votesAgainst": 126586329,
+      "votesWithheld": null,
+      "votesAbstain": 24114743,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "John L. Thornton",
+      "votesFor": 4836176662,
+      "votesAgainst": 182920896,
+      "votesWithheld": null,
+      "votesAbstain": 21591034,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "John B. Veihmeyer",
+      "votesFor": 4908189274,
+      "votesAgainst": 108806599,
+      "votesWithheld": null,
+      "votesAbstain": 23692719,
+      "brokerNonVotes": 768614928
+     },
+     {
+      "name": "John S. Weinberg",
+      "votesFor": 4919947500,
+      "votesAgainst": 97502773,
+      "votesWithheld": null,
+      "votesAbstain": 23238319,
+      "brokerNonVotes": 768614928
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of the Selection of the Independent Registered Public Accounting Firm",
+    "votesFor": 5596282796,
+    "votesAgainst": 189205386,
+    "votesAbstain": 23815338,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Relating to an Advisory Vote by Shareholders to Approve the Compensation of the Named Executives",
+    "votesFor": 4826704694,
+    "votesAgainst": 184157955,
+    "votesAbstain": 29825943,
+    "votesWithheld": null,
+    "brokerNonVotes": 768614928,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Relating to Consideration of a Recapitalization Plan to Provide that All of the Company\u2019s Outstanding Stock Have One Vote Per Share",
+    "votesFor": 2170748325,
+    "votesAgainst": 2848002181,
+    "votesAbstain": 21938086,
+    "votesWithheld": null,
+    "brokerNonVotes": 768614928,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "5",
+    "title": "Relating to Disclosure of Voting Results by Share Class",
+    "votesFor": 1329361087,
+    "votesAgainst": 3688571531,
+    "votesAbstain": 22755974,
+    "votesWithheld": null,
+    "brokerNonVotes": 768614928,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   },
+   {
+    "index": "6",
+    "title": "Relating to a Diversity, Equity, and Inclusion Oversight By-Law Amendment",
+    "votesFor": 72659928,
+    "votesAgainst": 4934047473,
+    "votesAbstain": 33981191,
+    "votesWithheld": null,
+    "brokerNonVotes": 768614928,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "not_approved"
+   }
+  ]
+ },
+ "ON-2026-05-14": {
+  "form": "8-K",
+  "filedAt": "2026-05-18",
+  "accession": "0001140361-26-021907",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1097864/000114036126021907/ef20074056_8k.htm",
+  "symbol": "ON",
+  "ballotId": "ON-2026-05-14",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Susan K. Carter",
+      "votesFor": 329795834,
+      "votesAgainst": 11686093,
+      "votesWithheld": 317809,
+      "votesAbstain": null,
+      "brokerNonVotes": 19260396
+     },
+     {
+      "name": "Thomas L. Deitrich",
+      "votesFor": 327348905,
+      "votesAgainst": 14326260,
+      "votesWithheld": 124571,
+      "votesAbstain": null,
+      "brokerNonVotes": 19260396
+     },
+     {
+      "name": "Hassane El-Khoury",
+      "votesFor": 340627665,
+      "votesAgainst": 1064027,
+      "votesWithheld": 108044,
+      "votesAbstain": null,
+      "brokerNonVotes": 19260396
+     },
+     {
+      "name": "Bruce E. Kiddoo",
+      "votesFor": 325217404,
+      "votesAgainst": 16200456,
+      "votesWithheld": 381876,
+      "votesAbstain": null,
+      "brokerNonVotes": 19260396
+     },
+     {
+      "name": "Paul A. Mascarenas",
+      "votesFor": 316236898,
+      "votesAgainst": 25196264,
+      "votesWithheld": 366574,
+      "votesAbstain": null,
+      "brokerNonVotes": 19260396
+     },
+     {
+      "name": "Gregory L. Waters",
+      "votesFor": 335736767,
+      "votesAgainst": 5941716,
+      "votesWithheld": 121253,
+      "votesAbstain": null,
+      "brokerNonVotes": 19260396
+     },
+     {
+      "name": "Christine Y. Yan",
+      "votesFor": 315466839,
+      "votesAgainst": 26206130,
+      "votesWithheld": 126767,
+      "votesAbstain": null,
+      "brokerNonVotes": 19260396
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Advisory (non-binding) resolution to approve the compensation of the Company\u2019s named executive officers",
+    "votesFor": 320342318,
+    "votesAgainst": 21118000,
+    "votesAbstain": 339418,
+    "votesWithheld": null,
+    "brokerNonVotes": 19260396,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Ratification of selection of PricewaterhouseCoopers LLP as independent registered public accounting firm",
+    "votesFor": 337232526,
+    "votesAgainst": 23674928,
+    "votesAbstain": 152678,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "4",
+    "title": "Stockholder proposal regarding simple majority voting",
+    "votesFor": 333533083,
+    "votesAgainst": 3866836,
+    "votesAbstain": 3308903,
+    "votesWithheld": null,
+    "brokerNonVotes": 20351310,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "FIX-2026-05-18": {
+  "form": "8-K",
+  "filedAt": "2026-05-21",
+  "accession": "0001104659-26-065127",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1035983/000110465926065127/tm2615333d1_8k.htm",
+  "symbol": "FIX",
+  "ballotId": "FIX-2026-05-18",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": 1788538,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Darcy G. Anderson",
+      "votesFor": 28500680,
+      "votesAgainst": null,
+      "votesWithheld": 932079,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Herman E. Bulls",
+      "votesFor": 27416615,
+      "votesAgainst": null,
+      "votesWithheld": 2016144,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Rhoman J. Hardy",
+      "votesFor": 28249108,
+      "votesAgainst": null,
+      "votesWithheld": 1183651,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Gaurav Kapoor",
+      "votesFor": 29347139,
+      "votesAgainst": null,
+      "votesWithheld": 85620,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Brian E. Lane",
+      "votesFor": 29198093,
+      "votesAgainst": null,
+      "votesWithheld": 234666,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Pablo G. Mercado",
+      "votesFor": 29181029,
+      "votesAgainst": null,
+      "votesWithheld": 251730,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Franklin Myers",
+      "votesFor": 27828822,
+      "votesAgainst": null,
+      "votesWithheld": 1603937,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "William J. Sandbrook",
+      "votesFor": 27552098,
+      "votesAgainst": null,
+      "votesWithheld": 1880661,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Constance E. Skidmore",
+      "votesFor": 28169131,
+      "votesAgainst": null,
+      "votesWithheld": 1263628,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     },
+     {
+      "name": "Cindy L. Wallis-Lage",
+      "votesFor": 26260153,
+      "votesAgainst": null,
+      "votesWithheld": 3172606,
+      "votesAbstain": null,
+      "brokerNonVotes": null
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of the appointment of Deloitte & Touche LLP as the Company\u2019s independent registered public accounting firm for the year ending December 31, 2026",
+    "votesFor": 31195684,
+    "votesAgainst": 10699,
+    "votesAbstain": 14912,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory vote regarding approval of the compensation paid by the Company to its named executive officers",
+    "votesFor": 28296391,
+    "votesAgainst": 1053045,
+    "votesAbstain": 83323,
+    "votesWithheld": null,
+    "brokerNonVotes": 1788538,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "CLS-2026-05-19": {
+  "form": "8-K",
+  "filedAt": "2026-05-19",
+  "accession": "0001030894-26-000035",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000035/cls-20260519.htm",
+  "symbol": "CLS",
+  "ballotId": "CLS-2026-05-19",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of Directors",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Kulvinder (Kelly) Ahuja",
+      "votesFor": 71583055,
+      "votesAgainst": null,
+      "votesWithheld": 354035,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943843
+     },
+     {
+      "name": "Robert A. Cascella",
+      "votesFor": 67994342,
+      "votesAgainst": null,
+      "votesWithheld": 3942748,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943843
+     },
+     {
+      "name": "Christopher W. Colpitts",
+      "votesFor": 71837402,
+      "votesAgainst": null,
+      "votesWithheld": 99689,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943842
+     },
+     {
+      "name": "Fran\u00e7oise Colpron",
+      "votesFor": 67276010,
+      "votesAgainst": null,
+      "votesWithheld": 4661081,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943842
+     },
+     {
+      "name": "Jill Kale",
+      "votesFor": 71592159,
+      "votesAgainst": null,
+      "votesWithheld": 344932,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943842
+     },
+     {
+      "name": "Laurette T. Koellner",
+      "votesFor": 66610878,
+      "votesAgainst": null,
+      "votesWithheld": 5326212,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943843
+     },
+     {
+      "name": "Amar Maletira",
+      "votesFor": 70781945,
+      "votesAgainst": null,
+      "votesWithheld": 1155147,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943841
+     },
+     {
+      "name": "Robert A. Mionis",
+      "votesFor": 68015476,
+      "votesAgainst": null,
+      "votesWithheld": 3921616,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943841
+     },
+     {
+      "name": "David Reeder",
+      "votesFor": 71778785,
+      "votesAgainst": null,
+      "votesWithheld": 158305,
+      "votesAbstain": null,
+      "brokerNonVotes": 3943843
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "Approval of Appointment of Auditor and Authority of Board to Fix Auditor Remuneration",
+    "votesFor": 70403709,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": 5477221,
+    "brokerNonVotes": 3,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "3",
+    "title": "Advisory Vote to Approve Named Executive Officer Compensation",
+    "votesFor": 68478147,
+    "votesAgainst": 2539538,
+    "votesAbstain": 919400,
+    "votesWithheld": null,
+    "brokerNonVotes": 3943848,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   }
+  ]
+ },
+ "HWM-2026-05-19": {
+  "form": "8-K",
+  "filedAt": "2026-05-26",
+  "accession": "0001104659-26-066305",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/4281/000110465926066305/tm2615511d1_8k.htm",
+  "symbol": "HWM",
+  "ballotId": "HWM-2026-05-19",
+  "items": [
+   {
+    "index": "1",
+    "title": "Election of nine directors for a one-year term",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "James F. Albaugh",
+      "votesFor": 325838316,
+      "votesAgainst": 16610826,
+      "votesWithheld": 154861,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "Amy E. Alving",
+      "votesFor": 337014323,
+      "votesAgainst": 5246569,
+      "votesWithheld": 343111,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "Sharon R. Barner",
+      "votesFor": 332641238,
+      "votesAgainst": 9814692,
+      "votesWithheld": 148073,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "Joseph S. Cantie",
+      "votesFor": 341328735,
+      "votesAgainst": 1116810,
+      "votesWithheld": 158458,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "Robert F. Leduc",
+      "votesFor": 341231086,
+      "votesAgainst": 1213560,
+      "votesWithheld": 159357,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "Jody G. Miller",
+      "votesFor": 338949940,
+      "votesAgainst": 3506761,
+      "votesWithheld": 147302,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "John C. Plant",
+      "votesFor": 327527896,
+      "votesAgainst": 14909493,
+      "votesWithheld": 166614,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "Ulrich R. Schmidt",
+      "votesFor": 337797633,
+      "votesAgainst": 4630218,
+      "votesWithheld": 176152,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     },
+     {
+      "name": "Gunner S. Smith",
+      "votesFor": 341258544,
+      "votesAgainst": 1180136,
+      "votesWithheld": 165323,
+      "votesAbstain": null,
+      "brokerNonVotes": 22308137
+     }
+    ],
+    "result": "elected"
+   },
+   {
+    "index": "2",
+    "title": "Ratification of appointment of PricewaterhouseCoopers LLP as independent registered public accounting firm for 2026",
+    "votesFor": 342356156,
+    "votesAgainst": 22372401,
+    "votesAbstain": 183583,
+    "votesWithheld": null,
+    "brokerNonVotes": 0,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   },
+   {
+    "index": "3",
+    "title": "Advisory vote on executive compensation",
+    "votesFor": 243199451,
+    "votesAgainst": 99027657,
+    "votesAbstain": 376895,
+    "votesWithheld": null,
+    "brokerNonVotes": 22308137,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": "approved"
+   }
+  ]
+ },
+ "PR-2026-05-19": {
+  "form": "8-K",
+  "filedAt": "2026-05-19",
+  "accession": "0001658566-26-000075",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1658566/000165856626000075/pr-20260519.htm",
+  "symbol": "PR",
+  "ballotId": "PR-2026-05-19",
+  "items": [
+   {
+    "index": "1",
+    "title": "To elect ten directors to the Board for terms expiring at the 2027 Annual Meeting of Shareholders",
+    "votesFor": null,
+    "votesAgainst": null,
+    "votesAbstain": null,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [
+     {
+      "name": "Maire A. Baldwin",
+      "votesFor": 670324623,
+      "votesAgainst": 6982110,
+      "votesWithheld": null,
+      "votesAbstain": 709722,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "Frost W. Cochran",
+      "votesFor": 673551350,
+      "votesAgainst": 3752030,
+      "votesWithheld": null,
+      "votesAbstain": 713075,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "Karan E. Eves",
+      "votesFor": 670246783,
+      "votesAgainst": 6960486,
+      "votesWithheld": null,
+      "votesAbstain": 809186,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "Steven D. Gray",
+      "votesFor": 611914658,
+      "votesAgainst": 65342520,
+      "votesWithheld": null,
+      "votesAbstain": 759277,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "William M. Hickey III",
+      "votesFor": 655799961,
+      "votesAgainst": 21542824,
+      "votesWithheld": null,
+      "votesAbstain": 673670,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "Aron Marquez",
+      "votesFor": 621829747,
+      "votesAgainst": 55474430,
+      "votesWithheld": null,
+      "votesAbstain": 712278,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "William J. Quinn",
+      "votesFor": 655540777,
+      "votesAgainst": 21797089,
+      "votesWithheld": null,
+      "votesAbstain": 678589,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "Jeffrey H. Tepper",
+      "votesFor": 666582900,
+      "votesAgainst": 10722602,
+      "votesWithheld": null,
+      "votesAbstain": 710953,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "Robert M. Tichio",
+      "votesFor": 669066256,
+      "votesAgainst": 8259864,
+      "votesWithheld": null,
+      "votesAbstain": 690335,
+      "brokerNonVotes": 64666444
+     },
+     {
+      "name": "James H. Walter",
+      "votesFor": 655690122,
+      "votesAgainst": 21523602,
+      "votesWithheld": null,
+      "votesAbstain": 802731,
+      "brokerNonVotes": 64666444
+     }
+    ],
+    "result": null
+   },
+   {
+    "index": "2",
+    "title": "To approve, by a non-binding advisory vote, the Company\u2019s named executive officer compensation",
+    "votesFor": 671484023,
+    "votesAgainst": 5284121,
+    "votesAbstain": 1248311,
+    "votesWithheld": null,
+    "brokerNonVotes": 64666444,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "3",
+    "title": "To ratify the appointment of KPMG LLP as the Company\u2019s independent registered public accounting firm for the fiscal year ending December 31, 2026",
+    "votesFor": 724751914,
+    "votesAgainst": 17047850,
+    "votesAbstain": 883135,
+    "votesWithheld": null,
+    "brokerNonVotes": null,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "4",
+    "title": "To approve the First Amendment to the Permian Resources Corporation 2023 Long Term Incentive Plan",
+    "votesFor": 486136079,
+    "votesAgainst": 190600884,
+    "votesAbstain": 1279492,
+    "votesWithheld": null,
+    "brokerNonVotes": 64666444,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   },
+   {
+    "index": "5",
+    "title": "To approve an amendment to the Sixth Amended and Restated Certificate of Incorporation of Permian Resources Holdings Inc., our wholly owned subsidiary, to remove the \u201cpass-through voting\u201d provision in connection with the Company\u2019s corporate reorganization",
+    "votesFor": 675699906,
+    "votesAgainst": 1089408,
+    "votesAbstain": 1227141,
+    "votesWithheld": null,
+    "brokerNonVotes": 64666444,
+    "oneYear": null,
+    "twoYears": null,
+    "threeYears": null,
+    "nominees": [],
+    "result": null
+   }
+  ]
+ }
+}

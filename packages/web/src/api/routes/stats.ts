@@ -15,12 +15,60 @@ import { nowSeconds } from "../lib/shared";
 import { activityBySymbol } from "./record";
 import { getTimestamp, publicTimestamp } from "../lib/timestamps";
 import { getVenueHoldings, VENUES } from "../lib/venues";
+import { outcomeForBallot, OUTCOME_COUNT } from "../lib/outcomes";
 import { asc } from "drizzle-orm";
 
 const count = (rows: Array<{ count: number }>) => Number(rows[0]?.count ?? 0);
 const f18 = (value: string | bigint) => Number(formatUnits(BigInt(value), 18));
 /** The first hundred wallets to record are the founding hundred. */
 export const FOUNDING_LIMIT = 100;
+
+export async function buildStatus() {
+    const started = Date.now();
+    const rpc = await publicClient
+      .getBlockNumber({ cacheTime: 0 })
+      .then((block) => ({ ok: true as const, blockNumber: block.toString(), latencyMs: Date.now() - started }))
+      .catch((error: unknown) => ({ ok: false as const, blockNumber: null, latencyMs: Date.now() - started, error: error instanceof Error ? error.message.slice(0, 160) : "unreachable" }));
+    const market = await getMarket().catch(() => null);
+    const database = await dbSafe("status", null, async () => {
+      const [ballots, items, instructions, requests, attestations, cursors, schemaVersion, seed] = await Promise.all([
+        db.select({ count: sql<number>`count(*)` }).from(schema.ballots),
+        db.select({ count: sql<number>`count(*)` }).from(schema.ballotItems),
+        db.select({ count: sql<number>`count(*)` }).from(schema.instructions),
+        db.select({ count: sql<number>`count(*)` }).from(schema.redemptionRequests),
+        db.select({ count: sql<number>`count(*)` }).from(schema.attestations),
+        db.select().from(schema.indexerCursors),
+        readMarker("schema:version"),
+        readMarker("seed:ballots"),
+      ]);
+      return {
+        ballots: count(ballots),
+        items: count(items),
+        instructions: count(instructions),
+        requests: count(requests),
+        attestations: count(attestations),
+        schemaVersion,
+        schemaCurrent: schemaVersion === SCHEMA_VERSION,
+        seedFingerprint: seed,
+        cursors: cursors
+          .filter((row) => !row.key.includes(":"))
+          .map((row) => ({ key: row.key, lastBlock: row.lastBlock, status: row.status, detail: row.detail, updatedAt: row.updatedAt })),
+      };
+    });
+    return {
+      checkedAt: Date.now(),
+      build: (process.env.VERCEL_GIT_COMMIT_SHA ?? "").slice(0, 7) || "local",
+      region: process.env.VERCEL_REGION ?? null,
+      rpc,
+      market: market
+        ? { ok: true as const, blockNumber: market.value.blockNumber, blockTimestamp: market.value.blockTimestamp, ageMs: market.ageMs, stale: market.stale, assets: market.value.assets.length, priced: market.value.assets.filter((asset) => asset.priceUsd !== null).length }
+        : { ok: false as const, blockNumber: null, blockTimestamp: null, ageMs: null, stale: true, assets: 0, priced: 0 },
+      database: database.dbDown || !database.value ? { ok: false as const } : { ok: true as const, ...database.value },
+      tokens: TOKENS.length,
+      outcomesOnFile: OUTCOME_COUNT,
+      venues: VENUES.length,
+    };
+  }
 
 export const stats = {
   /**
@@ -105,50 +153,7 @@ export const stats = {
   }),
 
   /** The public status page: is the chain readable, is the database up, how fresh is the record. */
-  status: base.handler(async () => {
-    const started = Date.now();
-    const rpc = await publicClient
-      .getBlockNumber({ cacheTime: 0 })
-      .then((block) => ({ ok: true as const, blockNumber: block.toString(), latencyMs: Date.now() - started }))
-      .catch((error: unknown) => ({ ok: false as const, blockNumber: null, latencyMs: Date.now() - started, error: error instanceof Error ? error.message.slice(0, 160) : "unreachable" }));
-    const market = await getMarket().catch(() => null);
-    const database = await dbSafe("status", null, async () => {
-      const [ballots, items, instructions, requests, attestations, cursors, schemaVersion, seed] = await Promise.all([
-        db.select({ count: sql<number>`count(*)` }).from(schema.ballots),
-        db.select({ count: sql<number>`count(*)` }).from(schema.ballotItems),
-        db.select({ count: sql<number>`count(*)` }).from(schema.instructions),
-        db.select({ count: sql<number>`count(*)` }).from(schema.redemptionRequests),
-        db.select({ count: sql<number>`count(*)` }).from(schema.attestations),
-        db.select().from(schema.indexerCursors),
-        readMarker("schema:version"),
-        readMarker("seed:ballots"),
-      ]);
-      return {
-        ballots: count(ballots),
-        items: count(items),
-        instructions: count(instructions),
-        requests: count(requests),
-        attestations: count(attestations),
-        schemaVersion,
-        schemaCurrent: schemaVersion === SCHEMA_VERSION,
-        seedFingerprint: seed,
-        cursors: cursors
-          .filter((row) => !row.key.includes(":"))
-          .map((row) => ({ key: row.key, lastBlock: row.lastBlock, status: row.status, detail: row.detail, updatedAt: row.updatedAt })),
-      };
-    });
-    return {
-      checkedAt: Date.now(),
-      build: (process.env.VERCEL_GIT_COMMIT_SHA ?? "").slice(0, 7) || "local",
-      region: process.env.VERCEL_REGION ?? null,
-      rpc,
-      market: market
-        ? { ok: true as const, blockNumber: market.value.blockNumber, blockTimestamp: market.value.blockTimestamp, ageMs: market.ageMs, stale: market.stale, assets: market.value.assets.length, priced: market.value.assets.filter((asset) => asset.priceUsd !== null).length }
-        : { ok: false as const, blockNumber: null, blockTimestamp: null, ageMs: null, stale: true, assets: 0, priced: 0 },
-      database: database.dbDown || !database.value ? { ok: false as const } : { ok: true as const, ...database.value },
-      tokens: TOKENS.length,
-    };
-  }),
+  status: base.handler(() => buildStatus()),
 
   /**
    * Genesis: the first of everything, with its timestamp, and the founding hundred. Wallet numbers
@@ -179,6 +184,55 @@ export const stats = {
         attestation: firstAttestation ? { itemId: firstAttestation.ballotItemId, ballotId: firstAttestation.ballotId, symbol: firstAttestation.symbol, merkleRoot: firstAttestation.merkleRoot, leafCount: firstAttestation.leafCount, blockNumber: firstAttestation.blockNumber, at: Math.floor(firstAttestation.createdAt.getTime() / 1000), timestamp: stamp } : null,
         referral: firstReferral ? { referrer: firstReferral.referrer, at: Math.floor(firstReferral.createdAt.getTime() / 1000) } : null,
       },
+    };
+  }),
+
+  /**
+   * The meeting calendar: every meeting on file with its record date, intent cutoff and meeting
+   * date, what has been recorded so far, and whether the issuer has reported the result.
+   */
+  calendar: base.handler(async () => {
+    const [ballots, items, instructions] = await Promise.all([
+      db.select().from(schema.ballots),
+      db.select({ ballotId: schema.ballotItems.ballotId }).from(schema.ballotItems),
+      db.select({ ballotId: schema.instructions.ballotId, wallet: schema.instructions.wallet, weight: schema.instructions.shareEquivalent, itemId: schema.instructions.ballotItemId }).from(schema.instructions).where(eq(schema.instructions.status, "active")),
+    ]);
+    const itemCount = new Map<string, number>();
+    for (const row of items) itemCount.set(row.ballotId, (itemCount.get(row.ballotId) ?? 0) + 1);
+    const perBallot = new Map<string, Map<string, bigint>>();
+    for (const row of instructions) {
+      const wallets = perBallot.get(row.ballotId) ?? new Map<string, bigint>();
+      const weight = BigInt(row.weight);
+      if (weight > (wallets.get(row.wallet) ?? 0n)) wallets.set(row.wallet, weight);
+      perBallot.set(row.ballotId, wallets);
+    }
+    const now = nowSeconds();
+    const today = new Date().toISOString().slice(0, 10);
+    const rows = ballots.map((ballot) => {
+      const wallets = perBallot.get(ballot.id);
+      let recorded = 0n;
+      for (const weight of wallets?.values() ?? []) recorded += weight;
+      return {
+        id: ballot.id,
+        symbol: ballot.symbol,
+        name: findToken(ballot.symbol)?.name ?? ballot.companyName,
+        logo: findToken(ballot.symbol)?.logo ?? null,
+        meetingType: ballot.meetingType,
+        recordDate: ballot.recordDate,
+        meetingDate: ballot.meetingDate,
+        closesAt: ballot.closesAt,
+        state: ballot.closesAt > now ? ("open" as const) : ballot.meetingDate >= today ? ("awaiting_meeting" as const) : ("held" as const),
+        items: itemCount.get(ballot.id) ?? 0,
+        wallets: wallets?.size ?? 0,
+        shareEq: f18(recorded),
+        reported: Boolean(outcomeForBallot(ballot.id)),
+      };
+    });
+    return {
+      open: rows.filter((row) => row.state === "open").sort((a, b) => a.closesAt - b.closesAt),
+      awaiting: rows.filter((row) => row.state === "awaiting_meeting").sort((a, b) => a.meetingDate.localeCompare(b.meetingDate)),
+      held: rows.filter((row) => row.state === "held").sort((a, b) => b.meetingDate.localeCompare(a.meetingDate)),
+      reportedCount: rows.filter((row) => row.reported).length,
     };
   }),
 

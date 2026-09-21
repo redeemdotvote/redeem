@@ -5,16 +5,28 @@ import { AssetLogo } from "../components/brand";
 import { Page } from "../components/layout";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { Ledger, LHead, LRow, LTd, LTh, SecurityRow } from "../components/ledger";
-import { Input, Mark, Select, Skeleton, Tag } from "../components/ui";
+import { Input, Mark, Select, Skeleton, Tabs, Tag } from "../components/ui";
+import { useWallet } from "../hooks/use-wallet";
 import { ChainLine } from "../components/robinhood-chain";
 import { ageLabel, dateTimeUtc, multiplier, relative, shares, shortAddress, usd } from "../lib/format";
 import { useRecordBook } from "../queries/record";
 
 type Sort = "symbol" | "value" | "shareEq" | "price" | "action" | "intent";
 
+/** What there is to record intent on for a security, and why not when there is nothing. */
+function BallotStatus({ row }: { row: { kind: string; openEvents: number; closedEvents: number; intents: number; intentShareEq: number } }) {
+  if (row.openEvents > 0) return <Mark tone="live">{row.openEvents} open</Mark>;
+  if (row.kind === "etf") return <span className="text-[12px] text-grey-green" title="Funds vote their own portfolios; there is no company proxy.">ETF · no company proxy</span>;
+  if (row.closedEvents > 0) return <span className="text-[12.5px] text-ink-2">{row.closedEvents} closed{row.intents > 0 ? <span className="font-mono text-grey-green"> · {shares(row.intentShareEq)} sh-eq</span> : null}</span>;
+  if (row.kind === "foreign") return <span className="text-[12px] text-grey-green" title="Foreign private issuers publish meeting materials on Form 6-K, not a DEF 14A.">Foreign issuer · files 6-K</span>;
+  return <span className="text-[12px] text-grey-green">No proxy on file yet</span>;
+}
+
 export default function MarketsPage() {
   const [, navigate] = useLocation();
-  const book = useRecordBook();
+  const wallet = useWallet();
+  const book = useRecordBook(wallet.address);
+  const [scope, setScope] = useState<"all" | "held" | "open">("all");
   const [q, setQ] = useState("");
   const [sector, setSector] = useState("all");
   const [kind, setKind] = useState("all");
@@ -24,6 +36,7 @@ export default function MarketsPage() {
     const all = book.data?.rows ?? [];
     const query = q.trim().toLowerCase();
     return all
+      .filter((row) => (scope === "all" || (scope === "held" ? row.held : row.openEvents > 0)))
       .filter((row) => (sector === "all" || row.sector === sector) && (kind === "all" || row.kind === kind) && (!query || row.symbol.toLowerCase().includes(query) || row.name.toLowerCase().includes(query)))
       .sort((a, b) => {
         switch (sort) {
@@ -41,7 +54,7 @@ export default function MarketsPage() {
             return a.symbol.localeCompare(b.symbol);
         }
       });
-  }, [book.data, q, sector, kind, sort]);
+  }, [book.data, q, sector, kind, sort, scope]);
 
   const totals = book.data?.totals;
   return (
@@ -77,7 +90,19 @@ export default function MarketsPage() {
         </Page>
       </PhotoBand>
     <Page>
-      <div className="flex flex-col gap-3 pt-6 md:flex-row md:items-center md:justify-between">
+      <div className="pt-6">
+        <Tabs
+          value={scope}
+          onChange={setScope}
+          options={[
+            { value: "all", label: "All", count: book.data?.rows.length },
+            { value: "held", label: wallet.address ? "Held by you" : "Held · connect a wallet", count: wallet.address ? book.data?.rows.filter((row) => row.held).length : undefined },
+            { value: "open", label: "Open for intent", count: book.data?.rows.filter((row) => row.openEvents > 0).length },
+          ]}
+          className="border-b-0"
+        />
+      </div>
+      <div className="flex flex-col gap-3 pt-3 md:flex-row md:items-center md:justify-between">
         <div className="relative w-full md:max-w-xs">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-grey-green" />
           <Input value={q} onChange={(event) => setQ(event.target.value)} placeholder="Search ticker or company" className="h-9 pl-8 text-[13px]" />
@@ -129,9 +154,7 @@ export default function MarketsPage() {
               <LTh align="right" hide="lg">
                 USD value
               </LTh>
-              <LTh align="right" hide="lg">
-                Intent
-              </LTh>
+              <LTh hide="lg">Proxy items</LTh>
               <LTh align="right" hide="xl">
                 Latest action
               </LTh>
@@ -173,8 +196,8 @@ export default function MarketsPage() {
                   <LTd align="right" mono hide="lg" muted={row.valueUsd === null}>
                     {row.valueUsd === null ? "—" : usd(row.valueUsd, { compact: true })}
                   </LTd>
-                  <LTd align="right" hide="lg">
-                    {row.openEvents > 0 ? <Mark tone="live">{row.openEvents} open</Mark> : row.intents > 0 ? <span className="font-mono text-[12.5px]">{shares(row.intentShareEq)}</span> : <span className="text-[12px] text-grey-green">—</span>}
+                  <LTd hide="lg">
+                    <BallotStatus row={row} />
                   </LTd>
                   <LTd align="right" hide="xl" muted className="font-mono text-[12.5px]">
                     {row.lastAction ? dateTimeUtc(row.lastAction.effectiveAt) : "None"}

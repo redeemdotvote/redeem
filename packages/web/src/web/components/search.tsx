@@ -19,6 +19,7 @@ const PAGES: Array<[string, string, string]> = [
   ["Holder Intent Reports", "What token holders would have wanted, per meeting", "/reports"],
   ["Genesis", "The founding hundred and the first of everything", "/genesis"],
   ["Verify a record", "Check a wallet bundle in your browser", "/verify"],
+  ["Meeting calendar", "Record dates, intent cutoffs, meetings and reported results", "/calendar"],
   ["Record Book", "One ledger for every official Stock Token", "/record"],
   ["Markets", "Security master", "/markets"],
   ["Portfolio", "Your positions and signed record", "/portfolio"],

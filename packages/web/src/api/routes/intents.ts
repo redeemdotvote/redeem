@@ -7,6 +7,7 @@ import { base } from "../__core/app";
 import { bindReferral } from "../lib/referrals";
 import { attestationDocument } from "../lib/documents";
 import { recordDatePosition } from "../lib/record-date";
+import { outcomeForItem } from "../lib/outcomes";
 import { ensureTimestamp, getTimestamp, publicTimestamp } from "../lib/timestamps";
 import { leafHash, merkleProof, merkleRoot, verifyProof } from "../ballots/merkle";
 import { type Choice } from "../ballots/seed";
@@ -226,7 +227,8 @@ export const intents = {
   list: base
     .input(
       z.object({
-        status: z.enum(["active", "closed", "all"]).default("all"),
+        /** recorded = closed with at least one intent; empty = closed with none; reported = the issuer has filed the result. */
+        status: z.enum(["active", "closed", "recorded", "empty", "reported", "all"]).default("all"),
         symbol: z.string().optional(),
         q: z.string().max(80).optional(),
         page: z.number().int().min(1).default(1),
@@ -246,11 +248,16 @@ export const intents = {
         ? await db.select().from(schema.ballotItems).where(inArray(schema.ballotItems.ballotId, [...ballotById.keys()]))
         : [];
       const q = input.q?.trim().toLowerCase();
+      const needsIntent = input.status === "recorded" || input.status === "empty";
+      const withIntent = needsIntent ? new Set((await db.select({ id: schema.instructions.ballotItemId }).from(schema.instructions).where(eq(schema.instructions.status, "active"))).map((row) => row.id)) : null;
       const filtered = itemRows.filter((item) => {
         const ballot = ballotById.get(item.ballotId);
         if (!ballot) return false;
         if (input.status === "active" && ballot.closesAt <= now) return false;
-        if (input.status === "closed" && ballot.closesAt > now) return false;
+        if (input.status !== "active" && input.status !== "all" && ballot.closesAt > now) return false;
+        if (input.status === "recorded" && !withIntent!.has(item.id)) return false;
+        if (input.status === "empty" && withIntent!.has(item.id)) return false;
+        if (input.status === "reported" && !outcomeForItem(ballot.id, item.index)) return false;
         if (!q) return true;
         return (
           item.title.toLowerCase().includes(q) ||
@@ -297,6 +304,7 @@ export const intents = {
             logo: token?.logo ?? null,
             companyName: ballot.companyName,
             tally,
+            reported: Boolean(outcomeForItem(ballot.id, item.index)),
             instructed: mine.has(item.id),
           };
         }),
@@ -354,6 +362,8 @@ export const intents = {
       siblings: siblings.map((sibling) => ({ id: sibling.id, index: sibling.index, title: sibling.title })),
       tally,
       circulatingShareEq,
+      /** What holders of record voted, from the issuer's 8-K Item 5.07, when it has been filed. */
+      outcome: outcomeForItem(ballot.id, item.index),
       attestation: attestation ? publicAttestation(attestation) : null,
       timestamp: attestation ? publicTimestamp(await getTimestamp(`attestation:${item.id}`)) : null,
       receipts: rows.slice(0, 50).map((row) => ({

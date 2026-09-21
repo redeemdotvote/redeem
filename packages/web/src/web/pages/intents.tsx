@@ -14,7 +14,7 @@ import { dateTimeUtc, isoDate, shares } from "../lib/format";
 import { useIntentItems } from "../queries/intents";
 import { useRecordBook } from "../queries/record";
 
-type Status = "all" | "active" | "closed";
+type Status = "all" | "active" | "closed" | "recorded" | "reported";
 
 export default function IntentsPage() {
   const wallet = useWallet();
@@ -59,9 +59,14 @@ export default function IntentsPage() {
               <div className="mt-4 flex flex-col items-start gap-3">
                 <PostRef />
                 <FoundingLine />
-                <Link to="/reports" className="text-[13.5px] font-medium text-emerald hover:underline">
-                  Holder Intent Reports, per meeting →
-                </Link>
+                <span className="flex flex-wrap gap-x-5 gap-y-1">
+                  <Link to="/reports" className="text-[13.5px] font-medium text-emerald hover:underline">
+                    Holder Intent Reports →
+                  </Link>
+                  <Link to="/calendar" className="text-[13.5px] font-medium text-emerald hover:underline">
+                    Meeting calendar →
+                  </Link>
+                </span>
               </div>
             </div>
             <div className="relative hidden lg:block">
@@ -82,6 +87,8 @@ export default function IntentsPage() {
             options={[
               { value: "active", label: "Open", count: data?.counts.active },
               { value: "closed", label: "Closed", count: data?.counts.closed },
+              { value: "recorded", label: "With intent" },
+              { value: "reported", label: "Result reported" },
               { value: "all", label: "All" },
             ]}
             className="border-b-0"
@@ -195,6 +202,7 @@ export default function IntentsPage() {
                           <span className="font-mono text-[11.5px] text-grey-green">{item.ballot.id}</span>
                           <EventStatus status={item.ballot.status} />
                           {item.instructed ? <Mark tone="emerald">You signed</Mark> : null}
+                          {item.reported ? <Mark tone="ink">Result reported</Mark> : null}
                         </div>
                         <div className="mt-1.5 font-serif text-[20px] leading-snug text-ink sm:text-[22px]">
                           <span className="font-mono mr-2 text-[12px] text-grey-green">{item.index}</span>

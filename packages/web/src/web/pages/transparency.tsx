@@ -77,6 +77,47 @@ export default function TransparencyPage() {
             ) : null}
           </section>
           <section>
+            <Eyebrow>How far the record reaches</Eyebrow>
+            <p className="mt-2 max-w-[62ch] text-[14.5px] leading-relaxed text-ink-2">Four links would carry a token holder's intent to a company meeting. Redeem runs the first three and says plainly that the fourth does not exist.</p>
+            <ol className="mt-4 border-t border-line-2">
+              {(
+                [
+                  ["Signed intent", "live", "A wallet signs an EIP-712 statement weighted by the share-equivalents it holds. Every receipt is public and recoverable to its wallet."],
+                  ["Attested tally", "live", "At cutoff each weight is re-read, the receipts are hashed into a Merkle root, and the root is published with every proof."],
+                  ["Timestamped report", "live", "The attestation and the meeting's Holder Intent Report are frozen and timestamped into Bitcoin through OpenTimestamps. No contract is involved."],
+                  ["A vote at the meeting", "none", "Nobody votes this record. Stock Tokens carry no shareholder vote today, Redeem holds no shares, and it has no proxy authority. The issuer's reported result is shown beside the record for comparison, from its Form 8-K."],
+                ] as Array<[string, string, string]>
+              ).map(([title, state, body]) => (
+                <li key={title} className="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[200px_minmax(0,1fr)_90px] sm:gap-5">
+                  <span className="text-[14.5px] font-medium text-ink">{title}</span>
+                  <span className="text-[13.5px] leading-relaxed text-ink-2">{body}</span>
+                  <span className="sm:text-right">{state === "live" ? <Mark tone="live">Live</Mark> : <Mark tone="muted">Does not exist</Mark>}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+          <section>
+            <Eyebrow>Live endpoints</Eyebrow>
+            <dl className="mt-3">
+              {(
+                [
+                  ["/api/v1/ops/status.json", "Machine-readable operations feed: chain head, market cache age, database counts, indexer cursors, results and venues on file."],
+                  ["/api/v1/record", "The security master with live multipliers and supply."],
+                  ["/api/v1/weights/:itemId/:wallet", "A wallet's weight on one item: held now, held on the record date, and signed."],
+                  ["/api/v1/intents/:itemId/receipts", "Every active receipt for one item, with signatures."],
+                  ["/api/v1/reports/:ballotId", "The Holder Intent Report, its frozen document and its timestamp proof."],
+                  ["/api/v1/feed", "JSON Feed of multiplier changes and new proxy items."],
+                  ["/api/rpc/intents/prepare → commit", "The write path: the server reads the position, issues the exact payload, and verifies the signature before anything is stored."],
+                ] as Array<[string, string]>
+              ).map(([path, body]) => (
+                <div key={path} className="grid gap-1 border-b border-line py-2.5 sm:grid-cols-[minmax(0,300px)_minmax(0,1fr)] sm:gap-5">
+                  <dt className="font-mono text-[12.5px] break-all text-ink">{path}</dt>
+                  <dd className="text-[13px] text-ink-2">{body}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+          <section>
             <Eyebrow>Method</Eyebrow>
             <dl className="mt-3">
               <Def term="Weight">share-eq = balanceOf × uiMultiplier ÷ 1e18 at the signing block; re-read at cutoff; the smaller counts.</Def>

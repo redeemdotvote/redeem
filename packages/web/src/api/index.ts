@@ -16,7 +16,7 @@ import { portfolio } from "./routes/portfolio";
 import { record } from "./routes/record";
 import { redemption } from "./routes/redemption";
 import { statements } from "./routes/statements";
-import { stats } from "./routes/stats";
+import { buildStatus, stats } from "./routes/stats";
 import { buildReport, reports } from "./routes/reports";
 import { getTimestamp } from "./lib/timestamps";
 import { buildBundle } from "./lib/bundle";
@@ -205,6 +205,39 @@ inner.get("/api/v1/positions/:wallet/at/:date/:symbol", async (c) => {
   if (!isAddress(wallet) || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return json({ error: "invalid_request" }, 400);
   const position = await recordDatePosition(wallet, c.req.param("symbol"), date).catch(() => null);
   return position ? json({ chainId: 4663, wallet, ...position }) : json({ error: "unknown_token" }, 404);
+});
+
+/** Machine-readable operations feed: chain, market cache, database counts, indexers, coverage. */
+inner.get("/api/v1/ops/status.json", async () => json(await buildStatus()));
+
+/** Weight for one wallet on one item: what it holds now, what it held on the record date, and what it signed. */
+inner.get("/api/v1/weights/:itemId/:wallet", async (c) => {
+  const wallet = c.req.param("wallet");
+  const itemId = c.req.param("itemId");
+  if (!isAddress(wallet)) return json({ error: "invalid_address" }, 400);
+  const [item] = await db.select().from(schema.ballotItems).where(eq(schema.ballotItems.id, itemId)).limit(1);
+  if (!item) return json({ error: "unknown_item" }, 404);
+  const [ballot] = await db.select().from(schema.ballots).where(eq(schema.ballots.id, item.ballotId)).limit(1);
+  const [market, balances, signed] = await Promise.all([
+    getMarket(),
+    getBalances(wallet),
+    db.select().from(schema.instructions).where(and(eq(schema.instructions.ballotItemId, itemId), eq(schema.instructions.wallet, wallet.toLowerCase()), eq(schema.instructions.status, "active"))).limit(1),
+  ]);
+  const asset = market.value.assets.find((entry) => entry.symbol === item.symbol);
+  const raw = BigInt(balances.value.find((entry) => entry.symbol === item.symbol)?.rawBalance ?? "0");
+  const multiplier = BigInt(asset?.uiMultiplier ?? "1000000000000000000");
+  const atRecordDate = ballot?.recordDate ? await recordDatePosition(wallet, item.symbol, ballot.recordDate).catch(() => null) : null;
+  return json({
+    chainId: 4663,
+    itemId,
+    wallet,
+    symbol: item.symbol,
+    block: market.value.blockNumber,
+    current: { rawBalance: raw.toString(), uiMultiplier: multiplier.toString(), shareEquivalent: shareEquivalentWad(raw, multiplier).toString() },
+    recordDate: atRecordDate ? { date: atRecordDate.recordDate, block: atRecordDate.block, shareEquivalent: atRecordDate.shareEquivalent, coverage: atRecordDate.coverage } : null,
+    signed: signed[0] ? { shareEquivalent: signed[0].shareEquivalent, countedWeight: signed[0].closeWeight, block: signed[0].blockNumber } : null,
+    rule: "Counted weight is the smaller of the signed share-equivalent and the share-equivalent held at cutoff.",
+  });
 });
 
 /** Look-through: which pools and vaults hold Stock Tokens, and one wallet's pro rata share of any contract. */

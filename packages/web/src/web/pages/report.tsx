@@ -154,6 +154,12 @@ export default function ReportPage() {
                   </div>
                   <div className="md:text-right">
                     <Mark tone={a.tone}>{a.label}</Mark>
+                    {item.outcome ? (
+                      <div className="mt-1.5 text-[11.5px] text-grey-green">
+                        Shareholders: {item.outcome.forShare !== null ? `${item.outcome.forShare.toFixed(1)}% for` : (item.outcome.carried ?? "reported").replace("_", " ")}
+                        {item.outcome.holdersAgreed === false ? " · holders differed" : ""}
+                      </div>
+                    ) : null}
                   </div>
                 </li>
               );
@@ -209,6 +215,11 @@ ots verify redeem-report-${ballot.id}.json.ots`}</pre>
 
         <footer className="mt-8 border-t border-line pt-5 text-[12.5px] leading-relaxed text-grey-green">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            {r.outcomeSource ? (
+              <a href={r.outcomeSource.docUrl} target="_blank" rel="noreferrer" className="text-emerald hover:underline">
+                Shareholder result: {r.outcomeSource.form} filed {isoDate(r.outcomeSource.filedAt)}
+              </a>
+            ) : null}
             <span>Source: {ballot.form} filed {isoDate(ballot.filedAt)},</span>
             <a href={ballot.docUrl} target="_blank" rel="noreferrer" className="text-emerald hover:underline">
               SEC EDGAR

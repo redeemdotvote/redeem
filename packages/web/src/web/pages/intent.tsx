@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "wouter";
 import { cn } from "@/lib/utils";
 import { Distribution } from "../components/bars";
+import { OutcomeCard } from "../components/outcome";
 import { AssetLogo } from "../components/brand";
 import { Page } from "../components/layout";
 import { Countdown, EventStatus, IntentLabel, ITEM_TYPE_LABEL, Recommendation } from "../components/status";
@@ -189,6 +190,8 @@ export default function IntentPage() {
               </div>
             ) : null}
           </section>
+
+          {data.outcome ? <OutcomeCard outcome={data.outcome} holderLeading={tally.wallets > 0 ? tally.leading : null} /> : null}
 
           <section className={cn("rounded-[16px] border p-6", data.attestation ? "border-emerald/40 bg-emerald/5" : "border-line bg-cream")}>
             <div className="flex flex-wrap items-center justify-between gap-3">

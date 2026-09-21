@@ -8,6 +8,7 @@ import { findToken } from "../chain/tokens";
 import { db } from "../database";
 import * as schema from "../database/schema";
 import { ballotStatus } from "../lib/shared";
+import { outcomeForBallot, outcomeForItem } from "../lib/outcomes";
 import { canonicalJson, ensureTimestamp, getTimestamp, publicTimestamp } from "../lib/timestamps";
 import { activeInstructions, attestItem, countedWeight, publicBallot, stampAttestation, tallyFor } from "./intents";
 
@@ -87,6 +88,12 @@ export async function buildReport(ballotId: string) {
         merkleRoot: attestation?.merkleRoot ?? null,
         leafCount: attestation?.leafCount ?? tally.wallets,
         timestamp: publicTimestamp(stamp),
+        outcome: (() => {
+          const outcome = outcomeForItem(ballot.id, item.index);
+          if (!outcome) return null;
+          const agreed = tally.leading && outcome.carried ? tally.leading === outcome.carried : null;
+          return { carried: outcome.carried, result: outcome.result, forShare: outcome.forShare, votesFor: outcome.votesFor, votesAgainst: outcome.votesAgainst, holdersAgreed: agreed };
+        })(),
       };
     }),
   );
@@ -135,6 +142,10 @@ export async function buildReport(ballotId: string) {
     summary,
     items: reportItems,
     timestamp: publicTimestamp(timestamp),
+    outcomeSource: (() => {
+      const outcome = outcomeForBallot(ballot.id);
+      return outcome ? { form: outcome.form, filedAt: outcome.filedAt, docUrl: outcome.docUrl } : null;
+    })(),
   };
 }
 
