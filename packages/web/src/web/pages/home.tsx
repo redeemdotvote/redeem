@@ -13,6 +13,7 @@ import { TokenCA } from "../components/token-ca";
 import { FoundingLine } from "../components/founding";
 import { COUNTER_THRESHOLD, LatestRecords } from "../components/latest-records";
 import { QueuePanel } from "../components/queue-board";
+import { Lookup } from "../components/lookup";
 import { PHOTOS, PhotoBand } from "../components/photo";
 import { SecurityRow } from "../components/ledger";
 import { Num } from "../components/number";
@@ -111,18 +112,16 @@ function Hero() {
               When Robinhood turns on votes and 1:1 share redemption, this is the file that already knows what you held and what you wanted.
             </p>
             <p className="rise-3 mt-3 max-w-[46ch] text-[15px] leading-relaxed text-grey-green">Connect wallet. Sign intent. Join the redemption queue. No custody. No approval. No fake vote.</p>
-            <div className="rise-4 mt-8 flex flex-wrap items-center gap-3">
-              <Button asChild size="lg">
-                <Link to="/record">
-                  Open Record Book <ArrowRight className="size-4" />
+            <div className="rise-4 mt-8">
+              <Lookup />
+              <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-[13.5px]">
+                <Link to="/record" className="inline-flex items-center gap-1 text-grey-green hover:text-ink">
+                  Browse all 194 stocks <ArrowRight className="size-3.5" />
                 </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/portfolio">View my positions</Link>
-              </Button>
-              <button type="button" onClick={startGuide} className="text-[14px] text-grey-green underline-offset-4 hover:text-ink hover:underline">
-                New here? Take the walkthrough
-              </button>
+                <button type="button" onClick={startGuide} className="text-grey-green underline-offset-4 hover:text-ink hover:underline">
+                  New here? Two-minute walkthrough
+                </button>
+              </div>
             </div>
             <div className="rise-4 mt-5 flex flex-col items-start gap-3">
               <FoundingLine />

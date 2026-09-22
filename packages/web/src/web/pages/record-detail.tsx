@@ -81,6 +81,14 @@ export default function RecordDetailPage() {
                   <dd className="mt-1 text-ink">1:1 shares, per the issuer</dd>
                 </div>
                 <div>
+                  <dt className="eyebrow">Holders</dt>
+                  <dd className="mt-1">
+                    <Link to={`/holders/${token.symbol}`} className="text-emerald hover:underline">
+                      Top 100 holders →
+                    </Link>
+                  </dd>
+                </div>
+                <div>
                   <dt className="eyebrow">Network</dt>
                   <dd className="mt-1.5">
                     <ChainLogo height={16} />

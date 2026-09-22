@@ -24,6 +24,7 @@ import { channels, collectEvents, dailyDigest, runAlerts } from "./lib/alerts";
 import { tierFor } from "./lib/tier";
 import { recordDatePosition } from "./lib/record-date";
 import { hooks } from "./routes/hooks";
+import { holders } from "./routes/holders";
 import { getVenueHoldings, resolveHolder, VENUES_GENERATED_AT } from "./lib/venues";
 import { and, eq } from "drizzle-orm";
 import { erc20Abi, formatUnits, isAddress } from "viem";
@@ -42,6 +43,7 @@ export const router = {
   redemption,
   reports,
   hooks,
+  holders,
 };
 
 export type AppRouter = typeof router;
@@ -238,6 +240,14 @@ inner.get("/api/v1/weights/:itemId/:wallet", async (c) => {
     signed: signed[0] ? { shareEquivalent: signed[0].shareEquivalent, countedWeight: signed[0].closeWeight, block: signed[0].blockNumber } : null,
     rule: "Counted weight is the smaller of the signed share-equivalent and the share-equivalent held at cutoff.",
   });
+});
+
+/** Top holders of one token (snapshot), and a wallet's ranks. */
+inner.get("/api/v1/holders/:symbol", async (c) => json(await holders.top.callable({ context: { headers: new Headers() } })({ symbol: c.req.param("symbol") })));
+inner.get("/api/v1/holders/rank/:wallet", async (c) => {
+  const wallet = c.req.param("wallet");
+  if (!isAddress(wallet)) return json({ error: "invalid_address" }, 400);
+  return json(await holders.ranks.callable({ context: { headers: new Headers() } })({ wallet }));
 });
 
 /** The public redemption queue, in total or for one ticker (with every position and its signature). */

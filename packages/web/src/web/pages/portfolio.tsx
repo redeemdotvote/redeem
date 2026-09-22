@@ -14,6 +14,7 @@ import { ageLabel, dateTime, dateTimeUtc, isoDate, multiplier, pct, relative, sh
 import { useReceipts } from "../queries/intents";
 import { usePortfolio, useWalletStatus, useWalletXp } from "../queries/portfolio";
 import { CertificateSheet, type CertificateData } from "../components/certificate";
+import { RecordAll } from "../components/record-all";
 import { useRecordBook } from "../queries/record";
 import { useCreateStatement, useStatements } from "../queries/statements";
 import { ChainLine } from "../components/robinhood-chain";
@@ -268,6 +269,8 @@ export default function PortfolioPage() {
           </div>
         </>
       )}
+
+      {address && !readOnly ? <RecordAll className="mt-10" /> : null}
 
       {address && held.some((row) => (openBySymbol.get(row.symbol) ?? 0) > 0) ? (
         <section className="mt-10 rounded-[16px] border border-emerald/40 bg-emerald/5 p-5">

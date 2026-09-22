@@ -1,4 +1,4 @@
-import { CircleHelp, Menu, Search, X } from "lucide-react";
+import { ChevronDown, CircleHelp, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
@@ -15,14 +15,27 @@ import { TokenCA } from "./token-ca";
 import { captureReferral } from "../lib/referral";
 import { PHOTO_LIST } from "./photo";
 
+/** Four things a visitor can do. Everything else lives under More and in the footer. */
 const NAV = [
   { href: "/record", label: "Record" },
-  { href: "/markets", label: "Markets" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/intents", label: "Intents" },
-  { href: "/redeem", label: "Redeem" },
-  { href: "/developers", label: "API" },
-  { href: "/how-it-works", label: "How it works" },
+  { href: "/intents", label: "Sign" },
+  { href: "/redeem", label: "Queue" },
+  { href: "/portfolio", label: "You" },
+];
+
+const MORE: Array<{ href: string; label: string; note: string }> = [
+  { href: "/markets", label: "Markets", note: "All 194 Stock Tokens, prices and multipliers" },
+  { href: "/queue", label: "Public queue", note: "Every redemption place, in order" },
+  { href: "/reports", label: "Intent reports", note: "What holders wanted, per meeting" },
+  { href: "/calendar", label: "Meeting calendar", note: "Record dates, cutoffs, results" },
+  { href: "/genesis", label: "Genesis", note: "The founding hundred" },
+  { href: "/leaderboard", label: "Record holders", note: "Earliest, widest, largest" },
+  { href: "/token", label: "$REDEEM", note: "The official token" },
+  { href: "/developers", label: "API", note: "Keyless JSON for builders" },
+  { href: "/verify", label: "Verify", note: "Check a record in your browser" },
+  { href: "/how-it-works", label: "How it works", note: "The mechanism, plainly" },
+  { href: "/transparency", label: "Transparency", note: "How far the record reaches" },
+  { href: "/status", label: "Status", note: "Chain, cache, database" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -64,6 +77,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               );
             })}
+            <div className="group relative">
+              <button type="button" className={cn("inline-flex items-center gap-1 rounded-[8px] px-2.5 py-1.5 text-[14px] transition-colors", MORE.some((item) => location.startsWith(item.href)) ? "text-ink" : "text-grey-green group-hover:text-ink")}>
+                More <ChevronDown className="size-3.5" />
+              </button>
+              <div className="invisible absolute top-full left-0 z-50 w-[520px] pt-2 opacity-0 transition-[opacity,visibility] group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <div className="surface grid grid-cols-2 gap-x-6 gap-y-0.5 rounded-[14px] p-3">
+                  {MORE.map((item) => (
+                    <Link key={item.href} to={item.href} className="rounded-[8px] px-2.5 py-2 hover:bg-mint">
+                      <span className="block text-[13.5px] text-ink">{item.label}</span>
+                      <span className="block text-[11.5px] text-grey-green">{item.note}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </nav>
           <div className="ml-auto flex items-center gap-2">
             <span data-guide="search" className="hidden xl:flex">
@@ -89,10 +117,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div className="gutter border-t border-line bg-paper pt-4 pb-5 lg:hidden">
             <nav className="flex flex-col">
               {NAV.map((item) => (
-                <Link key={item.href} to={item.href} className={cn("border-b border-line py-3 text-[15px]", location === item.href ? "text-ink" : "text-grey-green")}>
+                <Link key={item.href} to={item.href} className={cn("border-b border-line py-3 text-[16px]", location === item.href ? "text-ink" : "text-ink-2")}>
                   {item.label}
                 </Link>
               ))}
+              <div className="grid grid-cols-2 gap-x-6 pt-3">
+                {MORE.map((item) => (
+                  <Link key={item.href} to={item.href} className="py-2 text-[13.5px] text-grey-green">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </nav>
             <div className="mt-4 sm:hidden [&_button]:w-full [&_button]:justify-center [&>div]:w-full">
               <ConnectWallet size="md" />
@@ -147,7 +182,7 @@ function Footer() {
             <p className="mt-3 max-w-[38ch] text-[14px] leading-relaxed text-ink-2">The record layer for Robinhood Stock Tokens: share-equivalents, holder intent, redemption readiness.</p>
           </div>
           <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-[14px]">
-            {[...NAV, { href: "/queue", label: "Public queue" }, { href: "/reports", label: "Intent reports" }, { href: "/calendar", label: "Meeting calendar" }, { href: "/genesis", label: "Genesis · founding 100" }, { href: "/leaderboard", label: "Record holders" }, { href: "/verify", label: "Verify a record" }, { href: "/token", label: "$REDEEM token" }, { href: "/transparency", label: "Transparency" }, { href: "/status", label: "Status" }].map((item) => (
+            {[...NAV, ...MORE].map((item) => (
               <Link key={item.href} to={item.href} className="text-grey-green hover:text-ink">
                 {item.label}
               </Link>

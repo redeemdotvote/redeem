@@ -23,9 +23,9 @@ const PAGES: Array<[string, string, string]> = [
   ["Meeting calendar", "Record dates, intent cutoffs, meetings and reported results", "/calendar"],
   ["Record Book", "One ledger for every official Stock Token", "/record"],
   ["Markets", "Security master", "/markets"],
-  ["Portfolio", "Your positions and signed record", "/portfolio"],
-  ["Intents", "Proxy items on file", "/intents"],
-  ["Redemption readiness", "Ticker-specific queues", "/redeem"],
+  ["You", "Your positions, record numbers and XP", "/portfolio"],
+  ["Sign", "Open proxy items to record intent on", "/intents"],
+  ["Queue", "Pre-register for 1:1 share redemption", "/redeem"],
   ["API", "The Stock Token record layer", "/developers"],
   ["How it works", "The mechanism, plainly", "/how-it-works"],
 ];
