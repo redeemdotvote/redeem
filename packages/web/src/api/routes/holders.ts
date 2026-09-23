@@ -15,7 +15,7 @@ interface TokenSnapshot {
   holders: number;
   candidates: number;
   totalHeld: string;
-  top: Array<{ address: string; balance: string; pool: boolean }>;
+  top: Array<{ address: string; balance: string; pool: boolean; contract?: boolean }>;
   cuts: string[];
 }
 const SNAPSHOT = snapshot as unknown as { generatedAt: string | null; block: string | null; tokens: Record<string, TokenSnapshot> };
@@ -26,8 +26,11 @@ export function rankOf(symbol: string, wallet: string, balance: bigint) {
   const token = SNAPSHOT.tokens[symbol];
   if (!token || token.holders === 0) return null;
   const lower = wallet.toLowerCase();
-  const exact = token.top.findIndex((entry) => entry.address === lower);
+  // Ranks count wallets only: contracts (pools, custody, routers) are shown in the list but skipped in the numbering.
+  const wallets = token.top.filter((entry) => !entry.pool && !entry.contract);
+  const exact = wallets.findIndex((entry) => entry.address === lower);
   if (exact >= 0) return { symbol, rank: exact + 1, percentile: null, holders: token.holders, exact: true };
+  if (token.top.some((entry) => entry.address === lower)) return { symbol, rank: null, percentile: null, holders: token.holders, exact: false };
   if (balance === 0n) return { symbol, rank: null, percentile: null, holders: token.holders, exact: false };
   // cuts[p] is the balance at the p-th percentile from the top; the first cut the balance beats is the percentile.
   let percentile = 100;
@@ -71,10 +74,15 @@ export const holders = {
       priceUsd: asset?.priceUsd ?? null,
       snapshotBlock: SNAPSHOT.block,
       generatedAt: SNAPSHOT.generatedAt,
-      rows: entry.top.map((row, index) => {
-        const balance = BigInt(row.balance);
-        return { rank: index + 1, address: row.address, pool: row.pool, shareEq: f18((balance * multiplier) / WAD), share: total > 0n ? Number((balance * 10_000n) / total) / 100 : 0 };
-      }),
+      rows: (() => {
+        let rank = 0;
+        return entry.top.map((row) => {
+          const balance = BigInt(row.balance);
+          const contract = row.pool || Boolean(row.contract);
+          if (!contract) rank += 1;
+          return { rank: contract ? null : rank, address: row.address, pool: row.pool, contract, shareEq: f18((balance * multiplier) / WAD), share: total > 0n ? Number((balance * 10_000n) / total) / 100 : 0 };
+        });
+      })(),
     };
   }),
 

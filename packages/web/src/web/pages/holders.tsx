@@ -23,7 +23,7 @@ export default function HoldersPage() {
             The largest <span className="italic">{symbol}</span> token holders.
           </>
         }
-        body={d?.available ? `${d.holders.toLocaleString("en-US")} wallets hold ${symbol} on Robinhood Chain, ${shares(d.totalShareEq)} shares-equivalent between them, read at block ${Number(d.snapshotBlock).toLocaleString("en-US")}. Liquidity pools are marked; they hold on behalf of their providers.` : "Holder ranks for this token have not been computed yet."}
+        body={d?.available ? `${d.holders.toLocaleString("en-US")} wallets hold ${symbol} on Robinhood Chain, ${shares(d.totalShareEq)} shares-equivalent between them, read at block ${Number(d.snapshotBlock).toLocaleString("en-US")}. Contracts (pools, custody, routers) are listed but not ranked; ranks count wallets only.` : "Holder ranks for this token have not been computed yet."}
       />
       {!d ? (
         <Skeleton className="h-72" />
@@ -42,13 +42,13 @@ export default function HoldersPage() {
               const mine = wallet.address?.toLowerCase() === row.address;
               return (
                 <li key={row.address} className={`grid grid-cols-[44px_minmax(0,1fr)_auto] items-center gap-3 border-b border-line py-3 ${mine ? "bg-emerald/5" : ""}`}>
-                  <span className={`font-mono text-[15px] ${row.rank <= 3 ? "text-emerald" : "text-grey-green"}`}>#{row.rank}</span>
+                  <span className={`font-mono text-[15px] ${row.rank !== null && row.rank <= 3 ? "text-emerald" : "text-grey-green"}`}>{row.rank === null ? "—" : `#${row.rank}`}</span>
                   <span className="flex min-w-0 items-center gap-2">
                     <Link to={`/w/${row.address}`} className="font-mono truncate text-[13px] text-ink hover:underline">
                       <span className="hidden md:inline">{row.address}</span>
                       <span className="md:hidden">{shortAddress(row.address, 6)}</span>
                     </Link>
-                    {row.pool ? <Mark tone="muted">pool</Mark> : null}
+                    {row.pool ? <Mark tone="muted">pool</Mark> : row.contract ? <Mark tone="muted">contract</Mark> : null}
                     {mine ? <Mark tone="live">you</Mark> : null}
                   </span>
                   <span className="text-right">
