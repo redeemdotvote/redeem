@@ -277,3 +277,50 @@ export const webhooks = sqliteTable(
   },
   (t) => [index("webhooks_wallet_idx").on(t.wallet)],
 );
+
+/**
+ * A signed forecast of how holders of record will vote on one item. Anyone with a wallet may
+ * forecast, holding or not; nothing is staked, nothing is paid, and a forecast never enters a
+ * tally, a queue or XP. It is scored against the issuer's Form 8-K result when that is on file.
+ * Re-forecasting supersedes, never deletes; forecasts lock at the intent cutoff.
+ */
+export const forecasts = sqliteTable(
+  "forecasts",
+  {
+    id: text("id").primaryKey(),
+    ballotItemId: text("ballot_item_id").notNull(),
+    ballotId: text("ballot_id").notNull(),
+    symbol: text("symbol").notNull(),
+    wallet: text("wallet").notNull(),
+    /** The side predicted to carry: "for" | "against" | "one_year" | "two_years" | "three_years". */
+    prediction: text("prediction").notNull(),
+    typedData: text("typed_data").notNull(),
+    signature: text("signature").notNull(),
+    /** "active" | "superseded" */
+    status: text("status").notNull().default("active"),
+    createdAt: integer("created_at", { mode: "timestamp" })
+      .notNull()
+      .$defaultFn(() => new Date()),
+  },
+  (t) => [index("forecasts_item_idx").on(t.ballotItemId), index("forecasts_wallet_idx").on(t.wallet)],
+);
+
+/**
+ * A delegate profile: a name and a statement for an address that holders may name on a delegate
+ * intent. Registering proves the address with a signed message and nothing else. Weight named to
+ * a delegate is computed from receipts on every read, moves with them, and is never money: a
+ * delegate intent confers no proxy authority and may not be bought, sold or compensated.
+ */
+export const delegates = sqliteTable("delegates", {
+  wallet: text("wallet").primaryKey(),
+  name: text("name").notNull(),
+  statement: text("statement").notNull(),
+  link: text("link"),
+  signature: text("signature").notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .$defaultFn(() => new Date()),
+  updatedAt: integer("updated_at", { mode: "timestamp" })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});

@@ -17,6 +17,9 @@ import RedeemPage from "./pages/redeem";
 import StatementPage from "./pages/statement";
 import StatusPage from "./pages/status";
 import LeaderboardPage from "./pages/leaderboard";
+import ForecastsPage from "./pages/forecasts";
+import DelegatesPage from "./pages/delegates";
+import DelegatePage from "./pages/delegate";
 import DeskPage from "./pages/desk";
 import TokenPage from "./pages/token";
 import ReportsPage from "./pages/reports";
@@ -65,6 +68,9 @@ function Routes() {
           <Route path="/transparency" component={TransparencyPage} />
           <Route path="/status" component={StatusPage} />
           <Route path="/leaderboard" component={LeaderboardPage} />
+          <Route path="/forecasts" component={ForecastsPage} />
+          <Route path="/delegates" component={DelegatesPage} />
+          <Route path="/delegates/:address" component={DelegatePage} />
           <Route path="/desk/:symbol" component={DeskPage} />
           <Route path="/token" component={TokenPage} />
           <Route path="/reports" component={ReportsPage} />

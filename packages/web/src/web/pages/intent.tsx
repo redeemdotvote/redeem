@@ -1,9 +1,11 @@
 import { ArrowLeft, ArrowUpRight, Check, ExternalLink, Download } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "wouter";
+import { Link, useParams, useSearch } from "wouter";
 import { cn } from "@/lib/utils";
 import { Distribution } from "../components/bars";
 import { OutcomeCard } from "../components/outcome";
+import { ForecastCard } from "../components/forecast-card";
+import { useDelegates } from "../queries/delegates";
 import { AssetLogo } from "../components/brand";
 import { Page } from "../components/layout";
 import { Countdown, EventStatus, IntentLabel, ITEM_TYPE_LABEL, Recommendation } from "../components/status";
@@ -21,8 +23,11 @@ export default function IntentPage() {
   const query = useIntentItem(id, wallet.address);
   const sign = useSignIntent();
   const attest = useAttest();
-  const [choice, setChoice] = useState<string | null>(null);
-  const [delegate, setDelegate] = useState("");
+  const search = useSearch();
+  const prefill = new URLSearchParams(search).get("delegate") ?? "";
+  const [choice, setChoice] = useState<string | null>(/^0x[a-fA-F0-9]{40}$/.test(prefill) ? "delegate" : null);
+  const [delegate, setDelegate] = useState(/^0x[a-fA-F0-9]{40}$/.test(prefill) ? prefill : "");
+  const registered = useDelegates();
 
   const data = query.data;
   const recordDate = useRecordDate(id, wallet.address, Boolean(query.data?.power?.holds));
@@ -31,7 +36,7 @@ export default function IntentPage() {
   const active = event?.status === "active";
 
   useEffect(() => {
-    if (data?.yours) {
+    if (data?.yours && !prefill) {
       setChoice(data.yours.choice);
       if (data.yours.delegate && !/^0x0{40}$/.test(data.yours.delegate)) setDelegate(data.yours.delegate);
     }
@@ -317,7 +322,30 @@ export default function IntentPage() {
                   })}
                 </div>
                 {choice ? <p className="mt-2 text-[12px] text-grey-green">{choice === "abstain" && item.abstainEffect === "against" ? `Under ${event.companyName}'s standard an abstention counts against.` : item.choices.find((option) => option.value === choice)?.help}</p> : null}
-                {isDelegate ? <Input value={delegate} onChange={(e) => setDelegate(e.target.value)} placeholder="Delegate address 0x…" className="font-mono mt-3 text-[13px]" /> : null}
+                {isDelegate ? (
+                  <div className="mt-3">
+                    <Input value={delegate} onChange={(e) => setDelegate(e.target.value)} placeholder="Delegate address 0x…" className="font-mono text-[13px]" />
+                    {(registered.data?.rows ?? []).filter((row) => row.profile).length > 0 ? (
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {(registered.data?.rows ?? [])
+                          .filter((row) => row.profile)
+                          .slice(0, 8)
+                          .map((row) => (
+                            <button key={row.wallet} type="button" onClick={() => setDelegate(row.wallet)} className={cn("rounded-[8px] border px-2 py-1 text-[12px] transition-colors", delegate.toLowerCase() === row.wallet ? "border-ink bg-ink text-paper" : "border-line-2 text-ink hover:border-ink")} title={row.profile!.statement}>
+                              {row.profile!.name}
+                            </button>
+                          ))}
+                      </div>
+                    ) : null}
+                    <p className="mt-2 text-[11.5px] leading-relaxed text-grey-green">
+                      Naming an address records that you would want it to carry this intent. It confers no proxy authority and may not be paid for.{" "}
+                      <Link to="/delegates" className="text-emerald hover:underline">
+                        Registered delegates
+                      </Link>
+                      .
+                    </p>
+                  </div>
+                ) : null}
                 <Button
                   className="mt-4 w-full"
                   variant="emerald"
@@ -335,6 +363,8 @@ export default function IntentPage() {
               <Note className="mt-5">{event.historical ? `This meeting's cutoff (${dateTimeUtc(event.closesAt)}) fell before Redeem opened on Sep 14, 2026, so no intent could be recorded. It is kept for the record, with the shareholder result where the issuer reported one.` : `Intent closed ${dateTimeUtc(event.closesAt)}.`}</Note>
             )}
           </section>
+
+          {!event.historical ? <ForecastCard itemId={item.id} compact /> : null}
 
           <section>
             <Eyebrow>Status</Eyebrow>

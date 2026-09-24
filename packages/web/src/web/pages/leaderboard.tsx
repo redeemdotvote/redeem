@@ -122,6 +122,17 @@ export default function LeaderboardPage() {
       <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-grey-green">
         <Mark tone="muted">Not the token · not a vote · not a claim on the issuer</Mark>
         <span>XP and record numbers exist so being early and thorough in the file is visible. Nothing here is spendable, and none of it is the REDEEM token or affected by holding it.</span>
+        <span>
+          Two more tables live elsewhere:{" "}
+          <Link to="/forecasts" className="text-emerald hover:underline">
+            best vote callers
+          </Link>{" "}
+          and{" "}
+          <Link to="/delegates" className="text-emerald hover:underline">
+            delegates by weight named
+          </Link>
+          .
+        </span>
       </div>
     </Page>
   );

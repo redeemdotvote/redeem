@@ -75,6 +75,55 @@ export function buildInstructionTypedData(facts: InstructionFacts): TypedDataDef
   };
 }
 
+export const FORECAST_TYPES = {
+  Forecast: [
+    { name: "ballotItem", type: "string" },
+    { name: "proposal", type: "string" },
+    { name: "stock", type: "string" },
+    { name: "wallet", type: "address" },
+    { name: "prediction", type: "string" },
+    { name: "locksAt", type: "string" },
+    { name: "issuedAt", type: "string" },
+    { name: "nonce", type: "string" },
+    { name: "statement", type: "string" },
+  ],
+} as const;
+
+export const FORECAST_STATEMENT =
+  "This is a forecast of how holders of record will vote on this item, recorded by Redeem. It is not a vote, not an intent and not " +
+  "advice. Nothing is staked or paid on it, it carries no weight in any tally or queue, and it is scored only against the result the " +
+  "issuer reports on Form 8-K. Redeem is independent and not affiliated with the issuer or Robinhood.";
+
+export interface ForecastFacts {
+  ballotItemId: string;
+  proposal: string;
+  stock: string;
+  wallet: Address;
+  prediction: string;
+  locksAt: string;
+  issuedAt: string;
+  nonce: string;
+}
+
+export function buildForecastTypedData(facts: ForecastFacts): TypedDataDefinition {
+  return {
+    domain: DOMAIN,
+    types: FORECAST_TYPES,
+    primaryType: "Forecast",
+    message: {
+      ballotItem: facts.ballotItemId,
+      proposal: facts.proposal,
+      stock: facts.stock,
+      wallet: facts.wallet,
+      prediction: facts.prediction,
+      locksAt: facts.locksAt,
+      issuedAt: facts.issuedAt,
+      nonce: facts.nonce,
+      statement: FORECAST_STATEMENT,
+    },
+  };
+}
+
 /** bigint-safe JSON for storing and returning typed data verbatim. */
 export function serializeTypedData(data: TypedDataDefinition): string {
   return JSON.stringify(data, (_key, value) => (typeof value === "bigint" ? value.toString() : value));

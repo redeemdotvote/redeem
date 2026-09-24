@@ -92,6 +92,37 @@ const ENDPOINTS = [
   },
   {
     method: "GET",
+    path: "/api/v1/forecasts/:itemId",
+    title: "Forecast endpoint",
+    body: "The crowd's call on one item: each side that can carry, how many wallets called it, whether forecasts are still open, and the resolution from the issuer's Form 8-K once filed. /api/v1/forecasts/board returns the forecast record: best callers, open calls, recent resolutions. Nothing is staked.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/forecasts/board`,
+    response: `{
+  "note": "Forecasts, not votes. Nothing is staked; resolution is the issuer's Form 8-K, Item 5.07.",
+  "forecasters": 0,
+  "forecasts": 0,
+  "resolved": 0,
+  "crowdAccuracy": null,
+  "top": [],
+  "open": [],
+  "recentlyResolved": []
+}`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/delegates/:wallet",
+    title: "Delegate endpoint",
+    body: "One delegate: profile, rank, weight named per ticker (the largest single-item sum of counted weight naming the address), backers, the items it was named on, and every open item. /api/v1/delegates lists every named address ranked by that weight. Weight, never money.",
+    example: `curl -s https://redeem-desktop.vercel.app/api/v1/delegates`,
+    response: `{
+  "note": "Weight named on delegate intents. It confers no proxy authority and may not be bought, sold or compensated.",
+  "registered": 0,
+  "named": 0,
+  "valueUsd": 0,
+  "rows": []
+}`,
+  },
+  {
+    method: "GET",
     path: "/api/v1/queue",
     title: "Redemption queue",
     body: "The public queue: dollar value at the live Chainlink price, per ticker and in total, the cumulative curve by signing time, and the next intent deadline. `/api/v1/queue/:symbol` adds every position in order with its wallet, size, block and signature.",

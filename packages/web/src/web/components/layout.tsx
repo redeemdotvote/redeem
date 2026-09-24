@@ -30,6 +30,8 @@ const MORE: Array<{ href: string; label: string; note: string }> = [
   { href: "/calendar", label: "Meeting calendar", note: "Record dates, cutoffs, results" },
   { href: "/genesis", label: "Genesis", note: "The founding hundred" },
   { href: "/leaderboard", label: "Record holders", note: "Earliest, widest, largest" },
+  { href: "/forecasts", label: "Forecasts", note: "Call the vote; scored on the 8-K" },
+  { href: "/delegates", label: "Delegates", note: "Named addresses, ranked by weight" },
   { href: "/token", label: "$REDEEM", note: "The official token" },
   { href: "/developers", label: "API", note: "Keyless JSON for builders" },
   { href: "/verify", label: "Verify", note: "Check a record in your browser" },

@@ -60,6 +60,10 @@ const DDL = [
   `CREATE TABLE IF NOT EXISTS timestamps (key TEXT PRIMARY KEY, kind TEXT NOT NULL, document TEXT NOT NULL, digest TEXT NOT NULL, ots TEXT, calendars TEXT NOT NULL DEFAULT '[]', status TEXT NOT NULL DEFAULT 'failed', stamped_at INTEGER, created_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS webhooks (id TEXT PRIMARY KEY, wallet TEXT NOT NULL, url TEXT NOT NULL, secret TEXT NOT NULL, active INTEGER NOT NULL DEFAULT 1, failures INTEGER NOT NULL DEFAULT 0, last_status TEXT, last_delivered_at INTEGER, created_at INTEGER NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS webhooks_wallet_idx ON webhooks(wallet)`,
+  `CREATE TABLE IF NOT EXISTS forecasts (id TEXT PRIMARY KEY, ballot_item_id TEXT NOT NULL, ballot_id TEXT NOT NULL, symbol TEXT NOT NULL, wallet TEXT NOT NULL, prediction TEXT NOT NULL, typed_data TEXT NOT NULL, signature TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'active', created_at INTEGER NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS forecasts_item_idx ON forecasts(ballot_item_id)`,
+  `CREATE INDEX IF NOT EXISTS forecasts_wallet_idx ON forecasts(wallet)`,
+  `CREATE TABLE IF NOT EXISTS delegates (wallet TEXT PRIMARY KEY, name TEXT NOT NULL, statement TEXT NOT NULL, link TEXT, signature TEXT NOT NULL, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS indexer_cursors (
     key TEXT PRIMARY KEY, last_block INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'idle', detail TEXT,
     updated_at INTEGER NOT NULL DEFAULT (unixepoch()))`,
@@ -70,7 +74,7 @@ const ADDED_COLUMNS: Array<[string, string, string]> = [
 ];
 
 /** Bump when DDL or ADDED_COLUMNS change; a database already at this version skips the DDL pass. */
-export const SCHEMA_VERSION = "2026-09-21.2";
+export const SCHEMA_VERSION = "2026-09-24.1";
 const SCHEMA_CURSOR = "schema:version";
 
 /** Reads a marker row from indexer_cursors; null when the row or the table is missing. */

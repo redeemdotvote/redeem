@@ -25,6 +25,8 @@ import { tierFor } from "./lib/tier";
 import { recordDatePosition } from "./lib/record-date";
 import { hooks } from "./routes/hooks";
 import { holders } from "./routes/holders";
+import { forecasts } from "./routes/forecasts";
+import { delegates } from "./routes/delegates";
 import { getVenueHoldings, resolveHolder, VENUES_GENERATED_AT } from "./lib/venues";
 import { and, eq } from "drizzle-orm";
 import { erc20Abi, formatUnits, isAddress } from "viem";
@@ -44,6 +46,8 @@ export const router = {
   reports,
   hooks,
   holders,
+  forecasts,
+  delegates,
 };
 
 export type AppRouter = typeof router;
@@ -248,6 +252,24 @@ inner.get("/api/v1/holders/rank/:wallet", async (c) => {
   const wallet = c.req.param("wallet");
   if (!isAddress(wallet)) return json({ error: "invalid_address" }, 400);
   return json(await holders.ranks.callable({ context: { headers: new Headers() } })({ wallet }));
+});
+
+/** Forecasts: the crowd on one item, and the forecast record. Nothing staked, scored against Form 8-K. */
+inner.get("/api/v1/forecasts/board", async () => json({ note: "Forecasts, not votes. Nothing is staked; resolution is the issuer's Form 8-K, Item 5.07.", ...(await forecasts.board.callable({ context: { headers: new Headers() } })()) }));
+inner.get("/api/v1/forecasts/:itemId", async (c) => {
+  try {
+    return json({ note: "Forecasts, not votes. Nothing is staked; resolution is the issuer's Form 8-K, Item 5.07.", ...(await forecasts.item.callable({ context: { headers: new Headers() } })({ id: c.req.param("itemId") })) });
+  } catch {
+    return json({ error: "unknown_item" }, 404);
+  }
+});
+
+/** Delegates: every named address ranked by the weight named to it, and one delegate in full. Weight, never money. */
+inner.get("/api/v1/delegates", async () => json({ note: "Weight named on delegate intents. It confers no proxy authority and may not be bought, sold or compensated.", ...(await delegates.list.callable({ context: { headers: new Headers() } })()) }));
+inner.get("/api/v1/delegates/:wallet", async (c) => {
+  const wallet = c.req.param("wallet");
+  if (!isAddress(wallet)) return json({ error: "invalid_address" }, 400);
+  return json(await delegates.get.callable({ context: { headers: new Headers() } })({ wallet }));
 });
 
 /** The public redemption queue, in total or for one ticker (with every position and its signature). */
